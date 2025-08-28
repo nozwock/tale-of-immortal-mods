@@ -1,25 +1,9 @@
 ﻿using System;
-using System.IO;
 using System.Reflection;
-using HarmonyLib;
-using UnhollowerBaseLib;
-using UnityEngine;
 using MelonLoader;
-using Newtonsoft.Json;
-using MelonLoader.Preferences;
 
 namespace MOD_uDaKG4
 {
-    [HarmonyPatch(typeof(WorldMgr), "Init")]
-    public class WorldMgrPatchInit
-    {
-        // Game start
-        private static void Postfix(WorldMgr __instance)
-        {
-            ModMain.OnGameStart();
-        }
-    }
-
     public class ModMain
     {
         private TimerCoroutine corUpdate;
@@ -27,8 +11,8 @@ namespace MOD_uDaKG4
         public static string soleId = "uDaKG4";
         public static string modNamespace = $"MOD_{soleId}";
 
-        private static MelonPreferences_Category category;
-        private static MelonPreferences_Entry<int> playerViewRange;
+        private MelonPreferences_Category category;
+        private MelonPreferences_Entry<int> playerViewRange;
 
         public void Init()
         {
@@ -44,20 +28,22 @@ namespace MOD_uDaKG4
             harmony.PatchAll(Assembly.GetExecutingAssembly());
 
             category = MelonPreferences.CreateCategory(modNamespace);
-            playerViewRange = category.CreateEntry<int>("playerViewRange", 5);
+            playerViewRange = category.CreateEntry("playerViewRange", 5);
 
+            g.events.On(EGameType.IntoWorld, (Il2CppSystem.Action<ETypeData>)OnGameStart);
             corUpdate = g.timer.Frame(new Action(OnUpdate), 1, true);
         }
 
         public void Destroy()
         {
             g.timer.Stop(corUpdate);
+            g.events.Off(EGameType.IntoWorld, (Il2CppSystem.Action<ETypeData>)OnGameStart);
 
             harmony.UnpatchSelf();
             harmony = null;
         }
 
-        public static void OnGameStart()
+        public void OnGameStart(ETypeData e)
         {
             var playerView = g.world.playerUnit.data.dynUnitData.playerView;
             if (playerView != null)
