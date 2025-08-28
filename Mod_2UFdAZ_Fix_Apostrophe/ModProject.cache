@@ -1,0 +1,19 @@
+﻿{
+  "soleID": "2UFdAZ",
+  "createTicks": 638919175705971446,
+  "name": "Fix Apostrophe",
+  "author": "gse orca",
+  "desc": "Replaces curly apostrophes (’) with straight apostrophes (') as the game seems to render (’) weirdly with a gap.",
+  "ver": "v 1.0.0",
+  "autoSave": true,
+  "isCreateNPC": true,
+  "exportVer": 0,
+  "accountID": 0,
+  "publishedFileID": 0,
+  "visibleState": 0,
+  "openCode": 0,
+  "curUpdateDesc": null,
+  "tags": [],
+  "addPreviewPaths": [],
+  "excelEncrypt": false
+}
