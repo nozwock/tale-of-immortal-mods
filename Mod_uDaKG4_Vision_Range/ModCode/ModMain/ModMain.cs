@@ -10,12 +10,6 @@ using MelonLoader.Preferences;
 
 namespace MOD_uDaKG4
 {
-    [Serializable]
-    public class Config
-    {
-        public int playerViewRange = 5;
-    }
-
     [HarmonyPatch(typeof(WorldMgr), "Init")]
     public class WorldMgrPatchInit
     {
@@ -32,7 +26,9 @@ namespace MOD_uDaKG4
         private static HarmonyLib.Harmony harmony;
         public static string soleId = "uDaKG4";
         public static string modNamespace = $"MOD_{soleId}";
-        private static Config config;
+
+        private static MelonPreferences_Category category;
+        private static MelonPreferences_Entry<int> playerViewRange;
 
         public void Init()
         {
@@ -47,9 +43,10 @@ namespace MOD_uDaKG4
             }
             harmony.PatchAll(Assembly.GetExecutingAssembly());
 
-            corUpdate = g.timer.Frame(new Action(OnUpdate), 1, true);
+            category = MelonPreferences.CreateCategory(modNamespace);
+            playerViewRange = category.CreateEntry<int>("playerViewRange", 5);
 
-            config = LoadJsonConfig<Config>("config.json");
+            corUpdate = g.timer.Frame(new Action(OnUpdate), 1, true);
         }
 
         public void Destroy()
@@ -65,8 +62,8 @@ namespace MOD_uDaKG4
             var playerView = g.world.playerUnit.data.dynUnitData.playerView;
             if (playerView != null)
             {
-                Log($"Setting playerViewRange={config.playerViewRange}");
-                playerView.baseValue = config.playerViewRange;
+                Log($"Setting playerViewRange={playerViewRange.Value}");
+                playerView.baseValue = playerViewRange.Value;
             }
             else
             {
@@ -81,34 +78,6 @@ namespace MOD_uDaKG4
         public static void Log(string s)
         {
             MelonLogger.Msg($"{modNamespace}: {s}");
-        }
-
-        public static T LoadJsonConfig<T>(string path) where T : new()
-        {
-            var finalPath = Path.Combine(g.mod.GetModPathRoot(soleId), "ModCode", "dll", path);
-
-            if (!File.Exists(finalPath))
-            {
-                Log($"Config not found: '{finalPath}'");
-                return new T();
-            }
-
-            try
-            {
-                var json = File.ReadAllText(finalPath);
-
-                var obj = JsonConvert.DeserializeObject<T>(json);
-                if (obj == null)
-                {
-                    return new T();
-                }
-                return obj;
-            }
-            catch (Exception e)
-            {
-                Log($"Failed to load config: {e.Message}");
-                return new T();
-            }
         }
     }
 }
