@@ -1,0 +1,19 @@
+﻿{
+  "soleID": "uDaKG4",
+  "createTicks": 638918201570473414,
+  "name": "Vision Range+",
+  "author": "gse orca",
+  "desc": "Configurable Player Vision Range (default=5)",
+  "ver": "v 1.0.0",
+  "autoSave": true,
+  "isCreateNPC": true,
+  "exportVer": 0,
+  "accountID": 0,
+  "publishedFileID": 0,
+  "visibleState": 0,
+  "openCode": 0,
+  "curUpdateDesc": null,
+  "tags": [],
+  "addPreviewPaths": [],
+  "excelEncrypt": false
+}
