@@ -389,6 +389,15 @@
   },
   {
     "id": "",
+    "key": "panel_items_button_remove_item",
+    "ch": "Remove Inventory Item",
+    "tc": "Remove Inventory Item",
+    "en": "Remove Inventory Item",
+    "kr": "Remove Inventory Item",
+    "ja": "Remove Inventory Item"
+  },
+  {
+    "id": "",
     "key": "panel_items_button_search_skill",
     "ch": "搜索技能",
     "tc": "搜索技能",
@@ -553,6 +562,15 @@
   },
   {
     "id": "",
+    "key": "panel_removeitem_title",
+    "ch": "Remove Items",
+    "tc": "Remove Items",
+    "en": "Remove Items",
+    "kr": "Remove Items",
+    "ja": "Remove Items"
+  },
+  {
+    "id": "",
     "key": "panel_searchitem_input_placeholder",
     "ch": "按 'ESC'，搜索物品名称，按 'Enter' 提交。",
     "tc": "按 'ESC'，搜索物品名稱，按 'Enter' 提交。",
@@ -586,6 +604,15 @@
     "en": "Reward",
     "kr": "보상",
     "ja": "報酬"
+  },
+  {
+    "id": "",
+    "key": "panel_removeitem_button_remove",
+    "ch": "Remove",
+    "tc": "Remove",
+    "en": "Remove",
+    "kr": "Remove",
+    "ja": "Remove"
   },
   {
     "id": "",

@@ -8,6 +8,7 @@ public enum PanelType
 	Items,
 	FatePlanner,
 	SearchItem,
+	RemoveItem,
 	SearchSkill,
 	Exploit,
 	ExploitMore,

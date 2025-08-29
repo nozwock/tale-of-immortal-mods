@@ -79,6 +79,10 @@ public class UIManager
 				new SearchItemPanel()
 			},
 			{
+				PanelType.RemoveItem,
+				new RemoveItemPanel()
+			},
+			{
 				PanelType.SearchSkill,
 				new SearchSkillPanel()
 			},

@@ -27,6 +27,7 @@ public class ItemsPanel : Panel
 	private ButtonRef buttonGiveSkillMaterials;
 
 	private ButtonRef buttonSearchItem;
+	private ButtonRef buttonRemoveItem;
 
 	private ButtonRef buttonSearchSkill;
 
@@ -74,6 +75,7 @@ public class ItemsPanel : Panel
 		buttonGiveSectContribution = CreateItemsButton("Items-give-sect-contribution", "panel_items_button_give_sect_contribution", GiveSectContribution);
 		buttonGiveSkillMaterials = CreateItemsButton("Items-give-skill-materials", "panel_items_button_give_skill_materials", GiveSkillMaterials);
 		buttonSearchItem = CreateItemsButton("Items-search-item", "panel_items_button_search_item", OpenSearchItem);
+		buttonRemoveItem = CreateItemsButton("Items-remove-item", "panel_items_button_remove_item", OpenRemoveItem);
 		buttonSearchSkill = CreateItemsButton("Items-search-skill", "panel_items_button_search_skill", OpenSearchSkill);
 		GameObject parent = UIFactory.CreateHorizontalGroup(contentHolder, "Items-grade-materials-group", forceExpandWidth: true, forceExpandHeight: false, childControlWidth: true, childControlHeight: true, 5);
 		buttonGiveMaterials = UIFactory.CreateButton(parent, "Items-give-brk-materials", LocalizationHelper.T("panel_items_button_give_materials"));
@@ -146,6 +148,10 @@ public class ItemsPanel : Panel
 		if (buttonSearchItem != null)
 		{
 			buttonSearchItem.Component.GetComponentInChildren<Text>().text = LocalizationHelper.T("panel_items_button_search_item");
+		}
+		if (buttonRemoveItem != null)
+		{
+			buttonRemoveItem.Component.GetComponentInChildren<Text>().text = LocalizationHelper.T("panel_items_button_remove_item");
 		}
 		if (buttonSearchSkill != null)
 		{
@@ -268,6 +274,11 @@ public class ItemsPanel : Panel
 	internal void OpenSearchItem()
 	{
 		UIManager.Panels[PanelType.SearchItem].IsVisible = !UIManager.Panels[PanelType.SearchItem].IsVisible;
+	}
+
+	internal void OpenRemoveItem()
+	{
+		UIManager.Panels[PanelType.RemoveItem].IsVisible = !UIManager.Panels[PanelType.RemoveItem].IsVisible;
 	}
 
 	internal void OpenSearchSkill()
