@@ -21,6 +21,8 @@ public class OtherPanelMore : Panel
 
 	private Text titleBarText;
 
+	private ButtonRef buttonApplyDifficulty;
+
 	private ButtonRef buttonTrainMartial;
 
 	private ButtonRef buttonRepairEye;
@@ -92,20 +94,69 @@ public class OtherPanelMore : Panel
 	internal override (GameObject panelRoot, GameObject draggableArea) CreateUI(GameObject uiRoot)
 	{
 		Debug.Log("Creating More Other panel");
-		GameObject contentHolder;
-		GameObject gameObject = UIFactory.CreatePanel("Other 2", uiRoot, out contentHolder);
+		GameObject panelGameObject = UIFactory.CreatePanel("Other 2", uiRoot, out GameObject contentHolder);
 		UIFactory.SetLayoutGroup<VerticalLayoutGroup>(contentHolder, true, false, true, true);
-		RectTransform component = gameObject.GetComponent<RectTransform>();
-		component.anchorMin = new Vector2(0.5f, 0.5f);
-		component.anchorMax = new Vector2(0.5f, 0.5f);
-		component.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 375f);
+		RectTransform panelComponent = panelGameObject.GetComponent<RectTransform>();
+		panelComponent.anchorMin = new Vector2(0.5f, 0.5f);
+		panelComponent.anchorMax = new Vector2(0.5f, 0.5f);
+		panelComponent.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 375f);
+		var fitter = panelGameObject.AddComponent<ContentSizeFitter>();
+		fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
 		GameObject gameObject2 = UIHelper.CreateTitleBar(contentHolder, delegate
 		{
 			base.IsVisible = false;
 		}, GetTitleBarText());
 		titleBarText = gameObject2.GetComponentInChildren<Text>();
 		buttonTooltips.Clear();
-		int num = 342;
+
+		// Change Difficulty
+		var groupGo = UIFactory.CreateHorizontalGroup(
+			contentHolder,
+			"GameDifficulty-group",
+			forceExpandWidth: true,
+			forceExpandHeight: false,
+			childControlWidth: true,
+			childControlHeight: true,
+			spacing: 5
+		);
+		buttonApplyDifficulty = UIFactory.CreateButton(
+			groupGo,
+			"GameDifficulty-apply-difficulty",
+			LocalizationHelper.T("panel_othermore_button_change_difficulty")
+		);
+		UIFactory.SetLayoutElement(buttonApplyDifficulty.Component.gameObject, minHeight: 35, flexibleHeight: 0, minWidth: 70);
+		// Create Dropdown
+		var dropdownGo = UIFactory.CreateDropdown(
+			groupGo,
+			"difficulty-dropdown",
+			out Dropdown dropdownDifficulty,
+			null,
+			14,
+			delegate { }
+		);
+		UIFactory.SetLayoutElement(dropdownGo, minHeight: 35, flexibleHeight: 0, minWidth: 100);
+		// Populate options from GameLevelType enum using wenjuan5_{i} keys
+		var options = new List<Dropdown.OptionData>();
+		foreach (GameLevelType level in Enum.GetValues(typeof(GameLevelType)))
+		{
+			int enumValue = (int)level;
+			string key = $"wenjuan5_{enumValue}";
+			string label = Game.ConfMgr.localText.allText.ContainsKey(key)
+				? $"{enumValue} - {Game.ConfMgr.localText.allText[key].en}"
+				: key;
+			options.Add(new Dropdown.OptionData { text = label });
+		}
+		dropdownDifficulty.AddOptions(options);
+		// Apply button click
+		buttonApplyDifficulty.OnClick = (Action)Delegate.Combine(buttonApplyDifficulty.OnClick, (Action)delegate
+		{
+			int selectedIndex = dropdownDifficulty.value;
+			GameLevelType selectedLevel = (GameLevelType)(selectedIndex + 1); // Enum values start from 1
+			g.data.dataWorld.data.gameLevel = selectedLevel;
+
+			ModMain.LogTip(string.Format(LocalizationHelper.T("status_othermore_changed_difficulty"), options[selectedIndex].text));
+		});
+
 		buttonTrainMartial = CreateLocalizedButton(contentHolder, "Other-train-skills", "panel_othermore_button_train_martial", delegate
 		{
 			try
@@ -135,9 +186,8 @@ public class OtherPanelMore : Panel
 		buttonResetView = CreateLocalizedButton(contentHolder, "Other2-reset-view", "panel_othermore_button_reset_view", ResetView, "tooltip_othermore_reset_view");
 		buttonOpenCheatMod = CreateLocalizedButton(contentHolder, "Other2-open-cheat-mod", "panel_othermore_button_open_cheat_mod", OpenCheatMod, "tooltip_othermore_open_cheat_mod");
 		buttonCredits = CreateLocalizedButton(contentHolder, "Other2-credits", "panel_othermore_button_credits", Credits, "tooltip_othermore_credits");
-		component.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, num);
 		tooltip.Create();
-		return (panelRoot: gameObject, draggableArea: gameObject2);
+		return (panelRoot: panelGameObject, draggableArea: gameObject2);
 	}
 
 	internal void RepairEyeProvidence()
@@ -319,6 +369,10 @@ public class OtherPanelMore : Panel
 		if (titleBarText != null)
 		{
 			titleBarText.text = GetTitleBarText();
+		}
+		if (buttonApplyDifficulty != null)
+		{
+			buttonApplyDifficulty.Component.GetComponentInChildren<Text>().text = LocalizationHelper.T("panel_othermore_button_change_difficulty");
 		}
 		if (buttonTrainMartial != null)
 		{

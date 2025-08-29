@@ -4936,5 +4936,23 @@
     "en": "External Trait:",
     "kr": "External Trait:",
     "ja": "External Trait:"
+  },
+  {
+    "id": "",
+    "key": "panel_othermore_button_change_difficulty",
+    "ch": "Apply Difficulty",
+    "tc": "Apply Difficulty",
+    "en": "Apply Difficulty",
+    "kr": "Apply Difficulty",
+    "ja": "Apply Difficulty"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_changed_difficulty",
+    "ch": "Game difficulty set to '{0}'",
+    "tc": "Game difficulty set to '{0}'",
+    "en": "Game difficulty set to '{0}'",
+    "kr": "Game difficulty set to '{0}'",
+    "ja": "Game difficulty set to '{0}'"
   }
 ]
