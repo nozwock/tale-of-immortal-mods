@@ -6,7 +6,7 @@ using System.Runtime.Versioning;
 using MOD_Mivopx;
 using MelonLoader;
 
-[assembly: MelonInfo(typeof(ModMain), "CheatMenu", "1.1.8 Pub", "cheatmod", null)]
+[assembly: MelonInfo(typeof(ModMain), "CheatMenu", "1.2.0", "cheatmod", null)]
 [assembly: MelonGame("TaleOfImmortal", null)]
 [assembly: AssemblyTitle("ModMain")]
 [assembly: AssemblyDescription("")]
