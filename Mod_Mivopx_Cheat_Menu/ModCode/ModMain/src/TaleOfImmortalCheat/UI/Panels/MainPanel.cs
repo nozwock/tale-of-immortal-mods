@@ -257,7 +257,7 @@ public class MainPanel : Panel
 	private string GetTitleBarText()
 	{
 		string text = LocalizationHelper.T("panel_mainmenu_title");
-		return "<b><color=#4cd43d>" + text + "</color></b> <i><color=#ff3030>v1.1.8 Pub</color></i> <b><color=#00FFFF>v1.2.111.259+ (FPS: ...)</color></b>";
+		return "<b><color=#4cd43d>" + text + $"</color></b> <i><color=#ff3030>{ModMain.Version}</color></i> <b><color=#00FFFF>v1.2.111.259+ (FPS: ...)</color></b>";
 	}
 
 	private void UpdateUITexts()

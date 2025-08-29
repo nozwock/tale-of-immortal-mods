@@ -355,7 +355,7 @@ public class OtherPanelMore : Panel
 
 	internal static void Credits()
 	{
-		g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong).InitData(LocalizationHelper.T("credits_title"), string.Format(LocalizationHelper.T("credits_content"), "1.1.8 Pub"), LocalizationHelper.T("credits_thanks"));
+		g.ui.OpenUI<UITextInfoLong>(UIType.TextInfoLong).InitData(LocalizationHelper.T("credits_title"), string.Format(LocalizationHelper.T("credits_content"), ModMain.Version), LocalizationHelper.T("credits_thanks"));
 	}
 
 	private string GetTitleBarText()

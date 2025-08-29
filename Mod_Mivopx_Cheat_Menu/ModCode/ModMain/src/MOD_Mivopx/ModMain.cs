@@ -20,7 +20,7 @@ public class ModMain : MelonMod
 {
 	public const string GUID = "com.kewlpenpen.cheatmod";
 
-	public const string Version = "1.1.8 Pub";
+	public static string Version = typeof(ModMain).Assembly.GetCustomAttribute<MelonInfoAttribute>().Version;
 
 	public const string AuthorModifier = "Updated by Aqua-sama";
 
@@ -489,7 +489,7 @@ public class ModMain : MelonMod
 				FPSTextComp.resizeTextMaxSize = 16;
 				FPSTextComp.horizontalOverflow = HorizontalWrapMode.Wrap;
 				FPSTextComp.verticalOverflow = VerticalWrapMode.Truncate;
-				FPSTextComp.text = string.Format("<b><color=#4cd43d>{0}</color></b> <i><color=#ff3030>v{1}</color></i> <b><color=#00FFFF>{2} (FPS: {3})</color></b>", LocalizationHelper.T("panel_mainmenu_title"), "1.1.8 Pub", "v1.2.111.259+", Mathf.RoundToInt(fps));
+				FPSTextComp.text = string.Format("<b><color=#4cd43d>{0}</color></b> <i><color=#ff3030>v{1}</color></i> <b><color=#00FFFF>{2} (FPS: {3})</color></b>", LocalizationHelper.T("panel_mainmenu_title"), Version, "v1.2.111.259+", Mathf.RoundToInt(fps));
 			}
 		}
 	}
@@ -498,7 +498,7 @@ public class ModMain : MelonMod
 	{
 		if (FPSTextComp != null)
 		{
-			FPSTextComp.text = string.Format("<b><color=#4cd43d>{0}</color></b> <i><color=#ff3030>v{1}</color></i> <b><color=#00FFFF>{2} (FPS: {3})</color></b>", LocalizationHelper.T("panel_mainmenu_title"), "1.1.8 Pub", "v1.2.111.259+", Mathf.RoundToInt(fps));
+			FPSTextComp.text = string.Format("<b><color=#4cd43d>{0}</color></b> <i><color=#ff3030>v{1}</color></i> <b><color=#00FFFF>{2} (FPS: {3})</color></b>", LocalizationHelper.T("panel_mainmenu_title"), Version, "v1.2.111.259+", Mathf.RoundToInt(fps));
 		}
 	}
 }
