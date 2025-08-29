@@ -1,0 +1,4895 @@
+[
+  /*
+    AquaLocalText.json
+    This file contains localized text with comments explaining its purpose and structure.
+    It is used to display text in different languages within the mod.
+    Each entry has an ID, a key, and translations for different languages.
+    The keys are used to reference the text in the code.
+    The translations are provided in Chinese (ch), Traditional Chinese (tc), English (en), Korean (kr), and Japanese (ja).
+    Any user can add new language and the mod will automatically use it, the user can see the new added language in the Language Panel.
+    
+    Format:
+    // Source File Name (Target Name)
+    {
+      "id": "1", // Unique identifier (Optional)
+      "key": "unique_key", // Key used in the code
+      "ch": "Chinese translation",
+      "tc": "Traditional Chinese translation",
+      "en": "English translation",
+      "kr": "Korean translation",
+      "ja": "Japanese translation", <-- Do not missed a comma (,) if adding new language
+      "" // Additional languages can be added here as long as they follow the same format code and does not missed any unique key.
+    }
+
+    Line numbers in comments indicate the source file and line number where the text is used.
+    Must update this comment when adding new text or modifying existing text.
+
+    All Panels:
+    Game text modifications, Start Line No.: 44
+    Commonly Used, Start Line No.: 81
+    MainPanel.cs (Main Menu), Start Line No.: 208
+    ItemsPanel.cs (Items Panel), Start Line No.: 335
+    LanguagePanel.cs (Lang Panel), Start Line No.: 507
+    SearchItemPanel.cs (Search Item Panel), Start Line No.: 544
+    SearchSkillPanel.cs (Search Skill Panel), Start Line No.: 626
+    ExploitPanel.cs (Exploit Panel), Start Line No.: 708
+    ExploitPanelMore.cs (Exploit Panel More), Start Line No.: 1385
+    OtherPanel.cs (Other Panel), Start Line No.: 2223
+    OtherPanelMore.cs (Other Panel More), Start Line No.: 3223
+    AttributesPanel.cs (Attributes Panel), Start Line No.: 3575
+    BuildPlannerPanel.cs (Build Planner Panel), Start Line No.: 4368
+    Random Shit:
+    Other text scattered across various parts of the mod (Scattered Text), Start Line No.: 4441
+  */
+  // Game text modifications (these are modifying in-game text, not UI text)
+  {
+    "id": "",
+    "key": "game_text_recuperating_removes_destiny",
+    "ch": "疗伤也会移除负面命运。",
+    "tc": "療傷也會移除負面命運。",
+    "en": "Recuperating also removes negative Destinies.",
+    "kr": "회복은 또한 부정적인 운명을 제거합니다.",
+    "ja": "回復は負の運命も除去します。"
+  },
+  {
+    "id": "",
+    "key": "game_text_recuperate_0_days",
+    "ch": "疗伤 (0天)",
+    "tc": "療傷 (0天)",
+    "en": "Recuperate (0 days)",
+    "kr": "회복 (0일)",
+    "ja": "回復 (0日)"
+  },
+  {
+    "id": "",
+    "key": "game_text_recuperation_chance_5_days",
+    "ch": "疗伤有机会移除负面命运。疗伤持续5天。",
+    "tc": "療傷有機會移除負面命運。療傷持續5天。",
+    "en": "Recuperation has a chance to remove negative Destinies. Recuperating lasts 5 days.",
+    "kr": "회복은 부정적인 운명을 제거할 기회가 있습니다. 회복은 5일 동안 지속됩니다.",
+    "ja": "回復は負の運命を除去する機会があります。回復は5日間続きます。"
+  },
+  {
+    "id": "",
+    "key": "game_text_recuperate_5_days",
+    "ch": "疗伤 (5天)",
+    "tc": "療傷 (5天)",
+    "en": "Recuperate (5 days)",
+    "kr": "회복 (5일)",
+    "ja": "回復 (5日)"
+  },
+  // Commonly Used
+  {
+    "id": "",
+    "key": "common_cheatpanel",
+    "ch": "作弊面板",
+    "tc": "作弊面板",
+    "en": "CheatPanel",
+    "kr": "치트 패널",
+    "ja": "チートパネル"
+  },  
+  {
+    "id": "",
+    "key": "common_language_code",
+    "ch": "ch",
+    "tc": "tc",
+    "en": "en",
+    "kr": "kr",
+    "ja": "ja"
+  },
+  {
+    "id": "",
+    "key": "common_yes",
+    "ch": "是",
+    "tc": "是",
+    "en": "Yes",
+    "kr": "예",
+    "ja": "はい"
+  },
+  {
+    "id": "",
+    "key": "common_no",
+    "ch": "否",
+    "tc": "否",
+    "en": "No",
+    "kr": "아니오",
+    "ja": "いいえ"
+  },
+  {
+    "id": "",
+    "key": "common_ok",
+    "ch": "确定",
+    "tc": "確定",
+    "en": "OK",
+    "kr": "확인",
+    "ja": "OK"
+  },
+  {
+    "id": "",
+    "key": "common_cancel",
+    "ch": "取消",
+    "tc": "取消",
+    "en": "Cancel",
+    "kr": "취소",
+    "ja": "キャンセル"
+  },
+  {
+    "id": "",
+    "key": "common_save",
+    "ch": "保存",
+    "tc": "保存",
+    "en": "Save",
+    "kr": "저장",
+    "ja": "保存"
+  },
+  {
+    "id": "",
+    "key": "common_load",
+    "ch": "加载",
+    "tc": "加載",
+    "en": "Load",
+    "kr": "로드",
+    "ja": "読み込み"
+  },
+  {
+    "id": "",
+    "key": "common_close",
+    "ch": "关闭",
+    "tc": "關閉",
+    "en": "Close",
+    "kr": "닫기",
+    "ja": "閉じる"
+  },
+  {
+    "id": "",
+    "key": "common_back",
+    "ch": "返回",
+    "tc": "返回",
+    "en": "Back",
+    "kr": "뒤로",
+    "ja": "戻る"
+  },
+  {
+    "id": "",
+    "key": "common_next",
+    "ch": "下一个",
+    "tc": "下一個",
+    "en": "Next",
+    "kr": "다음",
+    "ja": "次へ"
+  },
+  {
+    "id": "",
+    "key": "common_previous",
+    "ch": "上一个",
+    "tc": "上一個",
+    "en": "Previous",
+    "kr": "이전",
+    "ja": "前へ"
+  },
+  {
+    "id": "",
+    "key": "common_continue",
+    "ch": "继续",
+    "tc": "繼續",
+    "en": "Continue",
+    "kr": "계속",
+    "ja": "続ける"
+  },
+  {
+    "id": "",
+    "key": "common_applychange",
+    "ch": "应用更改",
+    "tc": "應用更改",
+    "en": "Apply Changes",
+    "kr": "변경사항 적용",
+    "ja": "変更を適用"
+  },
+  // MainPanel.cs (Main Menu)
+  {
+    "id": "",
+    "key": "panel_mainmenu_title",
+    "ch": "作弊菜单",
+    "tc": "作弊選單",
+    "en": "Cheat Menu",
+    "kr": "치트 메뉴",
+    "ja": "チートメニュー"
+  },
+  {
+    "id": "",
+    "key": "status_waiting_save_load",
+    "ch": "等待存档加载中...",
+    "tc": "等待存檔載入中...",
+    "en": "Waiting for your save game to load...",
+    "kr": "세이브 파일 로딩을 기다리는 중...",
+    "ja": "セーブファイルの読み込みを待っています..."
+  },
+  {
+    "id": "",
+    "key": "status_loading",
+    "ch": "加载中...",
+    "tc": "載入中...",
+    "en": "Loading...",
+    "kr": "로딩 중...",
+    "ja": "読み込み中..."
+  },
+  {
+    "id": "",
+    "key": "panel_player_mainmenu_title",
+    "ch": "玩家",
+    "tc": "玩家",
+    "en": "Player",
+    "kr": "플레이어",
+    "ja": "プレイヤー"
+  },
+  {
+    "id": "",
+    "key": "panel_npc_mainmenu_title",
+    "ch": "NPC",
+    "tc": "NPC",
+    "en": "NPC",
+    "kr": "NPC",
+    "ja": "NPC"
+  },
+  {
+    "id": "",
+    "key": "panel_items_mainmenu_title",
+    "ch": "物品",
+    "tc": "物品",
+    "en": "Items",
+    "kr": "아이템",
+    "ja": "アイテム"
+  },
+  {
+    "id": "",
+    "key": "panel_fate_mainmenu_title",
+    "ch": "命运",
+    "tc": "命運",
+    "en": "Fate",
+    "kr": "운명",
+    "ja": "運命"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_mainmenu_title",
+    "ch": "漏洞利用",
+    "tc": "漏洞利用",
+    "en": "Exploit",
+    "kr": "익스플로잇",
+    "ja": "エクスプロイト"
+  },
+  {
+    "id": "",
+    "key": "panel_other_mainmenu_title",
+    "ch": "其他",
+    "tc": "其他",
+    "en": "Other",
+    "kr": "기타",
+    "ja": "その他"
+  },
+  {
+    "id": "",
+    "key": "panel_debug_mainmenu_title",
+    "ch": "调试",
+    "tc": "調試",
+    "en": "Debug",
+    "kr": "디버그",
+    "ja": "デバッグ"
+  },
+  {
+    "id": "",
+    "key": "panel_language_mainmenu_title",
+    "ch": "语言",
+    "tc": "語言",
+    "en": "Lang",
+    "kr": "언어",
+    "ja": "言語"
+  },
+  {
+    "id": "",
+    "key": "tooltip_mainmenu_npc",
+    "ch": "要保存NPC更改，请在编辑时保持NPC信息面板打开。在关闭面板前使用「保存」或「全部保存」，否则更改不会生效。",
+    "tc": "要保存NPC更改，請在編輯時保持NPC信息面板打開。在關閉面板前使用「保存」或「全部保存」，否則更改不會生效。",
+    "en": "To save NPC changes, keep the NPC info panel open while editing. Use 'Save' or 'Save All' before closing the panel, or your changes will not be applied.",
+    "kr": "NPC 변경사항을 저장하려면 편집하는 동안 NPC 정보 패널을 열어두세요. 패널을 닫기 전에 '저장' 또는 '모두 저장'을 사용하지 않으면 변경사항이 적용되지 않습니다.",
+    "ja": "NPCの変更を保存するには、編集中はNPC情報パネルを開いたままにしてください。パネルを閉じる前に「保存」または「すべて保存」を使用しないと、変更が適用されません。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_mainmenu_fate",
+    "ch": "在这里规划你的未来命运。这让你可以设置并保存理想的命运进程，作为升级时的参考。",
+    "tc": "在這裡規劃你的未來命運。這讓你可以設置並保存理想的命運進程，作為升級時的參考。",
+    "en": "Plan your future fates here. This lets you set and save your ideal fate progression for reference when leveling up.",
+    "kr": "여기서 미래의 운명을 계획하세요. 레벨업할 때 참고할 수 있도록 이상적인 운명 진행을 설정하고 저장할 수 있습니다.",
+    "ja": "ここで将来の運命を計画してください。レベルアップ時の参考として、理想的な運命の進行を設定して保存できます。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_mainmenu_language",
+    "ch": "语言设置 — 可通过编辑模组文件夹中的 AquaLocalText.json 自定义本地语言。（注：模组提供的语言仅供参考，您可以自由修改或校正，并决定是否贡献您的翻译。请注意，此模组不会翻译游戏中的所有文本（例如物品名称），仅作用于作弊菜单内容，因此部分下拉菜单仍显示为英文是正常现象。）",
+    "tc": "語言設定 — 可透過編輯模組資料夾中的 AquaLocalText.json 來自訂本地語言。（註：模組提供的語言僅供參考，您可以自由修改或校正，並選擇是否貢獻您的翻譯。請注意，此模組不會翻譯遊戲中的所有文字（例如物品名稱），僅適用於作弊選單內容，因此部分下拉選單仍顯示為英文是正常現象。）",
+    "en": "Language Settings — You can customize local languages by editing AquaLocalText.json in the mod folder. (Note: The languages provided by the mod are for reference only. You're free to modify or correct them and decide whether to contribute your changes. Keep in mind that this mod does NOT translate in-game text (e.g., item names); it only affects cheat menu content. Seeing some dropdowns still in English is normal and expected.)",
+    "kr": "언어 설정 — 모드 폴더의 AquaLocalText.json 파일을 수정하여 로컬 언어를 사용자 지정할 수 있습니다. (참고: 모드에서 제공하는 언어는 참고용일 뿐이며, 자유롭게 수정하거나 보완한 후 기여 여부를 선택할 수 있습니다. 이 모드는 게임 내의 전체 텍스트(예: 아이템 이름)를 번역하지 않으며, 치트 메뉴 내용에만 적용되므로 일부 드롭다운이 영어로 표시되는 것은 정상적인 현상입니다.)",
+    "ja": "言語設定 — モッドフォルダ内の AquaLocalText.json を編集することでローカル言語をカスタマイズできます。（注：モッドで提供されている言語は参考用であり、自由に編集・修正し、貢献するかどうかを選択できます。このモッドはゲーム内の全てのテキスト（例：アイテム名など）を翻訳するわけではなく、チートメニューの内容にのみ適用されます。一部のドロップダウンが英語のままなのは正常です。）"
+  },   
+  // ItemsPanel.cs (Items Panel)
+  {
+    "id": "",
+    "key": "panel_items_title",
+    "ch": "物品",
+    "tc": "物品",
+    "en": "Items",
+    "kr": "아이템",
+    "ja": "アイテム"
+  },
+  {
+    "id": "",
+    "key": "panel_items_button_give_spirit_stones",
+    "ch": "给予灵石",
+    "tc": "給予靈石",
+    "en": "Give Spirit Stones",
+    "kr": "영석 지급",
+    "ja": "霊石を与える"
+  },
+  {
+    "id": "",
+    "key": "panel_items_button_give_mounts",
+    "ch": "给予坐骑",
+    "tc": "給予坐騎",
+    "en": "Give Mounts",
+    "kr": "탈것 지급",
+    "ja": "マウントを与える"
+  },
+  {
+    "id": "",
+    "key": "panel_items_button_give_sect_contribution",
+    "ch": "给予宗门贡献",
+    "tc": "給予宗門貢獻",
+    "en": "Give Sect Contribution",
+    "kr": "종파 기여도 지급",
+    "ja": "宗門貢献を与える"
+  },
+  {
+    "id": "",
+    "key": "panel_items_button_give_skill_materials",
+    "ch": "给予技能材料",
+    "tc": "給予技能材料",
+    "en": "Give Skill Materials",
+    "kr": "스킬 재료 지급",
+    "ja": "スキル素材を与える"
+  },
+  {
+    "id": "",
+    "key": "panel_items_button_search_item",
+    "ch": "搜索物品",
+    "tc": "搜索物品",
+    "en": "Search Item",
+    "kr": "아이템 검색",
+    "ja": "アイテム検索"
+  },
+  {
+    "id": "",
+    "key": "panel_items_button_search_skill",
+    "ch": "搜索技能",
+    "tc": "搜索技能",
+    "en": "Search Skill",
+    "kr": "스킬 검색",
+    "ja": "スキル検索"
+  },
+  {
+    "id": "",
+    "key": "panel_items_button_give_materials",
+    "ch": "给予材料",
+    "tc": "給予材料",
+    "en": "Give Materials",
+    "kr": "재료 지급",
+    "ja": "素材を与える"
+  },
+  {
+    "id": "",
+    "key": "panel_items_button_give_equipments",
+    "ch": "给予装备/神器",
+    "tc": "給予裝備/神器",
+    "en": "Give Equipments/Artifacts",
+    "kr": "장비/아티팩트 지급",
+    "ja": "装備/アーティファクトを与える"
+  },
+  {
+    "id": "",
+    "key": "panel_items_button_give_male_clothes",
+    "ch": "给予男性服装",
+    "tc": "給予男性服裝",
+    "en": "Give Male Clothes",
+    "kr": "남성 의상 지급",
+    "ja": "男性服を与える"
+  },
+  {
+    "id": "",
+    "key": "panel_items_button_give_female_clothes",
+    "ch": "给予女性服装",
+    "tc": "給予女性服裝",
+    "en": "Give Female Clothes",
+    "kr": "여성 의상 지급",
+    "ja": "女性服を与える"
+  },
+  {
+    "id": "",
+    "key": "panel_items_button_give_mission_token",
+    "ch": "给予任务令牌",
+    "tc": "給予任務令牌",
+    "en": "Give Mission Token",
+    "kr": "미션 토큰 지급",
+    "ja": "ミッショントークンを与える"
+  },
+  {
+    "id": "",
+    "key": "panel_items_button_give_bagua_jade",
+    "ch": "给予八卦玉",
+    "tc": "給予八卦玉",
+    "en": "Give Bagua Jade",
+    "kr": "팔괘옥 지급",
+    "ja": "八卦玉を与える"
+  },
+  {
+    "id": "",
+    "key": "panel_items_status_spirit_stones_given",
+    "ch": "灵石已给予",
+    "tc": "靈石已給予",
+    "en": "Spirit stones given",
+    "kr": "영석이 지급되었습니다",
+    "ja": "霊石が与えられました"
+  },
+  {
+    "id": "",
+    "key": "panel_items_status_bagua_jade_given",
+    "ch": "1个八卦玉已奖励。",
+    "tc": "1個八卦玉已獎勵。",
+    "en": "1 Bagua Jade Rewarded.",
+    "kr": "팔괘옥 1개가 보상되었습니다.",
+    "ja": "八卦玉1個が報酬として与えられました。"
+  },
+  {
+    "id": "",
+    "key": "panel_items_error_not_bagua_jade",
+    "ch": "玩家未使用[八卦玉]...操作已取消！",
+    "tc": "玩家未使用[八卦玉]...操作已取消！",
+    "en": "Player is not using [Bagua Jade]... Operation Cancelled!",
+    "kr": "플레이어가 [팔괘옥]을 사용하지 않습니다... 작업이 취소되었습니다!",
+    "ja": "プレイヤーが[八卦玉]を使用していません...操作がキャンセルされました！"
+  },
+  {
+    "id": "",
+    "key": "panel_items_error_current_artifact",
+    "ch": "玩家当前的神器武器是[{0}]",
+    "tc": "玩家當前的神器武器是[{0}]",
+    "en": "Player's current artifact weapon is [{0}]",
+    "kr": "플레이어의 현재 아티팩트 무기는 [{0}]입니다",
+    "ja": "プレイヤーの現在のアーティファクト武器は[{0}]です"
+  },
+  {
+    "id": "",
+    "key": "panel_items_error_ensure_bagua_jade",
+    "ch": "请确保您已选择[八卦玉]作为主要神器武器。",
+    "tc": "請確保您已選擇[八卦玉]作為主要神器武器。",
+    "en": "Please ensure that you have selected [Bagua Jade] as your primary artifact weapon.",
+    "kr": "주요 아티팩트 무기로 [팔괘옥]을 선택했는지 확인하세요.",
+    "ja": "主要なアーティファクト武器として[八卦玉]を選択していることを確認してください。"
+  },
+  {
+    "id": "",
+    "key": "panel_items_error_bagua_jade_failed",
+    "ch": "给予1个八卦玉...失败！",
+    "tc": "給予1個八卦玉...失敗！",
+    "en": "Giving 1 Bagua Jade... Failed!",
+    "kr": "팔괘옥 1개 지급... 실패!",
+    "ja": "八卦玉1個を与える...失敗！"
+  },
+  // LanguagePanel.cs (Lang Panel)
+  {
+    "id": "",
+    "key": "panel_language_title",
+    "ch": "语言",
+    "tc": "語言",
+    "en": "Language",
+    "kr": "언어",
+    "ja": "言語"
+  },
+  {
+    "id": "",
+    "key": "panel_language_label",
+    "ch": "更改语言",
+    "tc": "更改語言",
+    "en": "Change Language",
+    "kr": "언어 변경",
+    "ja": "言語を変更"
+  },
+  {
+    "id": "",
+    "key": "panel_language_name",
+    "ch": "简体中文",
+    "tc": "繁體中文",
+    "en": "English",
+    "kr": "한국어",
+    "ja": "日本語"
+  },
+  {
+    "id": "",
+    "key": "panel_language_tooltip_apply_button",
+    "ch": "点击以应用所选语言设置，立即生效。您的语言偏好将被保存，无需重复更改。",
+    "tc": "點擊以套用所選語言設定，立即生效。您的語言偏好將會被儲存，無須重複修改。",
+    "en": "Click to apply the selected language setting. Changes will take effect immediately. Your language preference will also be saved to avoid repeated adjustments.",
+    "kr": "선택한 언어 설정을 적용하려면 클릭하세요. 변경 사항은 즉시 반영됩니다. 언어 설정은 저장되어 반복해서 변경할 필요가 없습니다.",
+    "ja": "選択した言語設定を適用するにはクリックしてください。変更はすぐに反映されます。言語の設定は保存され、繰り返し変更する必要はありません。"
+  },  
+  // SearchItemPanel.cs (Search Item Panel)
+  {
+    "id": "",
+    "key": "panel_searchitem_title",
+    "ch": "搜索物品",
+    "tc": "搜索物品",
+    "en": "Search Items",
+    "kr": "아이템 검색",
+    "ja": "アイテム検索"
+  },
+  {
+    "id": "",
+    "key": "panel_searchitem_input_placeholder",
+    "ch": "按 'ESC'，搜索物品名称，按 'Enter' 提交。",
+    "tc": "按 'ESC'，搜索物品名稱，按 'Enter' 提交。",
+    "en": "Press 'ESC', Search Item Name, Press 'Enter' to submit.",
+    "kr": "'ESC'를 누르고, 아이템 이름을 검색하고, 'Enter'를 눌러 제출하세요.",
+    "ja": "'ESC'を押し、アイテム名を検索し、'Enter'を押して送信してください。"
+  },
+  {
+    "id": "",
+    "key": "panel_searchitem_button_show_all",
+    "ch": "显示全部",
+    "tc": "顯示全部",
+    "en": "Show All",
+    "kr": "모두 표시",
+    "ja": "すべて表示"
+  },
+  {
+    "id": "",
+    "key": "panel_searchitem_toggle_chinese_name",
+    "ch": "显示中文名称",
+    "tc": "顯示中文名稱",
+    "en": "Show Chinese Name",
+    "kr": "중국어 이름 표시",
+    "ja": "中国語名を表示"
+  },
+  {
+    "id": "",
+    "key": "panel_searchitem_button_reward",
+    "ch": "奖励",
+    "tc": "獎勵",
+    "en": "Reward",
+    "kr": "보상",
+    "ja": "報酬"
+  },
+  {
+    "id": "",
+    "key": "panel_searchitem_button_clear",
+    "ch": "清除",
+    "tc": "清除",
+    "en": "Clear",
+    "kr": "지우기",
+    "ja": "クリア"
+  },
+  {
+    "id": "",
+    "key": "panel_searchitem_input_quantity_placeholder",
+    "ch": "输入数量...",
+    "tc": "輸入數量...",
+    "en": "Insert quantity...",
+    "kr": "수량 입력...",
+    "ja": "数量を入力..."
+  },
+  {
+    "id": "",
+    "key": "panel_searchitem_status_chinese_name_enabled",
+    "ch": "显示中文名称已启用。",
+    "tc": "顯示中文名稱已啟用。",
+    "en": "Show Chinese Name Enabled.",
+    "kr": "중국어 이름 표시가 활성화되었습니다.",
+    "ja": "中国語名表示が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_searchitem_status_chinese_name_disabled",
+    "ch": "显示中文名称已禁用。",
+    "tc": "顯示中文名稱已禁用。",
+    "en": "Show Chinese Name Disabled.",
+    "kr": "중국어 이름 표시가 비활성화되었습니다.",
+    "ja": "中国語名表示が無効になりました。"
+  },
+  // SearchSkillPanel.cs (Search Skill Panel)
+  {
+    "id": "",
+    "key": "panel_searchskill_title",
+    "ch": "搜索技能",
+    "tc": "搜索技能",
+    "en": "Search Skills",
+    "kr": "스킬 검색",
+    "ja": "スキル検索"
+  },
+  {
+    "id": "",
+    "key": "panel_searchskill_input_placeholder",
+    "ch": "按 'ESC'，搜索名称，按 'Enter' 提交。",
+    "tc": "按 'ESC'，搜索名稱，按 'Enter' 提交。",
+    "en": "Press 'ESC', Search Name, Press 'Enter' to submit.",
+    "kr": "'ESC'를 누르고, 이름을 검색하고, 'Enter'를 눌러 제출하세요.",
+    "ja": "'ESC'を押し、名前を検索し、'Enter'を押して送信してください。"
+  },
+  {
+    "id": "",
+    "key": "panel_searchskill_button_show_all",
+    "ch": "显示全部",
+    "tc": "顯示全部",
+    "en": "Show All",
+    "kr": "모두 표시",
+    "ja": "すべて表示"
+  },
+  {
+    "id": "",
+    "key": "panel_searchskill_button_reward",
+    "ch": "奖励",
+    "tc": "獎勵",
+    "en": "Reward",
+    "kr": "보상",
+    "ja": "報酬"
+  },
+  {
+    "id": "",
+    "key": "panel_searchskill_button_clear",
+    "ch": "清除",
+    "tc": "清除",
+    "en": "Clear",
+    "kr": "지우기",
+    "ja": "クリア"
+  },
+  {
+    "id": "",
+    "key": "panel_searchskill_input_quantity_placeholder",
+    "ch": "输入数量...",
+    "tc": "輸入數量...",
+    "en": "Insert quantity...",
+    "kr": "수량 입력...",
+    "ja": "数量を入力..."
+  },
+  {
+    "id": "",
+    "key": "panel_searchskill_status_category_warning",
+    "ch": "你不能奖励'类别'技能，你看不到（排除）吗，笨蛋？！？",
+    "tc": "你不能獎勵'類別'技能，你看不到（排除）嗎，笨蛋？！？",
+    "en": "You cannot reward the 'Category' skill can't you see the (Exclude) dumbass?!?",
+    "kr": "'카테고리' 스킬은 보상할 수 없습니다. (제외)가 보이지 않나요, 바보야?!?",
+    "ja": "'カテゴリ'スキルは報酬として与えることができません。（除外）が見えませんか、バカ？！？"
+  },
+  {
+    "id": "",
+    "key": "panel_searchskill_status_rewarded_items",
+    "ch": "已奖励 {0} 个物品。",
+    "tc": "已獎勵 {0} 個物品。",
+    "en": "Rewarded {0} item(s).",
+    "kr": "{0}개의 아이템이 보상되었습니다.",
+    "ja": "{0}個のアイテムが報酬として与えられました。"
+  },
+  {
+    "id": "",
+    "key": "panel_searchskill_label_exclude",
+    "ch": "（排除）",
+    "tc": "（排除）",
+    "en": " (Exclude)",
+    "kr": " (제외)",
+    "ja": " (除外)"
+  },
+  // ExploitPanel.cs (Exploit Panel)
+  {
+    "id": "",
+    "key": "panel_exploit_title",
+    "ch": "漏洞利用",
+    "tc": "漏洞利用",
+    "en": "Exploit",
+    "kr": "익스플로잇",
+    "ja": "エクスプロイト"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_more_panel",
+    "ch": "更多漏洞利用面板",
+    "tc": "更多漏洞利用面板",
+    "en": "More Exploit Panel",
+    "kr": "더 많은 익스플로잇 패널",
+    "ja": "その他のエクスプロイトパネル"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_god_mode",
+    "ch": "上帝模式",
+    "tc": "上帝模式",
+    "en": "God Mode",
+    "kr": "갓 모드",
+    "ja": "ゴッドモード"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_fast_no_cooldown",
+    "ch": "快速/无冷却",
+    "tc": "快速/無冷卻",
+    "en": "Fast/No Cooldown",
+    "kr": "빠름/쿨다운 없음",
+    "ja": "高速/クールダウンなし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_infinite_vitality",
+    "ch": "无限生命力/能量/专注点",
+    "tc": "無限生命力/能量/專注點",
+    "en": "Infinite Vitality/Energy/Focus",
+    "kr": "무한 활력/에너지/집중력",
+    "ja": "無限バイタリティ/エネルギー/フォーカス"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_one_hit_kill",
+    "ch": "一击必杀",
+    "tc": "一擊必殺",
+    "en": "1 Hit Kill",
+    "kr": "원킬",
+    "ja": "一撃必殺"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_100_escape",
+    "ch": "100% 逃跑",
+    "tc": "100% 逃跑",
+    "en": "100% Escape",
+    "kr": "100% 도망",
+    "ja": "100% 逃走"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_100_drop_rate",
+    "ch": "100% 掉落率",
+    "tc": "100% 掉落率",
+    "en": "100% Drop Rate",
+    "kr": "100% 드롭률",
+    "ja": "100% ドロップ率"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_100_intim_no_cost",
+    "ch": "100% 亲密度 & 无仇恨/体力/能量/天数消耗/冷却",
+    "tc": "100% 親密度 & 無仇恨/體力/能量/天數消耗/冷卻",
+    "en": "100% Intim & No Hate/Stamina/Energy/Day Cost/CD",
+    "kr": "100% 친밀도 & 증오/스태미나/에너지/일수 비용/쿨다운 없음",
+    "ja": "100% 親密度 & 憎悪/スタミナ/エネルギー/日数コスト/CDなし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_steal_always_succeed",
+    "ch": "偷窃总是成功",
+    "tc": "偷竊總是成功",
+    "en": "Steal Always Succeed",
+    "kr": "도둑질 항상 성공",
+    "ja": "盗みは常に成功"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_marking_no_cost",
+    "ch": "标记NPC无消耗",
+    "tc": "標記NPC無消耗",
+    "en": "Marking NPC incurs No Cost",
+    "kr": "NPC 표시 비용 없음",
+    "ja": "NPC マーキングはコストなし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_traveling_no_day_cost",
+    "ch": "旅行无天数消耗",
+    "tc": "旅行無天數消耗",
+    "en": "Traveling incurs No Day Cost",
+    "kr": "여행 시 일수 비용 없음",
+    "ja": "旅行は日数コストなし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_perfect_skill_comprehend",
+    "ch": "完美技能领悟 & 无消耗",
+    "tc": "完美技能領悟 & 無消耗",
+    "en": "Perfect Skill Comprehend & No Cost",
+    "kr": "완벽한 스킬 이해 & 비용 없음",
+    "ja": "完璧なスキル理解 & コストなし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_fast_cultivate_no_cost",
+    "ch": "快速/完全修炼 & 无天数消耗",
+    "tc": "快速/完全修煉 & 無天數消耗",
+    "en": "Fast/Full Cultivate & No Day Cost",
+    "kr": "빠른/완전 수련 & 일수 비용 없음",
+    "ja": "高速/完全修練 & 日数コストなし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_more_geomancy_range",
+    "ch": "更多风水范围 & 无天数消耗",
+    "tc": "更多風水範圍 & 無天數消耗",
+    "en": "More Geomancy Range & No Day Cost",
+    "kr": "더 많은 풍수 범위 & 일수 비용 없음",
+    "ja": "より多くの風水範囲 & 日数コストなし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_harvest_mine_no_cost",
+    "ch": "采集 & 挖矿无天数消耗",
+    "tc": "採集 & 挖礦無天數消耗",
+    "en": "Harvest & Mine incurs No Day Cost",
+    "kr": "수확 & 채굴 일수 비용 없음",
+    "ja": "収穫 & 採掘は日数コストなし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_fast_learn_skill",
+    "ch": "快速/完全学习技能 & 无消耗/失败",
+    "tc": "快速/完全學習技能 & 無消耗/失敗",
+    "en": "Fast/Full Learn Skill & No Cost/Failure",
+    "kr": "빠른/완전 스킬 학습 & 비용/실패 없음",
+    "ja": "高速/完全スキル学習 & コスト/失敗なし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_bagua_jade_no_cd",
+    "ch": "八卦玉无传送/召唤冷却",
+    "tc": "八卦玉無傳送/召喚冷卻",
+    "en": "Bagua Jade incurs No Teleport/Summon CD",
+    "kr": "팔괘옥 순간이동/소환 쿨다운 없음",
+    "ja": "八卦玉はテレポート/召喚CDなし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_mythical_gourd_buff",
+    "ch": "神话葫芦 (超级增益)",
+    "tc": "神話葫蘆 (超級增益)",
+    "en": "Mythical Gourd (Super Buff)",
+    "kr": "신화 박 (슈퍼 버프)",
+    "ja": "神話のひょうたん (スーパーバフ)"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_wardrobe_no_cost",
+    "ch": "衣柜商店无消耗",
+    "tc": "衣櫃商店無消耗",
+    "en": "Wardrobe Shop incurs No Cost",
+    "kr": "옷장 상점 비용 없음",
+    "ja": "ワードローブショップはコストなし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_show_charisma_value",
+    "ch": "显示魅力值 (在玩家/NPC界面显示)",
+    "tc": "顯示魅力值 (在玩家/NPC界面顯示)",
+    "en": "Show Charisma Value (Shown at Player/NPC UI)",
+    "kr": "매력 수치 표시 (플레이어/NPC UI에 표시)",
+    "ja": "カリスマ値を表示 (プレイヤー/NPC UIに表示)"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_show_npc_realm_ui",
+    "ch": "显示NPC的改写命运界面 (在NPC界面显示)",
+    "tc": "顯示NPC的改寫命運界面 (在NPC界面顯示)",
+    "en": "Show NPC's Rewrite-Destiny UI (Display at NPC UI)",
+    "kr": "NPC의 운명 재작성 UI 표시 (NPC UI에 표시)",
+    "ja": "NPCの運命書き換えUI表示 (NPC UIに表示)"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_warning_not_using_bagua_jade",
+    "ch": "玩家未使用 [八卦玉]... 操作已取消！",
+    "tc": "玩家未使用 [八卦玉]... 操作已取消！",
+    "en": "Player is not using [Bagua Jade]... Operation Cancelled!",
+    "kr": "플레이어가 [팔괘옥]을 사용하지 않습니다... 작업이 취소되었습니다!",
+    "ja": "プレイヤーは [八卦玉] を使用していません... 操作がキャンセルされました！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_warning_current_artifact_weapon",
+    "ch": "玩家当前的神器武器是 [{0}]",
+    "tc": "玩家當前的神器武器是 [{0}]",
+    "en": "Player's current artifact weapon is [{0}]",
+    "kr": "플레이어의 현재 아티팩트 무기는 [{0}]입니다",
+    "ja": "プレイヤーの現在のアーティファクト武器は [{0}] です"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_warning_ensure_bagua_jade",
+    "ch": "请确保您已选择 [八卦玉] 作为主要神器武器。",
+    "tc": "請確保您已選擇 [八卦玉] 作為主要神器武器。",
+    "en": "Please ensure that you have selected [Bagua Jade] as your primary artifact weapon.",
+    "kr": "[팔괘옥]을 주요 아티팩트 무기로 선택했는지 확인해주세요.",
+    "ja": "[八卦玉] を主要なアーティファクト武器として選択していることを確認してください。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_warning_not_using_mythical_gourd",
+    "ch": "玩家未使用 [神话葫芦]... 操作已取消！",
+    "tc": "玩家未使用 [神話葫蘆]... 操作已取消！",
+    "en": "Player is not using [Mythical Gourd]... Operation Cancelled!",
+    "kr": "플레이어가 [신화 박]을 사용하지 않습니다... 작업이 취소되었습니다!",
+    "ja": "プレイヤーは [神話のひょうたん] を使用していません... 操作がキャンセルされました！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_warning_ensure_mythical_gourd",
+    "ch": "请确保您已选择 [神话葫芦] 作为主要神器武器。",
+    "tc": "請確保您已選擇 [神話葫蘆] 作為主要神器武器。",
+    "en": "Please ensure that you have selected [Mythical Gourd] as your primary artifact weapon.",
+    "kr": "[신화 박]을 주요 아티팩트 무기로 선택했는지 확인해주세요.",
+    "ja": "[神話のひょうたん] を主要なアーティファクト武器として選択していることを確認してください。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_warning_worldblock_null",
+    "ch": "worldBlockHerb、worldBlockMine 和 worldBlockMineBook 返回 NULL！",
+    "tc": "worldBlockHerb、worldBlockMine 和 worldBlockMineBook 返回 NULL！",
+    "en": "worldBlockHerb, worldBlockMine, and worldBlockMineBook returned NULL!",
+    "kr": "worldBlockHerb, worldBlockMine, worldBlockMineBook이 NULL을 반환했습니다!",
+    "ja": "worldBlockHerb、worldBlockMine、worldBlockMineBook が NULL を返しました！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_warning_pisces_param_null",
+    "ch": "piscesParam 返回 NULL！",
+    "tc": "piscesParam 返回 NULL！",
+    "en": "piscesParam returned NULL!",
+    "kr": "piscesParam이 NULL을 반환했습니다!",
+    "ja": "piscesParam が NULL を返しました！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_warning_cloth_item_null",
+    "ch": "clothItem 返回 NULL！",
+    "tc": "clothItem 返回 NULL！",
+    "en": "clothItem returned NULL!",
+    "kr": "clothItem이 NULL을 반환했습니다!",
+    "ja": "clothItem が NULL を返しました！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_warning_restart_game_reset",
+    "ch": "请重启游戏以应用重置值。",
+    "tc": "請重啟遊戲以應用重置值。",
+    "en": "Please restart the game to apply the reset value.",
+    "kr": "재설정 값을 적용하려면 게임을 다시 시작해주세요.",
+    "ja": "リセット値を適用するためにゲームを再起動してください。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploit_mythical_gourd_buff",
+    "ch": "神话葫芦 [超级增益] (例如：怪物可在100%血量时被捕获，怪物存储限制增加到999，总是雌性，保证变身，减少战斗冷却时间(30秒)，增加战斗停留时间(30秒)等。属性值保持不变。)",
+    "tc": "神話葫蘆 [超級增益] (例如：怪物可在100%血量時被捕獲，怪物存儲限制增加到999，總是雌性，保證變身，減少戰鬥冷卻時間(30秒)，增加戰鬥停留時間(30秒)等。屬性值保持不變。)",
+    "en": "Mythical Gourd [Super Buff] (e.g., Monsters can be caught at 100% HP, Monster storage limit increased to 999, always female, guaranteed transformations, reduced battle cooldown (30 secs), increased battle stay time (30 secs), etc. Stat values remain unchanged.)",
+    "kr": "신화 박 [슈퍼 버프] (예: 몬스터를 100% HP에서 포획 가능, 몬스터 저장 한계 999로 증가, 항상 암컷, 변신 보장, 전투 쿨다운 감소(30초), 전투 체류 시간 증가(30초) 등. 스탯 값은 변경되지 않음.)",
+    "ja": "神話のひょうたん [スーパーバフ] (例：モンスターを100% HPで捕獲可能、モンスター保存限界が999に増加、常に雌、変身保証、戦闘クールダウン短縮(30秒)、戦闘滞在時間増加(30秒)など。ステータス値は変更されません。)"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploit_npc_realm_warning",
+    "ch": "[警告] 启用和查看此功能可能会干扰您的主要任务/任务。不推荐。在NPC界面信息部分的左下角显示NPC的改写命运界面(名为'显示境界')。",
+    "tc": "[警告] 啟用和查看此功能可能會干擾您的主要任務/任務。不推薦。在NPC界面信息部分的左下角顯示NPC的改寫命運界面(名為'顯示境界')。",
+    "en": "[WARNING] Enabling and Viewing this may disrupt your main mission/quest. Not recommended. Displays the NPC's Rewrite-Destiny UI (Named 'Show Realm') in the bottom left of NPC UI Info section.",
+    "kr": "[경고] 이 기능을 활성화하고 보는 것은 주요 미션/퀘스트를 방해할 수 있습니다. 권장하지 않습니다. NPC UI 정보 섹션의 왼쪽 하단에 NPC의 운명 재작성 UI('영역 표시'라는 이름)를 표시합니다.",
+    "ja": "[警告] これを有効にして表示すると、メインミッション/クエストが中断される可能性があります。推奨されません。NPC UI情報セクションの左下にNPCの運命書き換えUI（「レルム表示」という名前）を表示します。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_god_mode_enabled",
+    "ch": "上帝模式已启用。",
+    "tc": "上帝模式已啟用。",
+    "en": "God Mode Enabled.",
+    "kr": "갓 모드가 활성화되었습니다.",
+    "ja": "ゴッドモードが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_god_mode_disabled",
+    "ch": "上帝模式已禁用。",
+    "tc": "上帝模式已禁用。",
+    "en": "God Mode Disabled.",
+    "kr": "갓 모드가 비활성화되었습니다.",
+    "ja": "ゴッドモードが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_fast_no_cooldown_enabled",
+    "ch": "快速/无冷却已启用。",
+    "tc": "快速/無冷卻已啟用。",
+    "en": "Fast/No Cooldown Enabled.",
+    "kr": "빠름/쿨다운 없음이 활성화되었습니다.",
+    "ja": "高速/クールダウンなしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_fast_no_cooldown_disabled",
+    "ch": "快速/无冷却已禁用。",
+    "tc": "快速/無冷卻已禁用。",
+    "en": "Fast/No Cooldown Disabled.",
+    "kr": "빠름/쿨다운 없음이 비활성화되었습니다.",
+    "ja": "高速/クールダウンなしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_infinite_vitality_enabled",
+    "ch": "无限生命力/能量/专注点已启用。",
+    "tc": "無限生命力/能量/專注點已啟用。",
+    "en": "Infinite Vitality/Energy/Focus Enabled.",
+    "kr": "무한 활력/에너지/집중력이 활성화되었습니다.",
+    "ja": "無限バイタリティ/エネルギー/フォーカスが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_infinite_vitality_disabled",
+    "ch": "无限生命力/能量/专注点已禁用。",
+    "tc": "無限生命力/能量/專注點已禁用。",
+    "en": "Infinite Vitality/Energy/Focus Disabled.",
+    "kr": "무한 활력/에너지/집중력이 비활성화되었습니다.",
+    "ja": "無限バイタリティ/エネルギー/フォーカスが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_one_hit_kill_enabled",
+    "ch": "一击必杀已启用。",
+    "tc": "一擊必殺已啟用。",
+    "en": "1 Hit Kill Enabled.",
+    "kr": "원킬이 활성화되었습니다.",
+    "ja": "一撃必殺が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_one_hit_kill_disabled",
+    "ch": "一击必杀已禁用。",
+    "tc": "一擊必殺已禁用。",
+    "en": "1 Hit Kill Disabled.",
+    "kr": "원킬이 비활성화되었습니다.",
+    "ja": "一撃必殺が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_100_drop_rate_enabled",
+    "ch": "100% 掉落率已启用。",
+    "tc": "100% 掉落率已啟用。",
+    "en": "100% Drop Rate Enabled.",
+    "kr": "100% 드롭률이 활성화되었습니다.",
+    "ja": "100% ドロップ率が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_100_drop_rate_disabled",
+    "ch": "100% 掉落率已禁用。",
+    "tc": "100% 掉落率已禁用。",
+    "en": "100% Drop Rate Disabled.",
+    "kr": "100% 드롭률이 비활성화되었습니다.",
+    "ja": "100% ドロップ率が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_marking_no_cost_enabled",
+    "ch": "标记NPC无消耗已启用。",
+    "tc": "標記NPC無消耗已啟用。",
+    "en": "Marking NPC incurs No Cost Enabled.",
+    "kr": "NPC 표시 비용 없음이 활성화되었습니다.",
+    "ja": "NPC マーキングはコストなしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_marking_no_cost_disabled",
+    "ch": "标记NPC无消耗已禁用。",
+    "tc": "標記NPC無消耗已禁用。",
+    "en": "Marking NPC incurs No Cost Disabled.",
+    "kr": "NPC 표시 비용 없음이 비활성화되었습니다.",
+    "ja": "NPC マーキングはコストなしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_traveling_no_day_cost_enabled",
+    "ch": "旅行无天数消耗已启用。",
+    "tc": "旅行無天數消耗已啟用。",
+    "en": "Traveling incurs No Day Cost Enabled.",
+    "kr": "여행 시 일수 비용 없음이 활성화되었습니다.",
+    "ja": "旅行は日数コストなしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_traveling_no_day_cost_disabled",
+    "ch": "旅行无天数消耗已禁用。",
+    "tc": "旅行無天數消耗已禁用。",
+    "en": "Traveling incurs No Day Cost Disabled.",
+    "kr": "여행 시 일수 비용 없음이 비활성화되었습니다.",
+    "ja": "旅行は日数コストなしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_perfect_skill_comprehend_enabled",
+    "ch": "完美技能领悟 & 无消耗已启用。",
+    "tc": "完美技能領悟 & 無消耗已啟用。",
+    "en": "Perfect Skill Comprehend & No Cost Enabled.",
+    "kr": "완벽한 스킬 이해 & 비용 없음이 활성화되었습니다.",
+    "ja": "完璧なスキル理解 & コストなしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_perfect_skill_comprehend_disabled",
+    "ch": "完美技能领悟 & 无消耗已禁用。",
+    "tc": "完美技能領悟 & 無消耗已禁用。",
+    "en": "Perfect Skill Comprehend & No Cost Disabled.",
+    "kr": "완벽한 스킬 이해 & 비용 없음이 비활성화되었습니다.",
+    "ja": "完璧なスキル理解 & コストなしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_fast_cultivate_enabled",
+    "ch": "快速/完全修炼 & 无天数消耗已启用。",
+    "tc": "快速/完全修煉 & 無天數消耗已啟用。",
+    "en": "Fast/Full Cultivate & No Day Cost Enabled.",
+    "kr": "빠른/완전 수련 & 일수 비용 없음이 활성화되었습니다.",
+    "ja": "高速/完全修練 & 日数コストなしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_fast_cultivate_disabled",
+    "ch": "快速/完全修炼 & 无天数消耗已禁用。",
+    "tc": "快速/完全修煉 & 無天數消耗已禁用。",
+    "en": "Fast/Full Cultivate & No Day Cost Disabled.",
+    "kr": "빠른/완전 수련 & 일수 비용 없음이 비활성화되었습니다.",
+    "ja": "高速/完全修練 & 日数コストなしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_more_geomancy_enabled",
+    "ch": "更多风水范围 & 无天数消耗已启用。",
+    "tc": "更多風水範圍 & 無天數消耗已啟用。",
+    "en": "More Geomancy Range & No Day Cost Enabled.",
+    "kr": "더 많은 풍수 범위 & 일수 비용 없음이 활성화되었습니다.",
+    "ja": "より多くの風水範囲 & 日数コストなしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_more_geomancy_disabled",
+    "ch": "更多风水范围 & 无天数消耗已禁用。",
+    "tc": "更多風水範圍 & 無天數消耗已禁用。",
+    "en": "More Geomancy Range & No Day Cost Disabled.",
+    "kr": "더 많은 풍수 범위 & 일수 비용 없음이 비활성화되었습니다.",
+    "ja": "より多くの風水範囲 & 日数コストなしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_harvest_mine_enabled",
+    "ch": "采集 & 挖矿无天数消耗已启用。",
+    "tc": "採集 & 挖礦無天數消耗已啟用。",
+    "en": "Harvest & Mine incurs No Day Cost Enabled.",
+    "kr": "수확 & 채굴 일수 비용 없음이 활성화되었습니다.",
+    "ja": "収穫 & 採掘は日数コストなしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_harvest_mine_disabled",
+    "ch": "采集 & 挖矿无天数消耗已禁用。",
+    "tc": "採集 & 挖礦無天數消耗已禁用。",
+    "en": "Harvest & Mine incurs No Day Cost Disabled.",
+    "kr": "수확 & 채굴 일수 비용 없음이 비활성화되었습니다.",
+    "ja": "収穫 & 採掘は日数コストなしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_fast_learn_skill_enabled",
+    "ch": "快速/完全学习技能 & 无消耗/失败已启用。",
+    "tc": "快速/完全學習技能 & 無消耗/失敗已啟用。",
+    "en": "Fast/Full Learn Skill & No Cost/Failure Enabled.",
+    "kr": "빠른/완전 스킬 학습 & 비용/실패 없음이 활성화되었습니다.",
+    "ja": "高速/完全スキル学習 & コスト/失敗なしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_fast_learn_skill_disabled",
+    "ch": "快速/完全学习技能 & 无消耗/失败已禁用。",
+    "tc": "快速/完全學習技能 & 無消耗/失敗已禁用。",
+    "en": "Fast/Full Learn Skill & No Cost/Failure Disabled.",
+    "kr": "빠른/완전 스킬 학습 & 비용/실패 없음이 비활성화되었습니다.",
+    "ja": "高速/完全スキル学習 & コスト/失敗なしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_bagua_jade_enabled",
+    "ch": "八卦玉无传送/召唤冷却已启用。",
+    "tc": "八卦玉無傳送/召喚冷卻已啟用。",
+    "en": "Bagua Jade incurs No Teleport/Summon CD Enabled.",
+    "kr": "팔괘옥 순간이동/소환 쿨다운 없음이 활성화되었습니다.",
+    "ja": "八卦玉はテレポート/召喚CDなしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_bagua_jade_disabled",
+    "ch": "八卦玉无传送/召唤冷却已禁用。",
+    "tc": "八卦玉無傳送/召喚冷卻已禁用。",
+    "en": "Bagua Jade incurs No Teleport/Summon CD Disabled.",
+    "kr": "팔괘옥 순간이동/소환 쿨다운 없음이 비활성화되었습니다.",
+    "ja": "八卦玉はテレポート/召喚CDなしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_wardrobe_no_cost_enabled",
+    "ch": "衣柜商店无消耗已启用。",
+    "tc": "衣櫃商店無消耗已啟用。",
+    "en": "Wardrobe Shop incurs No Cost Enabled.",
+    "kr": "옷장 상점 비용 없음이 활성화되었습니다.",
+    "ja": "ワードローブショップはコストなしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_wardrobe_no_cost_disabled",
+    "ch": "衣柜商店无消耗已禁用。",
+    "tc": "衣櫃商店無消耗已禁用。",
+    "en": "Wardrobe Shop incurs No Cost Disabled.",
+    "kr": "옷장 상점 비용 없음이 비활성화되었습니다.",
+    "ja": "ワードローブショップはコストなしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_show_charisma_enabled",
+    "ch": "显示魅力值已启用。",
+    "tc": "顯示魅力值已啟用。",
+    "en": "Show Charisma Value Enabled.",
+    "kr": "매력 수치 표시가 활성화되었습니다.",
+    "ja": "カリスマ値表示が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_show_charisma_disabled",
+    "ch": "显示魅力值已禁用。",
+    "tc": "顯示魅力值已禁用。",
+    "en": "Show Charisma Value Disabled.",
+    "kr": "매력 수치 표시가 비활성화되었습니다.",
+    "ja": "カリスマ値表示が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_realm_display_activated",
+    "ch": "境界显示已激活。",
+    "tc": "境界顯示已激活。",
+    "en": "Realm Display Activated.",
+    "kr": "영역 표시가 활성화되었습니다.",
+    "ja": "レルム表示が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_show_realm_button_visible",
+    "ch": "'显示境界'按钮可见。",
+    "tc": "'顯示境界'按鈕可見。",
+    "en": "'Show Realm' Button Visible.",
+    "kr": "'영역 표시' 버튼이 표시됩니다.",
+    "ja": "'レルム表示'ボタンが表示されます。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_close_reopen_npc_ui",
+    "ch": "请关闭并重新打开NPC的界面。",
+    "tc": "請關閉並重新打開NPC的界面。",
+    "en": "Please close and re-open the NPC's UI.",
+    "kr": "NPC UI를 닫고 다시 열어주세요.",
+    "ja": "NPCのUIを閉じて再度開いてください。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_realm_display_deactivated",
+    "ch": "境界显示已停用。",
+    "tc": "境界顯示已停用。",
+    "en": "Realm Display Deactivated.",
+    "kr": "영역 표시가 비활성화되었습니다.",
+    "ja": "レルム表示が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_status_show_realm_button_hidden",
+    "ch": "'显示境界'按钮隐藏。",
+    "tc": "'顯示境界'按鈕隱藏。",
+    "en": "'Show Realm' Button Hidden.",
+    "kr": "'영역 표시' 버튼이 숨겨집니다.",
+    "ja": "'レルム表示'ボタンが非表示になります。"
+  },
+  
+  {
+    "id": "",
+    "key": "panel_exploit_show_realm_button_text",
+    "ch": "显示境界",
+    "tc": "顯示境界",
+    "en": "Show Realm",
+    "kr": "영역 표시",
+    "ja": "レルム表示"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_show_realm_disabled_warning",
+    "ch": "显示境界已禁用，无法执行此操作。",
+    "tc": "顯示境界已禁用，無法執行此操作。",
+    "en": "Show Realm is Disabled cannot forbid action.",
+    "kr": "영역 표시가 비활성화되어 이 작업을 수행할 수 없습니다.",
+    "ja": "レルム表示が無効になっているため、この操作を実行できません。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_ui_npc_info_null_warning",
+    "ch": "UINPCInfo 返回 NULL！",
+    "tc": "UINPCInfo 返回 NULL！",
+    "en": "UINPCInfo returned NULL!",
+    "kr": "UINPCInfo가 NULL을 반환했습니다!",
+    "ja": "UINPCInfo が NULL を返しました！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_ui_elder_skill_learn_null_warning",
+    "ch": "UIElderSkillLearn 返回 NULL！",
+    "tc": "UIElderSkillLearn 返回 NULL！",
+    "en": "UIElderSkillLearn returned NULL!",
+    "kr": "UIElderSkillLearn이 NULL을 반환했습니다!",
+    "ja": "UIElderSkillLearn が NULL を返しました！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_mythical_gourd_buff_enabled",
+    "ch": "神话葫芦增益已启用。",
+    "tc": "神話葫蘆增益已啟用。",
+    "en": "Mythical Gourd Buff Enabled.",
+    "kr": "신화 박 버프가 활성화되었습니다.",
+    "ja": "神話のひょうたんバフが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_mythical_gourd_buff_disabled",
+    "ch": "神话葫芦增益已禁用。",
+    "tc": "神話葫蘆增益已禁用。",
+    "en": "Mythical Gourd Buff Disabled.",
+    "kr": "신화 박 버프가 비활성화되었습니다.",
+    "ja": "神話のひょうたんバフが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploit_restart_game_reset_values",
+    "ch": "请重启游戏以应用重置值。",
+    "tc": "請重啟遊戲以應用重置值。",
+    "en": "Please restart the game to apply the reset value.",
+    "kr": "재설정 값을 적용하려면 게임을 다시 시작해주세요.",
+    "ja": "リセット値を適用するためにゲームを再起動してください。"
+  },
+  // ExploitPanelMore.cs (Exploit Panel More)
+  {
+    "id": "",
+    "key": "panel_exploitmore_title",
+    "ch": "漏洞利用 2",
+    "tc": "漏洞利用 2",
+    "en": "Exploit 2",
+    "kr": "익스플로잇 2",
+    "ja": "エクスプロイト 2"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_compare_combat_power",
+    "ch": "比较NPC/玩家战斗力 (在NPC界面显示)",
+    "tc": "比較NPC/玩家戰鬥力 (在NPC界面顯示)",
+    "en": "Compare NPC/Player Combat Power (Display at NPC UI)",
+    "kr": "NPC/플레이어 전투력 비교 (NPC UI에 표시)",
+    "ja": "NPC/プレイヤー戦闘力比較 (NPC UIに表示)"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_show_battle_report",
+    "ch": "显示战斗报告 (战前统计)",
+    "tc": "顯示戰鬥報告 (戰前統計)",
+    "en": "Show Battle Report (Pre-Battle Stats)",
+    "kr": "전투 보고서 표시 (전투 전 통계)",
+    "ja": "戦闘レポート表示 (戦闘前統計)"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_show_increase_button",
+    "ch": "为选中物品显示'增加'按钮",
+    "tc": "為選中物品顯示'增加'按鈕",
+    "en": "Show 'Increase' Button for Selected Item",
+    "kr": "선택한 아이템에 '증가' 버튼 표시",
+    "ja": "選択したアイテムに'増加'ボタンを表示"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_rest_100_removes_destiny",
+    "ch": "休息100%移除负面命运 & 无天数消耗",
+    "tc": "休息100%移除負面命運 & 無天數消耗",
+    "en": "Rest 100% Removes Negative Destiny & No Day Cost",
+    "kr": "휴식 100% 부정적 운명 제거 & 일수 비용 없음",
+    "ja": "休息100%で負の運命を除去 & 日数コストなし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_low_cost_artifacts_repair",
+    "ch": "极低成本神器修复",
+    "tc": "極低成本神器修復",
+    "en": "Remarkably Low-Cost Artifacts Repair",
+    "kr": "현저히 저렴한 아티팩트 수리",
+    "ja": "著しく低コストのアーティファクト修理"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_effortless_artifact_forge",
+    "ch": "轻松神器锻造",
+    "tc": "輕鬆神器鍛造",
+    "en": "Effortless Artifact Forge",
+    "kr": "손쉬운 아티팩트 제작",
+    "ja": "楽々アーティファクト鍛造"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_artifact_spirit_super_buff",
+    "ch": "神器精灵 (超级增益)",
+    "tc": "神器精靈 (超級增益)",
+    "en": "Artifact Spirit (Super Buff)",
+    "kr": "아티팩트 정령 (슈퍼 버프)",
+    "ja": "アーティファクトスピリット (スーパーバフ)"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_artifact_spirit_free_upgrade",
+    "ch": "神器精灵 (免费技能/天赋升级)",
+    "tc": "神器精靈 (免費技能/天賦升級)",
+    "en": "Artifact Spirit (Free Skills/Talents Upgrade)",
+    "kr": "아티팩트 정령 (무료 스킬/재능 업그레이드)",
+    "ja": "アーティファクトスピリット (無料スキル/タレントアップグレード)"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_reduced_worship_requirement",
+    "ch": "降低崇拜要求",
+    "tc": "降低崇拜要求",
+    "en": "Reduced Worship Requirement",
+    "kr": "숭배 요구사항 감소",
+    "ja": "崇拝要件の軽減"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_no_cost_dungeon_access",
+    "ch": "无天数/物品要求访问世界/地图地牢",
+    "tc": "無天數/物品要求訪問世界/地圖地牢",
+    "en": "No Day/Item Requirement to Access World/Map Dungeon",
+    "kr": "세계/맵 던전 접근 시 일수/아이템 요구사항 없음",
+    "ja": "ワールド/マップダンジョンアクセスに日数/アイテム要件なし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_no_cooldown_dungeon",
+    "ch": "世界/地图地牢无冷却",
+    "tc": "世界/地圖地牢無冷卻",
+    "en": "No Cooldown for World/Map Dungeon",
+    "kr": "세계/맵 던전 쿨다운 없음",
+    "ja": "ワールド/マップダンジョンのクールダウンなし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_shortcut_key",
+    "ch": "快捷键",
+    "tc": "快捷鍵",
+    "en": "Shortcut Key",
+    "kr": "단축키",
+    "ja": "ショートカットキー"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_debug_logging",
+    "ch": "调试日志",
+    "tc": "調試日誌",
+    "en": "Debug Logging",
+    "kr": "디버그 로깅",
+    "ja": "デバッグログ"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_combat_power_activated",
+    "ch": "战斗力比较已激活。",
+    "tc": "戰鬥力比較已激活。",
+    "en": "Combat Power Comparison Activated.",
+    "kr": "전투력 비교가 활성화되었습니다.",
+    "ja": "戦闘力比較が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_combat_power_text_visible",
+    "ch": "'战斗力比较'文本可见。",
+    "tc": "'戰鬥力比較'文本可見。",
+    "en": "'Combat Power Comparison' Text Visible.",
+    "kr": "'전투력 비교' 텍스트가 표시됩니다.",
+    "ja": "'戦闘力比較'テキストが表示されます。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_combat_power_deactivated",
+    "ch": "战斗力比较已停用。",
+    "tc": "戰鬥力比較已停用。",
+    "en": "Combat Power Comparison Deactivated.",
+    "kr": "전투력 비교가 비활성화되었습니다.",
+    "ja": "戦闘力比較が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_combat_power_text_hidden",
+    "ch": "'战斗力比较'文本隐藏。",
+    "tc": "'戰鬥力比較'文本隱藏。",
+    "en": "'Combat Power Comparison' Text Hidden.",
+    "kr": "'전투력 비교' 텍스트가 숨겨집니다.",
+    "ja": "'戦闘力比較'テキストが非表示になります。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_battle_report_activated",
+    "ch": "战斗报告已激活。",
+    "tc": "戰鬥報告已激活。",
+    "en": "Battle Report Activated.",
+    "kr": "전투 보고서가 활성화되었습니다.",
+    "ja": "戦闘レポートが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_battle_report_text_visible",
+    "ch": "'战斗报告'文本可见。",
+    "tc": "'戰鬥報告'文本可見。",
+    "en": "'Battle Report' Text Visible.",
+    "kr": "'전투 보고서' 텍스트가 표시됩니다.",
+    "ja": "'戦闘レポート'テキストが表示されます。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_battle_report_deactivated",
+    "ch": "战斗报告已停用。",
+    "tc": "戰鬥報告已停用。",
+    "en": "Battle Report Deactivated.",
+    "kr": "전투 보고서가 비활성화되었습니다.",
+    "ja": "戦闘レポートが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_battle_report_text_hidden",
+    "ch": "'战斗报告'文本隐藏。",
+    "tc": "'戰鬥報告'文本隱藏。",
+    "en": "'Battle Report' Text Hidden.",
+    "kr": "'전투 보고서' 텍스트가 숨겨집니다.",
+    "ja": "'戦闘レポート'テキストが非表示になります。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_increase_item_activated",
+    "ch": "增加物品已激活。",
+    "tc": "增加物品已激活。",
+    "en": "Increase Item Activated.",
+    "kr": "아이템 증가가 활성화되었습니다.",
+    "ja": "アイテム増加が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_increase_text_visible",
+    "ch": "'增加'文本可见。",
+    "tc": "'增加'文本可見。",
+    "en": "'Increase' Text Visible.",
+    "kr": "'증가' 텍스트가 표시됩니다.",
+    "ja": "'増加'テキストが表示されます。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_increase_item_deactivated",
+    "ch": "增加物品已停用。",
+    "tc": "增加物品已停用。",
+    "en": "Increase Item Deactivated.",
+    "kr": "아이템 증가가 비활성화되었습니다.",
+    "ja": "アイテム増加が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_increase_text_hidden",
+    "ch": "'增加'文本隐藏。",
+    "tc": "'增加'文本隱藏。",
+    "en": "'Increase' Text Hidden.",
+    "kr": "'증가' 텍스트가 숨겨집니다.",
+    "ja": "'増加'テキストが非表示になります。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_rest_100_enabled",
+    "ch": "休息100%清除负面命运 & 无天数消耗已启用。",
+    "tc": "休息100%清除負面命運 & 無天數消耗已啟用。",
+    "en": "Rest 100% Clears Negative Destiny & No Day Cost Enabled.",
+    "kr": "휴식 100% 부정적 운명 제거 & 일수 비용 없음이 활성화되었습니다.",
+    "ja": "休息100%で負の運命をクリア & 日数コストなしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_rest_100_disabled",
+    "ch": "休息100%清除负面命运 & 无天数消耗已禁用。",
+    "tc": "休息100%清除負面命運 & 無天數消耗已禁用。",
+    "en": "Rest 100% Clears Negative Destiny & No Day Cost Disabled.",
+    "kr": "휴식 100% 부정적 운명 제거 & 일수 비용 없음이 비활성화되었습니다.",
+    "ja": "休息100%で負の運命をクリア & 日数コストなしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_low_cost_repair_enabled",
+    "ch": "极低成本神器修复已启用。",
+    "tc": "極低成本神器修復已啟用。",
+    "en": "Remarkably Low-Cost Artifacts Repair Enabled.",
+    "kr": "현저히 저렴한 아티팩트 수리가 활성화되었습니다.",
+    "ja": "著しく低コストのアーティファクト修理が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_low_cost_repair_disabled",
+    "ch": "极低成本神器修复已禁用。",
+    "tc": "極低成本神器修復已禁用。",
+    "en": "Remarkably Low-Cost Artifacts Repair Disabled.",
+    "kr": "현저히 저렴한 아티팩트 수리가 비활성화되었습니다.",
+    "ja": "著しく低コストのアーティファクト修理が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_effortless_forge_enabled",
+    "ch": "轻松神器锻造已启用。",
+    "tc": "輕鬆神器鍛造已啟用。",
+    "en": "Effortless Artifact Forge Enabled.",
+    "kr": "손쉬운 아티팩트 제작이 활성화되었습니다.",
+    "ja": "楽々アーティファクト鍛造が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_effortless_forge_disabled",
+    "ch": "轻松神器锻造已禁用。",
+    "tc": "輕鬆神器鍛造已禁用。",
+    "en": "Effortless Artifact Forge Disabled.",
+    "kr": "손쉬운 아티팩트 제작이 비활성화되었습니다.",
+    "ja": "楽々アーティファクト鍛造が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_warning_artifactshape_null",
+    "ch": "ArtifactShape 为 NULL！",
+    "tc": "ArtifactShape 為 NULL！",
+    "en": "ArtifactShape is NULL!",
+    "kr": "ArtifactShape이 NULL입니다!",
+    "ja": "ArtifactShapeがNULLです！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_warning_artifactshapecommon_null",
+    "ch": "ArtifactShapeCommon 为 NULL！",
+    "tc": "ArtifactShapeCommon 為 NULL！",
+    "en": "ArtifactShapeCommon is NULL!",
+    "kr": "ArtifactShapeCommon이 NULL입니다!",
+    "ja": "ArtifactShapeCommonがNULLです！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_warning_artifactsprite_null",
+    "ch": "ArtifactSprite 为 NULL！",
+    "tc": "ArtifactSprite 為 NULL！",
+    "en": "ArtifactSprite is NULL!",
+    "kr": "ArtifactSprite가 NULL입니다!",
+    "ja": "ArtifactSpriteがNULLです！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_warning_artifactspriteart_null",
+    "ch": "ArtifactSpriteArt 为 NULL！",
+    "tc": "ArtifactSpriteArt 為 NULL！",
+    "en": "ArtifactSpriteArt is NULL!",
+    "kr": "ArtifactSpriteArt가 NULL입니다!",
+    "ja": "ArtifactSpriteArtがNULLです！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_warning_artifactspriteclose_null",
+    "ch": "ArtifactSpriteClose 为 NULL！",
+    "tc": "ArtifactSpriteClose 為 NULL！",
+    "en": "ArtifactSpriteClose is NULL!",
+    "kr": "ArtifactSpriteClose가 NULL입니다!",
+    "ja": "ArtifactSpriteCloseがNULLです！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_warning_artifactspritelevel_null",
+    "ch": "ArtifactSpriteLevel 为 NULL！",
+    "tc": "ArtifactSpriteLevel 為 NULL！",
+    "en": "ArtifactSpriteLevel is NULL!",
+    "kr": "ArtifactSpriteLevel이 NULL입니다!",
+    "ja": "ArtifactSpriteLevelがNULLです！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_warning_rolecreatefeature_null",
+    "ch": "RoleCreateFeature 为 NULL！",
+    "tc": "RoleCreateFeature 為 NULL！",
+    "en": "RoleCreateFeature is NULL!",
+    "kr": "RoleCreateFeature가 NULL입니다!",
+    "ja": "RoleCreateFeatureがNULLです！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_warning_roleeffect_null",
+    "ch": "RoleEffect 为 NULL！",
+    "tc": "RoleEffect 為 NULL！",
+    "en": "RoleEffect is NULL!",
+    "kr": "RoleEffect가 NULL입니다!",
+    "ja": "RoleEffectがNULLです！"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_warning_something_null",
+    "ch": "某些内容返回 NULL！操作已取消。",
+    "tc": "某些內容返回 NULL！操作已取消。",
+    "en": "Something returned NULL! operation cancelled.",
+    "kr": "무언가가 NULL을 반환했습니다! 작업이 취소되었습니다.",
+    "ja": "何かがNULLを返しました！操作がキャンセルされました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_artifact_spirit_enabled",
+    "ch": "神器精灵 (超级增益) 已启用。",
+    "tc": "神器精靈 (超級增益) 已啟用。",
+    "en": "Artifact Spirit (Super Buff) Enabled.",
+    "kr": "아티팩트 정령 (슈퍼 버프)가 활성화되었습니다.",
+    "ja": "アーティファクトスピリット (スーパーバフ) が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_artifact_spirit_disabled",
+    "ch": "神器精灵 (超级增益) 已禁用。",
+    "tc": "神器精靈 (超級增益) 已禁用。",
+    "en": "Artifact Spirit (Super Buff) Disabled.",
+    "kr": "아티팩트 정령 (슈퍼 버프)가 비활성화되었습니다.",
+    "ja": "アーティファクトスピリット (スーパーバフ) が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_restart_game_reset",
+    "ch": "请重启游戏以应用重置值。",
+    "tc": "請重啟遊戲以應用重置值。",
+    "en": "Please restart the game to apply the reset value.",
+    "kr": "재설정 값을 적용하려면 게임을 다시 시작하세요.",
+    "ja": "リセット値を適用するためにゲームを再起動してください。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_artifact_spirit_free_enabled",
+    "ch": "神器精灵 (免费技能/天赋升级) 已启用。",
+    "tc": "神器精靈 (免費技能/天賦升級) 已啟用。",
+    "en": "Artifact Spirit (Free Skills/Talents Upgrade) Enabled.",
+    "kr": "아티팩트 정령 (무료 스킬/재능 업그레이드)가 활성화되었습니다.",
+    "ja": "アーティファクトスピリット (無料スキル/タレントアップグレード) が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_artifact_spirit_free_disabled",
+    "ch": "神器精灵 (免费技能/天赋升级) 已禁用。",
+    "tc": "神器精靈 (免費技能/天賦升級) 已禁用。",
+    "en": "Artifact Spirit (Free Skills/Talents Upgrade) Disabled.",
+    "kr": "아티팩트 정령 (무료 스킬/재능 업그레이드)가 비활성화되었습니다.",
+    "ja": "アーティファクトスピリット (無料スキル/タレントアップグレード) が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_reduced_worship_activated",
+    "ch": "降低崇拜要求已激活。",
+    "tc": "降低崇拜要求已激活。",
+    "en": "Reduced Worship Requirement Activated.",
+    "kr": "숭배 요구사항 감소가 활성화되었습니다.",
+    "ja": "崇拝要件の軽減が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_reduced_worship_deactivated",
+    "ch": "降低崇拜要求已停用。",
+    "tc": "降低崇拜要求已停用。",
+    "en": "Reduced Worship Requirement Deactivated.",
+    "kr": "숭배 요구사항 감소가 비활성화되었습니다.",
+    "ja": "崇拝要件の軽減が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_no_cost_dungeon_activated",
+    "ch": "无天数/物品要求访问世界/地图地牢已激活。",
+    "tc": "無天數/物品要求訪問世界/地圖地牢已激活。",
+    "en": "No Day/Item Requirement to Access World/Map Dungeon Activated.",
+    "kr": "세계/맵 던전 접근 시 일수/아이템 요구사항 없음이 활성화되었습니다.",
+    "ja": "ワールド/マップダンジョンアクセスに日数/アイテム要件なしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_no_cost_dungeon_deactivated",
+    "ch": "无天数/物品要求访问世界/地图地牢已停用。",
+    "tc": "無天數/物品要求訪問世界/地圖地牢已停用。",
+    "en": "No Day/Item Requirement to Access World/Map Dungeon Deactivated.",
+    "kr": "세계/맵 던전 접근 시 일수/아이템 요구사항 없음이 비활성화되었습니다.",
+    "ja": "ワールド/マップダンジョンアクセスに日数/アイテム要件なしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_no_cooldown_dungeon_activated",
+    "ch": "世界/地图地牢无冷却。",
+    "tc": "世界/地圖地牢無冷卻。",
+    "en": "No Cooldown for World/Map Dungeon.",
+    "kr": "세계/맵 던전 쿨다운 없음.",
+    "ja": "ワールド/マップダンジョンのクールダウンなし。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_shortcut_key_enabled",
+    "ch": "快捷键已启用。",
+    "tc": "快捷鍵已啟用。",
+    "en": "Shortcut Key Enabled.",
+    "kr": "단축키가 활성화되었습니다.",
+    "ja": "ショートカットキーが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_shortcut_key_disabled",
+    "ch": "快捷键已禁用。",
+    "tc": "快捷鍵已禁用。",
+    "en": "Shortcut Key Disabled.",
+    "kr": "단축키가 비활성화되었습니다.",
+    "ja": "ショートカットキーが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_debug_logging_enabled",
+    "ch": "调试日志已启用。",
+    "tc": "調試日誌已啟用。",
+    "en": "Debug Logging Enabled.",
+    "kr": "디버그 로깅이 활성화되었습니다.",
+    "ja": "デバッグログが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_debug_logging_disabled",
+    "ch": "调试日志已禁用。",
+    "tc": "調試日誌已禁用。",
+    "en": "Debug Logging Disabled.",
+    "kr": "디버그 로깅이 비활성화되었습니다.",
+    "ja": "デバッグログが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_value_updated_items",
+    "ch": "值已更新为 {0} 个物品。",
+    "tc": "值已更新為 {0} 個物品。",
+    "en": "Value updated to {0} items.",
+    "kr": "값이 {0}개 아이템으로 업데이트되었습니다.",
+    "ja": "値が{0}個のアイテムに更新されました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_plus_one_item",
+    "ch": "+1 物品...",
+    "tc": "+1 物品...",
+    "en": "+1 item...",
+    "kr": "+1 아이템...",
+    "ja": "+1 アイテム..."
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_item_truncated",
+    "ch": "物品...",
+    "tc": "物品...",
+    "en": "item...",
+    "kr": "아이템...",
+    "ja": "アイテム..."
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_plus_count_item",
+    "ch": "+{0} 物品...",
+    "tc": "+{0} 物品...",
+    "en": "+{0} item...",
+    "kr": "+{0} 아이템...",
+    "ja": "+{0} アイテム..."
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_button_increase",
+    "ch": "增加",
+    "tc": "增加",
+    "en": "Increase",
+    "kr": "증가",
+    "ja": "増加"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_reduced_worship_active",
+    "ch": "降低崇拜要求处于活动状态。",
+    "tc": "降低崇拜要求處於活動狀態。",
+    "en": "Reduced Worship Requirement is Active.",
+    "kr": "숭배 요구사항 감소가 활성 상태입니다.",
+    "ja": "崇拝要件の軽減がアクティブです。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_no_cost_dungeon_active",
+    "ch": "无天数/物品要求访问世界/地图地牢处于活动状态。",
+    "tc": "無天數/物品要求訪問世界/地圖地牢處於活動狀態。",
+    "en": "No Day/Item Requirement to Access World/Map Dungeon is Active.",
+    "kr": "세계/맵 던전 접근 시 일수/아이템 요구사항 없음이 활성 상태입니다.",
+    "ja": "ワールド/マップダンジョンアクセスに日数/アイテム要件なしがアクティブです。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_no_cooldown_dungeon_active",
+    "ch": "世界/地图地牢无冷却处于活动状态。",
+    "tc": "世界/地圖地牢無冷卻處於活動狀態。",
+    "en": "No Cooldown for World/Map Dungeon is Active.",
+    "kr": "세계/맵 던전 쿨다운 없음이 활성 상태입니다.",
+    "ja": "ワールド/マップダンジョンのクールダウンなしがアクティブです。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_no_day_item_requirement_dungeon",
+    "ch": "进入世界/地图地牢无天数/物品要求",
+    "tc": "進入世界/地圖地牢無天數/物品要求",
+    "en": "No Day/Item Requirement to Access World/Map Dungeon",
+    "kr": "세계/맵 던전 접근 시 일수/아이템 요구사항 없음",
+    "ja": "ワールド/マップダンジョンアクセスに日数/アイテム要件なし"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_artifact_spirit_super_buff_enabled",
+    "ch": "神器灵 (超级增益) 已启用。",
+    "tc": "神器靈 (超級增益) 已啟用。",
+    "en": "Artifact Spirit (Super Buff) Enabled.",
+    "kr": "아티팩트 정령 (슈퍼 버프)가 활성화되었습니다.",
+    "ja": "アーティファクト精霊 (スーパーバフ) が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_artifact_spirit_super_buff_disabled",
+    "ch": "神器灵 (超级增益) 已禁用。",
+    "tc": "神器靈 (超級增益) 已禁用。",
+    "en": "Artifact Spirit (Super Buff) Disabled.",
+    "kr": "아티팩트 정령 (슈퍼 버프)가 비활성화되었습니다.",
+    "ja": "アーティファクト精霊 (スーパーバフ) が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_artifact_spirit_free_upgrade_enabled",
+    "ch": "神器灵 (免费技能/天赋升级) 已启用。",
+    "tc": "神器靈 (免費技能/天賦升級) 已啟用。",
+    "en": "Artifact Spirit (Free Skills/Talents Upgrade) Enabled.",
+    "kr": "아티팩트 정령 (무료 스킬/재능 업그레이드)가 활성화되었습니다.",
+    "ja": "アーティファクト精霊 (無料スキル/タレントアップグレード) が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_artifact_spirit_free_upgrade_disabled",
+    "ch": "神器灵 (免费技能/天赋升级) 已禁用。",
+    "tc": "神器靈 (免費技能/天賦升級) 已禁用。",
+    "en": "Artifact Spirit (Free Skills/Talents Upgrade) Disabled.",
+    "kr": "아티팩트 정령 (무료 스킬/재능 업그레이드)가 비활성화되었습니다.",
+    "ja": "アーティファクト精霊 (無料スキル/タレントアップグレード) が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_no_day_item_dungeon_activated",
+    "ch": "进入世界/地图地牢无天数/物品要求已激活。",
+    "tc": "進入世界/地圖地牢無天數/物品要求已激活。",
+    "en": "No Day/Item Requirement to Access World/Map Dungeon Activated.",
+    "kr": "세계/맵 던전 접근 시 일수/아이템 요구사항 없음이 활성화되었습니다.",
+    "ja": "ワールド/マップダンジョンアクセスに日数/アイテム要件なしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_no_day_item_dungeon_deactivated",
+    "ch": "进入世界/地图地牢无天数/物品要求已停用。",
+    "tc": "進入世界/地圖地牢無天數/物品要求已停用。",
+    "en": "No Day/Item Requirement to Access World/Map Dungeon Deactivated.",
+    "kr": "세계/맵 던전 접근 시 일수/아이템 요구사항 없음이 비활성화되었습니다.",
+    "ja": "ワールド/マップダンジョンアクセスに日数/アイテム要件なしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_status_no_cooldown_dungeon",
+    "ch": "世界/地图地牢无冷却。",
+    "tc": "世界/地圖地牢無冷卻。",
+    "en": "No Cooldown for World/Map Dungeon.",
+    "kr": "세계/맵 던전 쿨다운 없음.",
+    "ja": "ワールド/マップダンジョンクールダウンなし。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_combat_power",
+    "ch": "显示NPC与玩家战斗力的比较（在NPC界面显示），并额外显示当前NPC的位置。",
+    "tc": "顯示NPC與玩家戰鬥力的比較（在NPC界面顯示），並額外顯示當前NPC的位置。",
+    "en": "Shows a Comparison of NPC vs Player Combat Power (Display at NPC UI) and a little bonus of showing the current location of the current NPC.",
+    "kr": "NPC와 플레이어 전투력 비교를 표시하고 (NPC UI에 표시) 현재 NPC의 위치를 추가로 표시합니다.",
+    "ja": "NPCとプレイヤーの戦闘力比較を表示し（NPC UIに表示）、現在のNPCの位置も追加で表示します。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_battle_report",
+    "ch": "在ESC菜单（暂停界面）显示战斗报告'战前统计'。",
+    "tc": "在ESC選單（暫停界面）顯示戰鬥報告'戰前統計'。",
+    "en": "Shows a Battle Report 'Pre-Battle Stats' at the ESC Menu (Escape Key/Pause UI).",
+    "kr": "ESC 메뉴 (일시정지 UI)에서 전투 보고서 '전투 전 통계'를 표시합니다.",
+    "ja": "ESCメニュー（一時停止UI）で戦闘レポート「戦闘前統計」を表示します。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_multi_item",
+    "ch": "在物品库存界面为选定物品显示'增加'按钮。点击此按钮可立即向库存添加+1或多个物品。对于多个物品，会显示选择界面来选择添加数量。如果在神话葫芦库存中悬停在选定物品上，则会立即添加。",
+    "tc": "在物品庫存界面為選定物品顯示'增加'按鈕。點擊此按鈕可立即向庫存添加+1或多個物品。對於多個物品，會顯示選擇界面來選擇添加數量。如果在神話葫蘆庫存中懸停在選定物品上，則會立即添加。",
+    "en": "Shows a button labeled 'Increase' for the selected item in the Item Inventory UI. Clicking this button lets the user instantly add +1 or multiple items to their inventory. For multiple items, a selection UI is displayed to choose the quantity to add. If in the Mythical Gourd Inventory and hovering over the selected item, the addition occurs instantly.",
+    "kr": "아이템 인벤토리 UI에서 선택된 아이템에 대해 '증가' 버튼을 표시합니다. 이 버튼을 클릭하면 인벤토리에 +1 또는 여러 아이템을 즉시 추가할 수 있습니다. 여러 아이템의 경우 추가할 수량을 선택하는 UI가 표시됩니다. 신화의 박 인벤토리에서 선택된 아이템 위에 마우스를 올리면 즉시 추가됩니다.",
+    "ja": "アイテムインベントリUIで選択されたアイテムに「増加」ボタンを表示します。このボタンをクリックすると、インベントリに+1または複数のアイテムを即座に追加できます。複数アイテムの場合、追加する数量を選択するUIが表示されます。神話のひょうたんインベントリで選択されたアイテムにマウスを合わせると、即座に追加されます。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_hospital",
+    "ch": "无忧休息/疗养。",
+    "tc": "無憂休息/療養。",
+    "en": "Rest/Recuperate without worry.",
+    "kr": "걱정 없이 휴식/회복하세요.",
+    "ja": "心配なく休息/回復できます。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_cheap_art_repair",
+    "ch": "真正实惠的修复。[神器不是武器神器（例如，天眼、八卦玉等）]",
+    "tc": "真正實惠的修復。[神器不是武器神器（例如，天眼、八卦玉等）]",
+    "en": "Truly Affordable Repair. [The Artifact is not the Weapon Artifacts (e.g., Eye of Providence, Bagua Jade, etc.)]",
+    "kr": "정말 저렴한 수리. [아티팩트는 무기 아티팩트가 아닙니다 (예: 천안, 팔괘옥 등)]",
+    "ja": "本当に手頃な修理。[アーティファクトは武器アーティファクトではありません（例：天眼、八卦玉など）]"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_easy_arti_forge",
+    "ch": "轻松神器锻造。[神器不是武器神器（例如，天眼、八卦玉等）]",
+    "tc": "輕鬆神器鍛造。[神器不是武器神器（例如，天眼、八卦玉等）]",
+    "en": "Effortless Artifact Forging. [The Artifact is not the Weapon Artifacts (e.g., Eye of Providence, Bagua Jade, etc.)]",
+    "kr": "손쉬운 아티팩트 단조. [아티팩트는 무기 아티팩트가 아닙니다 (예: 천안, 팔괘옥 등)]",
+    "ja": "楽々アーティファクト鍛造。[アーティファクトは武器アーティファクトではありません（例：天眼、八卦玉など）]"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_arti_spirit_buff",
+    "ch": "神器灵[超级增益]（例如，升级所需经验值减少，亲密度/好感度增加，好感度等级变化后礼物间隔缩短至1个月等。属性值保持不变。）",
+    "tc": "神器靈[超級增益]（例如，升級所需經驗值減少，親密度/好感度增加，好感度等級變化後禮物間隔縮短至1個月等。屬性值保持不變。）",
+    "en": "Artifact Spirit [Super Buff] (e.g., Reduced XP required for upgrades, increased affinity/intimacy, gift intervals shortened to 1 month after intimacy level changes, etc. Stat values remain unchanged.)",
+    "kr": "아티팩트 스피릿 [슈퍼 버프] (예: 업그레이드에 필요한 XP 감소, 친밀도/호감도 증가, 호감도 레벨 변경 후 선물 간격이 1개월로 단축 등. 스탯 값은 변경되지 않습니다.)",
+    "ja": "アーティファクトスピリット[スーパーバフ]（例：アップグレードに必要なXPの減少、親密度/好感度の増加、好感度レベル変更後のギフト間隔が1ヶ月に短縮など。ステータス値は変更されません。）"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_arti_spirit_free_up",
+    "ch": "免费神器灵技能/天赋升级，移除契约要求。",
+    "tc": "免費神器靈技能/天賦升級，移除契約要求。",
+    "en": "Free Artifact Spirit skill/talent upgrades and pact requirement removed.",
+    "kr": "무료 아티팩트 스피릿 스킬/재능 업그레이드 및 계약 요구사항 제거.",
+    "ja": "無料のアーティファクトスピリットスキル/タレントアップグレードと契約要件の削除。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_reduced_worship",
+    "ch": "通过减少崇拜数量的值来降低崇拜所需的努力。",
+    "tc": "通過減少崇拜數量的值來降低崇拜所需的努力。",
+    "en": "Reduce the effort needed for worship by decreasing the value of worship amount.",
+    "kr": "숭배 양의 값을 줄여 숭배에 필요한 노력을 줄입니다.",
+    "ja": "崇拝量の値を減らすことで、崇拝に必要な努力を軽減します。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_no_cost_dungeon",
+    "ch": "自由探索世界或地图地牢，无任何限制，无需消耗天数和灵石或消耗品。随时潜入冒险，不受限制！",
+    "tc": "自由探索世界或地圖地牢，無任何限制，無需消耗天數和靈石或消耗品。隨時潛入冒險，不受限制！",
+    "en": "Explore the World or Map Dungeon freely, without any restrictions, without spending days and the need for spirit stones or consumable items. Dive into the adventure anytime, unbound by limitations!",
+    "kr": "제한 없이 세계나 맵 던전을 자유롭게 탐험하고, 날짜를 소비하거나 영석이나 소모품이 필요하지 않습니다. 언제든지 모험에 뛰어들어 제한에 얽매이지 마세요!",
+    "ja": "制限なく世界やマップダンジョンを自由に探索し、日数を消費したり霊石や消耗品を必要としません。いつでも冒険に飛び込んで、制限に縛られることなく！"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_no_cd_dungeon",
+    "ch": "体验无缝地牢探索，连续挑战，最大化奖励而不受干扰。非常适合喜欢不间断行动和进步的修炼者！",
+    "tc": "體驗無縫地牢探索，連續挑戰，最大化獎勵而不受干擾。非常適合喜歡不間斷行動和進步的修煉者！",
+    "en": "Experience seamless dungeon exploration, tackle challenges back-to-back, and maximize your rewards without interruptions. Perfect for cultivators who love nonstop action and progression!",
+    "kr": "끊김 없는 던전 탐험을 경험하고, 연속으로 도전하며, 방해 없이 보상을 최대화하세요. 논스톱 액션과 진행을 좋아하는 수련자에게 완벽합니다!",
+    "ja": "シームレスなダンジョン探索を体験し、連続して挑戦し、中断なく報酬を最大化しましょう。ノンストップアクションと進歩を愛する修行者に最適です！"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_shortcut_key",
+    "ch": "作弊菜单的快捷键（例如，Ctrl+1、Ctrl+2等）",
+    "tc": "作弊選單的快捷鍵（例如，Ctrl+1、Ctrl+2等）",
+    "en": "Cheat Menu's Shortcut Key (e.g., Ctrl+1, Ctrl+2, etc.)",
+    "kr": "치트 메뉴의 단축키 (예: Ctrl+1, Ctrl+2 등)",
+    "ja": "チートメニューのショートカットキー（例：Ctrl+1、Ctrl+2など）"
+  },
+  {
+    "id": "",
+    "key": "tooltip_exploitmore_debug_logging",
+    "ch": "[默认启用] 强烈建议禁用'调试日志'以提高游戏性能。仅在此模组出现问题时启用。",
+    "tc": "[默認啟用] 強烈建議禁用'調試日誌'以提高遊戲性能。僅在此模組出現問題時啟用。",
+    "en": "[Enabled by Default] It's highly recommended to disable 'Debug Logging' to improve game performance. Only enable if you experience issues with this mod.",
+    "kr": "[기본 활성화] 게임 성능 향상을 위해 '디버그 로깅'을 비활성화하는 것을 강력히 권장합니다. 이 모드에 문제가 발생할 때만 활성화하세요.",
+    "ja": "[デフォルトで有効] ゲームパフォーマンスを向上させるため、「デバッグログ」を無効にすることを強く推奨します。このModで問題が発生した場合のみ有効にしてください。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_warning_no_cd_dungeon",
+    "ch": "无冷却世界/地图地牢已激活。",
+    "tc": "無冷卻世界/地圖地牢已激活。",
+    "en": "No Cooldown for World/Map Dungeon is Active.",
+    "kr": "무료 세계/지도 던전 쿨다운이 활성화되었습니다.",
+    "ja": "世界/マップダンジョンのコールドダウンがアクティブです。"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_npc_combat_power",
+    "ch": "NPC战斗力:",
+    "tc": "NPC戰鬥力:",
+    "en": "NPC Combat Power:",
+    "kr": "NPC 전투력:",
+    "ja": "NPC戦闘力:"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_vs",
+    "ch": "对比",
+    "tc": "對比",
+    "en": "vs",
+    "kr": "vs",
+    "ja": "vs"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_player_combat_power",
+    "ch": "你的战斗力:",
+    "tc": "你的戰鬥力:",
+    "en": "Your Combat Power:",
+    "kr": "당신의 전투력:",
+    "ja": "あなたの戦闘力:"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_npc_location",
+    "ch": "NPC当前位置: ",
+    "tc": "NPC當前位置: ",
+    "en": "NPC Current Location: ",
+    "kr": "NPC 현재 위치: ",
+    "ja": "NPC現在地: "
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_hits_received",
+    "ch": "受到攻击次数",
+    "tc": "受到攻擊次數",
+    "en": "Hits Received",
+    "kr": "받은 타격 수",
+    "ja": "被弾数"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_damage_taken",
+    "ch": "受到伤害",
+    "tc": "受到傷害",
+    "en": "Damage Taken",
+    "kr": "받은 피해",
+    "ja": "被ダメージ"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_damage_dealt",
+    "ch": "造成伤害",
+    "tc": "造成傷害",
+    "en": "Damage Dealt",
+    "kr": "가한 피해",
+    "ja": "与ダメージ"
+  },
+  {
+    "id": "",
+    "key": "panel_exploitmore_battle_duration",
+    "ch": "战斗时长",
+    "tc": "戰鬥時長",
+    "en": "Battle Duration",
+    "kr": "전투 시간",
+    "ja": "戦闘時間"
+  },
+  // OtherPanel.cs (Other Panel)
+  {
+    "id": "",
+    "key": "panel_other_title",
+    "ch": "其他",
+    "tc": "其他",
+    "en": "Other",
+    "kr": "기타",
+    "ja": "その他"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_more_panel",
+    "ch": "更多其他面板",
+    "tc": "更多其他面板",
+    "en": "More Other Panel",
+    "kr": "더 많은 기타 패널",
+    "ja": "その他のパネル"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_force_refresh_stores",
+    "ch": "强制刷新商店",
+    "tc": "強制刷新商店",
+    "en": "Force Refresh Stores",
+    "kr": "상점 강제 새로고침",
+    "ja": "ストア強制更新"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_free_workshop_combine",
+    "ch": "免费工坊合成",
+    "tc": "免費工坊合成",
+    "en": "Free Workshop Combine",
+    "kr": "무료 작업장 조합",
+    "ja": "無料ワークショップ合成"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_free_fruit_combine",
+    "ch": "免费果实合成",
+    "tc": "免費果實合成",
+    "en": "Free Fruit Combine",
+    "kr": "무료 과일 조합",
+    "ja": "無料フルーツ合成"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_force_rest",
+    "ch": "强制休息/恢复",
+    "tc": "強制休息/恢復",
+    "en": "Force Rest/Recuperate",
+    "kr": "강제 휴식/회복",
+    "ja": "強制休息/回復"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_begin_auction",
+    "ch": "2个月后开始拍卖",
+    "tc": "2個月後開始拍賣",
+    "en": "Begin Auction in 2 Months",
+    "kr": "2개월 후 경매 시작",
+    "ja": "2ヶ月後にオークション開始"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_reset_auction",
+    "ch": "重置开始拍卖",
+    "tc": "重置開始拍賣",
+    "en": "Reset Begin Auction",
+    "kr": "경매 시작 재설정",
+    "ja": "オークション開始リセット"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_teleport_destination",
+    "ch": "传送到目的地",
+    "tc": "傳送到目的地",
+    "en": "Teleport to Destination",
+    "kr": "목적지로 순간이동",
+    "ja": "目的地にテレポート"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_force_open_storage",
+    "ch": "强制打开储存",
+    "tc": "強制打開儲存",
+    "en": "Force Open Storage",
+    "kr": "저장소 강제 열기",
+    "ja": "ストレージ強制オープン"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_force_open_portal",
+    "ch": "强制打开传送门",
+    "tc": "強制打開傳送門",
+    "en": "Force Open Portal",
+    "kr": "포털 강제 열기",
+    "ja": "ポータル強制オープン"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_clear_inventory",
+    "ch": "清空背包物品",
+    "tc": "清空背包物品",
+    "en": "Clear Inventory Items",
+    "kr": "인벤토리 아이템 지우기",
+    "ja": "インベントリアイテムクリア"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_clear_storage",
+    "ch": "清空储存物品",
+    "tc": "清空儲存物品",
+    "en": "Clear Storage Items",
+    "kr": "저장소 아이템 지우기",
+    "ja": "ストレージアイテムクリア"
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_force_access_sect",
+    "ch": "强制进入宗门",
+    "tc": "強制進入宗門",
+    "en": "Force Access Sect",
+    "kr": "종파 강제 접근",
+    "ja": "宗門強制アクセス"
+  },
+  {
+    "id": "",
+    "key": "panel_other_dropdown_select_branch",
+    "ch": "选择分支名称",
+    "tc": "選擇分支名稱",
+    "en": "Select Branch Name",
+    "kr": "지부 이름 선택",
+    "ja": "ブランチ名を選択"
+  },
+  {
+    "id": "",
+    "key": "panel_other_dropdown_select_building",
+    "ch": "选择建筑子类型",
+    "tc": "選擇建築子類型",
+    "en": "Select Build SubType",
+    "kr": "건물 하위 유형 선택",
+    "ja": "建物サブタイプを選択"
+  },
+  {
+    "id": "",
+    "key": "panel_other_dropdown_select_sect_first",
+    "ch": "请先选择宗门分支",
+    "tc": "請先選擇宗門分支",
+    "en": "Select a Sect Branch first",
+    "kr": "먼저 종파 지부를 선택하세요",
+    "ja": "最初に宗門支部を選択してください"
+  },
+  {
+    "id": "",
+    "key": "panel_other_label_sect_name",
+    "ch": "宗门名称",
+    "tc": "宗門名稱",
+    "en": "Sect Name",
+    "kr": "종파 이름",
+    "ja": "宗門名"
+  },
+  {
+    "id": "",
+    "key": "panel_other_label_select_sect_branch",
+    "ch": "选择宗门分支。",
+    "tc": "選擇宗門分支。",
+    "en": "Select a Sect Branch.",
+    "kr": "종파 지부를 선택하세요.",
+    "ja": "宗門支部を選択してください。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_label_current_sect",
+    "ch": "当前: ",
+    "tc": "當前: ",
+    "en": "Current: ",
+    "kr": "현재: ",
+    "ja": "現在: "
+  },
+  {
+    "id": "",
+    "key": "panel_other_button_enter_building",
+    "ch": "进入建筑",
+    "tc": "進入建築",
+    "en": "Enter Building",
+    "kr": "건물 입장",
+    "ja": "建物に入る"
+  },
+  {
+    "id": "",
+    "key": "panel_other_popup_begin_auction_title",
+    "ch": "2个月后开始拍卖",
+    "tc": "2個月後開始拍賣",
+    "en": "Begin Auction in 2 Months",
+    "kr": "2개월 후 경매 시작",
+    "ja": "2ヶ月後にオークション開始"
+  },
+  {
+    "id": "",
+    "key": "panel_other_popup_reset_auction_title",
+    "ch": "重置开始拍卖",
+    "tc": "重置開始拍賣",
+    "en": "Reset Begin Auction",
+    "kr": "경매 시작 재설정",
+    "ja": "オークション開始リセット"
+  },
+  {
+    "id": "",
+    "key": "panel_other_popup_clear_inventory_title",
+    "ch": "清空背包物品",
+    "tc": "清空背包物品",
+    "en": "Clear Inventory Items",
+    "kr": "인벤토리 아이템 지우기",
+    "ja": "インベントリアイテムクリア"
+  },
+  {
+    "id": "",
+    "key": "panel_other_popup_clear_storage_title",
+    "ch": "清空储存物品",
+    "tc": "清空儲存物品",
+    "en": "Clear Storage Items",
+    "kr": "저장소 아이템 지우기",
+    "ja": "ストレージアイテムクリア"
+  },
+  {
+    "id": "",
+    "key": "panel_other_popup_confirm_message",
+    "ch": "你确定吗？",
+    "tc": "你確定嗎？",
+    "en": "Are you sure?",
+    "kr": "확실합니까?",
+    "ja": "本当によろしいですか？"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_auction_cancelled",
+    "ch": "2个月后开始拍卖操作已取消。",
+    "tc": "2個月後開始拍賣操作已取消。",
+    "en": "Begin Auction in 2 Months operation cancelled.",
+    "kr": "2개월 후 경매 시작 작업이 취소되었습니다.",
+    "ja": "2ヶ月後にオークション開始操作がキャンセルされました。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_reset_auction_cancelled",
+    "ch": "重置开始拍卖操作已取消。",
+    "tc": "重置開始拍賣操作已取消。",
+    "en": "Reset Begin Auction operation cancelled.",
+    "kr": "경매 시작 재설정 작업이 취소되었습니다.",
+    "ja": "オークション開始リセット操作がキャンセルされました。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_inventory_cleared",
+    "ch": "玩家背包物品已清空。",
+    "tc": "玩家背包物品已清空。",
+    "en": "Player inventory items cleared.",
+    "kr": "플레이어 인벤토리 아이템이 지워졌습니다.",
+    "ja": "プレイヤーのインベントリアイテムがクリアされました。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_inventory_data_null",
+    "ch": "玩家单位背包物品数据返回NULL！",
+    "tc": "玩家單位背包物品數據返回NULL！",
+    "en": "Player Unit Inventory Item Data returned NULL!",
+    "kr": "플레이어 유닛 인벤토리 아이템 데이터가 NULL을 반환했습니다!",
+    "ja": "プレイヤーユニットインベントリアイテムデータがNULLを返しました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_clear_inventory_cancelled",
+    "ch": "清空背包物品操作已取消。",
+    "tc": "清空背包物品操作已取消。",
+    "en": "Clear Inventory Items operation cancelled.",
+    "kr": "인벤토리 아이템 지우기 작업이 취소되었습니다.",
+    "ja": "インベントリアイテムクリア操作がキャンセルされました。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_storage_cleared",
+    "ch": "玩家储存物品已清空。",
+    "tc": "玩家儲存物品已清空。",
+    "en": "Player storage items cleared.",
+    "kr": "플레이어 저장소 아이템이 지워졌습니다.",
+    "ja": "プレイヤーのストレージアイテムがクリアされました。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_storage_data_null",
+    "ch": "玩家单位储存物品数据返回NULL！",
+    "tc": "玩家單位儲存物品數據返回NULL！",
+    "en": "Player Unit Storage Item Data returned NULL!",
+    "kr": "플레이어 유닛 저장소 아이템 데이터가 NULL을 반환했습니다!",
+    "ja": "プレイヤーユニットストレージアイテムデータがNULLを返しました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_clear_storage_cancelled",
+    "ch": "清空储存物品操作已取消。",
+    "tc": "清空儲存物品操作已取消。",
+    "en": "Clear Storage Items operation cancelled.",
+    "kr": "저장소 아이템 지우기 작업이 취소되었습니다.",
+    "ja": "ストレージアイテムクリア操作がキャンセルされました。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_force_access_sect_success",
+    "ch": "强制进入宗门初始化成功！",
+    "tc": "強制進入宗門初始化成功！",
+    "en": "Force Access Sect Init Success!",
+    "kr": "종파 강제 접근 초기화 성공!",
+    "ja": "宗門強制アクセス初期化成功！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_ui_expanded",
+    "ch": "界面已扩展。",
+    "tc": "界面已擴展。",
+    "en": "UI Expanded.",
+    "kr": "UI가 확장되었습니다.",
+    "ja": "UIが拡張されました。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_dropdown_creation_failed",
+    "ch": "创建强制进入宗门下拉菜单失败...",
+    "tc": "創建強制進入宗門下拉菜單失敗...",
+    "en": "Creating Dropdown for Force Access Sect Failed...",
+    "kr": "종파 강제 접근 드롭다운 생성 실패...",
+    "ja": "宗門強制アクセス用ドロップダウンの作成に失敗しました..."
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_updating_branch_name",
+    "ch": "更新分支名称: {0}",
+    "tc": "更新分支名稱: {0}",
+    "en": "Updating Branch Name: {0}",
+    "kr": "지부 이름 업데이트: {0}",
+    "ja": "ブランチ名を更新中: {0}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_current_sect_updated",
+    "ch": "当前宗门已更新。",
+    "tc": "當前宗門已更新。",
+    "en": "Current Sect Updated.",
+    "kr": "현재 종파가 업데이트되었습니다.",
+    "ja": "現在の宗門が更新されました。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_school_null",
+    "ch": "学校返回NULL！",
+    "tc": "學校返回NULL！",
+    "en": "School returned NULL!",
+    "kr": "학교가 NULL을 반환했습니다!",
+    "ja": "学校がNULLを返しました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_selected_building",
+    "ch": "选择的建筑: {0}",
+    "tc": "選擇的建築: {0}",
+    "en": "Selected Building: {0}",
+    "kr": "선택된 건물: {0}",
+    "ja": "選択された建物: {0}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_sect_not_visible",
+    "ch": "宗门不可见！请确保你在宗门内！",
+    "tc": "宗門不可見！請確保你在宗門內！",
+    "en": "Sect is not visible! Please make sure you're inside the Sect!",
+    "kr": "종파가 보이지 않습니다! 종파 안에 있는지 확인하세요!",
+    "ja": "宗門が見えません！宗門の中にいることを確認してください！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_player_not_inside_sect",
+    "ch": "玩家不在选定的宗门内，因此玩家被强制进入选定的宗门。",
+    "tc": "玩家不在選定的宗門內，因此玩家被強制進入選定的宗門。",
+    "en": "The player was not inside the selected sect, so the player was forced to enter the selected sect.",
+    "kr": "플레이어가 선택된 종파 안에 있지 않아서 선택된 종파로 강제 입장시켰습니다.",
+    "ja": "プレイヤーが選択された宗門の中にいなかったため、選択された宗門に強制的に入場させました。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_player_different_sect",
+    "ch": "玩家在不同的宗门内，因此玩家被强制进入选定的宗门。",
+    "tc": "玩家在不同的宗門內，因此玩家被強制進入選定的宗門。",
+    "en": "The player was inside a different sect, so the player was forced to enter the selected sect.",
+    "kr": "플레이어가 다른 종파 안에 있어서 선택된 종파로 강제 입장시켰습니다.",
+    "ja": "プレイヤーが異なる宗門の中にいたため、選択された宗門に強制的に入場させました。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_force_entered_building",
+    "ch": "强制进入建筑: {0}",
+    "tc": "強制進入建築: {0}",
+    "en": "Force Entered Building: {0}",
+    "kr": "건물 강제 입장: {0}",
+    "ja": "建物に強制入場: {0}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_entering_building_failed",
+    "ch": "进入建筑失败...",
+    "tc": "進入建築失敗...",
+    "en": "Entering Building Failed...",
+    "kr": "건물 입장 실패...",
+    "ja": "建物入場失敗..."
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_refreshing_current_store",
+    "ch": "正在刷新当前商店...",
+    "tc": "正在刷新當前商店...",
+    "en": "Refreshing Current Store...",
+    "kr": "현재 상점을 새로고침하는 중...",
+    "ja": "現在のストアを更新中..."
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_not_in_store",
+    "ch": "看起来你现在不在任何商店里！",
+    "tc": "看起來你現在不在任何商店裡！",
+    "en": "It seems you're not in any store right now!",
+    "kr": "지금 어떤 상점에도 있지 않은 것 같습니다!",
+    "ja": "現在どのストアにもいないようです！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_town_market_refreshed",
+    "ch": "城镇市场已刷新！",
+    "tc": "城鎮市場已刷新！",
+    "en": "Town Market Refreshed!",
+    "kr": "마을 시장이 새로고침되었습니다!",
+    "ja": "町の市場が更新されました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_manual_pavilion_refreshed",
+    "ch": "城镇手册馆已刷新！",
+    "tc": "城鎮手冊館已刷新！",
+    "en": "Town Manual Pavilion Refreshed!",
+    "kr": "마을 매뉴얼 파빌리온이 새로고침되었습니다!",
+    "ja": "町のマニュアルパビリオンが更新されました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_wardrobe_closing",
+    "ch": "自动关闭仙人衣柜。",
+    "tc": "自動關閉仙人衣櫃。",
+    "en": "Auto-Closing Immortal Wardrobe.",
+    "kr": "불멸의 옷장을 자동으로 닫는 중.",
+    "ja": "仙人ワードローブを自動で閉じています。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_wardrobe_refreshed",
+    "ch": "城镇仙人衣柜已刷新！",
+    "tc": "城鎮仙人衣櫃已刷新！",
+    "en": "Town Immortal Wardrobe Refreshed!",
+    "kr": "마을 불멸의 옷장이 새로고침되었습니다!",
+    "ja": "町の仙人ワードローブが更新されました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_open_wardrobe_changes",
+    "ch": "打开仙人衣柜查看变化。",
+    "tc": "打開仙人衣櫃查看變化。",
+    "en": "Open the Immortal Wardrobe to see the changes.",
+    "kr": "변경사항을 보려면 불멸의 옷장을 여세요.",
+    "ja": "変更を確認するには仙人ワードローブを開いてください。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_sect_library_refreshed",
+    "ch": "宗门手册图书馆已刷新！",
+    "tc": "宗門手冊圖書館已刷新！",
+    "en": "Sect Manual Library Refreshed!",
+    "kr": "종파 매뉴얼 도서관이 새로고침되었습니다!",
+    "ja": "宗門マニュアルライブラリが更新されました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_arena_manuals_refreshed",
+    "ch": "竞技场手册已刷新！",
+    "tc": "競技場手冊已刷新！",
+    "en": "Arena Manuals Refreshed!",
+    "kr": "아레나 매뉴얼이 새로고침되었습니다!",
+    "ja": "アリーナマニュアルが更新されました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_treasure_pavilion_refreshed",
+    "ch": "宗门珍宝阁已刷新！",
+    "tc": "宗門珍寶閣已刷新！",
+    "en": "Sect Treasure Pavilion Refreshed!",
+    "kr": "종파 보물관이 새로고침되었습니다!",
+    "ja": "宗門宝物館が更新されました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_store_update_error",
+    "ch": "尝试更新商店时发生错误: {0}:{1}",
+    "tc": "嘗試更新商店時發生錯誤: {0}:{1}",
+    "en": "An error occurred while trying to update stores: {0}:{1}",
+    "kr": "상점을 업데이트하는 중 오류가 발생했습니다: {0}:{1}",
+    "ja": "ストアの更新中にエラーが発生しました: {0}:{1}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_combine_success",
+    "ch": "----- ----- 合成成功！ ----- -----",
+    "tc": "----- ----- 合成成功！ ----- -----",
+    "en": "----- ----- Combine Success! ----- -----",
+    "kr": "----- ----- 조합 성공! ----- -----",
+    "ja": "----- ----- 合成成功！ ----- -----"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_combine_not_visible",
+    "ch": "合成不可见！请确保你在合成内！",
+    "tc": "合成不可見！請確保你在合成內！",
+    "en": "Combine is not visible! Please make sure you're inside the Combine!",
+    "kr": "조합이 보이지 않습니다! 조합 안에 있는지 확인하세요!",
+    "ja": "合成が見えません！合成の中にいることを確認してください！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_combine_error",
+    "ch": "尝试合成时发生错误: {0}:{1}",
+    "tc": "嘗試合成時發生錯誤: {0}:{1}",
+    "en": "An error occurred while trying to Combine: {0}:{1}",
+    "kr": "조합을 시도하는 중 오류가 발생했습니다: {0}:{1}",
+    "ja": "合成を試行中にエラーが発生しました: {0}:{1}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_fruit_tips",
+    "ch": "----- ----- 提示 ----- -----",
+    "tc": "----- ----- 提示 ----- -----",
+    "en": "----- ----- Tips ----- -----",
+    "kr": "----- ----- 팁 ----- -----",
+    "ja": "----- ----- ヒント ----- -----"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_select_another_fruit",
+    "ch": "再次选择另一个果实来看魔法 ;)",
+    "tc": "再次選擇另一個果實來看魔法 ;)",
+    "en": "Select another fruit again to see a magic ;)",
+    "kr": "마법을 보려면 다른 과일을 다시 선택하세요 ;)",
+    "ja": "魔法を見るために別のフルーツをもう一度選択してください ;)"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_fruit_created",
+    "ch": "----- ----- 果实已创建！ ----- -----",
+    "tc": "----- ----- 果實已創建！ ----- -----",
+    "en": "----- ----- Fruit Created! ----- -----",
+    "kr": "----- ----- 과일 생성됨! ----- -----",
+    "ja": "----- ----- フルーツ作成完了！ ----- -----"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_main_prop_empty",
+    "ch": "主要道具为空。请选择一个果实。",
+    "tc": "主要道具為空。請選擇一個果實。",
+    "en": "Main Prop is empty. Please select a Fruit.",
+    "kr": "주요 아이템이 비어있습니다. 과일을 선택하세요.",
+    "ja": "メインプロップが空です。フルーツを選択してください。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_spirit_not_visible",
+    "ch": "精神不可见！请确保你在精神内！",
+    "tc": "精神不可見！請確保你在精神內！",
+    "en": "Spirit is not visible! Please make sure you're inside the Spirit!",
+    "kr": "정신이 보이지 않습니다! 정신 안에 있는지 확인하세요!",
+    "ja": "スピリットが見えません！スピリットの中にいることを確認してください！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_fruit_error",
+    "ch": "尝试创建果实时发生错误: {0}:{1}",
+    "tc": "嘗試創建果實時發生錯誤: {0}:{1}",
+    "en": "An error occurred while trying to create a fruits: {0}:{1}",
+    "kr": "과일을 생성하는 중 오류가 발생했습니다: {0}:{1}",
+    "ja": "フルーツの作成中にエラーが発生しました: {0}:{1}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_player_resting",
+    "ch": "玩家单位正在休息...",
+    "tc": "玩家單位正在休息...",
+    "en": "Player unit is taking a rest...",
+    "kr": "플레이어 유닛이 휴식을 취하고 있습니다...",
+    "ja": "プレイヤーユニットが休息中です..."
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_player_finished_resting",
+    "ch": "玩家单位已完成休息...",
+    "tc": "玩家單位已完成休息...",
+    "en": "Player unit has finished resting...",
+    "kr": "플레이어 유닛이 휴식을 완료했습니다...",
+    "ja": "プレイヤーユニットが休息を完了しました..."
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_open_stats_ui",
+    "ch": "打开状态界面以更新玩家信息或按ESC...",
+    "tc": "打開狀態界面以更新玩家信息或按ESC...",
+    "en": "Open Stats UI in order to update player info or Press ESC...",
+    "kr": "플레이어 정보를 업데이트하려면 스탯 UI를 열거나 ESC를 누르세요...",
+    "ja": "プレイヤー情報を更新するためにステータスUIを開くかESCを押してください..."
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_player_stat_null",
+    "ch": "玩家{0}返回NULL！",
+    "tc": "玩家{0}返回NULL！",
+    "en": "Player {0} returned NULL!",
+    "kr": "플레이어 {0}이 NULL을 반환했습니다!",
+    "ja": "プレイヤー{0}がNULLを返しました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_teleported_to_destination",
+    "ch": "已传送到目标目的地 {0}",
+    "tc": "已傳送到目標目的地 {0}",
+    "en": "Teleported to the Target Destination {0}",
+    "kr": "대상 목적지 {0}로 순간이동했습니다",
+    "ja": "目標目的地{0}にテレポートしました"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_select_target_location",
+    "ch": "选定的目标位置为空。请在地图上选择你的目标位置。",
+    "tc": "選定的目標位置為空。請在地圖上選擇你的目標位置。",
+    "en": "Selected Target Location is empty. Please select your target location on the Map.",
+    "kr": "선택된 대상 위치가 비어있습니다. 맵에서 대상 위치를 선택하세요.",
+    "ja": "選択された目標位置が空です。マップで目標位置を選択してください。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_scene_map_empty",
+    "ch": "场景地图为空。",
+    "tc": "場景地圖為空。",
+    "en": "Scene Map is empty.",
+    "kr": "씬 맵이 비어있습니다.",
+    "ja": "シーンマップが空です。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_teleport_error",
+    "ch": "尝试传送时发生错误: {0}:{1}",
+    "tc": "嘗試傳送時發生錯誤: {0}:{1}",
+    "en": "An error occurred while trying to teleport: {0}:{1}",
+    "kr": "순간이동을 시도하는 중 오류가 발생했습니다: {0}:{1}",
+    "ja": "テレポートを試行中にエラーが発生しました: {0}:{1}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_auction_start_modified",
+    "ch": "拍卖开始已修改！",
+    "tc": "拍賣開始已修改！",
+    "en": "Auction Start Modified!",
+    "kr": "경매 시작이 수정되었습니다!",
+    "ja": "オークション開始が変更されました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_auction_house_not_visible",
+    "ch": "拍卖行不可见！请确保你在拍卖行内！",
+    "tc": "拍賣行不可見！請確保你在拍賣行內！",
+    "en": "Auction House is not visible! Please make sure you're inside the Auction House!",
+    "kr": "경매장이 보이지 않습니다! 경매장 안에 있는지 확인하세요!",
+    "ja": "オークションハウスが見えません！オークションハウスの中にいることを確認してください！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_force_begin_auction_error",
+    "ch": "尝试强制开始拍卖时发生错误: {0}:{1}",
+    "tc": "嘗試強制開始拍賣時發生錯誤: {0}:{1}",
+    "en": "An error occurred while trying to Force Begin Auction: {0}:{1}",
+    "kr": "강제 경매 시작을 시도하는 중 오류가 발생했습니다: {0}:{1}",
+    "ja": "強制オークション開始を試行中にエラーが発生しました: {0}:{1}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_auction_start_restored",
+    "ch": "拍卖开始已恢复！",
+    "tc": "拍賣開始已恢復！",
+    "en": "Auction Start Restored!",
+    "kr": "경매 시작이 복원되었습니다!",
+    "ja": "オークション開始が復元されました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_reset_begin_auction_error",
+    "ch": "尝试重置开始拍卖时发生错误: {0}:{1}",
+    "tc": "嘗試重置開始拍賣時發生錯誤: {0}:{1}",
+    "en": "An error occurred while trying to Reset Begin Auction: {0}:{1}",
+    "kr": "경매 시작 재설정을 시도하는 중 오류가 발생했습니다: {0}:{1}",
+    "ja": "オークション開始のリセットを試行中にエラーが発生しました: {0}:{1}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_store_update_error_message",
+    "ch": "尝试更新商店时发生错误: {0}:{1}",
+    "tc": "嘗試更新商店時發生錯誤: {0}:{1}",
+    "en": "An error occurred while trying to update stores: {0}:{1}",
+    "kr": "상점을 업데이트하는 중 오류가 발생했습니다: {0}:{1}",
+    "ja": "ストアの更新中にエラーが発生しました: {0}:{1}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_combine_error_message",
+    "ch": "尝试合成时发生错误: {0}:{1}",
+    "tc": "嘗試合成時發生錯誤: {0}:{1}",
+    "en": "An error occurred while trying to Combine: {0}:{1}",
+    "kr": "조합을 시도하는 중 오류가 발생했습니다: {0}:{1}",
+    "ja": "合成を試行中にエラーが発生しました: {0}:{1}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_fruit_error_message",
+    "ch": "尝试创建果实时发生错误: {0}:{1}",
+    "tc": "嘗試創建果實時發生錯誤: {0}:{1}",
+    "en": "An error occurred while trying to create a fruits: {0}:{1}",
+    "kr": "과일을 생성하는 중 오류가 발생했습니다: {0}:{1}",
+    "ja": "フルーツの作成中にエラーが発生しました: {0}:{1}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_player_resting_message",
+    "ch": "玩家单位正在休息...",
+    "tc": "玩家單位正在休息...",
+    "en": "Player unit is taking a rest...",
+    "kr": "플레이어 유닛이 휴식을 취하고 있습니다...",
+    "ja": "プレイヤーユニットが休息中です..."
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_player_finished_resting_message",
+    "ch": "玩家单位已完成休息...",
+    "tc": "玩家單位已完成休息...",
+    "en": "Player unit has finished resting...",
+    "kr": "플레이어 유닛이 휴식을 완료했습니다...",
+    "ja": "プレイヤーユニットが休息を完了しました..."
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_open_stats_ui_message",
+    "ch": "打开状态界面以更新玩家信息或按ESC...",
+    "tc": "打開狀態界面以更新玩家信息或按ESC...",
+    "en": "Open Stats UI in order to update player info or Press ESC...",
+    "kr": "플레이어 정보를 업데이트하려면 스탯 UI를 열거나 ESC를 누르세요...",
+    "ja": "プレイヤー情報を更新するためにステータスUIを開くかESCを押してください..."
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_teleported_to_destination_message",
+    "ch": "已传送到目标目的地 {0}",
+    "tc": "已傳送到目標目的地 {0}",
+    "en": "Teleported to the Target Destination {0}",
+    "kr": "대상 목적지 {0}로 순간이동했습니다",
+    "ja": "目標目的地{0}にテレポートしました"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_select_target_location_message",
+    "ch": "选定的目标位置为空。请在地图上选择你的目标位置。",
+    "tc": "選定的目標位置為空。請在地圖上選擇你的目標位置。",
+    "en": "Selected Target Location is empty. Please select your target location on the Map.",
+    "kr": "선택된 대상 위치가 비어있습니다. 맵에서 대상 위치를 선택하세요.",
+    "ja": "選択された目標位置が空です。マップで目標位置を選択してください。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_scene_map_empty_message",
+    "ch": "场景地图为空。",
+    "tc": "場景地圖為空。",
+    "en": "Scene Map is empty.",
+    "kr": "씬 맵이 비어있습니다.",
+    "ja": "シーンマップが空です。"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_teleport_error_message",
+    "ch": "尝试传送时发生错误: {0}:{1}",
+    "tc": "嘗試傳送時發生錯誤: {0}:{1}",
+    "en": "An error occurred while trying to teleport: {0}:{1}",
+    "kr": "순간이동을 시도하는 중 오류가 발생했습니다: {0}:{1}",
+    "ja": "テレポートを試行中にエラーが発生しました: {0}:{1}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_auction_start_modified_message",
+    "ch": "拍卖开始已修改！",
+    "tc": "拍賣開始已修改！",
+    "en": "Auction Start Modified!",
+    "kr": "경매 시작이 수정되었습니다!",
+    "ja": "オークション開始が変更されました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_auction_house_not_visible_message",
+    "ch": "拍卖行不可见！请确保你在拍卖行内！",
+    "tc": "拍賣行不可見！請確保你在拍賣行內！",
+    "en": "Auction House is not visible! Please make sure you're inside the Auction House!",
+    "kr": "경매장이 보이지 않습니다! 경매장 안에 있는지 확인하세요!",
+    "ja": "オークションハウスが見えません！オークションハウスの中にいることを確認してください！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_force_begin_auction_error_message",
+    "ch": "尝试强制开始拍卖时发生错误: {0}:{1}",
+    "tc": "嘗試強制開始拍賣時發生錯誤: {0}:{1}",
+    "en": "An error occurred while trying to Force Begin Auction: {0}:{1}",
+    "kr": "강제 경매 시작을 시도하는 중 오류가 발생했습니다: {0}:{1}",
+    "ja": "強制オークション開始を試行中にエラーが発生しました: {0}:{1}"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_auction_start_restored_message",
+    "ch": "拍卖开始已恢复！",
+    "tc": "拍賣開始已恢復！",
+    "en": "Auction Start Restored!",
+    "kr": "경매 시작이 복원되었습니다!",
+    "ja": "オークション開始が復元されました！"
+  },
+  {
+    "id": "",
+    "key": "panel_other_status_reset_begin_auction_error_message",
+    "ch": "尝试重置开始拍卖时发生错误: {0}:{1}",
+    "tc": "嘗試重置開始拍賣時發生錯誤: {0}:{1}",
+    "en": "An error occurred while trying to Reset Begin Auction: {0}:{1}",
+    "kr": "경매 시작 재설정을 시도하는 중 오류가 발생했습니다: {0}:{1}",
+    "ja": "オークション開始のリセットを試行中にエラーが発生しました: {0}:{1}"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_more_panel",
+    "ch": "附加面板。此面板的扩展视图。",
+    "tc": "附加面板。此面板的擴展視圖。",
+    "en": "Additional Panel. Extended view of this panel.",
+    "kr": "추가 패널. 이 패널의 확장 보기.",
+    "ja": "追加パネル。このパネルの拡張ビュー。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_force_refresh_stores",
+    "ch": "刷新/重新进货城镇和宗门城镇商店的物品（按按钮前必须在选定的'商店'内）。[快捷键: Ctrl+1 - 如果你在战斗中请不要使用此功能。]",
+    "tc": "刷新/重新進貨城鎮和宗門城鎮商店的物品（按按鈕前必須在選定的'商店'內）。[快捷鍵: Ctrl+1 - 如果你在戰鬥中請不要使用此功能。]",
+    "en": "Refresh/Re-Stock Items in the Stores of Town and Sect Town (Must be inside the chosen 'Store' before pressing the button). [Shortcut Key: Ctrl+1 - Do not use this if you're in combat.]",
+    "kr": "마을과 종파 마을 상점의 아이템을 새로고침/재입고합니다 (버튼을 누르기 전에 선택한 '상점' 안에 있어야 합니다). [단축키: Ctrl+1 - 전투 중에는 사용하지 마세요.]",
+    "ja": "町と宗門町のストアのアイテムを更新/再入荷します（ボタンを押す前に選択した「ストア」の中にいる必要があります）。[ショートカットキー: Ctrl+1 - 戦闘中は使用しないでください。]"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_free_workshop_combine",
+    "ch": "按按钮前确保你在工坊'合成'内。",
+    "tc": "按按鈕前確保你在工坊'合成'內。",
+    "en": "Make sure you're inside the Workshop 'Combine' before pressing the button.",
+    "kr": "버튼을 누르기 전에 작업장 '조합' 안에 있는지 확인하세요.",
+    "ja": "ボタンを押す前にワークショップの「合成」の中にいることを確認してください。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_free_fruit_combine",
+    "ch": "按按钮前确保你在宗门龙'精神'内。",
+    "tc": "按按鈕前確保你在宗門龍'精神'內。",
+    "en": "Make sure you're inside the Sect Dragon 'Spirit' before pressing the button.",
+    "kr": "버튼을 누르기 전에 종파 드래곤 '정신' 안에 있는지 확인하세요.",
+    "ja": "ボタンを押す前に宗門ドラゴンの「スピリット」の中にいることを確認してください。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_force_rest",
+    "ch": "安心休息。[快捷键: Ctrl+2 - 如果你在战斗中请不要使用此功能。]",
+    "tc": "安心休息。[快捷鍵: Ctrl+2 - 如果你在戰鬥中請不要使用此功能。]",
+    "en": "Rest without worry. [Shortcut Key: Ctrl+2 - Do not use this if you're in combat.]",
+    "kr": "걱정 없이 휴식하세요. [단축키: Ctrl+2 - 전투 중에는 사용하지 마세요.]",
+    "ja": "心配なく休息してください。[ショートカットキー: Ctrl+2 - 戦闘中は使用しないでください。]"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_begin_auction",
+    "ch": "按按钮前确保你在'拍卖'内。",
+    "tc": "按按鈕前確保你在'拍賣'內。",
+    "en": "Make sure you're inside the 'Auction' before pressing the button.",
+    "kr": "버튼을 누르기 전에 '경매' 안에 있는지 확인하세요.",
+    "ja": "ボタンを押す前に「オークション」の中にいることを確認してください。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_reset_auction",
+    "ch": "按按钮前确保你在'拍卖'内。",
+    "tc": "按按鈕前確保你在'拍賣'內。",
+    "en": "Make sure you're inside the 'Auction' before pressing the button.",
+    "kr": "버튼을 누르기 전에 '경매' 안에 있는지 확인하세요.",
+    "ja": "ボタンを押す前に「オークション」の中にいることを確認してください。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_teleport_destination",
+    "ch": "选择你想去的目的地点，然后简单地按按钮。[快捷键: Ctrl+3 - 如果你在战斗中请不要使用此功能。]",
+    "tc": "選擇你想去的目的地點，然後簡單地按按鈕。[快捷鍵: Ctrl+3 - 如果你在戰鬥中請不要使用此功能。]",
+    "en": "Select a point destination to where you want to go, then simply press the button. [Shortcut Key: Ctrl+3 - Do not use this if you're in combat.]",
+    "kr": "가고 싶은 목적지 지점을 선택한 다음 버튼을 누르기만 하면 됩니다. [단축키: Ctrl+3 - 전투 중에는 사용하지 마세요.]",
+    "ja": "行きたい目的地のポイントを選択してから、単純にボタンを押してください。[ショートカットキー: Ctrl+3 - 戦闘中は使用しないでください。]"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_force_open_storage",
+    "ch": "当玩家在地图外时强制打开储存。",
+    "tc": "當玩家在地圖外時強制打開儲存。",
+    "en": "Forcibly opens storage when the player is outside the map.",
+    "kr": "플레이어가 맵 밖에 있을 때 저장소를 강제로 엽니다.",
+    "ja": "プレイヤーがマップの外にいるときにストレージを強制的に開きます。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_force_open_portal",
+    "ch": "当玩家在地图外时强制打开传送门。",
+    "tc": "當玩家在地圖外時強制打開傳送門。",
+    "en": "Forcibly opens a portal when the player is outside the map.",
+    "kr": "플레이어가 맵 밖에 있을 때 포털을 강제로 엽니다.",
+    "ja": "プレイヤーがマップの外にいるときにポータルを強制的に開きます。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_clear_inventory",
+    "ch": "[警告] 此操作将清空你背包中的所有物品（不包括装备的物品）。为避免丢失重要物品，请确保在继续之前将它们安全地存储在你的树库储存中。",
+    "tc": "[警告] 此操作將清空你背包中的所有物品（不包括裝備的物品）。為避免丟失重要物品，請確保在繼續之前將它們安全地存儲在你的樹庫儲存中。",
+    "en": "[WARNING] This action will clear all items in your inventory (excluding equipped items). To avoid losing important items, ensure they are safely stored in your tree vault storage before proceeding.",
+    "kr": "[경고] 이 작업은 인벤토리의 모든 아이템을 지웁니다 (장착된 아이템 제외). 중요한 아이템을 잃지 않으려면 계속하기 전에 트리 볼트 저장소에 안전하게 보관하세요.",
+    "ja": "[警告] この操作はインベントリ内のすべてのアイテムをクリアします（装備されたアイテムを除く）。重要なアイテムを失わないよう、続行する前にツリーボルトストレージに安全に保管してください。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_clear_storage",
+    "ch": "[警告] 此操作将清空树库中存储的所有物品。确保事先备份或重新放置重要物品以避免丢失它们。",
+    "tc": "[警告] 此操作將清空樹庫中存儲的所有物品。確保事先備份或重新放置重要物品以避免丟失它們。",
+    "en": "[WARNING] This action will clear all items stored in the tree vault. Ensure you have backed up or relocated important items beforehand to avoid losing them.",
+    "kr": "[경고] 이 작업은 트리 볼트에 저장된 모든 아이템을 지웁니다. 중요한 아이템을 잃지 않도록 미리 백업하거나 다른 곳으로 옮겨두세요.",
+    "ja": "[警告] この操作はツリーボルトに保存されたすべてのアイテムをクリアします。重要なアイテムを失わないよう、事前にバックアップまたは移動させてください。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_force_access_sect",
+    "ch": "无需许可即可进入'宗门建筑'。按下按钮后，将出现一个隐藏的UI供你交互。如果玩家在地图外并且正确选择了'宗门分支名称和宗门建筑'并按下'进入建筑'，玩家将被传送到选定的宗门内。每次你正常进入宗门时，选择将自动更新。",
+    "tc": "無需許可即可進入'宗門建築'。按下按鈕後，將出現一個隱藏的UI供你交互。如果玩家在地圖外並且正確選擇了'宗門分支名稱和宗門建築'並按下'進入建築'，玩家將被傳送到選定的宗門內。每次你正常進入宗門時，選擇將自動更新。",
+    "en": "Access the 'Sect Building' without permission. Upon pressing the button, a Hidden UI will appear for you to interact with. If the player is outside the map and has correctly chosen a 'Sect Branch Name & Sect Building' and presses 'Enter Building', the player will be teleported inside the selected Sect. Each time you enter the Sect normally, the selection will be automatically updated.",
+    "kr": "허가 없이 '종파 건물'에 접근합니다. 버튼을 누르면 상호작용할 수 있는 숨겨진 UI가 나타납니다. 플레이어가 맵 밖에 있고 '종파 지부 이름 & 종파 건물'을 올바르게 선택한 후 '건물 입장'을 누르면, 플레이어는 선택된 종파 안으로 순간이동됩니다. 종파에 정상적으로 입장할 때마다 선택이 자동으로 업데이트됩니다.",
+    "ja": "許可なしで「宗門建物」にアクセスします。ボタンを押すと、相互作用するための隠されたUIが表示されます。プレイヤーがマップの外にいて「宗門支部名と宗門建物」を正しく選択し「建物に入る」を押すと、プレイヤーは選択された宗門内にテレポートされます。宗門に通常入場するたびに、選択が自動的に更新されます。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_select_branch_name",
+    "ch": "选择一个'分支名称'。如果再次选择相同的'分支名称'，将不会更新任何内容。",
+    "tc": "選擇一個'分支名稱'。如果再次選擇相同的'分支名稱'，將不會更新任何內容。",
+    "en": "Select a 'Branch Name'. If the same 'Branch Name' is selected again, nothing will be updated.",
+    "kr": "'지부 이름'을 선택하세요. 같은 '지부 이름'을 다시 선택하면 아무것도 업데이트되지 않습니다.",
+    "ja": "「ブランチ名」を選択してください。同じ「ブランチ名」を再度選択した場合、何も更新されません。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_current_sect_location",
+    "ch": "你当前的宗门分支位置/视图。",
+    "tc": "你當前的宗門分支位置/視圖。",
+    "en": "Your current Sect Branch location/view.",
+    "kr": "현재 종파 지부 위치/보기입니다.",
+    "ja": "現在の宗門支部の場所/ビューです。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_select_sect_building",
+    "ch": "选择目标宗门建筑，然后按进入建筑按钮。",
+    "tc": "選擇目標宗門建築，然後按進入建築按鈕。",
+    "en": "Select a target Sect Building, then press the Enter Building button.",
+    "kr": "대상 종파 건물을 선택한 다음 건물 입장 버튼을 누르세요.",
+    "ja": "対象の宗門建物を選択してから、建物に入るボタンを押してください。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_other_enter_building",
+    "ch": "选择目标宗门建筑（例如，议事厅），然后按按钮。",
+    "tc": "選擇目標宗門建築（例如，議事廳），然後按按鈕。",
+    "en": "Select a target Sect Building (e.g., Council Hall), then press the button.",
+    "kr": "대상 종파 건물(예: 의회당)을 선택한 다음 버튼을 누르세요.",
+    "ja": "対象の宗門建物（例：評議会ホール）を選択してから、ボタンを押してください。"
+  },
+  // OtherPanelMore.cs (Other Panel More)
+  {
+    "id": "",
+    "key": "panel_othermore_title",
+    "ch": "其他 2",
+    "tc": "其他 2",
+    "en": "Other 2",
+    "kr": "기타 2",
+    "ja": "その他 2"
+  },
+  {
+    "id": "",
+    "key": "panel_othermore_button_train_martial",
+    "ch": "训练武学",
+    "tc": "訓練武學",
+    "en": "Train Martial Arts",
+    "kr": "무술 훈련",
+    "ja": "武術を訓練"
+  },
+  {
+    "id": "",
+    "key": "panel_othermore_button_repair_eye",
+    "ch": "强制修复天机之眼",
+    "tc": "強制修復天機之眼",
+    "en": "Force Repair the Eye of Providence",
+    "kr": "천기의 눈 강제 수리",
+    "ja": "天機の眼を強制修復"
+  },
+  {
+    "id": "",
+    "key": "panel_othermore_button_repair_gourd",
+    "ch": "强制修复神话葫芦并治疗宠物",
+    "tc": "強制修復神話葫蘆並治療寵物",
+    "en": "Force Repair the Mythical Gourd and Heal Pet",
+    "kr": "신화 박 강제 수리 및 펫 치료",
+    "ja": "神話のひょうたんを強制修復してペットを治療"
+  },
+  {
+    "id": "",
+    "key": "panel_othermore_button_increase_view",
+    "ch": "+1 视野范围",
+    "tc": "+1 視野範圍",
+    "en": "+1 View Range",
+    "kr": "+1 시야 범위",
+    "ja": "+1 視野範囲"
+  },
+  {
+    "id": "",
+    "key": "panel_othermore_button_full_view",
+    "ch": "全视野范围",
+    "tc": "全視野範圍",
+    "en": "Full View Range",
+    "kr": "전체 시야 범위",
+    "ja": "全視野範囲"
+  },
+  {
+    "id": "",
+    "key": "panel_othermore_button_reset_view",
+    "ch": "重置视野范围",
+    "tc": "重置視野範圍",
+    "en": "Reset View Range",
+    "kr": "시야 범위 재설정",
+    "ja": "視野範囲をリセット"
+  },
+  {
+    "id": "",
+    "key": "panel_othermore_button_open_cheat_mod",
+    "ch": "打开'作弊模组更新'事件",
+    "tc": "打開'作弊模組更新'事件",
+    "en": "Open 'Cheat Mod Updated' Event",
+    "kr": "'치트 모드 업데이트' 이벤트 열기",
+    "ja": "'チートMod更新'イベントを開く"
+  },
+  {
+    "id": "",
+    "key": "panel_othermore_button_credits",
+    "ch": "制作人员",
+    "tc": "製作人員",
+    "en": "Credits",
+    "kr": "크레딧",
+    "ja": "クレジット"
+  },
+  {
+    "id": "",
+    "key": "tooltip_othermore_train_martial",
+    "ch": "训练武学（所有当前技能）。增加999999经验值。",
+    "tc": "訓練武學（所有當前技能）。增加999999經驗值。",
+    "en": "Train a Martial Arts (All your current skill). Adds 999999 Experience.",
+    "kr": "무술 훈련 (모든 현재 기술). 999999 경험치를 추가합니다.",
+    "ja": "武術を訓練（すべての現在のスキル）。999999の経験値を追加します。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_othermore_repair_eye",
+    "ch": "要求：'天机之眼'。点击强制修复天机之眼（即使在混沌模式下也有效）。",
+    "tc": "要求：'天機之眼'。點擊強制修復天機之眼（即使在混沌模式下也有效）。",
+    "en": "Requirement: 'Eye of Providence.' Click to force repair the Eye of Providence (effective even in Chaos Mode).",
+    "kr": "요구사항: '천기의 눈'. 클릭하여 천기의 눈을 강제 수리합니다 (카오스 모드에서도 효과적).",
+    "ja": "要件：'天機の眼'。クリックして天機の眼を強制修復します（カオスモードでも効果的）。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_othermore_repair_gourd",
+    "ch": "要求：'神话葫芦'。按下修复神话葫芦并恢复所有宠物的健康（即使在混沌模式下也有效）。",
+    "tc": "要求：'神話葫蘆'。按下修復神話葫蘆並恢復所有寵物的健康（即使在混沌模式下也有效）。",
+    "en": "Requirement: 'Mythical Gourd.' Press to repair the Mythical Gourd and restore all pets' health (effective even in Chaos Mode).",
+    "kr": "요구사항: '신화 박'. 신화 박을 수리하고 모든 펫의 건강을 회복하려면 누르세요 (카오스 모드에서도 효과적).",
+    "ja": "要件：'神話のひょうたん'。神話のひょうたんを修復し、すべてのペットの健康を回復するには押してください（カオスモードでも効果的）。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_othermore_increase_view",
+    "ch": "点击将玩家的视野范围增加1个单位。[快捷键：Ctrl+4 - 如果你在战斗中请不要使用此功能。]",
+    "tc": "點擊將玩家的視野範圍增加1個單位。[快捷鍵：Ctrl+4 - 如果你在戰鬥中請不要使用此功能。]",
+    "en": "Click to increment the player's view range by 1 unit. [Shortcut Key: Ctrl+4 - Do not use this if you're in combat.]",
+    "kr": "클릭하여 플레이어의 시야 범위를 1단위 증가시킵니다. [단축키: Ctrl+4 - 전투 중에는 사용하지 마세요.]",
+    "ja": "クリックしてプレイヤーの視野範囲を1単位増加させます。[ショートカットキー：Ctrl+4 - 戦闘中は使用しないでください。]"
+  },
+  {
+    "id": "",
+    "key": "tooltip_othermore_full_view",
+    "ch": "[警告] 不推荐。点击将玩家的视野范围扩展到覆盖整个地图。注意：这可能需要一段时间。",
+    "tc": "[警告] 不推薦。點擊將玩家的視野範圍擴展到覆蓋整個地圖。注意：這可能需要一段時間。",
+    "en": "[WARNING] Not Recommended. Click to expand the player's view range to cover the entire map. Note: This may take a while.",
+    "kr": "[경고] 권장하지 않음. 클릭하여 플레이어의 시야 범위를 전체 맵을 덮도록 확장합니다. 참고: 시간이 걸릴 수 있습니다.",
+    "ja": "[警告] 推奨されません。クリックしてプレイヤーの視野範囲を全マップをカバーするように拡張します。注意：時間がかかる場合があります。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_othermore_reset_view",
+    "ch": "点击将玩家的视野范围恢复到原始状态。[快捷键：Ctrl+5 - 如果你在战斗中请不要使用此功能。]",
+    "tc": "點擊將玩家的視野範圍恢復到原始狀態。[快捷鍵：Ctrl+5 - 如果你在戰鬥中請不要使用此功能。]",
+    "en": "Click to restore the player's view range to its original state. [Shortcut Key: Ctrl+5 - Do not use this if you're in combat.]",
+    "kr": "클릭하여 플레이어의 시야 범위를 원래 상태로 복원합니다. [단축키: Ctrl+5 - 전투 중에는 사용하지 마세요.]",
+    "ja": "クリックしてプレイヤーの視野範囲を元の状態に復元します。[ショートカットキー：Ctrl+5 - 戦闘中は使用しないでください。]"
+  },
+  {
+    "id": "",
+    "key": "tooltip_othermore_open_cheat_mod",
+    "ch": "如果你已经安装了'作弊模组更新'模组，这提供了一个简化的方式来访问剧情事件。它是开源的，可在Steam创意工坊获得，让你可以根据需要自由修改。[快捷键：Ctrl+6 - 避免在战斗中使用。]",
+    "tc": "如果你已經安裝了'作弊模組更新'模組，這提供了一個簡化的方式來訪問劇情事件。它是開源的，可在Steam創意工坊獲得，讓你可以根據需要自由修改。[快捷鍵：Ctrl+6 - 避免在戰鬥中使用。]",
+    "en": "If you've installed the 'Cheat Mod Updated' mod, this provides a streamlined way to access the drama event. It's open-source and available on the Steam Workshop, giving you the flexibility to modify it as desired. [Shortcut Key: Ctrl+6 - Avoid using during combat.]",
+    "kr": "'치트 모드 업데이트' 모드를 설치했다면, 이것은 드라마 이벤트에 액세스하는 간소화된 방법을 제공합니다. 오픈 소스이며 Steam 워크샵에서 사용할 수 있어 원하는 대로 수정할 수 있는 유연성을 제공합니다. [단축키: Ctrl+6 - 전투 중 사용을 피하세요.]",
+    "ja": "'チートMod更新'モードをインストールしている場合、これはドラマイベントにアクセスする合理化された方法を提供します。オープンソースでSteamワークショップで利用可能で、必要に応じて修正する柔軟性を提供します。[ショートカットキー：Ctrl+6 - 戦闘中の使用は避けてください。]"
+  },
+  {
+    "id": "",
+    "key": "tooltip_othermore_credits",
+    "ch": "点击这里查看此模组的开发者和制作人员。",
+    "tc": "點擊這裡查看此模組的開發者和製作人員。",
+    "en": "Click here to view the developers and credits for this mod.",
+    "kr": "이 모드의 개발자와 크레딧을 보려면 여기를 클릭하세요.",
+    "ja": "このモードの開発者とクレジットを表示するにはここをクリックしてください。"
+  },
+  {
+    "id": "",
+    "key": "credits_title",
+    "ch": "制作人员",
+    "tc": "製作人員",
+    "en": "Credits",
+    "kr": "크레딧",
+    "ja": "クレジット"
+  },
+  {
+    "id": "",
+    "key": "credits_content",
+    "ch": "与原版相比的变化：\r\nAqua-sama 贡献 (从 v1.0.0 - v{0})：\r\n- 引入了各种新功能。\r\n- 修复了已知错误以确保更流畅的操作。\r\n- 改进了性能并减少了加载时间。\r\n- 扩展了功能以迎合更广泛的受众。\r\n\r\nCyfire 贡献 (从 v0.9.? - v0.9.9)：\r\n- 修复了游戏数据和配置缓存重建，有效地允许工具在多个游戏世界之间运行。\r\n- 改进/修复了天赋命运功能，允许显示不遵循\"role_feature_congenital_name(id)\"键约定的模组添加命运。\r\n\r\nTuX 原创作者 (从 v0.1 - v0.9.?)：\r\n\r\n免责声明：\r\n所有功劳归于原模组创作者TuX，据传言由于未知原因将原版下架，以及Cyfire。\r\n\r\n开发者消息：\r\nAqua-sama：如果您想通过给我一杯咖啡来表示支持，您可以通过我的PayPal发送贡献：jinwuzong69@gmail.com",
+    "tc": "與原版相比的變化：\r\nAqua-sama 貢獻 (從 v1.0.0 - v{0})：\r\n- 引入了各種新功能。\r\n- 修復了已知錯誤以確保更流暢的操作。\r\n- 改進了性能並減少了加載時間。\r\n- 擴展了功能以迎合更廣泛的受眾。\r\n\r\nCyfire 貢獻 (從 v0.9.? - v0.9.9)：\r\n- 修復了遊戲數據和配置緩存重建，有效地允許工具在多個遊戲世界之間運行。\r\n- 改進/修復了天賦命運功能，允許顯示不遵循\"role_feature_congenital_name(id)\"鍵約定的模組添加命運。\r\n\r\nTuX 原創作者 (從 v0.1 - v0.9.?)：\r\n\r\n免責聲明：\r\n所有功勞歸於原模組創作者TuX，據傳言由於未知原因將原版下架，以及Cyfire。\r\n\r\n開發者消息：\r\nAqua-sama：如果您想通過給我一杯咖啡來表示支持，您可以通過我的PayPal發送貢獻：jinwuzong69@gmail.com",
+    "en": "Changes compared to the Original:\r\nAqua-sama Contribution (From v1.0.0 - v{0}):\r\n- A variety of new features have been introduced.\r\n- Fixed known bugs to ensure smoother operation.\r\n- Improved performance and reduced loading time.\r\n- Expanded the functionality to cater to a wider audience.\r\n\r\nCyfire Contribution (From v0.9.? - v0.9.9):\r\n- Fixed the game data and conf cache rebuild, which effectively allows the tool to function between multiple game worlds.\r\n- Improved/fixed the Nature destiny feature, allowing mod-added destinies that don't follow the \"role_feature_congenital_name(id)\" key convention to be displayed.\r\n\r\nTuX Original Creator (From v0.1 - v0.9.?)\r\n\r\nDisclaimer:\r\nAll credits goes towards the original mod creator TuX who according to rumors took the original down due to unknown reasons and Cyfire.\r\n\r\nDev Message:\r\nAqua-sama: If you would like to show your support by giving me a coffee, you can do so by sending a contribution through my\r\nPayPal: jinwuzong69@gmail.com",
+    "kr": "Changes compared to the Original:\r\nAqua-sama Contribution (From v1.0.0 - v{0}):\r\n- A variety of new features have been introduced.\r\n- Fixed known bugs to ensure smoother operation.\r\n- Improved performance and reduced loading time.\r\n- Expanded the functionality to cater to a wider audience.\r\n\r\nCyfire Contribution (From v0.9.? - v0.9.9):\r\n- Fixed the game data and conf cache rebuild, which effectively allows the tool to function between multiple game worlds.\r\n- Improved/fixed the Nature destiny feature, allowing mod-added destinies that don't follow the \"role_feature_congenital_name(id)\" key convention to be displayed.\r\n\r\nTuX Original Creator (From v0.1 - v0.9.?)\r\n\r\nDisclaimer:\r\nAll credits goes towards the original mod creator TuX who according to rumors took the original down due to unknown reasons and Cyfire.\r\n\r\nDev Message:\r\nAqua-sama: If you would like to show your support by giving me a coffee, you can do so by sending a contribution through my\r\nPayPal: jinwuzong69@gmail.com",
+    "ja": "Changes compared to the Original:\r\nAqua-sama Contribution (From v1.0.0 - v{0}):\r\n- A variety of new features have been introduced.\r\n- Fixed known bugs to ensure smoother operation.\r\n- Improved performance and reduced loading time.\r\n- Expanded the functionality to cater to a wider audience.\r\n\r\nCyfire Contribution (From v0.9.? - v0.9.9):\r\n- Fixed the game data and conf cache rebuild, which effectively allows the tool to function between multiple game worlds.\r\n- Improved/fixed the Nature destiny feature, allowing mod-added destinies that don't follow the \"role_feature_congenital_name(id)\" key convention to be displayed.\r\n\r\nTuX Original Creator (From v0.1 - v0.9.?)\r\n\r\nDisclaimer:\r\nAll credits goes towards the original mod creator TuX who according to rumors took the original down due to unknown reasons and Cyfire.\r\n\r\nDev Message:\r\nAqua-sama: If you would like to show your support by giving me a coffee, you can do so by sending a contribution through my\r\nPayPal: jinwuzong69@gmail.com"
+  },
+  {
+    "id": "",
+    "key": "credits_thanks",
+    "ch": "谢谢",
+    "tc": "謝謝",
+    "en": "Thanks",
+    "kr": "감사합니다",
+    "ja": "ありがとう"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_training_martial",
+    "ch": "训练武学成功！",
+    "tc": "訓練武學成功！",
+    "en": "Training Martial Arts Succeeded!",
+    "kr": "무술 훈련 성공!",
+    "ja": "武術訓練成功！"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_training_martial_error",
+    "ch": "设置训练武学时发生错误：",
+    "tc": "設置訓練武學時發生錯誤：",
+    "en": "An error occurred while setting up Train Martial Arts: ",
+    "kr": "무술 훈련 설정 중 오류가 발생했습니다: ",
+    "ja": "武術訓練の設定中にエラーが発生しました: "
+  },
+  {
+    "id": "",
+    "key": "status_othermore_not_using_eye",
+    "ch": "玩家没有使用[天机之眼]...操作已取消！",
+    "tc": "玩家沒有使用[天機之眼]...操作已取消！",
+    "en": "Player is not using [Eye of Providence]... Operation Cancelled!",
+    "kr": "플레이어가 [천기의 눈]을 사용하지 않습니다... 작업이 취소되었습니다!",
+    "ja": "プレイヤーは[天機の眼]を使用していません...操作がキャンセルされました！"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_current_artifact",
+    "ch": "玩家当前的神器武器是",
+    "tc": "玩家當前的神器武器是",
+    "en": "Player's current artifact weapon is",
+    "kr": "플레이어의 현재 아티팩트 무기는",
+    "ja": "プレイヤーの現在のアーティファクト武器は"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_ensure_eye_selected",
+    "ch": "请确保你已选择[天机之眼]作为主要神器武器。",
+    "tc": "請確保你已選擇[天機之眼]作為主要神器武器。",
+    "en": "Please ensure that you have selected [Eye of Providence] as your primary artifact weapon.",
+    "kr": "[천기의 눈]을 주요 아티팩트 무기로 선택했는지 확인하세요.",
+    "ja": "[天機の眼]を主要なアーティファクト武器として選択していることを確認してください。"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_repairing",
+    "ch": "修复中",
+    "tc": "修復中",
+    "en": "Repairing",
+    "kr": "수리 중",
+    "ja": "修復中"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_repaired",
+    "ch": "已修复！",
+    "tc": "已修復！",
+    "en": "Repaired!",
+    "kr": "수리됨!",
+    "ja": "修復完了！"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_eye_perfect_condition",
+    "ch": "天机之眼状态完好，不需要任何修复。",
+    "tc": "天機之眼狀態完好，不需要任何修復。",
+    "en": "The Eye of Providence is in perfect condition and doesn't require any repairs.",
+    "kr": "천기의 눈은 완벽한 상태이며 수리가 필요하지 않습니다.",
+    "ja": "天機の眼は完璧な状態で、修復は必要ありません。"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_not_using_gourd",
+    "ch": "玩家没有使用[神话葫芦]...操作已取消！",
+    "tc": "玩家沒有使用[神話葫蘆]...操作已取消！",
+    "en": "Player is not using [Mythical Gourd]... Operation Cancelled!",
+    "kr": "플레이어가 [신화 박]을 사용하지 않습니다... 작업이 취소되었습니다!",
+    "ja": "プレイヤーは[神話のひょうたん]を使用していません...操作がキャンセルされました！"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_ensure_gourd_selected",
+    "ch": "请确保你已选择[神话葫芦]作为主要神器武器。",
+    "tc": "請確保你已選擇[神話葫蘆]作為主要神器武器。",
+    "en": "Please ensure that you have selected [Mythical Gourd] as your primary artifact weapon.",
+    "kr": "[신화 박]을 주요 아티팩트 무기로 선택했는지 확인하세요.",
+    "ja": "[神話のひょうたん]を主要なアーティファクト武器として選択していることを確認してください。"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_gourd_perfect_condition",
+    "ch": "神话葫芦状态完好，不需要任何修复。",
+    "tc": "神話葫蘆狀態完好，不需要任何修復。",
+    "en": "The Mythical Gourd is in perfect condition and doesn't require any repairs.",
+    "kr": "신화 박은 완벽한 상태이며 수리가 필요하지 않습니다.",
+    "ja": "神話のひょうたんは完璧な状態で、修復は必要ありません。"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_reviving_pets",
+    "ch": "复活并治疗受伤或濒死的宠物...",
+    "tc": "復活並治療受傷或瀕死的寵物...",
+    "en": "Reviving and healing injured or dying pets...",
+    "kr": "부상당하거나 죽어가는 펫을 소생시키고 치료 중...",
+    "ja": "負傷または瀕死のペットを蘇生し治療中..."
+  },
+  {
+    "id": "",
+    "key": "status_othermore_pet_healed",
+    "ch": "现在完全治愈了！",
+    "tc": "現在完全治癒了！",
+    "en": "is now fully healed!",
+    "kr": "이제 완전히 치료되었습니다!",
+    "ja": "は完全に治癒しました！"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_initial_view",
+    "ch": "初始视野：",
+    "tc": "初始視野：",
+    "en": "Initial View: ",
+    "kr": "초기 시야: ",
+    "ja": "初期視野: "
+  },
+  {
+    "id": "",
+    "key": "status_othermore_updated_view",
+    "ch": "更新视野：",
+    "tc": "更新視野：",
+    "en": "Updated View: ",
+    "kr": "업데이트된 시야: ",
+    "ja": "更新された視野: "
+  },
+  {
+    "id": "",
+    "key": "status_othermore_playerview_null",
+    "ch": "PlayerView返回NULL！",
+    "tc": "PlayerView返回NULL！",
+    "en": "PlayerView returned NULL!",
+    "kr": "PlayerView가 NULL을 반환했습니다!",
+    "ja": "PlayerViewがNULLを返しました！"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_cheat_mod_triggered",
+    "ch": "[作弊模组更新事件已触发]",
+    "tc": "[作弊模組更新事件已觸發]",
+    "en": "[Cheat Mod Updated Event Triggered]",
+    "kr": "[치트 모드 업데이트 이벤트 트리거됨]",
+    "ja": "[チートMod更新イベントがトリガーされました]"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_cheat_mod_failed",
+    "ch": "无法打开[作弊模组更新事件] DramaID(927081281)，请确保你已安装该模组。",
+    "tc": "無法打開[作弊模組更新事件] DramaID(927081281)，請確保你已安裝該模組。",
+    "en": "Failed to open [Cheat Mod Updated Event] DramaID(927081281), make sure you have installed the mod.",
+    "kr": "[치트 모드 업데이트 이벤트] DramaID(927081281)를 열 수 없습니다. 모드가 설치되어 있는지 확인하세요.",
+    "ja": "[チートMod更新イベント] DramaID(927081281)を開けませんでした。モードがインストールされていることを確認してください。"
+  },
+  {
+    "id": "",
+    "key": "status_othermore_updating_eye_ui",
+    "ch": "更新天机之眼UI...",
+    "tc": "更新天機之眼UI...",
+    "en": "Updating Eye of Providence UI...",
+    "kr": "천기의 눈 UI 업데이트 중...",
+    "ja": "天機の眼UIを更新中..."
+  },
+  // AttributesPanel.cs (Attributes Panel)
+  {
+    "id": "",
+    "key": "panel_attributes_button_reset",
+    "ch": "重置",
+    "tc": "重置",
+    "en": "Reset",
+    "kr": "재설정",
+    "ja": "リセット"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_button_save",
+    "ch": "保存",
+    "tc": "保存",
+    "en": "Save",
+    "kr": "저장",
+    "ja": "保存"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_button_save_all",
+    "ch": "全部保存",
+    "tc": "全部保存",
+    "en": "Save All",
+    "kr": "모두 저장",
+    "ja": "すべて保存"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_tab_general",
+    "ch": "常规",
+    "tc": "常規",
+    "en": "General",
+    "kr": "일반",
+    "ja": "一般"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_tab_combat",
+    "ch": "战斗",
+    "tc": "戰鬥",
+    "en": "Combat",
+    "kr": "전투",
+    "ja": "戦闘"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_tab_martial_arts",
+    "ch": "武学",
+    "tc": "武學",
+    "en": "Martial Arts",
+    "kr": "무술",
+    "ja": "武術"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_tab_spiritual_root",
+    "ch": "灵根",
+    "tc": "靈根",
+    "en": "Spiritual Root",
+    "kr": "영근",
+    "ja": "霊根"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_tab_artisanship",
+    "ch": "工艺",
+    "tc": "工藝",
+    "en": "Artisanship",
+    "kr": "공예",
+    "ja": "工芸"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_tab_skills",
+    "ch": "技能",
+    "tc": "技能",
+    "en": "Skills",
+    "kr": "기술",
+    "ja": "スキル"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_tab_destinies",
+    "ch": "命运",
+    "tc": "命運",
+    "en": "Destinies",
+    "kr": "운명",
+    "ja": "運命"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_tab_fates",
+    "ch": "命运",
+    "tc": "命運",
+    "en": "Fates",
+    "kr": "운명",
+    "ja": "運命"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_button_debug_skill",
+    "ch": "调试当前技能",
+    "tc": "調試當前技能",
+    "en": "Debug Current Skill",
+    "kr": "현재 기술 디버그",
+    "ja": "現在のスキルをデバッグ"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_button_refresh_cache",
+    "ch": "刷新缓存",
+    "tc": "刷新緩存",
+    "en": "Refresh Cache",
+    "kr": "캐시 새로고침",
+    "ja": "キャッシュを更新"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_button_run_debug_test",
+    "ch": "运行调试测试",
+    "tc": "運行調試測試",
+    "en": "Run Debug Test",
+    "kr": "디버그 테스트 실행",
+    "ja": "デバッグテストを実行"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_button_add_destiny",
+    "ch": "添加命运 [?]",
+    "tc": "添加命運 [?]",
+    "en": "Add Destiny [?]",
+    "kr": "운명 추가 [?]",
+    "ja": "運命を追加 [?]"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_reset_failed_npc",
+    "ch": "重置失败，未找到NPC。",
+    "tc": "重置失敗，未找到NPC。",
+    "en": "Reset failed, NPC not found.",
+    "kr": "재설정 실패, NPC를 찾을 수 없습니다.",
+    "ja": "リセット失敗、NPCが見つかりません。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_save_all_failed_npc",
+    "ch": "全部保存失败，未找到NPC。",
+    "tc": "全部保存失敗，未找到NPC。",
+    "en": "Save All failed, NPC not found.",
+    "kr": "모두 저장 실패, NPC를 찾을 수 없습니다.",
+    "ja": "すべて保存失敗、NPCが見つかりません。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_save_failed_npc",
+    "ch": "保存失败，未找到NPC。",
+    "tc": "保存失敗，未找到NPC。",
+    "en": "Save failed, NPC not found.",
+    "kr": "저장 실패, NPC를 찾을 수 없습니다.",
+    "ja": "保存失敗、NPCが見つかりません。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_all_saved",
+    "ch": "全部已保存。",
+    "tc": "全部已保存。",
+    "en": "All Saved.",
+    "kr": "모두 저장되었습니다.",
+    "ja": "すべて保存されました。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_saved",
+    "ch": "已保存。",
+    "tc": "已保存。",
+    "en": "Saved.",
+    "kr": "저장되었습니다.",
+    "ja": "保存されました。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_cannot_do_npc",
+    "ch": "无法执行该操作。未找到NPC。",
+    "tc": "無法執行該操作。未找到NPC。",
+    "en": "Cannot do that. NPC not found.",
+    "kr": "그 작업을 수행할 수 없습니다. NPC를 찾을 수 없습니다.",
+    "ja": "その操作はできません。NPCが見つかりません。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_forcing_cache_rebuild",
+    "ch": "强制重建缓存...",
+    "tc": "強制重建緩存...",
+    "en": "Forcing cache rebuild...",
+    "kr": "캐시 재구축을 강제로 실행 중...",
+    "ja": "キャッシュの再構築を強制実行中..."
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_cache_refreshed_skill_reloaded",
+    "ch": "缓存已刷新，技能前缀已重新加载。",
+    "tc": "緩存已刷新，技能前綴已重新載入。",
+    "en": "Cache refreshed and skill prefixes reloaded.",
+    "kr": "캐시가 새로고침되고 기술 접두사가 다시 로드되었습니다.",
+    "ja": "キャッシュが更新され、スキルプレフィックスが再読み込みされました。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_cache_refreshed",
+    "ch": "缓存已刷新。",
+    "tc": "緩存已刷新。",
+    "en": "Cache refreshed.",
+    "kr": "캐시가 새로고침되었습니다.",
+    "ja": "キャッシュが更新されました。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_debug_test_completed",
+    "ch": "调试测试完成。请检查控制台查看结果。",
+    "tc": "調試測試完成。請檢查控制台查看結果。",
+    "en": "Debug test completed. Check console for results.",
+    "kr": "디버그 테스트가 완료되었습니다. 결과는 콘솔을 확인하세요.",
+    "ja": "デバッグテストが完了しました。結果はコンソールで確認してください。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_close_player_ui_warning",
+    "ch": "请在继续之前关闭玩家状态UI。",
+    "tc": "請在繼續之前關閉玩家狀態UI。",
+    "en": "Close the player status UI before proceeding.",
+    "kr": "계속하기 전에 플레이어 상태 UI를 닫으세요.",
+    "ja": "続行する前にプレイヤーステータスUIを閉じてください。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_prevent_save_corruption",
+    "ch": "这是防止保存文件损坏的必要措施。",
+    "tc": "這是防止保存檔案損壞的必要措施。",
+    "en": "This is necessary to prevent potential corruption of the save file.",
+    "kr": "이는 세이브 파일의 잠재적 손상을 방지하기 위해 필요합니다.",
+    "ja": "これはセーブファイルの潜在的な破損を防ぐために必要です。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_cannot_add_destiny_npc_closed",
+    "ch": "无法添加命运。NPC信息UI未打开。",
+    "tc": "無法添加命運。NPC信息UI未打開。",
+    "en": "Cannot add Destiny. NPC info UI is not open.",
+    "kr": "운명을 추가할 수 없습니다. NPC 정보 UI가 열려있지 않습니다.",
+    "ja": "運命を追加できません。NPC情報UIが開いていません。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_destiny_limit_exceeded",
+    "ch": "命运限制'9'已超出。您的保存文件可能面临风险。",
+    "tc": "命運限制'9'已超出。您的保存檔案可能面臨風險。",
+    "en": "Destiny limit of '9' exceeded. Your save file may be at risk.",
+    "kr": "운명 한계 '9'를 초과했습니다. 세이브 파일이 위험할 수 있습니다.",
+    "ja": "運命の制限「9」を超えました。セーブファイルが危険にさらされる可能性があります。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_existing_destinies_detected",
+    "ch": "检测到现有命运！自动添加到列表中。",
+    "tc": "檢測到現有命運！自動添加到列表中。",
+    "en": "Existing destinies detected! Auto-adding to the list.",
+    "kr": "기존 운명이 감지되었습니다! 목록에 자동으로 추가합니다.",
+    "ja": "既存の運命が検出されました！リストに自動追加します。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_destiny_added_successfully",
+    "ch": "成功添加/更新命运。",
+    "tc": "成功添加/更新命運。",
+    "en": "Successfully added/updated Destiny.",
+    "kr": "운명이 성공적으로 추가/업데이트되었습니다.",
+    "ja": "運命の追加/更新に成功しました。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_save_changes_reopen_ui",
+    "ch": "保存您的更改并重新打开状态UI。",
+    "tc": "保存您的更改並重新打開狀態UI。",
+    "en": "Save your changes and re-open the Status UI.",
+    "kr": "변경사항을 저장하고 상태 UI를 다시 여세요.",
+    "ja": "変更を保存してステータスUIを再度開いてください。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_destiny_removed_refresh_ui",
+    "ch": "命运已移除。如果仍然显示，请刷新状态UI。",
+    "tc": "命運已移除。如果仍然顯示，請刷新狀態UI。",
+    "en": "Destiny removed. If it still appears, kindly refresh the Status UI.",
+    "kr": "운명이 제거되었습니다. 여전히 나타나면 상태 UI를 새로고침하세요.",
+    "ja": "運命が削除されました。まだ表示される場合は、ステータスUIを更新してください。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_attributes_destinies_important",
+    "ch": "[重要] 确保玩家状态UI已关闭；否则，您将无法继续。",
+    "tc": "[重要] 確保玩家狀態UI已關閉；否則，您將無法繼續。",
+    "en": "[IMPORTANT] Ensure that the UI for player stats is closed; otherwise, you won't be able to continue.",
+    "kr": "[중요] 플레이어 통계 UI가 닫혀있는지 확인하세요. 그렇지 않으면 계속할 수 없습니다.",
+    "ja": "[重要] プレイヤー統計のUIが閉じられていることを確認してください。そうでなければ続行できません。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_attributes_skills_info",
+    "ch": "修改技能前缀和后缀。至少需要两个技能才能正常运行。注意：要从第一个列表中选择项目，请先选择其他技能，然后再返回。",
+    "tc": "修改技能前綴和後綴。至少需要兩個技能才能正常運行。注意：要從第一個列表中選擇項目，請先選擇其他技能，然後再返回。",
+    "en": "Modify skill prefixes and affixes. At least two skills are required for proper functionality. Note: To select an item from the first list, choose other skills first, then return to it.",
+    "kr": "기술 접두사와 접미사를 수정합니다. 적절한 기능을 위해서는 최소 두 개의 기술이 필요합니다. 참고: 첫 번째 목록에서 항목을 선택하려면 먼저 다른 기술을 선택한 다음 돌아오세요.",
+    "ja": "スキルのプレフィックスとサフィックスを変更します。適切な機能のためには少なくとも2つのスキルが必要です。注意：最初のリストからアイテムを選択するには、まず他のスキルを選択してから戻ってください。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_attributes_destinies_info",
+    "ch": "修改您的天生命运（先天特质）。这些是您出生时就拥有的永久角色特质。",
+    "tc": "修改您的天生命運（先天特質）。這些是您出生時就擁有的永久角色特質。",
+    "en": "Modify your born destinies (congenital traits). These are permanent character traits you're born with.",
+    "kr": "태어난 운명(선천적 특성)을 수정합니다. 이는 태어날 때부터 가지고 있는 영구적인 캐릭터 특성입니다.",
+    "ja": "生まれつきの運命（先天的特性）を変更します。これらは生まれながらに持つ永続的なキャラクター特性です。"
+  },
+  {
+    "id": "",
+    "key": "tooltip_attributes_fates_info",
+    "ch": "修改您当前的命运（后天特质）。这些是通过修炼和升级获得的能力。",
+    "tc": "修改您當前的命運（後天特質）。這些是通過修煉和升級獲得的能力。",
+    "en": "Modify your current fates (postnatal traits). These are abilities gained through cultivation and leveling up.",
+    "kr": "현재 운명(후천적 특성)을 수정합니다. 이는 수련과 레벨업을 통해 얻은 능력입니다.",
+    "ja": "現在の運命（後天的特性）を変更します。これらは修行とレベルアップを通じて得られる能力です。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_cannot_add_destiny_instance_null",
+    "ch": "无法添加命运。实例状态未初始化。",
+    "tc": "無法添加命運。實例狀態未初始化。",
+    "en": "Cannot add Destiny. instanceState is not initialized.",
+    "kr": "운명을 추가할 수 없습니다. 인스턴스 상태가 초기화되지 않았습니다.",
+    "ja": "運命を追加できません。インスタンス状態が初期化されていません。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_destiny_array_null",
+    "ch": "命运数组为空。无法添加新实例。",
+    "tc": "命運數組為空。無法添加新實例。",
+    "en": "Destiny array is null. Cannot add a new instance.",
+    "kr": "운명 배열이 null입니다. 새 인스턴스를 추가할 수 없습니다.",
+    "ja": "運命配列がnullです。新しいインスタンスを追加できません。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_cannot_remove_destiny_out_of_range",
+    "ch": "无法移除命运。超出范围。",
+    "tc": "無法移除命運。超出範圍。",
+    "en": "Cannot remove destiny. It's out of range.",
+    "kr": "운명을 제거할 수 없습니다. 범위를 벗어났습니다.",
+    "ja": "運命を削除できません。範囲外です。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_status_cannot_remove_destiny_not_last",
+    "ch": "无法移除命运。它不是列表中的最后一项。",
+    "tc": "無法移除命運。它不是列表中的最後一項。",
+    "en": "Cannot remove destiny. It's not the last item in the list.",
+    "kr": "운명을 제거할 수 없습니다. 목록의 마지막 항목이 아닙니다.",
+    "ja": "運命を削除できません。リストの最後の項目ではありません。"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_age",
+    "ch": "年龄（月）",
+    "tc": "年齡（月）",
+    "en": "Age(Month)",
+    "kr": "나이(월)",
+    "ja": "年齢（月）"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_lifespan",
+    "ch": "寿命（月）",
+    "tc": "壽命（月）",
+    "en": "Lifespan(Month)",
+    "kr": "수명(월)",
+    "ja": "寿命（月）"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_charisma",
+    "ch": "魅力",
+    "tc": "魅力",
+    "en": "Charisma",
+    "kr": "매력",
+    "ja": "カリスマ"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_exp",
+    "ch": "经验",
+    "tc": "經驗",
+    "en": "Exp",
+    "kr": "경험치",
+    "ja": "経験値"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_intim_to_player",
+    "ch": "对玩家亲密度",
+    "tc": "對玩家親密度",
+    "en": "Intim to player",
+    "kr": "플레이어에 대한 친밀도",
+    "ja": "プレイヤーへの親密度"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_reputation",
+    "ch": "声望",
+    "tc": "聲望",
+    "en": "Reputation",
+    "kr": "평판",
+    "ja": "評判"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_insight",
+    "ch": "悟性",
+    "tc": "悟性",
+    "en": "Insight",
+    "kr": "통찰력",
+    "ja": "洞察力"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_health",
+    "ch": "健康",
+    "tc": "健康",
+    "en": "Health",
+    "kr": "건강",
+    "ja": "健康"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_max_health",
+    "ch": "最大健康",
+    "tc": "最大健康",
+    "en": "Max Health",
+    "kr": "최대 건강",
+    "ja": "最大健康"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_vitality",
+    "ch": "生命力",
+    "tc": "生命力",
+    "en": "Vitality",
+    "kr": "활력",
+    "ja": "バイタリティ"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_max_vitality",
+    "ch": "最大生命力",
+    "tc": "最大生命力",
+    "en": "Max Vitality",
+    "kr": "최대 활력",
+    "ja": "最大バイタリティ"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_energy",
+    "ch": "能量",
+    "tc": "能量",
+    "en": "Energy",
+    "kr": "에너지",
+    "ja": "エネルギー"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_max_energy",
+    "ch": "最大能量",
+    "tc": "最大能量",
+    "en": "Max Energy",
+    "kr": "최대 에너지",
+    "ja": "最大エネルギー"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_focus",
+    "ch": "专注点",
+    "tc": "專注點",
+    "en": "Focus",
+    "kr": "집중력",
+    "ja": "フォーカス"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_max_focus",
+    "ch": "最大专注点",
+    "tc": "最大專注點",
+    "en": "Max Focus",
+    "kr": "최대 집중력",
+    "ja": "最大フォーカス"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_luck",
+    "ch": "幸运",
+    "tc": "幸運",
+    "en": "Luck",
+    "kr": "행운",
+    "ja": "運"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_stamina",
+    "ch": "体力",
+    "tc": "體力",
+    "en": "Stamina",
+    "kr": "스태미나",
+    "ja": "スタミナ"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_max_stamina",
+    "ch": "最大体力",
+    "tc": "最大體力",
+    "en": "Max Stamina",
+    "kr": "최대 스태미나",
+    "ja": "最大スタミナ"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_skill_points",
+    "ch": "技能点",
+    "tc": "技能點",
+    "en": "Skill Points",
+    "kr": "스킬 포인트",
+    "ja": "スキルポイント"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_atk",
+    "ch": "攻击",
+    "tc": "攻擊",
+    "en": "Atk",
+    "kr": "공격력",
+    "ja": "攻撃力"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_def",
+    "ch": "防御",
+    "tc": "防禦",
+    "en": "Def",
+    "kr": "방어력",
+    "ja": "防御力"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_travel_speed",
+    "ch": "移动速度",
+    "tc": "移動速度",
+    "en": "Travel Speed",
+    "kr": "이동 속도",
+    "ja": "移動速度"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_crit",
+    "ch": "暴击",
+    "tc": "暴擊",
+    "en": "Crit",
+    "kr": "치명타",
+    "ja": "クリティカル"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_crid_dmg",
+    "ch": "暴击伤害",
+    "tc": "暴擊傷害",
+    "en": "Crid Dmg",
+    "kr": "치명타 피해",
+    "ja": "クリティカルダメージ"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_cris_res",
+    "ch": "暴击抗性",
+    "tc": "暴擊抗性",
+    "en": "Cris Res",
+    "kr": "치명타 저항",
+    "ja": "クリティカル耐性"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_crid_dr",
+    "ch": "暴击减伤",
+    "tc": "暴擊減傷",
+    "en": "Crid Dr",
+    "kr": "치명타 피해 감소",
+    "ja": "クリティカルダメージ軽減"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_agi",
+    "ch": "敏捷",
+    "tc": "敏捷",
+    "en": "Agi",
+    "kr": "민첩성",
+    "ja": "敏捷性"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_spiritual_res",
+    "ch": "法术抗性",
+    "tc": "法術抗性",
+    "en": "Spiritual Res",
+    "kr": "정신 저항",
+    "ja": "精神抵抗"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_martial_res",
+    "ch": "物理抗性",
+    "tc": "物理抗性",
+    "en": "Martial Res",
+    "kr": "무술 저항",
+    "ja": "武術抵抗"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_sword",
+    "ch": "剑",
+    "tc": "劍",
+    "en": "Sword",
+    "kr": "검",
+    "ja": "剣"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_spear",
+    "ch": "枪",
+    "tc": "槍",
+    "en": "Spear",
+    "kr": "창",
+    "ja": "槍"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_blade",
+    "ch": "刀",
+    "tc": "刀",
+    "en": "Blade",
+    "kr": "도",
+    "ja": "刀"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_fist",
+    "ch": "拳",
+    "tc": "拳",
+    "en": "Fist",
+    "kr": "주먹",
+    "ja": "拳"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_palm",
+    "ch": "掌",
+    "tc": "掌",
+    "en": "Palm",
+    "kr": "장",
+    "ja": "掌"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_finger",
+    "ch": "指",
+    "tc": "指",
+    "en": "Finger",
+    "kr": "지",
+    "ja": "指"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_fire",
+    "ch": "火",
+    "tc": "火",
+    "en": "Fire",
+    "kr": "화",
+    "ja": "火"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_water",
+    "ch": "水",
+    "tc": "水",
+    "en": "Water",
+    "kr": "수",
+    "ja": "水"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_lightning",
+    "ch": "雷",
+    "tc": "雷",
+    "en": "Lightning",
+    "kr": "번개",
+    "ja": "雷"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_wind",
+    "ch": "风",
+    "tc": "風",
+    "en": "Wind",
+    "kr": "바람",
+    "ja": "風"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_earth",
+    "ch": "土",
+    "tc": "土",
+    "en": "Earth",
+    "kr": "땅",
+    "ja": "土"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_wood",
+    "ch": "木",
+    "tc": "木",
+    "en": "Wood",
+    "kr": "나무",
+    "ja": "木"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_alchemy",
+    "ch": "炼丹",
+    "tc": "煉丹",
+    "en": "Alchemy",
+    "kr": "연금술",
+    "ja": "錬金術"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_forge",
+    "ch": "锻造",
+    "tc": "鍛造",
+    "en": "Forge",
+    "kr": "단조",
+    "ja": "鍛造"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_fengshui",
+    "ch": "风水",
+    "tc": "風水",
+    "en": "Fengshui",
+    "kr": "풍수",
+    "ja": "風水"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_talisman",
+    "ch": "符箓",
+    "tc": "符籙",
+    "en": "Talisman",
+    "kr": "부적",
+    "ja": "護符"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_herbology",
+    "ch": "草药学",
+    "tc": "草藥學",
+    "en": "Herbology",
+    "kr": "약초학",
+    "ja": "薬草学"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_mining",
+    "ch": "采矿",
+    "tc": "採礦",
+    "en": "Mining",
+    "kr": "채굴",
+    "ja": "採掘"
+  },
+  // BuildPlannerPanel.cs (Build Planner Panel)
+  {
+    "id": "",
+    "key": "panel_buildplanner_title",
+    "ch": "命运规划器",
+    "tc": "命運規劃器",
+    "en": "Fate Planner",
+    "kr": "운명 계획자",
+    "ja": "運命プランナー"
+  },
+  {
+    "id": "",
+    "key": "panel_buildplanner_label_na",
+    "ch": "无",
+    "tc": "無",
+    "en": "N/A",
+    "kr": "해당 없음",
+    "ja": "該当なし"
+  },
+  {
+    "id": "",
+    "key": "panel_buildplanner_button_description",
+    "ch": "?",
+    "tc": "?",
+    "en": "?",
+    "kr": "?",
+    "ja": "?"
+  },
+  {
+    "id": "",
+    "key": "panel_buildplanner_status_set_planned_fate",
+    "ch": "为等级 {0} 设置计划命运 {1}。",
+    "tc": "為等級 {0} 設置計劃命運 {1}。",
+    "en": "Set planned fate {1} for grade {0}.",
+    "kr": "등급 {0}에 대한 계획된 운명 {1}을 설정했습니다.",
+    "ja": "グレード{0}の計画された運命{1}を設定しました。"
+  },
+  {
+    "id": "",
+    "key": "panel_buildplanner_status_fate_already_used",
+    "ch": "命运已被另一个等级使用。",
+    "tc": "命運已被另一個等級使用。",
+    "en": "Fate already used for another grade.",
+    "kr": "운명이 이미 다른 등급에 사용되었습니다.",
+    "ja": "運命は既に別のグレードで使用されています。"
+  },
+  {
+    "id": "",
+    "key": "panel_buildplanner_status_removed_planned_fate",
+    "ch": "移除了等级 {0} 的计划命运。",
+    "tc": "移除了等級 {0} 的計劃命運。",
+    "en": "Removed planned fate for {0}.",
+    "kr": "{0}의 계획된 운명을 제거했습니다.",
+    "ja": "{0}の計画された運命を削除しました。"
+  },
+  {
+    "id": "",
+    "key": "panel_buildplanner_status_loading_state_entries",
+    "ch": "将加载状态条目 ({0})",
+    "tc": "將加載狀態條目 ({0})",
+    "en": "Will load state entries ({0})",
+    "kr": "상태 항목을 로드합니다 ({0})",
+    "ja": "状態エントリをロードします ({0})"
+  },
+  {
+    "id": "",
+    "key": "panel_buildplanner_status_loaded_grade_value",
+    "ch": "加载了等级 {0} 值 {1}",
+    "tc": "加載了等級 {0} 值 {1}",
+    "en": "Loaded grade {0} value {1}",
+    "kr": "등급 {0} 값 {1}을 로드했습니다",
+    "ja": "グレード{0}の値{1}をロードしました"
+  },
+  // Other text scattered across various parts of the mod
+  /* README
+  | General `other_` Key Naming Patterns
+  | Format                | Purpose                                        |
+  |-----------------------|------------------------------------------------|
+  | `other_ui_[name]`     | UI-related blurbs, microcopy, or layout hints |
+  | `other_labels_[name]` | Short tag-like phrases or static label text   |
+  | `other_msgs_[name]`   | System messages or simple prompts             |
+  | `other_tooltips_[name]` | Hover hints and instructional popups       |
+  | `other_prompts_[name]` | Basic yes/no or confirmation prompts         |
+  | `other_notes_[name]`  | Passive commentary or lore fragments          |
+  | `other_common_[name]` | Cross-functional reusable strings             |
+  | `other_texts_[name]`  | Catch-all for assorted localized copy         |
+  */
+  {
+    "id": "",
+    "key": "other_ui_emptylist",
+    "ch": "",
+    "tc": "",
+    "en": "No items available.",
+    "kr": "",
+    "ja": ""
+  },
+  // ModMain.cs (Main Entry Point)
+  {
+    "id": "",
+    "key": "other_msgs_cheat_menu_toggled",
+    "ch": "作弊菜单已切换。默认键：F3，备用键：反斜杠（'\\'）或Tab。",
+    "tc": "作弊選單已切換。預設鍵：F3，備用鍵：反斜杠（'\\'）或Tab。",
+    "en": "Cheat Menu has been toggled. Default key: F3, Alternative key: Backslash ('\\') or Tab.",
+    "kr": "치트 메뉴가 토글되었습니다. 기본 키: F3, 대체 키: 백슬래시('\\') 또는 Tab.",
+    "ja": "チートメニューが切り替えられました。デフォルトキー：F3、代替キー：バックスラッシュ（'\\'）またはTab。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_waiting_player_join",
+    "ch": "等待玩家进入仙侠世界...",
+    "tc": "等待玩家進入仙俠世界...",
+    "en": "Waiting for the player to join the immortal world...",
+    "kr": "플레이어가 불멸의 세계에 참여하기를 기다리는 중...",
+    "ja": "プレイヤーが不死の世界に参加するのを待っています..."
+  },
+  {
+    "id": "",
+    "key": "other_msgs_player_entered_workshop",
+    "ch": "玩家已进入游戏内模组工坊。",
+    "tc": "玩家已進入遊戲內模組工坊。",
+    "en": "The player has entered the in-game mod workshop.",
+    "kr": "플레이어가 게임 내 모드 워크샵에 들어갔습니다.",
+    "ja": "プレイヤーがゲーム内MODワークショップに入りました。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_restart_advised",
+    "ch": "强烈建议重启游戏以保持稳定性。",
+    "tc": "強烈建議重啟遊戲以保持穩定性。",
+    "en": "Restarting the game is highly advised for stability.",
+    "kr": "안정성을 위해 게임을 다시 시작하는 것이 좋습니다.",
+    "ja": "安定性のためにゲームの再起動を強く推奨します。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_action_unavailable_combat",
+    "ch": "操作不可用：战斗进行中。快捷键已禁用。",
+    "tc": "操作不可用：戰鬥進行中。快捷鍵已禁用。",
+    "en": "Action unavailable: Combat in progress. Shortcut key disabled.",
+    "kr": "작업 불가: 전투 진행 중. 단축키가 비활성화되었습니다.",
+    "ja": "アクション不可：戦闘中。ショートカットキーが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_shortcut_key_pressed",
+    "ch": "[快捷键：{0}] 已按下。",
+    "tc": "[快捷鍵：{0}] 已按下。",
+    "en": "[Shortcut Key: {0}] was pressed.",
+    "kr": "[단축키: {0}]이 눌렸습니다.",
+    "ja": "[ショートカットキー: {0}] が押されました。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_cheat_mod_event_triggered",
+    "ch": "[作弊模组更新事件已触发]",
+    "tc": "[作弊模組更新事件已觸發]",
+    "en": "[Cheat Mod Updated Event Triggered]",
+    "kr": "[치트 모드 업데이트 이벤트 트리거됨]",
+    "ja": "[チートMOD更新イベントがトリガーされました]"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_failed_open_drama_event",
+    "ch": "无法打开[作弊模组更新事件] DramaID(927081281)，请确保您已安装模组。",
+    "tc": "無法打開[作弊模組更新事件] DramaID(927081281)，請確保您已安裝模組。",
+    "en": "Failed to open [Cheat Mod Updated Event] DramaID(927081281), make sure you have installed the mod.",
+    "kr": "[치트 모드 업데이트 이벤트] DramaID(927081281) 열기 실패, 모드가 설치되어 있는지 확인하세요.",
+    "ja": "[チートMOD更新イベント] DramaID(927081281)を開けませんでした。MODがインストールされていることを確認してください。"
+  },
+  // UIManager.cs (UI Management)
+  {
+    "id": "",
+    "key": "other_msgs_creating_main_ui",
+    "ch": "正在创建主界面...",
+    "tc": "正在創建主界面...",
+    "en": "Creating main ui...",
+    "kr": "메인 UI 생성 중...",
+    "ja": "メインUIを作成中..."
+  },
+  {
+    "id": "",
+    "key": "other_msgs_created_main_ui",
+    "ch": "主界面已创建。",
+    "tc": "主界面已創建。",
+    "en": "Created main ui.",
+    "kr": "메인 UI가 생성되었습니다.",
+    "ja": "メインUIが作成されました。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_creating_ui_panels",
+    "ch": "正在创建UI面板...",
+    "tc": "正在創建UI面板...",
+    "en": "Creating UI panels...",
+    "kr": "UI 패널 생성 중...",
+    "ja": "UIパネルを作成中..."
+  },
+  {
+    "id": "",
+    "key": "other_msgs_ui_panels_created",
+    "ch": "UI面板已创建。",
+    "tc": "UI面板已創建。",
+    "en": "UI panels created.",
+    "kr": "UI 패널이 생성되었습니다.",
+    "ja": "UIパネルが作成されました。"
+  },
+  // TooltipPanel.cs (Tooltip System)
+  {
+    "id": "",
+    "key": "other_msgs_tooltip_creating",
+    "ch": "工具提示面板 {0} 正在创建...",
+    "tc": "工具提示面板 {0} 正在創建...",
+    "en": "TooltipPanel {0} creating...",
+    "kr": "툴팁 패널 {0} 생성 중...",
+    "ja": "ツールチップパネル {0} を作成中..."
+  },
+  {
+    "id": "",
+    "key": "other_msgs_tooltip_created",
+    "ch": "工具提示面板 {0} 已创建。",
+    "tc": "工具提示面板 {0} 已創建。",
+    "en": "TooltipPanel {0} created.",
+    "kr": "툴팁 패널 {0}이 생성되었습니다.",
+    "ja": "ツールチップパネル {0} が作成されました。"
+  },
+  {
+    "id": "",
+    "key": "other_ui_tooltip_placeholder",
+    "ch": "...",
+    "tc": "...",
+    "en": "...",
+    "kr": "...",
+    "ja": "..."
+  },
+  // INIReader.cs (File Reading)
+  {
+    "id": "",
+    "key": "other_msgs_file_not_found",
+    "ch": "[作弊菜单] 文件未找到：{0}",
+    "tc": "[作弊選單] 檔案未找到：{0}",
+    "en": "[CheatMenu] File not found: {0}",
+    "kr": "[치트메뉴] 파일을 찾을 수 없습니다: {0}",
+    "ja": "[チートメニュー] ファイルが見つかりません: {0}"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_put_file_at",
+    "ch": "[作弊菜单] 请将所需文件放置在：{0}",
+    "tc": "[作弊選單] 請將所需檔案放置在：{0}",
+    "en": "[CheatMenu] Put the required file at: {0}",
+    "kr": "[치트메뉴] 필요한 파일을 다음 위치에 넣으세요: {0}",
+    "ja": "[チートメニュー] 必要なファイルを次の場所に配置してください: {0}"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_search_skills_not_work",
+    "ch": "[作弊菜单] 否则搜索技能功能将无法工作！",
+    "tc": "[作弊選單] 否則搜索技能功能將無法工作！",
+    "en": "[CheatMenu] Otherwise the Search Skills will not work!",
+    "kr": "[치트메뉴] 그렇지 않으면 스킬 검색이 작동하지 않습니다!",
+    "ja": "[チートメニュー] そうしないとスキル検索が機能しません！"
+  },
+  // SceneMapPatch.cs (Scene Map Patches)
+  {
+    "id": "",
+    "key": "other_msgs_steal_always_succeed_enabled",
+    "ch": "偷窃总是成功已启用。",
+    "tc": "偷竊總是成功已啟用。",
+    "en": "Steal Always Succeed Enabled.",
+    "kr": "도둑질 항상 성공이 활성화되었습니다.",
+    "ja": "盗みは常に成功が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_steal_always_succeed_disabled",
+    "ch": "偷窃总是成功已禁用。",
+    "tc": "偷竊總是成功已禁用。",
+    "en": "Steal Always Succeed Disabled.",
+    "kr": "도둑질 항상 성공이 비활성화되었습니다.",
+    "ja": "盗みは常に成功が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_100_escape_enabled",
+    "ch": "100% 逃跑已启用。",
+    "tc": "100% 逃跑已啟用。",
+    "en": "100% Escape Enabled.",
+    "kr": "100% 도망이 활성화되었습니다.",
+    "ja": "100% 逃走が有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_100_escape_disabled",
+    "ch": "100% 逃跑已禁用。",
+    "tc": "100% 逃跑已禁用。",
+    "en": "100% Escape Disabled.",
+    "kr": "100% 도망이 비활성화되었습니다.",
+    "ja": "100% 逃走が無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_100_intim_no_cost_enabled",
+    "ch": "100% 亲密度 & 无仇恨/体力/能量/天数消耗/冷却已启用。",
+    "tc": "100% 親密度 & 無仇恨/體力/能量/天數消耗/冷卻已啟用。",
+    "en": "100% Intim & No Hate/Stamina/Energy/Day Cost/CD Enabled.",
+    "kr": "100% 친밀도 & 증오/스태미나/에너지/일수 비용/쿨다운 없음이 활성화되었습니다.",
+    "ja": "100% 親密度 & 憎悪/スタミナ/エネルギー/日数コスト/CDなしが有効になりました。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_100_intim_no_cost_disabled",
+    "ch": "100% 亲密度 & 无仇恨/体力/能量/天数消耗/冷却已禁用。",
+    "tc": "100% 親密度 & 無仇恨/體力/能量/天數消耗/冷卻已禁用。",
+    "en": "100% Intim & No Hate/Stamina/Energy/Day Cost/CD Disabled.",
+    "kr": "100% 친밀도 & 증오/스태미나/에너지/일수 비용/쿨다운 없음이 비활성화되었습니다.",
+    "ja": "100% 親密度 & 憎悪/スタミナ/エネルギー/日数コスト/CDなしが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_restored_original_values",
+    "ch": "已将所有值更改恢复为原始值。",
+    "tc": "已將所有值更改恢復為原始值。",
+    "en": "Restored all values changes to their original values.",
+    "kr": "모든 값 변경사항을 원래 값으로 복원했습니다.",
+    "ja": "すべての値の変更を元の値に復元しました。"
+  },
+  // ExploitPatch.cs (Exploit Patches)
+  {
+    "id": "",
+    "key": "other_msgs_cultivate_worldblock_empty",
+    "ch": "[修炼] worldBlockGetExp 为空！",
+    "tc": "[修煉] worldBlockGetExp 為空！",
+    "en": "[Cultivate] worldBlockGetExp is Empty!",
+    "kr": "[수련] worldBlockGetExp가 비어있습니다!",
+    "ja": "[修練] worldBlockGetExpが空です！"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_cultivate_player_unit_empty",
+    "ch": "[修炼] 玩家单位为空！",
+    "tc": "[修煉] 玩家單位為空！",
+    "en": "[Cultivate] Player Unit is Empty!",
+    "kr": "[수련] 플레이어 유닛이 비어있습니다!",
+    "ja": "[修練] プレイヤーユニットが空です！"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_error_ui_create_player_facade",
+    "ch": "UICreatePlayerFacade 错误：{0}",
+    "tc": "UICreatePlayerFacade 錯誤：{0}",
+    "en": "Error at UICreatePlayerFacade: {0}",
+    "kr": "UICreatePlayerFacade 오류: {0}",
+    "ja": "UICreatePlayerFacadeでエラー: {0}"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_error_ui_create_player_property",
+    "ch": "UICreatePlayerProperty 错误：{0}",
+    "tc": "UICreatePlayerProperty 錯誤：{0}",
+    "en": "Error at UICreatePlayerProperty: {0}",
+    "kr": "UICreatePlayerProperty 오류: {0}",
+    "ja": "UICreatePlayerPropertyでエラー: {0}"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_error_ui_npc_info",
+    "ch": "UINPCInfo 错误：{0}",
+    "tc": "UINPCInfo 錯誤：{0}",
+    "en": "Error at UINPCInfo: {0}",
+    "kr": "UINPCInfo 오류: {0}",
+    "ja": "UINPCInfoでエラー: {0}"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_error_ui_player_info_property",
+    "ch": "UIPlayerInfoProperty 错误：{0}",
+    "tc": "UIPlayerInfoProperty 錯誤：{0}",
+    "en": "Error at UIPlayerInfoProperty: {0}",
+    "kr": "UIPlayerInfoProperty 오류: {0}",
+    "ja": "UIPlayerInfoPropertyでエラー: {0}"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_artifact_empty",
+    "ch": "神器为空！",
+    "tc": "神器為空！",
+    "en": "Artifact is Empty!",
+    "kr": "아티팩트가 비어있습니다!",
+    "ja": "アーティファクトが空です！"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_effortless_artifact_forge_active",
+    "ch": "轻松神器锻造已激活。",
+    "tc": "輕鬆神器鍛造已激活。",
+    "en": "Effortless Artifact Forge is Active.",
+    "kr": "간편 아티팩트 단조가 활성화되었습니다.",
+    "ja": "楽々アーティファクト鍛造がアクティブです。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_starting",
+    "ch": "开始中...",
+    "tc": "開始中...",
+    "en": "Starting...",
+    "kr": "시작 중...",
+    "ja": "開始中..."
+  },
+  {
+    "id": "",
+    "key": "other_msgs_ending_in_seconds",
+    "ch": "将在3秒后结束...",
+    "tc": "將在3秒後結束...",
+    "en": "Ending in 3 Seconds...",
+    "kr": "3초 후에 종료됩니다...",
+    "ja": "3秒後に終了します..."
+  },
+  {
+    "id": "",
+    "key": "other_msgs_effortless_artifact_forge_ended",
+    "ch": "轻松神器锻造成功结束。",
+    "tc": "輕鬆神器鍛造成功結束。",
+    "en": "Effortless Artifact Forge Ended Successfully.",
+    "kr": "간편 아티팩트 단조가 성공적으로 종료되었습니다.",
+    "ja": "楽々アーティファクト鍛造が正常に終了しました。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_artifact_spirit_active",
+    "ch": "神器灵魂（免费技能/天赋升级）已激活。",
+    "tc": "神器靈魂（免費技能/天賦升級）已激活。",
+    "en": "Artifact Spirit (Free Skills/Talents Upgrade) is Active.",
+    "kr": "아티팩트 정신 (무료 스킬/재능 업그레이드)이 활성화되었습니다.",
+    "ja": "アーティファクトスピリット（無料スキル/タレントアップグレード）がアクティブです。"
+  },
+  // BattleMapMgrPatch.cs (Battle Manager Patches)
+  {
+    "id": "",
+    "key": "other_msgs_god_mode_active",
+    "ch": "上帝模式已激活。",
+    "tc": "上帝模式已激活。",
+    "en": "God Mode is Active.",
+    "kr": "갓 모드가 활성화되었습니다.",
+    "ja": "ゴッドモードがアクティブです。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_fast_no_cooldown_active",
+    "ch": "快速/无冷却已激活。",
+    "tc": "快速/無冷卻已激活。",
+    "en": "Fast/No Cooldown is Active.",
+    "kr": "빠름/쿨다운 없음이 활성화되었습니다.",
+    "ja": "高速/クールダウンなしがアクティブです。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_infinite_vitality_active",
+    "ch": "无限生命力/能量/专注点已激活。",
+    "tc": "無限生命力/能量/專注點已激活。",
+    "en": "Infinite Vitality/Energy/Focus is Active.",
+    "kr": "무한 활력/에너지/집중력이 활성화되었습니다.",
+    "ja": "無限バイタリティ/エネルギー/フォーカスがアクティブです。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_one_hit_kill_active",
+    "ch": "一击必杀已激活。",
+    "tc": "一擊必殺已激活。",
+    "en": "1 Hit Kill is Active.",
+    "kr": "원킬이 활성화되었습니다.",
+    "ja": "一撃必殺がアクティブです。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_combat_started_shortcut_disabled",
+    "ch": "战斗开始...快捷键已禁用。",
+    "tc": "戰鬥開始...快捷鍵已禁用。",
+    "en": "Combat Started... Shortcut Key Disabled.",
+    "kr": "전투 시작... 단축키가 비활성화되었습니다.",
+    "ja": "戦闘開始...ショートカットキーが無効になりました。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_combat_finished_shortcut_enabled",
+    "ch": "战斗结束...快捷键已启用。",
+    "tc": "戰鬥結束...快捷鍵已啟用。",
+    "en": "Combat Finished... Shortcut Key Enabled.",
+    "kr": "전투 종료... 단축키가 활성화되었습니다.",
+    "ja": "戦闘終了...ショートカットキーが有効になりました。"
+  },
+  // Additional missed LogTip messages
+  {
+    "id": "",
+    "key": "other_msgs_failed_change_language",
+    "ch": "更改语言失败",
+    "tc": "更改語言失敗",
+    "en": "Failed to change language",
+    "kr": "언어 변경 실패",
+    "ja": "言語の変更に失敗しました"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_npc_info_panel_not_found",
+    "ch": "未找到NPC信息面板。请先打开它。",
+    "tc": "未找到NPC信息面板。請先打開它。",
+    "en": "NPC Info panel not found. Please open it first.",
+    "kr": "NPC 정보 패널을 찾을 수 없습니다. 먼저 열어주세요.",
+    "ja": "NPC情報パネルが見つかりません。最初に開いてください。"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_god_eye_data_null",
+    "ch": "godEyeData 返回 NULL！",
+    "tc": "godEyeData 返回 NULL！",
+    "en": "godEyeData returned NULL!",
+    "kr": "godEyeData가 NULL을 반환했습니다!",
+    "ja": "godEyeDataがNULLを返しました！"
+  },
+  {
+    "id": "",
+    "key": "other_msgs_languagechange",
+    "ch": "语言已切换为",
+    "tc": "語言已切換為",
+    "en": "Language changed to",
+    "kr": "언어가 변경되었습니다:",
+    "ja": "言語が変更されました："
+  }  
+]

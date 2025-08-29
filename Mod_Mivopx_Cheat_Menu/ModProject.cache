@@ -1,0 +1,28 @@
+﻿{
+  "soleID": "Mivopx",
+  "createTicks": 638525313939237414,
+  "name": "Cheat Menu – Dynamic Multi-Language Support",
+  "author": "Aqua-sama",
+  "desc": "\nRequirements:\r\n- MelonLoader\r\n- MelonLoader Dependencies\r\n\nInstructions (Required):\n1. Enable MelonLoader (MelonLoader v0.5.4 Open-Beta):\nEnsure your game has MelonLoader enabled (version.dll is intact). To use Mods, enable UTF-8 in Windows:\n- Navigate to Time & Language > Language & Region > Administrative language settings > Change system locale.\n- Check Beta: Use Unicode UTF-8 for worldwide language support and restart your system.\n\n2. Uninstall Old Cheat Menu:\nIf you have the old Cheat Menu (Cheat UI) installed, uninstall it before installing this mod.\nDon't worry—this mod shares the same structure, preserving your saves without triggering \"missing mod\" warnings.\n\n3. Install the Mod:\n- Subscribe and Restart the game to ensure everything works.\n\n4. Restart After Accessing Mods:\nIf you've recently accessed the in-game Mod section, restart the game before proceeding.\n\n5. Fix Errors (If Necessary):\nIf the mod doesn't function (e.g., UI issues), try this:\n- Go to your \\MelonLoader\\Logs and see if you find an error related to this mod.\n- Localize the mod by placing 'Mod_Mivopx' in to your GameName\\ModExportData\n\n6. Optimal Resolution:\nFor the best experience, set your resolution to 1920x1080.\n\n7. Finally, everything should work without any issues, and you can enjoy your gameplay. If not, I'm afraid it's up to you to troubleshoot and resolve the problem. Best of luck!\r\n\r\nChanges compared to the Original:\r\nAqua-sama Contribution (From v1.0.0 - Presents):\r\n- A variety of new features have been introduced.\r\n- Fixed known bugs to ensure smoother operation.\r\n- Improved performance and reduced loading time.\r\n- Expanded the functionality to cater to a wider audience.\r\n\r\nCyfire Contribution (From v0.9.? - v0.9.9):\r\n- Fixed the game data and conf cache rebuild, which effectively allows the tool to function between multiple game worlds.\r\n- Improved/fixed the Nature destiny feature, allowing mod-added destinies that don't follow the \"role_feature_congenital_name{id}\" key convention to be displayed.\r\n\r\nTuX Original Creator (From v0.1 - v0.9.?)\r\n\r\nDisclaimer:\r\nAll credits goes towards the original mod creator TuX who according to rumors took the original down due to unknown reasons and Cyfire.\r\n\r\nThis mod takes no responsibility for any corrupted saves—please use it with caution and care.",
+  "ver": "v1.1.8 Pub",
+  "autoSave": true,
+  "isCreateNPC": true,
+  "exportVer": 39,
+  "accountID": 406482322,
+  "publishedFileID": 3452099943,
+  "visibleState": 0,
+  "openCode": 0,
+  "curUpdateDesc": "v1.1.8 Pub\r\n\r\nMAJOR Update Logs\r\n- Added dynamic multi-language support for broader localization flexibility\r\n- Enhanced detection and retrieval of configuration files\r\n- Refined UI layout and visual styling for improved usability\r\n- Partially resolved inconsistencies in skill fate attribute modifiers\r\n- Fixed several minor bugs and stability issues, including:\r\nCrash-to-desktop when consuming a soul or killing an NPC,\r\nDestinies not saving correctly,\r\nOther miscellaneous glitches\r\n- Disable debug logging in the Exploit More menu for faster cheat toggling\r\n- Note: Due to unknown issues, I'm currently unable to update the mod with open-source enabled. As a result, this release does not include the source code. If you need access, feel free to reach out—I'll share it as soon as I'm able.",
+  "tags": [
+    "English",
+    "Function"
+  ],
+  "addPreviewPaths": [
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "excelEncrypt": false
+}
