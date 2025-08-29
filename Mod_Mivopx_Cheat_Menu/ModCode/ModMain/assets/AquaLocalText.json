@@ -4918,5 +4918,23 @@
     "en": "Language changed to",
     "kr": "언어가 변경되었습니다:",
     "ja": "言語が変更されました："
-  }  
+  }, 
+  {
+    "id": "",
+    "key": "panel_attributes_field_internal_trait",
+    "ch": "Internal Trait:",
+    "tc": "Internal Trait:",
+    "en": "Internal Trait:",
+    "kr": "Internal Trait:",
+    "ja": "Internal Trait:"
+  },
+  {
+    "id": "",
+    "key": "panel_attributes_field_external_trait",
+    "ch": "External Trait:",
+    "tc": "External Trait:",
+    "en": "External Trait:",
+    "kr": "External Trait:",
+    "ja": "External Trait:"
+  }
 ]

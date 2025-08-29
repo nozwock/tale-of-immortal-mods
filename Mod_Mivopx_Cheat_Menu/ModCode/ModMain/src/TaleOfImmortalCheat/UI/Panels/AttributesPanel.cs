@@ -1285,6 +1285,42 @@ public abstract class AttributesPanel : Panel
 
 	private void BuildGeneralUI(GameObject tab)
 	{
+        static System.Collections.Generic.List<(int Id, string Label)> BuildTraitOptions(int start, int end)
+		{
+			System.Collections.Generic.List<(int Id, string Label)> list = [];
+			for (int i = start; i <= end; i++)
+			{
+				string key = "role_character_name" + i;
+				string label = key;
+				if (Game.ConfMgr.localText.allText.ContainsKey(key)) {
+					// TODO: handle localization? LanguageType
+					label = Game.ConfMgr.localText.allText[key].en;
+				}
+				list.Add((i, label));
+			}
+			return list;
+		}
+
+		var name = "InternalTrait";
+		var groupGo = UIFactory.CreateVerticalGroup(tab, $"{name}-row", false, false, true, true, spacing: 5, padding: new Vector4(5f, 10f, 10f, 10f));
+		var labelText = UIFactory.CreateLabel(groupGo, $"{name}-row-label", LocalizationHelper.T("panel_attributes_field_internal_trait"), TextAnchor.MiddleLeft);
+		UIFactory.SetLayoutElement(labelText.gameObject);
+		fieldLabels[FieldName(Name, name)] = labelText.GetComponent<Text>();
+
+		var dropdownGo = AddDynDropdown(groupGo, name, (AttributesState data) => data.Unit.data.dynUnitData.inTrait, 0, BuildTraitOptions(1, 7));
+		UIFactory.SetLayoutElement(dropdownGo);
+
+		name = "ExternalTrait";
+		groupGo = UIFactory.CreateVerticalGroup(tab, $"{name}-row", false, false, true, true, spacing: 5, padding: new Vector4(0f, 10f, 10f, 10f));
+		labelText = UIFactory.CreateLabel(groupGo, $"{name}-row-label", LocalizationHelper.T("panel_attributes_field_external_trait"), TextAnchor.MiddleLeft);
+		UIFactory.SetLayoutElement(labelText.gameObject);
+		fieldLabels[FieldName(Name, name)] = labelText.GetComponent<Text>();
+
+		dropdownGo = AddDynDropdown(groupGo, $"{name}1", (AttributesState data) => data.Unit.data.dynUnitData.outTrait1, 0, BuildTraitOptions(8, 19));
+		UIFactory.SetLayoutElement(dropdownGo);
+		dropdownGo = AddDynDropdown(groupGo, $"{name}2", (AttributesState data) => data.Unit.data.dynUnitData.outTrait2, 0, BuildTraitOptions(8, 19));
+		UIFactory.SetLayoutElement(dropdownGo);
+
 		AddDynInput(tab, LocalizationHelper.T("panel_attributes_field_age"), "", FieldName(Name, "Age"), (AttributesState data) => data.Unit.data.dynUnitData.age, 0);
 		AddDynInput(tab, LocalizationHelper.T("panel_attributes_field_lifespan"), "", FieldName(Name, "Lifespan"), (AttributesState data) => data.Unit.data.dynUnitData.life, 0);
 		AddDynInput(tab, LocalizationHelper.T("panel_attributes_field_charisma"), "", FieldName(Name, "Charisma"), (AttributesState data) => data.Unit.data.dynUnitData.beauty, 0);
@@ -1366,6 +1402,23 @@ public abstract class AttributesPanel : Panel
 		Fields.Add(new DynInputField(item2, accessor, IsUsingBaseValue, tabIndex, isClamped));
 	}
 
+	private GameObject AddDynDropdown(GameObject tab, string name, Func<AttributesState, DynInt> accessor, int tabIndex, System.Collections.Generic.List<(int Id, string Label)> options, bool isClamped = true)
+	{
+		// Build dropdown UI
+		(GameObject, Dropdown) tuple = UIHelper.BuildDropdown(tab, name, _ => { });
+		Dropdown dropdown = tuple.Item2;
+
+		// Populate with provided options
+		foreach (var (_, Label) in options)
+		{
+			dropdown.options.Add(new Dropdown.OptionData(Label));
+		}
+
+		// Add field wrapper
+		Fields.Add(new DynDropdownField(dropdown, accessor, IsUsingBaseValue, tabIndex, options.First().Id, isClamped));
+		return tuple.Item1;
+	}
+
 	private void AddTextInput(GameObject tab, string name, string placeholder, string fieldName, Func<AttributesState, string> accessor, Action<AttributesState, string> save, int tabIndex)
 	{
 		(GameObject, InputFieldRef) tuple = UIHelper.BuildInputField(tab, name, placeholder, fieldName);
@@ -1439,6 +1492,14 @@ public abstract class AttributesPanel : Panel
 	{
 		foreach (System.Collections.Generic.KeyValuePair<string, string> item in new System.Collections.Generic.Dictionary<string, string>
 		{
+			{
+				FieldName(Name, "InternalTrait"),
+				"panel_attributes_field_internal_trait"
+			},
+			{
+				FieldName(Name, "ExternalTrait"),
+				"panel_attributes_field_external_trait"
+			},
 			{
 				FieldName(Name, "Age"),
 				"panel_attributes_field_age"
