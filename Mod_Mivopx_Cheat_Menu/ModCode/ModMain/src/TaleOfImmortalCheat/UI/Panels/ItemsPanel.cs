@@ -58,13 +58,16 @@ public class ItemsPanel : Panel
 	{
 		Debug.Log("Cheat UI - Creating Items panel");
 		GameObject contentHolder;
-		GameObject gameObject = UIFactory.CreatePanel("Items", uiRoot, out contentHolder);
+		GameObject panelGameObject = UIFactory.CreatePanel("Items", uiRoot, out contentHolder);
 		UIFactory.SetLayoutGroup<VerticalLayoutGroup>(contentHolder, true, false, true, true);
-		RectTransform component = gameObject.GetComponent<RectTransform>();
-		component.anchorMin = new Vector2(0.3f, 0.3f);
-		component.anchorMax = new Vector2(0.8f, 0.8f);
-		component.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 300f);
-		component.SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 493f);
+		RectTransform panelComponent = panelGameObject.GetComponent<RectTransform>();
+		panelComponent.anchorMin = new Vector2(0.3f, 0.3f);
+		panelComponent.anchorMax = new Vector2(0.8f, 0.8f);
+		panelComponent.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 300f);
+		var fitter = panelGameObject.AddComponent<ContentSizeFitter>();
+		fitter.verticalFit = ContentSizeFitter.FitMode.PreferredSize;
+		// Who was hardcoding this? like wth? Also, this thing should've been scrollable in the first place. What's up
+		// with 'Panel - More' bullshit
 		GameObject gameObject2 = UIHelper.CreateTitleBar(contentHolder, delegate
 		{
 			base.IsVisible = false;
@@ -102,7 +105,7 @@ public class ItemsPanel : Panel
 		buttonGiveMissionToken = CreateItemsButton("Items-give-mission-token", "panel_items_button_give_mission_token", GiveMissionContribution);
 		buttonGiveBaguaJade = CreateItemsButton("Items-give-bagua-jade", "panel_items_button_give_bagua_jade", GiveBaguaJade);
 		Debug.Log("Cheat UI - Created Items panel");
-		return (panelRoot: gameObject, draggableArea: gameObject2);
+		return (panelRoot: panelGameObject, draggableArea: gameObject2);
 		ButtonRef CreateItemsButton(string name, string textKey, Action onClick, string tooltipKey = null)
 		{
 			ButtonRef buttonRef = UIFactory.CreateButton(contentHolder, name, LocalizationHelper.T(textKey));
