@@ -1,0 +1,87 @@
+ManifestFileVersion: 0
+CRC: 725685542
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ab/icon/ban1.ab
+      Dependencies: {}
+    Info_1:
+      Name: ab/icon/fq.ab
+      Dependencies: {}
+    Info_2:
+      Name: ab/icon/tongyongtouxiang_3.ab
+      Dependencies: {}
+    Info_3:
+      Name: ab/icon/tongyongtouxiang_5.ab
+      Dependencies: {}
+    Info_4:
+      Name: ab/icon/tongyongtouxiang_6.ab
+      Dependencies: {}
+    Info_5:
+      Name: ab/ui/btnsave.ab
+      Dependencies:
+        Dependency_0: assets/texture/font/heiti.otf.ab
+    Info_6:
+      Name: assets/texture/font/heiti.otf.ab
+      Dependencies: {}
+    Info_7:
+      Name: ab/ui/btnsort.ab
+      Dependencies:
+        Dependency_0: assets/texture/icon/ban.png.ab
+    Info_8:
+      Name: assets/texture/icon/ban.png.ab
+      Dependencies: {}
+    Info_9:
+      Name: ab/ui/item.ab
+      Dependencies: {}
+    Info_10:
+      Name: ab/ui/modelitem.ab
+      Dependencies:
+        Dependency_0: assets/texture/font/heiti.otf.ab
+        Dependency_1: assets/resources/icon/imagebg.png.ab
+    Info_11:
+      Name: assets/resources/icon/imagebg.png.ab
+      Dependencies: {}
+    Info_12:
+      Name: assets/resources/icon/tongyongtouxiang_2.png.ab
+      Dependencies: {}
+    Info_13:
+      Name: assets/resources/icon/tongyongtouxiang_4.png.ab
+      Dependencies: {}
+    Info_14:
+      Name: ab/ui/uimodelpro.ab
+      Dependencies:
+        Dependency_0: assets/texture/font/heiti.otf.ab
+        Dependency_1: assets/resources/icon/imagebg.png.ab
+        Dependency_2: assets/resources/icon/dituanniu_3.png.ab
+        Dependency_3: "assets/texture/font/\u6C49\u4EEA\u4ED5\u6770\u58A8\u699C.ttf.ab"
+        Dependency_4: assets/resources/ui/modelitempro.prefab.ab
+        Dependency_5: assets/resources/icon/daoxinmingzikuang.png.ab
+        Dependency_6: assets/resources/icon/tuichu.png.ab
+        Dependency_7: assets/texture/bg/shubg_5.png.ab
+        Dependency_8: "assets/texture/font/\u67F3\u516C\u6743\u67F3\u4F53.ttf.ab"
+    Info_15:
+      Name: assets/resources/icon/dituanniu_3.png.ab
+      Dependencies: {}
+    Info_16:
+      Name: "assets/texture/font/\u6C49\u4EEA\u4ED5\u6770\u58A8\u699C.ttf.ab"
+      Dependencies: {}
+    Info_17:
+      Name: assets/resources/ui/modelitempro.prefab.ab
+      Dependencies:
+        Dependency_0: assets/texture/font/heiti.otf.ab
+        Dependency_1: assets/resources/icon/imagebg.png.ab
+        Dependency_2: assets/resources/icon/tongyongtouxiang_2.png.ab
+        Dependency_3: assets/resources/icon/tongyongtouxiang_4.png.ab
+    Info_18:
+      Name: assets/resources/icon/daoxinmingzikuang.png.ab
+      Dependencies: {}
+    Info_19:
+      Name: assets/resources/icon/tuichu.png.ab
+      Dependencies: {}
+    Info_20:
+      Name: assets/texture/bg/shubg_5.png.ab
+      Dependencies: {}
+    Info_21:
+      Name: "assets/texture/font/\u67F3\u516C\u6743\u67F3\u4F53.ttf.ab"
+      Dependencies: {}
