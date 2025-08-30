@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using MelonLoader;
 
 namespace MOD_cK2zMO
 {
@@ -16,7 +17,7 @@ namespace MOD_cK2zMO
 		}
 		public void Init()
 		{
-			Console.WriteLine("Storage file path:" + pathFile);
+			MelonLogger.Msg("Storage file path:" + pathFile);
 			if (File.Exists(pathFile))
 			{
 				ModelList = JsonConvert.DeserializeObject<List<ModelList>>(File.ReadAllText(pathFile));
@@ -38,7 +39,7 @@ namespace MOD_cK2zMO
 			};
 			string text = JsonConvert.SerializeObject(ModelList, jsonSerializerSettings);
 			File.WriteAllText(pathFile, text);
-			Console.WriteLine("Saved successfully");
+			MelonLogger.Msg("Saved successfully");
 		}
 
 	}

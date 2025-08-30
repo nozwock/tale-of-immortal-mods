@@ -7,6 +7,7 @@ using Il2CppSystem;
 using UnhollowerRuntimeLib;
 using UnityEngine;
 using UnityEngine.UI;
+using MelonLoader;
 
 /// <summary>
 /// When you manually modify this namespace, you need to go to the module editor to modify the corresponding new namespace, and the assembly also needs to modify the namespace, otherwise the DLL will fail to load! ! !
@@ -122,7 +123,7 @@ namespace MOD_cK2zMO
 					};
 					modelFile.ModelList.Add(modelList);
 					modelFile.SaveConf();
-					System.Console.WriteLine(modelList.name + "The portrait data is saved successfully.");
+					MelonLogger.Msg(modelList.name + "The portrait data is saved successfully.");
 				});
 			});
 			string text2 = "btn_open";
@@ -174,10 +175,10 @@ namespace MOD_cK2zMO
 					};
 					modelFile.ModelList.Add(modelList);
 					modelFile.SaveConf();
-					System.Console.WriteLine(modelList.name + "The portrait data is saved successfully.");
+					MelonLogger.Msg(modelList.name + "The portrait data is saved successfully.");
 				});
 			});
-			System.Console.WriteLine("NPC interface collection button added");
+			MelonLogger.Msg("NPC interface collection button added");
 			GameObject gameObject2 = UnityEngine.Object.Instantiate(ui.uiUnitInfo.goButton3);
 			gameObject2.transform.SetParent(transform, worldPositionStays: false);
 			gameObject2.SetActive(value: true);
@@ -194,7 +195,7 @@ namespace MOD_cK2zMO
 				uIModelPro.mode = 2;
 				uIModelPro.InitData();
 			});
-			System.Console.WriteLine("NPC interface portrait data button added");
+			MelonLogger.Msg("NPC interface portrait data button added");
 		}
 		public void CreatePlayerUICMD()
 		{
@@ -206,11 +207,11 @@ namespace MOD_cK2zMO
 			UICreatePlayerFacade __instance = uI.uiFacade;
 			if (__instance == null)
 			{
-				System.Console.WriteLine("ui.uiFacade is empty.");
+				MelonLogger.Msg("ui.uiFacade is empty.");
 			}
 			else if (__instance.goGroupRoot == null)
 			{
-				System.Console.WriteLine("ui.uiFacade.goGroupRoot is empty.");
+				MelonLogger.Msg("ui.uiFacade.goGroupRoot is empty.");
 			}
 			else
 			{
@@ -290,7 +291,7 @@ namespace MOD_cK2zMO
 					};
 					modelFile.ModelList.Add(modelList);
 					modelFile.SaveConf();
-					System.Console.WriteLine(modelList.name + "The portrait data is saved successfully.");
+					MelonLogger.Msg(modelList.name + "The portrait data is saved successfully.");
 				});
 			});
 			string text2 = "btn_open";
@@ -340,7 +341,7 @@ namespace MOD_cK2zMO
 					if (component != null)
 					{
 						component.UpData();
-						System.Console.WriteLine("Exit editing - start refreshing.");
+						MelonLogger.Msg("Exit editing - start refreshing.");
 					}
 				}
 				g.ui.CloseUI(UIType.ModDress);

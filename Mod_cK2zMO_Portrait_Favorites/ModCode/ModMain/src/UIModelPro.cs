@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using MelonLoader;
 
 namespace MOD_cK2zMO
 {
@@ -121,7 +122,7 @@ namespace MOD_cK2zMO
 				if (base.transform.Find("Root/TextPage/InputField/Text").GetComponent<Text>().text.Length > 0)
 				{
 					int num = int.Parse(base.transform.Find("Root/TextPage/InputField/Text").GetComponent<Text>().text);
-					Console.WriteLine("The entered jump page number is：" + num.ToString());
+					MelonLogger.Msg("The entered jump page number is：" + num.ToString());
 					if (num < 1 || num > this.indexPageCount)
 					{
 						g.ui.OpenUI<UITextInfo>(UIType.TextInfo).InitData("Notice", "The page number you entered is incorrect, please re-enter it!", "", null);
@@ -184,7 +185,7 @@ namespace MOD_cK2zMO
 						ui.playerData.dynUnitData.battleModelData = battleModelHumanData;
 						ui.uiFacade.portraitModel.data = ModMain.ModelFile.ModelList[selectIndex].portraitModel;
 						g.ui.CloseUI(new UIType.UITypeBase("UIModelPro", 0), false);
-						Console.WriteLine("Start refreshing face pinching data");
+						MelonLogger.Msg("Start refreshing face pinching data");
 						ui.playerData.dynUnitData.beauty.baseValue = g.conf.roleDress.GetBeautyValue(ui.playerData.dynUnitData.modelData);
 						ui.uiFacade.UpdateFacadeUI();
 						return;
@@ -285,7 +286,7 @@ namespace MOD_cK2zMO
 								}
 								else
 								{
-									Console.WriteLine("The border image is empty");
+									MelonLogger.Msg("The border image is empty");
 								}
 								this.transform.Find("Root/TextShowIndex").GetComponent<Text>().text = "#" + (secondIndex + 1).ToString() + $"\n{charmPrefixLabel}" + g.conf.roleDress.GetBeautyValue(portraitModelDatas).ToString();
 							}
@@ -370,7 +371,7 @@ namespace MOD_cK2zMO
 				{
 					if (ModMain.ModelFile.ModelList.Count > this.selectIndex)
 					{
-						Console.WriteLine("Number：" + this.selectIndex.ToString());
+						MelonLogger.Msg("Number：" + this.selectIndex.ToString());
 						this.SelectModel(this.selectIndex);
 					}
 				};
@@ -402,7 +403,7 @@ namespace MOD_cK2zMO
 				// 			saveFileDialog.Filter = "Image Files (*.png)|*.png";
 				// 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
 				// 			{
-				// 				Console.WriteLine(saveFileDialog.FileName);
+				// 				MelonLogger.Msg(saveFileDialog.FileName);
 				// 				Action delegWrFile = delegate
 				// 												{
 				// 													FileTool.WriteByteAsync(saveFileDialog.FileName, bytes, null);
