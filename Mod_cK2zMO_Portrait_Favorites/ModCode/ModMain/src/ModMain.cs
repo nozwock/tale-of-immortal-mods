@@ -25,6 +25,10 @@ namespace MOD_cK2zMO
 
 		internal static ModelFile ModelFile { get => modelFile; set => modelFile = value; }
 
+		private static string confirmAddToFavoriteLabel = "Are you sure you want to add it to favorites?";
+		private static string btnAddToFavoriteLabel = "Favorite";
+		private static string btnOpenFavoriteUILabel = "View Favorites";
+
 		/// <summary>
 		/// MOD initialization, this function will be called when entering the game
 		/// </summary>
@@ -104,10 +108,10 @@ namespace MOD_cK2zMO
 			Text componentInChildren = button.GetComponentInChildren<Text>();
 			Button componentInChildren2 = button.GetComponentInChildren<Button>();
 			componentInChildren2.onClick.RemoveAllListeners();
-			componentInChildren.text = "Favorites";
+			componentInChildren.text = btnAddToFavoriteLabel;
 			componentInChildren2.onClick.AddListener((System.Action)delegate
 			{
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("hint", "Are you sure to collect the corresponding portrait data?", 2, (System.Action)delegate
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", confirmAddToFavoriteLabel, 2, (System.Action)delegate
 				{
 					ModelList modelList = new ModelList
 					{
@@ -130,7 +134,7 @@ namespace MOD_cK2zMO
 				Text componentInChildren3 = button2.GetComponentInChildren<Text>();
 				Button componentInChildren4 = button2.GetComponentInChildren<Button>();
 				componentInChildren4.onClick.RemoveAllListeners();
-				componentInChildren3.text = "Portrait data";
+				componentInChildren3.text = btnOpenFavoriteUILabel;
 				componentInChildren4.onClick.AddListener((System.Action)delegate
 				{
 					ClassInjector.RegisterTypeInIl2Cpp<UIModelPro>();
@@ -154,12 +158,12 @@ namespace MOD_cK2zMO
 			gameObject.transform.localPosition = new Vector3(-600f, -150f);
 			gameObject.name = "xsmsx_btn_save";
 			gameObject.layer = int.MaxValue;
-			gameObject.GetComponentInChildren<Text>().text = "Favorites";
+			gameObject.GetComponentInChildren<Text>().text = btnAddToFavoriteLabel;
 			Button componentInChildren = gameObject.GetComponentInChildren<Button>();
 			componentInChildren.onClick.RemoveAllListeners();
 			componentInChildren.onClick.AddListener((System.Action)delegate
 			{
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("hint", "Are you sure to collect the corresponding face pinching data?", 2, (System.Action)delegate
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", confirmAddToFavoriteLabel, 2, (System.Action)delegate
 				{
 					ModelList modelList = new ModelList
 					{
@@ -180,7 +184,7 @@ namespace MOD_cK2zMO
 			gameObject2.transform.localPosition = new Vector3(-443f, -150f);
 			gameObject2.name = "xsmsx_btn_open";
 			gameObject2.layer = int.MaxValue;
-			gameObject2.GetComponentInChildren<Text>().text = "Portrait data";
+			gameObject2.GetComponentInChildren<Text>().text = btnOpenFavoriteUILabel;
 			Button componentInChildren2 = gameObject2.GetComponentInChildren<Button>();
 			componentInChildren2.onClick.RemoveAllListeners();
 			componentInChildren2.onClick.AddListener((System.Action)delegate
@@ -216,11 +220,11 @@ namespace MOD_cK2zMO
 				}
 				Button button = UnityEngine.Object.Instantiate(uI.btnOK, __instance.goGroupRoot.transform);
 				button.name = "save";
-				button.GetComponentInChildren<Text>().text = "Favorites";
+				button.GetComponentInChildren<Text>().text = btnAddToFavoriteLabel;
 				button.transform.localPosition = new Vector3(-185f, -325f);
 				button.onClick.AddListener((System.Action)delegate
 				{
-					g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("hint", "Are you sure to collect the corresponding portrait data?", 2, (System.Action)delegate
+					g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", "Are you sure to collect the corresponding portrait data?", 2, (System.Action)delegate
 					{
 						ModelList modelList = new ModelList();
 						if (__instance.portraitModel.data.sex == 1)
@@ -240,7 +244,7 @@ namespace MOD_cK2zMO
 				});
 				Button button2 = UnityEngine.Object.Instantiate(uI.btnOK, __instance.goGroupRoot.transform);
 				button2.name = "open";
-				button2.GetComponentInChildren<Text>().text = "Portrait";
+				button2.GetComponentInChildren<Text>().text = btnOpenFavoriteUILabel;
 				button2.transform.localPosition = new Vector3(-25f, -325f);
 				button2.onClick.AddListener((System.Action)delegate
 				{
@@ -269,10 +273,10 @@ namespace MOD_cK2zMO
 			Text componentInChildren = button.GetComponentInChildren<Text>();
 			Button componentInChildren2 = button.GetComponentInChildren<Button>();
 			componentInChildren2.onClick.RemoveAllListeners();
-			componentInChildren.text = "Favorites";
+			componentInChildren.text = btnAddToFavoriteLabel;
 			componentInChildren2.onClick.AddListener((System.Action)delegate
 			{
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("hint", "Are you sure to collect the corresponding portrait data?", 2, (System.Action)delegate
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", confirmAddToFavoriteLabel, 2, (System.Action)delegate
 				{
 					string modelID = ui.GetModelID();
 					ModDataValueString modDataValueString = new ModDataValueString();
@@ -300,7 +304,7 @@ namespace MOD_cK2zMO
 			Text componentInChildren3 = button2.GetComponentInChildren<Text>();
 			Button componentInChildren4 = button2.GetComponentInChildren<Button>();
 			componentInChildren4.onClick.RemoveAllListeners();
-			componentInChildren3.text = "Portrait data";
+			componentInChildren3.text = btnOpenFavoriteUILabel;
 			componentInChildren4.onClick.AddListener((System.Action)delegate
 			{
 				if (g.ui.GetUI(new UIType.UITypeBase("UIModelPro", UILayer.UI)) == null)
@@ -312,7 +316,7 @@ namespace MOD_cK2zMO
 				}
 				else
 				{
-					g.ui.OpenUI<UITextInfo>(UIType.TextInfo).InitData("hint", "You have already opened the portrait database interface, please do not click again.");
+					g.ui.OpenUI<UITextInfo>(UIType.TextInfo).InitData("Notice", "You have already opened the portrait database interface, please do not click again.");
 				}
 			});
 			string text3 = "btn_close";

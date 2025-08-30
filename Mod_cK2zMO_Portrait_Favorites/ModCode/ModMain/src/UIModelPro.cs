@@ -21,6 +21,11 @@ namespace MOD_cK2zMO
 		public int mode;
 		public static List<string> fileName;
 
+		private static string charmPrefixLabel = "Charm: ";
+		private static string confirmEditPortraitLabel = "Are you sure you want to edit this portrait?";
+		private static string confirmRemovePortraitLabel = "Are you sure you want to delete this portrait?";
+		private static string confirmApplyPortraitLabel = "Are you sure you want to use this as your character's portrait?";
+
 		public UIModelPro(IntPtr ptr)
 			: base(ptr)
 		{
@@ -38,6 +43,45 @@ namespace MOD_cK2zMO
 
 		internal void InitData()
 		{
+			{
+				// Set english text
+				base.transform.Find("Root/TextPage/InputField/Placeholder").GetComponent<Text>().text = "Page No.";
+				base.transform.Find("Root/ButtonNext/Text").GetComponent<Text>().text = "Next";
+				base.transform.Find("Root/ButtonLast/Text").GetComponent<Text>().text = "Previous";
+				base.transform.Find("Root/ButtonSelect/Text").GetComponent<Text>().text = "Apply";
+				base.transform.Find("Root/ButtonRemove/Text").GetComponent<Text>().text = "Delete";
+				base.transform.Find("Root/TextPage/ButtonJump/Text").GetComponent<Text>().text = "Jump";
+				base.transform.Find("Root/ButtonSave/Text").GetComponent<Text>().text = "Export";
+				base.transform.Find("Root/ButtonChange/Text").GetComponent<Text>().text = "Edit";
+
+				// Hide Export button
+				// TODO: Maybe consider adding it back with game's FileTool
+				var btnExport = base.transform.Find("Root/ButtonSave").gameObject;
+				var btnEdit = base.transform.Find("Root/ButtonChange").gameObject;
+				var exportRT = btnExport.GetComponent<RectTransform>();
+				var editRT = btnEdit.GetComponent<RectTransform>();
+				editRT.anchoredPosition = exportRT.anchoredPosition;
+				editRT.sizeDelta = exportRT.sizeDelta;
+				btnExport.SetActive(false);
+
+				var textTitle = base.transform.Find("Root/TextTiTle");
+				var textComp = textTitle.GetComponent<Text>();
+				textComp.text = "Favorites";
+				textComp.horizontalOverflow = HorizontalWrapMode.Overflow;
+				// Rotate by 90
+				textTitle.rotation = Quaternion.Euler(0f, 0f, 90f);
+				// Slightly offset to the left
+				var pos = textTitle.localPosition;
+				pos.x -= 10;
+				textTitle.localPosition = pos;
+
+				var textPage = base.transform.Find("Root/TextPage");
+				textPage.GetComponent<Text>().alignment = TextAnchor.UpperCenter;
+				pos = textPage.localPosition;
+				pos.x -= 20;
+				textPage.localPosition = pos;
+			}
+
 			base.transform.gameObject.AddComponent<UIFastClose>();
 			this.heroBlockSprite = g.res.Load<Sprite>("Icon/tongyongtouxiang_4");
 			this.NormalColorSprite = g.res.Load<Sprite>("Icon/tongyongtouxiang_2");
@@ -80,7 +124,7 @@ namespace MOD_cK2zMO
 					Console.WriteLine("The entered jump page number is：" + num.ToString());
 					if (num < 1 || num > this.indexPageCount)
 					{
-						g.ui.OpenUI<UITextInfo>(UIType.TextInfo).InitData("hint", "The page number you entered is incorrect, please re-enter it!", "", null);
+						g.ui.OpenUI<UITextInfo>(UIType.TextInfo).InitData("Notice", "The page number you entered is incorrect, please re-enter it!", "", null);
 						return;
 					}
 					this.indexPage = num;
@@ -217,8 +261,8 @@ namespace MOD_cK2zMO
 					PortraitModelData portraitModelDatas = ModMain.ModelFile.ModelList[secondIndex].portraitModel;
 					if (portraitModelDatas != null)
 					{
-						base.transform.Find(text + "/Text1").GetComponent<Text>().text = "Number:" + Convert.ToString(secondIndex + 1);
-						base.transform.Find(text + "/Text2").GetComponent<Text>().text = "Charm:" + g.conf.roleDress.GetBeautyValue(portraitModelDatas).ToString();
+						base.transform.Find(text + "/Text1").GetComponent<Text>().text = "#" + Convert.ToString(secondIndex + 1);
+						base.transform.Find(text + "/Text2").GetComponent<Text>().text = charmPrefixLabel + g.conf.roleDress.GetBeautyValue(portraitModelDatas).ToString();
 						base.transform.Find(text + "/Image").GetComponent<Image>().sprite = this.NormalColorSprite;
 						base.transform.Find(text).GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
 						Action DelegBtnView = delegate
@@ -243,7 +287,7 @@ namespace MOD_cK2zMO
 								{
 									Console.WriteLine("The border image is empty");
 								}
-								this.transform.Find("Root/TextShowIndex").GetComponent<Text>().text = "Number:" + (secondIndex + 1).ToString() + "\r\nCharm:" + g.conf.roleDress.GetBeautyValue(portraitModelDatas).ToString();
+								this.transform.Find("Root/TextShowIndex").GetComponent<Text>().text = "#" + (secondIndex + 1).ToString() + $"\n{charmPrefixLabel}" + g.conf.roleDress.GetBeautyValue(portraitModelDatas).ToString();
 							}
 						};
 						base.transform.Find(text).GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnView);
@@ -273,7 +317,7 @@ namespace MOD_cK2zMO
 			{
 				RawImage component2 = base.transform.Find("Root/RawImageModel").GetComponent<RawImage>();
 				PortraitModel.CreateTextureInModelData(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel, component2, new Vector2(0f, -5.2f), 1f, false, true, null);
-				base.transform.Find("Root/TextShowIndex").GetComponent<Text>().text = "Number:" + (this.selectIndex + 1).ToString() + "\r\nCharm:" + g.conf.roleDress.GetBeautyValue(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel).ToString();
+				base.transform.Find("Root/TextShowIndex").GetComponent<Text>().text = "#" + (this.selectIndex + 1).ToString() + $"\n{charmPrefixLabel}" + g.conf.roleDress.GetBeautyValue(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel).ToString();
 			}
 			base.transform.Find("Root/ButtonChange").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
 			Action DelegBtnTuning = delegate
@@ -301,7 +345,7 @@ namespace MOD_cK2zMO
 						uIModDress.btnOK.onClick.AddListener(DelegBtnOK);
 					}
 				};
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("hint", "Do you confirm the portrait data corresponding to fine-tuning?", 2, DelegConfTuning, null);
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", confirmEditPortraitLabel, 2, DelegConfTuning, null);
 			};
 			base.transform.Find("Root/ButtonChange").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnTuning);
 			base.transform.Find("Root/ButtonRemove").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
@@ -316,7 +360,7 @@ namespace MOD_cK2zMO
 						this.UpData();
 					}
 				};
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("hint", "Are you sure to remove the corresponding portrait data?", 2, DelegRemConf, null);
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", confirmRemovePortraitLabel, 2, DelegRemConf, null);
 			};
 			base.transform.Find("Root/ButtonRemove").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnRem);
 			base.transform.Find("Root/ButtonSelect").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
@@ -330,7 +374,7 @@ namespace MOD_cK2zMO
 						this.SelectModel(this.selectIndex);
 					}
 				};
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("hint", "Are you sure to select the corresponding portrait data?", 2, DelegSelConf, null);
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", confirmApplyPortraitLabel, 2, DelegSelConf, null);
 			};
 			base.transform.Find("Root/ButtonSelect").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnConf);
 			base.transform.Find("Root/ButtonSave").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
@@ -368,17 +412,13 @@ namespace MOD_cK2zMO
 				// 		}
 				// 	}
 				// };
-				g.ui.OpenUI<UITextInfo>(UIType.TextInfo).InitData("hint", "This option is currently disabled");
-				// g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("hint", "Are you sure to save the corresponding 3D image?", 2, DelegConfSav, null);
+				g.ui.OpenUI<UITextInfo>(UIType.TextInfo).InitData("Notice", "This option is currently disabled");
+				// g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", "Are you sure to save the corresponding 3D image?", 2, DelegConfSav, null);
 			};
 			base.transform.Find("Root/ButtonSave").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnSav);
 			base.transform.Find("Root/TextPage").GetComponent<Text>().text = string.Concat(new string[]
 			{
-				"No.",
-				this.indexPage.ToString(),
-				"pages/total",
-				this.indexPageCount.ToString(),
-				"Page"
+				$"Page {indexPage}/{indexPageCount}"
 			});
 		}
 	}
