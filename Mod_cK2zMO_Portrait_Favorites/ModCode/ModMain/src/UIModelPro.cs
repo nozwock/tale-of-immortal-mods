@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using MelonLoader;
+using UnityEngine.Events;
 
 namespace MOD_cK2zMO
 {
@@ -81,6 +82,27 @@ namespace MOD_cK2zMO
 				pos = textPage.localPosition;
 				pos.x -= 20;
 				textPage.localPosition = pos;
+
+				// Restrict InputField to valid page numbers
+				var input = base.transform.Find("Root/TextPage/InputField")
+					.GetComponent<UnityEngine.UI.InputField>();
+				if (input != null)
+				{
+					input.contentType = UnityEngine.UI.InputField.ContentType.IntegerNumber;
+					input.ForceLabelUpdate();
+				}
+				input.onEndEdit.AddListener((UnityAction<string>)(val =>
+				{
+					if (int.TryParse(val, out int page))
+					{
+						page = Mathf.Clamp(page, indexPage, indexPageCount);
+						input.text = page.ToString();
+					}
+					else
+					{
+						input.text = indexPage.ToString();
+					}
+				}));
 			}
 
 			base.transform.gameObject.AddComponent<UIFastClose>();
@@ -125,7 +147,7 @@ namespace MOD_cK2zMO
 					MelonLogger.Msg("The entered jump page number is：" + num.ToString());
 					if (num < 1 || num > this.indexPageCount)
 					{
-						g.ui.OpenUI<UITextInfo>(UIType.TextInfo).InitData("Notice", "The page number you entered is incorrect, please re-enter it!", "", null);
+						MelonLogger.Warning("Page shouldn't have been out of index after validation");
 						return;
 					}
 					this.indexPage = num;
