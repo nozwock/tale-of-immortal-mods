@@ -103,6 +103,16 @@ namespace MOD_cK2zMO
 						input.text = indexPage.ToString();
 					}
 				}));
+				// Center the main text
+				textComp = input.textComponent;
+				if (textComp != null)
+					textComp.alignment = TextAnchor.MiddleCenter;
+
+				// Center the placeholder
+				var placeholder = input.placeholder as Text;
+				if (placeholder != null)
+					placeholder.alignment = TextAnchor.MiddleCenter;
+
 			}
 
 			base.transform.gameObject.AddComponent<UIFastClose>();
