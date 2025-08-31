@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using MelonLoader;
 using UnityEngine.Events;
 using UnhollowerRuntimeLib;
+using System.Linq;
 
 namespace MOD_cK2zMO
 {
@@ -28,6 +29,8 @@ namespace MOD_cK2zMO
 		private static string confirmApplyPortraitLabel1 = "Are you sure you want to use this as your character's portrait?";
 		private static string confirmApplyPortraitLabel2 = "Are you sure you want to use this as the NPC's portrait?";
 		private static string confirmEditCompletePortraitLabel = "Are you sure you want to overwrite portrait #{0} with this?";
+		private static readonly Color GRAY = new(0.5f, 0.5f, 0.5f, 1f);
+		private static readonly Color BLACK = new(0f, 0f, 0f, 1f);
 
 		public UIModelPro(IntPtr ptr)
 			: base(ptr)
@@ -135,7 +138,7 @@ namespace MOD_cK2zMO
 				{
 					var btnApply = base.transform.Find("Root/ButtonSelect");
 					btnApply.GetComponent<Button>().interactable = false;
-					btnApply.GetComponentInChildren<Text>().color = new Color(0.5f, 0.5f, 0.5f, 1f); // gray;
+					btnApply.GetComponentInChildren<Text>().color = GRAY;
 				}
 			}
 
@@ -217,6 +220,31 @@ namespace MOD_cK2zMO
 		public void SortFun()
 		{
 		}
+
+		public bool IsGenderCompatible(int selectIndex, int? mode_ = null)
+		{
+			mode_ ??= mode;
+			var sex1 = ModMain.ModelFile.ModelList[selectIndex].portraitModel.sex;
+			int? sex2;
+			if (mode_ == 1)
+			{
+				sex2 = g.world.playerUnit.data.dynUnitData.sex.baseValue;
+			}
+			else if (mode_ == 2)
+			{
+				sex2 = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo)?.unit.data.dynUnitData.sex.baseValue;
+			}
+			else
+			{
+				return true; // skip
+			}
+
+			if (sex2 == null)
+				return true; // skip
+
+			return sex1 == sex2;
+		}
+
 		public void SelectModel(int selectIndex, int? mode_ = null)
 		{
 			mode_ ??= mode;
@@ -231,15 +259,39 @@ namespace MOD_cK2zMO
 					head = ModMain.ModelFile.ModelList[selectIndex].portraitModel.head,
 					sex = ModMain.ModelFile.ModelList[selectIndex].portraitModel.sex
 				};
+				var portraitModel = ModMain.ModelFile.ModelList[selectIndex].portraitModel.Clone();
 				if (mode_ == 0)
 				{
-					UICreatePlayer ui = g.ui.GetUI<UICreatePlayer>(UIType.CreatePlayer);
+					var ui = g.ui.GetUI<UICreatePlayer>(UIType.CreatePlayer);
 					if (ui != null)
 					{
-						ui.playerData.SetModelData(ModMain.ModelFile.ModelList[selectIndex].portraitModel, battleModelHumanData);
-						ui.playerData.dynUnitData.modelData = ModMain.ModelFile.ModelList[selectIndex].portraitModel;
+						// Update gender in UI as per portrait
+						var toggles = ui.transform.Find("Root/Group:Facade/LanguageGroup").GetComponentsInChildren<Toggle>(false);
+						var womanToggle = toggles.FirstOrDefault(t => t.name.ToLower().Contains("tglwoman"));
+						var manToggle = toggles.FirstOrDefault(t => t.name.ToLower().Contains("tglman"));
+						if (womanToggle != null && manToggle != null)
+						{
+							if (portraitModel.sex == (int)UnitSexType.Man)
+							{
+								manToggle.isOn = true;
+							}
+							else
+							{
+								womanToggle.isOn = true;
+							}
+						}
+						else
+						{
+							g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", "Please set the appropriate gender first.", 1);
+							return;
+						}
+
+						// FIXME: For some reason the battle model gets stuck to the last portrait selected via the mod,
+						// I tried many different things, nothing seemed to work
+						ui.playerData.SetModelData(portraitModel, battleModelHumanData);
+						ui.playerData.dynUnitData.modelData = portraitModel;
 						ui.playerData.dynUnitData.battleModelData = battleModelHumanData;
-						ui.uiFacade.portraitModel.data = ModMain.ModelFile.ModelList[selectIndex].portraitModel;
+						ui.uiFacade.portraitModel.data = portraitModel;
 						g.ui.CloseUI(new UIType.UITypeBase("UIModelPro", 0), false);
 						MelonLogger.Msg("Start refreshing face pinching data");
 						ui.playerData.dynUnitData.beauty.baseValue = g.conf.roleDress.GetBeautyValue(ui.playerData.dynUnitData.modelData);
@@ -249,12 +301,12 @@ namespace MOD_cK2zMO
 				}
 				else if (mode_ == 1)
 				{
-					UIPlayerInfo ui2 = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
-					if (ui2 != null)
+					var ui = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
+					if (ui != null)
 					{
-						g.world.playerUnit.data.SetModelData(ModMain.ModelFile.ModelList[selectIndex].portraitModel, battleModelHumanData);
+						g.world.playerUnit.data.SetModelData(portraitModel, battleModelHumanData);
 						g.world.playerUnit.data.dynUnitData.beauty.baseValue = g.conf.roleDress.GetBeautyValue(g.world.playerUnit.data.dynUnitData.modelData);
-						ui2.uiProperty.UpdateUI();
+						ui.uiProperty.UpdateUI();
 						if (SceneType.map != null && SceneType.map.world != null)
 						{
 							SceneType.map.world.UpdatePlayerModel(true);
@@ -272,19 +324,19 @@ namespace MOD_cK2zMO
 				}
 				else if (mode_ == 2)
 				{
-					UINPCInfo ui4 = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
-					if (ui4 != null)
+					var ui = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
+					if (ui != null)
 					{
-						ui4.unit.data.SetModelData(ModMain.ModelFile.ModelList[selectIndex].portraitModel, battleModelHumanData);
-						ui4.unit.data.dynUnitData.beauty.baseValue = g.conf.roleDress.GetBeautyValue(ui4.unit.data.dynUnitData.modelData);
-						ui4.UpdateUI();
+						ui.unit.data.SetModelData(portraitModel, battleModelHumanData);
+						ui.unit.data.dynUnitData.beauty.baseValue = g.conf.roleDress.GetBeautyValue(ui.unit.data.dynUnitData.modelData);
+						ui.UpdateUI();
 						g.ui.CloseUI(new UIType.UITypeBase("UIModelPro", 0), false);
 						return;
 					}
 				}
 				else if (mode_ == 3)
 				{
-					UIModDress ui = g.ui.GetUI<UIModDress>(UIType.ModDress);
+					var ui = g.ui.GetUI<UIModDress>(UIType.ModDress);
 					if (ui != null)
 					{
 						// Just setting valuestring doesn't work, valuestring is mostly for the copy-paste character
@@ -300,6 +352,22 @@ namespace MOD_cK2zMO
 				}
 			}
 		}
+
+		private void UpdateBtnApply(int selectIndex)
+		{
+			var btnApply = this.transform.Find("Root/ButtonSelect");
+			if (IsGenderCompatible(selectIndex))
+			{
+				btnApply.GetComponent<Button>().interactable = true;
+				btnApply.GetComponentInChildren<Text>().color = BLACK;
+			}
+			else
+			{
+				btnApply.GetComponent<Button>().interactable = false;
+				btnApply.GetComponentInChildren<Text>().color = GRAY;
+			}
+		}
+
 		public void UpData()
 		{
 			if (ModMain.ModelFile == null || ModMain.ModelFile.ModelList == null)
@@ -361,6 +429,9 @@ namespace MOD_cK2zMO
 									MelonLogger.Msg("The border image is empty");
 								}
 								this.transform.Find("Root/TextShowIndex").GetComponent<Text>().text = "#" + (secondIndex + 1).ToString() + $"\n{charmPrefixLabel}" + g.conf.roleDress.GetBeautyValue(portraitModelDatas).ToString();
+
+								// Update "Apply" state based on portrait's gender on select
+								UpdateBtnApply(selectIndex);
 							}
 						};
 						base.transform.Find(text).GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnView);
@@ -397,8 +468,6 @@ namespace MOD_cK2zMO
 			{
 				if (ModMain.ModelFile.ModelList.Count > this.selectIndex)
 				{
-					// TODO: restrict gender when applying portrait if that isn't the case already, with a preference
-					// that can switch off this guard if the user wants
 					// TODO: Prevent from adding portraits of transformed Imps and special characters (5 blooms) as the
 					// character editor breaks for them 
 					// TODO: Add tooltips to buttons
@@ -596,6 +665,8 @@ namespace MOD_cK2zMO
 			{
 				$"Page {indexPage}/{indexPageCount}"
 			});
+
+			UpdateBtnApply(selectIndex);
 		}
 	}
 }
