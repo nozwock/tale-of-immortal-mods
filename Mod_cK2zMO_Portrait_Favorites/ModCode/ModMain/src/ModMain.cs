@@ -281,5 +281,24 @@ namespace MOD_cK2zMO
 			portraitModelData.faceRight = int.Parse(array[num++]);
 			return portraitModelData;
 		}
+
+		public static Transform? FindChildByNameContains(
+			Transform parent,
+			string substring,
+			System.Func<Transform, Transform>? key = null,
+			bool isCaseSensitive = false)
+		{
+			for (int i = 0; i < parent.childCount; i++)
+			{
+				var child = parent.GetChild(i);
+				if (key != null)
+				{
+					child = key(child);
+				}
+				if (child.name.IndexOf(substring, isCaseSensitive ? System.StringComparison.Ordinal : System.StringComparison.OrdinalIgnoreCase) >= 0)
+					return child;
+			}
+			return null;
+		}
 	}
 }
