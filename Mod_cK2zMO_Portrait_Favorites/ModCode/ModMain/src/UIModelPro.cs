@@ -389,6 +389,10 @@ namespace MOD_cK2zMO
 					if (ModMain.ModelFile.ModelList.Count > this.selectIndex)
 					{
 						ModMain.ModelFile.ModelList.RemoveAt(this.selectIndex);
+						if (ModMain.ModelFile.ModelList.Count <= selectIndex)
+						{
+							selectIndex -= Math.Abs(ModMain.ModelFile.ModelList.Count - 1 - selectIndex);
+						}
 						ModMain.ModelFile.SaveConf();
 						this.UpData();
 					}
