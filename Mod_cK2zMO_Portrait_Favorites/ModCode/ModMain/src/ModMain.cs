@@ -258,6 +258,8 @@ namespace MOD_cK2zMO
 		}
 		public void ModDressUICMD()
 		{
+			// TODO: Move this all over to the "Edit" callback since this doesn't seem to work when in mod creator
+			// anyways
 			UIModDress ui = g.ui.GetUI<UIModDress>(UIType.ModDress);
 			if (!(ui != null))
 			{

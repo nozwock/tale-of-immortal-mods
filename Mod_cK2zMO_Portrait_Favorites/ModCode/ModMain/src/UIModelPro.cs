@@ -192,8 +192,9 @@ namespace MOD_cK2zMO
 		public void SortFun()
 		{
 		}
-		public void SelectModel(int selectIndex)
+		public void SelectModel(int selectIndex, int? mode_ = null)
 		{
+			mode_ ??= mode;
 			if (ModMain.ModelFile.ModelList.Count > selectIndex)
 			{
 				BattleModelHumanData battleModelHumanData = new BattleModelHumanData
@@ -205,7 +206,7 @@ namespace MOD_cK2zMO
 					head = ModMain.ModelFile.ModelList[selectIndex].portraitModel.head,
 					sex = ModMain.ModelFile.ModelList[selectIndex].portraitModel.sex
 				};
-				if (this.mode == 0)
+				if (mode_ == 0)
 				{
 					UICreatePlayer ui = g.ui.GetUI<UICreatePlayer>(UIType.CreatePlayer);
 					if (ui != null)
@@ -221,7 +222,7 @@ namespace MOD_cK2zMO
 						return;
 					}
 				}
-				else if (this.mode == 1)
+				else if (mode_ == 1)
 				{
 					UIPlayerInfo ui2 = g.ui.GetUI<UIPlayerInfo>(UIType.PlayerInfo);
 					if (ui2 != null)
@@ -244,7 +245,7 @@ namespace MOD_cK2zMO
 						return;
 					}
 				}
-				else if (this.mode == 2)
+				else if (mode_ == 2)
 				{
 					UINPCInfo ui4 = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo);
 					if (ui4 != null)
@@ -256,7 +257,7 @@ namespace MOD_cK2zMO
 						return;
 					}
 				}
-				else if (this.mode == 3)
+				else if (mode_ == 3)
 				{
 					UIModDress ui = g.ui.GetUI<UIModDress>(UIType.ModDress);
 					if (ui != null)
@@ -371,27 +372,55 @@ namespace MOD_cK2zMO
 			{
 				if (ModMain.ModelFile.ModelList.Count > this.selectIndex)
 				{
-					UIModDress uIModDress = g.ui.OpenUI<UIModDress>(UIType.ModDress);
+					// TODO: remove "Apply" from Favorites UI when opened from ModDress, as it only adds to the
+					// confusion with both "Edit" and "Apply" doing the same thing in that context
+					//
+					// TODO: Change the confirmation dialog text for "Apply" based on the context, it has to be
+					// different for when applying to player, npc or in the character creator... or make the
+					// confirmation message generic so it works for all
+					//
+					// TODO: restrict gender when applying portrait if that isn't the case already, with a preference
+					// that can switch off this guard if the user wants
+					//
+					// TODO: Add tooltips to buttons
+					// FIXME: Jump input field seems to keep getting reset to current page
+
+					// NOTE: If UIModelPro is being opened with OpenUI when there's already one instance opened, it will
+					// be simply be brought into focus, so there's no need to close first and then reopen.
+
+					// Instead of closing and reopening ModDress if already opened, just update the model data and bring
+					// the UI into focus. Note that in case of UIModDress OpenUI calls create new instances of the UI
+					// instead of reusing existing ones. I'm not sure why different UI classes show different behaviour.
+					var uiModDress = g.ui.GetUI<UIModDress>(UIType.ModDress);
+					if (uiModDress != null)
+					{
+						SelectModel(selectIndex, 3);
+						uiModDress.transform.SetAsLastSibling();
+						uiModDress.GetComponentInParent<Canvas>().sortingOrder = 200;
+						return;
+					}
+
+					uiModDress = g.ui.OpenUI<UIModDress>(UIType.ModDress);
 					if (ModMain.ModelFile.ModelList[this.selectIndex].portraitModel.sex == 1)
 					{
-						uIModDress.InitData(ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel), (UnitSexType)1);
+						uiModDress.InitData(ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel), (UnitSexType)1);
 					}
 					else if (ModMain.ModelFile.ModelList[this.selectIndex].portraitModel.sex == 2)
 					{
-						uIModDress.InitData(ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel), (UnitSexType)2);
+						uiModDress.InitData(ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel), (UnitSexType)2);
 					}
-					uIModDress.btnOK.onClick.RemoveAllListeners();
+					uiModDress.btnOK.onClick.RemoveAllListeners();
 					Action DelegBtnOK = delegate
 					{
 						g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", string.Format(confirmEditCompletePortraitLabel, selectIndex + 1), 2, (Action)delegate
 						{
 							g.ui.CloseUI(UIType.ModDress);
-							ModMain.ModelFile.ModelList[this.selectIndex].portraitModel = ModMain.GetPortraitModelData(uIModDress.valueString, ModMain.ModelFile.ModelList[this.selectIndex].portraitModel);
+							ModMain.ModelFile.ModelList[this.selectIndex].portraitModel = ModMain.GetPortraitModelData(uiModDress.valueString, ModMain.ModelFile.ModelList[this.selectIndex].portraitModel);
 							ModMain.ModelFile.SaveConf();
 							this.UpData();
 						});
 					};
-					uIModDress.btnOK.onClick.AddListener(DelegBtnOK);
+					uiModDress.btnOK.onClick.AddListener(DelegBtnOK);
 				}
 			};
 			base.transform.Find("Root/ButtonChange").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnTuning);
