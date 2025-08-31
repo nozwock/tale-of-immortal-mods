@@ -130,6 +130,15 @@ namespace MOD_cK2zMO
 				var placeholder = input.placeholder as Text;
 				if (placeholder != null)
 					placeholder.alignment = TextAnchor.MiddleCenter;
+
+				// Disable "Apply" when the UI is opened from ModDress, as it only adds to the confusion with both
+				// "Edit" and "Apply" doing the same thing in this context
+				if (mode == 3)
+				{
+					var btnApply = base.transform.Find("Root/ButtonSelect");
+					btnApply.GetComponent<Button>().interactable = false;
+					btnApply.GetComponentInChildren<Text>().color = new Color(0.5f, 0.5f, 0.5f, 1f); // gray;
+				}
 			}
 
 			base.transform.gameObject.AddComponent<UIFastClose>();
@@ -390,9 +399,6 @@ namespace MOD_cK2zMO
 			{
 				if (ModMain.ModelFile.ModelList.Count > this.selectIndex)
 				{
-					// TODO: remove "Apply" from Favorites UI when opened from ModDress, as it only adds to the
-					// confusion with both "Edit" and "Apply" doing the same thing in that context
-					//
 					// TODO: Change the confirmation dialog text for "Apply" based on the context, it has to be
 					// different for when applying to player, npc or in the character creator... or make the
 					// confirmation message generic so it works for all
