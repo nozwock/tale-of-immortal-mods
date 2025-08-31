@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using MelonLoader;
 using UnityEngine.Events;
+using UnhollowerRuntimeLib;
 
 namespace MOD_cK2zMO
 {
@@ -391,36 +392,113 @@ namespace MOD_cK2zMO
 					// Instead of closing and reopening ModDress if already opened, just update the model data and bring
 					// the UI into focus. Note that in case of UIModDress OpenUI calls create new instances of the UI
 					// instead of reusing existing ones. I'm not sure why different UI classes show different behaviour.
-					var uiModDress = g.ui.GetUI<UIModDress>(UIType.ModDress);
-					if (uiModDress != null)
+					var ui = g.ui.GetUI<UIModDress>(UIType.ModDress);
+					if (ui != null)
 					{
 						SelectModel(selectIndex, 3);
-						uiModDress.transform.SetAsLastSibling();
-						uiModDress.GetComponentInParent<Canvas>().sortingOrder = 200;
+						ui.transform.SetAsLastSibling();
+						ui.GetComponentInParent<Canvas>().sortingOrder = 200;
 						return;
 					}
 
-					uiModDress = g.ui.OpenUI<UIModDress>(UIType.ModDress);
+					ui = g.ui.OpenUI<UIModDress>(UIType.ModDress);
+
+					ModifyModDressUI(ui);
+
+					// Set portrait model state and init UI
 					if (ModMain.ModelFile.ModelList[this.selectIndex].portraitModel.sex == 1)
 					{
-						uiModDress.InitData(ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel), (UnitSexType)1);
+						ui.InitData(ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel), (UnitSexType)1);
 					}
 					else if (ModMain.ModelFile.ModelList[this.selectIndex].portraitModel.sex == 2)
 					{
-						uiModDress.InitData(ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel), (UnitSexType)2);
+						ui.InitData(ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel), (UnitSexType)2);
 					}
-					uiModDress.btnOK.onClick.RemoveAllListeners();
-					Action DelegBtnOK = delegate
+
+					// Overwrite "Edit Complete" callback
+					ui.btnOK.onClick.RemoveAllListeners();
+					ui.btnOK.onClick.AddListener((Action)delegate
 					{
 						g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", string.Format(confirmEditCompletePortraitLabel, selectIndex + 1), 2, (Action)delegate
 						{
 							g.ui.CloseUI(UIType.ModDress);
-							ModMain.ModelFile.ModelList[this.selectIndex].portraitModel = ModMain.GetPortraitModelData(uiModDress.valueString, ModMain.ModelFile.ModelList[this.selectIndex].portraitModel);
+							ModMain.ModelFile.ModelList[this.selectIndex].portraitModel = ModMain.GetPortraitModelData(ui.valueString, ModMain.ModelFile.ModelList[this.selectIndex].portraitModel);
 							ModMain.ModelFile.SaveConf();
 							this.UpData();
 						});
-					};
-					uiModDress.btnOK.onClick.AddListener(DelegBtnOK);
+					});
+
+					static void ModifyModDressUI(UIModDress ui)
+					{
+						if (ui.btnOK.transform.parent.Find(ModMain.btnSavePortraitName) == null)
+						{
+							var btnSavePortrait = UnityEngine.Object.Instantiate(ui.btnOK, ui.btnOK.transform.parent);
+							btnSavePortrait.name = ModMain.btnSavePortraitName;
+							btnSavePortrait.transform.localPosition = new Vector3(ui.btnOK.transform.localPosition.x, ui.btnOK.transform.localPosition.y + 150f);
+							btnSavePortrait.GetComponentInChildren<Text>().text = ModMain.btnAddToFavoriteLabel;
+							var btn = btnSavePortrait.GetComponentInChildren<Button>();
+							btn.onClick.RemoveAllListeners();
+							btn.onClick.AddListener((System.Action)delegate
+							{
+								g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", ModMain.confirmAddToFavoriteLabel, 2, (System.Action)delegate
+								{
+									string modelID = ui.GetModelID();
+									var modDataValueString = new ModDataValueString();
+									modDataValueString.SetString(modelID);
+									var modelList = new ModelList
+									{
+										name = "nameless-" + System.DateTime.Now.TimeOfDay.ToString(),
+										time = System.DateTime.Now.ToString(),
+										tips = "",
+										portraitModel = ModMain.GetPortraitModelData(modDataValueString)
+									};
+									ModMain.ModelFile.ModelList.Add(modelList);
+									ModMain.ModelFile.SaveConf();
+									MelonLogger.Msg(modelList.name + "The portrait data is saved successfully.");
+								});
+							});
+						}
+						if (ui.btnOK.transform.parent.Find(ModMain.btnViewFavoritesName) == null)
+						{
+							var btnViewFavorites = UnityEngine.Object.Instantiate(ui.btnOK, ui.btnOK.transform.parent);
+							btnViewFavorites.name = ModMain.btnViewFavoritesName;
+							btnViewFavorites.transform.localPosition = new Vector3(ui.btnOK.transform.localPosition.x, ui.btnOK.transform.localPosition.y + 100f);
+							btnViewFavorites.GetComponentInChildren<Text>().text = ModMain.btnOpenFavoriteUILabel;
+							var btn = btnViewFavorites.GetComponentInChildren<Button>();
+							btn.onClick.RemoveAllListeners();
+							btn.onClick.AddListener((System.Action)delegate
+							{
+								ClassInjector.RegisterTypeInIl2Cpp<UIModelPro>();
+								UIModelPro uIModelPro = g.ui.OpenUI(new UIType.UITypeBase("UIModelPro", UILayer.UI)).gameObject.AddComponent<UIModelPro>();
+								uIModelPro.mode = 3;
+								uIModelPro.InitData();
+							});
+						}
+						string btnCloseName = "btnClose";
+						if (ui.btnOK.transform.parent.Find(btnCloseName) == null)
+						{
+							Button btnClose = UnityEngine.Object.Instantiate(ui.btnOK, ui.btnOK.transform.parent);
+							btnClose.name = btnCloseName;
+							btnClose.transform.localPosition = new Vector3(ui.btnOK.transform.localPosition.x, ui.btnOK.transform.localPosition.y + 50f);
+							btnClose.GetComponentInChildren<Text>().text = "Exit editing";
+							var btn = btnClose.GetComponentInChildren<Button>();
+							btn.onClick.RemoveAllListeners();
+							btn.onClick.AddListener((System.Action)delegate
+							{
+								UIBase ui = g.ui.GetUI(new UIType.UITypeBase("UIModelPro", UILayer.UI));
+								if (ui != null)
+								{
+									UIModelPro component = ui.gameObject.GetComponent<UIModelPro>();
+									if (component != null)
+									{
+										component.UpData();
+										MelonLogger.Msg("Exit editing - start refreshing.");
+									}
+								}
+								g.ui.CloseUI(UIType.ModDress);
+							});
+						}
+					}
 				}
 			};
 			base.transform.Find("Root/ButtonChange").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnTuning);

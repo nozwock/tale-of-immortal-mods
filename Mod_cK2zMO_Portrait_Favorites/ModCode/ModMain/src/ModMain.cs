@@ -26,9 +26,11 @@ namespace MOD_cK2zMO
 
 		internal static ModelFile ModelFile { get => modelFile; set => modelFile = value; }
 
-		private static string confirmAddToFavoriteLabel = "Are you sure you want to add it to favorites?";
-		private static string btnAddToFavoriteLabel = "Favorite";
-		private static string btnOpenFavoriteUILabel = "View Favorites";
+		public static string btnSavePortraitName = "btnSavePortrait";
+		public static string btnViewFavoritesName = "btnViewFavorites";
+		public static string confirmAddToFavoriteLabel = "Are you sure you want to add it to favorites?";
+		public static string btnAddToFavoriteLabel = "Favorite";
+		public static string btnOpenFavoriteUILabel = "View Favorites";
 
 		/// <summary>
 		/// MOD initialization, this function will be called when entering the game
@@ -85,10 +87,6 @@ namespace MOD_cK2zMO
 			{
 				CreatePlayerUICMD();
 				return;
-			}
-			if (openUIEnd.uiType.uiName == UIType.ModDress.uiName)
-			{
-				ModDressUICMD();
 			}
 		}
 		public void PlayerInfoUICMD()
@@ -255,92 +253,6 @@ namespace MOD_cK2zMO
 					uIModelPro.InitData();
 				});
 			}
-		}
-		public void ModDressUICMD()
-		{
-			// TODO: Move this all over to the "Edit" callback since this doesn't seem to work when in mod creator
-			// anyways
-			UIModDress ui = g.ui.GetUI<UIModDress>(UIType.ModDress);
-			if (!(ui != null))
-			{
-				return;
-			}
-			string text = "btn_save";
-			if (ui.btnOK.transform.parent.Find(text) != null)
-			{
-				return;
-			}
-			Button button = UnityEngine.Object.Instantiate(ui.btnOK, ui.btnOK.transform.parent);
-			button.name = text;
-			button.transform.localPosition = new Vector3(ui.btnOK.transform.localPosition.x, ui.btnOK.transform.localPosition.y + 150f);
-			Text componentInChildren = button.GetComponentInChildren<Text>();
-			Button componentInChildren2 = button.GetComponentInChildren<Button>();
-			componentInChildren2.onClick.RemoveAllListeners();
-			componentInChildren.text = btnAddToFavoriteLabel;
-			componentInChildren2.onClick.AddListener((System.Action)delegate
-			{
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", confirmAddToFavoriteLabel, 2, (System.Action)delegate
-				{
-					string modelID = ui.GetModelID();
-					ModDataValueString modDataValueString = new ModDataValueString();
-					modDataValueString.SetString(modelID);
-					ModelList modelList = new ModelList
-					{
-						name = "nameless-" + System.DateTime.Now.TimeOfDay.ToString(),
-						time = System.DateTime.Now.ToString(),
-						tips = "",
-						portraitModel = GetPortraitModelData(modDataValueString)
-					};
-					modelFile.ModelList.Add(modelList);
-					modelFile.SaveConf();
-					MelonLogger.Msg(modelList.name + "The portrait data is saved successfully.");
-				});
-			});
-			string text2 = "btn_open";
-			if (ui.btnOK.transform.parent.Find(text2) != null)
-			{
-				return;
-			}
-			Button button2 = UnityEngine.Object.Instantiate(ui.btnOK, ui.btnOK.transform.parent);
-			button2.name = text2;
-			button2.transform.localPosition = new Vector3(ui.btnOK.transform.localPosition.x, ui.btnOK.transform.localPosition.y + 100f);
-			Text componentInChildren3 = button2.GetComponentInChildren<Text>();
-			Button componentInChildren4 = button2.GetComponentInChildren<Button>();
-			componentInChildren4.onClick.RemoveAllListeners();
-			componentInChildren3.text = btnOpenFavoriteUILabel;
-			componentInChildren4.onClick.AddListener((System.Action)delegate
-			{
-				ClassInjector.RegisterTypeInIl2Cpp<UIModelPro>();
-				UIModelPro uIModelPro = g.ui.OpenUI(new UIType.UITypeBase("UIModelPro", UILayer.UI)).gameObject.AddComponent<UIModelPro>();
-				uIModelPro.mode = 3;
-				uIModelPro.InitData();
-			});
-			string text3 = "btn_close";
-			if (ui.btnOK.transform.parent.Find(text3) != null)
-			{
-				return;
-			}
-			Button button3 = UnityEngine.Object.Instantiate(ui.btnOK, ui.btnOK.transform.parent);
-			button3.name = text3;
-			button3.transform.localPosition = new Vector3(ui.btnOK.transform.localPosition.x, ui.btnOK.transform.localPosition.y + 50f);
-			Text componentInChildren5 = button3.GetComponentInChildren<Text>();
-			Button componentInChildren6 = button3.GetComponentInChildren<Button>();
-			componentInChildren6.onClick.RemoveAllListeners();
-			componentInChildren5.text = "Exit editing";
-			componentInChildren6.onClick.AddListener((System.Action)delegate
-			{
-				UIBase uI = g.ui.GetUI(new UIType.UITypeBase("UIModelPro", UILayer.UI));
-				if (uI != null)
-				{
-					UIModelPro component = uI.gameObject.GetComponent<UIModelPro>();
-					if (component != null)
-					{
-						component.UpData();
-						MelonLogger.Msg("Exit editing - start refreshing.");
-					}
-				}
-				g.ui.CloseUI(UIType.ModDress);
-			});
 		}
 		public static ModDataValueString GetModDataValueString(PortraitModelData portraitModelData)
 		{
