@@ -258,11 +258,17 @@ namespace MOD_cK2zMO
 				}
 				else if (this.mode == 3)
 				{
-					UIModDress ui5 = g.ui.GetUI<UIModDress>(UIType.ModDress);
-					if (ui5 != null)
+					UIModDress ui = g.ui.GetUI<UIModDress>(UIType.ModDress);
+					if (ui != null)
 					{
-						ui5.valueString = ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[selectIndex].portraitModel);
-						ui5.UpdateFacadeUI();
+						// Just setting valuestring doesn't work, valuestring is mostly for the copy-paste character
+						// feature anyways, it's unused if we just set it like that without the callback of that
+						// InputField (OnEdit*)
+						ui.valueString = ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[selectIndex].portraitModel);
+						ui.playerData.SetModelData(ModMain.ModelFile.ModelList[selectIndex].portraitModel, battleModelHumanData);
+						ui.playerData.dynUnitData.modelData = ModMain.ModelFile.ModelList[selectIndex].portraitModel;
+						ui.playerData.dynUnitData.battleModelData = battleModelHumanData;
+						ui.UpdateFacadeUI();
 						g.ui.CloseUI(new UIType.UITypeBase("UIModelPro", 0), false);
 					}
 				}
