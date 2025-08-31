@@ -434,7 +434,7 @@ namespace MOD_cK2zMO
 						{
 							var btnSavePortrait = UnityEngine.Object.Instantiate(ui.btnOK, ui.btnOK.transform.parent);
 							btnSavePortrait.name = ModMain.btnSavePortraitName;
-							btnSavePortrait.transform.localPosition = new Vector3(ui.btnOK.transform.localPosition.x, ui.btnOK.transform.localPosition.y + 150f);
+							btnSavePortrait.transform.localPosition = new Vector3(ui.btnOK.transform.localPosition.x, ui.btnOK.transform.localPosition.y + 100f);
 							btnSavePortrait.GetComponentInChildren<Text>().text = ModMain.btnAddToFavoriteLabel;
 							var btn = btnSavePortrait.GetComponentInChildren<Button>();
 							btn.onClick.RemoveAllListeners();
@@ -462,7 +462,7 @@ namespace MOD_cK2zMO
 						{
 							var btnViewFavorites = UnityEngine.Object.Instantiate(ui.btnOK, ui.btnOK.transform.parent);
 							btnViewFavorites.name = ModMain.btnViewFavoritesName;
-							btnViewFavorites.transform.localPosition = new Vector3(ui.btnOK.transform.localPosition.x, ui.btnOK.transform.localPosition.y + 100f);
+							btnViewFavorites.transform.localPosition = new Vector3(ui.btnOK.transform.localPosition.x, ui.btnOK.transform.localPosition.y + 50f);
 							btnViewFavorites.GetComponentInChildren<Text>().text = ModMain.btnOpenFavoriteUILabel;
 							var btn = btnViewFavorites.GetComponentInChildren<Button>();
 							btn.onClick.RemoveAllListeners();
@@ -477,12 +477,19 @@ namespace MOD_cK2zMO
 						string btnCloseName = "btnClose";
 						if (ui.btnOK.transform.parent.Find(btnCloseName) == null)
 						{
-							Button btnClose = UnityEngine.Object.Instantiate(ui.btnOK, ui.btnOK.transform.parent);
-							btnClose.name = btnCloseName;
-							btnClose.transform.localPosition = new Vector3(ui.btnOK.transform.localPosition.x, ui.btnOK.transform.localPosition.y + 50f);
-							btnClose.GetComponentInChildren<Text>().text = "Exit editing";
-							var btn = btnClose.GetComponentInChildren<Button>();
-							btn.onClick.RemoveAllListeners();
+							var btnCloseGo = new GameObject
+							{
+								name = btnCloseName
+							};
+							btnCloseGo.transform.SetParent(ui.transform.Find("Root"), false);
+							var rt = btnCloseGo.AddComponent<RectTransform>();
+							rt.anchoredPosition = new Vector2(750f, 380f);
+							rt.sizeDelta = new Vector2(60f, 60f); ;
+							var img = btnCloseGo.AddComponent<Image>();
+							img.sprite = SpriteTool.GetSprite("Common", "tuichu");
+							img.preserveAspect = true;
+							var btn = btnCloseGo.AddComponent<Button>();
+							btn.targetGraphic = img;
 							btn.onClick.AddListener((System.Action)delegate
 							{
 								UIBase ui = g.ui.GetUI(new UIType.UITypeBase("UIModelPro", UILayer.UI));
