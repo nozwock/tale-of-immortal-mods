@@ -105,16 +105,13 @@ namespace MOD_cK2zMO
 				// Restrict InputField to valid page numbers
 				var input = base.transform.Find("Root/TextPage/InputField")
 					.GetComponent<UnityEngine.UI.InputField>();
-				if (input != null)
-				{
-					input.contentType = UnityEngine.UI.InputField.ContentType.IntegerNumber;
-					input.ForceLabelUpdate();
-				}
+				input.contentType = UnityEngine.UI.InputField.ContentType.IntegerNumber;
+				input.ForceLabelUpdate();
 				input.onEndEdit.AddListener((UnityAction<string>)(val =>
 				{
 					if (int.TryParse(val, out int page))
 					{
-						page = Mathf.Clamp(page, indexPage, indexPageCount);
+						page = Mathf.Clamp(page, 1, indexPageCount);
 						input.text = page.ToString();
 					}
 					else
@@ -402,9 +399,9 @@ namespace MOD_cK2zMO
 				{
 					// TODO: restrict gender when applying portrait if that isn't the case already, with a preference
 					// that can switch off this guard if the user wants
-					//
+					// TODO: Prevent from adding portraits of transformed Imps and special characters (5 blooms) as the
+					// character editor breaks for them 
 					// TODO: Add tooltips to buttons
-					// FIXME: Jump input field seems to keep getting reset to current page
 
 					// Instead of closing and reopening ModDress if already opened, just update the model data and bring
 					// the UI into focus. Note that in case of UIModDress OpenUI calls create new instances of the UI
