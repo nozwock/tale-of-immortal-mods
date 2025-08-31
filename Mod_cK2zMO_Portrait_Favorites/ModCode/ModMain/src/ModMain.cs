@@ -310,17 +310,10 @@ namespace MOD_cK2zMO
 			componentInChildren3.text = btnOpenFavoriteUILabel;
 			componentInChildren4.onClick.AddListener((System.Action)delegate
 			{
-				if (g.ui.GetUI(new UIType.UITypeBase("UIModelPro", UILayer.UI)) == null)
-				{
-					ClassInjector.RegisterTypeInIl2Cpp<UIModelPro>();
-					UIModelPro uIModelPro = g.ui.OpenUI(new UIType.UITypeBase("UIModelPro", UILayer.UI)).gameObject.AddComponent<UIModelPro>();
-					uIModelPro.mode = 3;
-					uIModelPro.InitData();
-				}
-				else
-				{
-					g.ui.OpenUI<UITextInfo>(UIType.TextInfo).InitData("Notice", "You have already opened the portrait database interface, please do not click again.");
-				}
+				ClassInjector.RegisterTypeInIl2Cpp<UIModelPro>();
+				UIModelPro uIModelPro = g.ui.OpenUI(new UIType.UITypeBase("UIModelPro", UILayer.UI)).gameObject.AddComponent<UIModelPro>();
+				uIModelPro.mode = 3;
+				uIModelPro.InitData();
 			});
 			string text3 = "btn_close";
 			if (ui.btnOK.transform.parent.Find(text3) != null)
