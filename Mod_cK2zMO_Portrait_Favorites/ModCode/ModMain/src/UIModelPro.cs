@@ -274,6 +274,12 @@ namespace MOD_cK2zMO
 			{
 				return;
 			}
+			if (ModMain.ModelFile.ModelList.Count == 0)
+			{
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", "There are no favorited portraits to show.", 1);
+				g.ui.CloseUI(new UIType.UITypeBase("UIModelPro", 0), false);
+				return;
+			}
 			if (ModMain.ModelFile.ModelList.Count % this.maxShowCount == 0)
 			{
 				this.indexPageCount = ModMain.ModelFile.ModelList.Count / this.maxShowCount;
