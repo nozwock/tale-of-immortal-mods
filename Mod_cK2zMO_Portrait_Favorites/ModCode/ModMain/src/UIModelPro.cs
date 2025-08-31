@@ -23,9 +23,9 @@ namespace MOD_cK2zMO
 		public static List<string> fileName;
 
 		private static string charmPrefixLabel = "Charm: ";
-		private static string confirmEditPortraitLabel = "Are you sure you want to edit this portrait?";
 		private static string confirmRemovePortraitLabel = "Are you sure you want to delete this portrait?";
 		private static string confirmApplyPortraitLabel = "Are you sure you want to use this as your character's portrait?";
+		private static string confirmEditCompletePortraitLabel = "Are you sure you want to overwrite portrait #{0} with the currently set one?";
 
 		public UIModelPro(IntPtr ptr)
 			: base(ptr)
@@ -363,30 +363,30 @@ namespace MOD_cK2zMO
 			base.transform.Find("Root/ButtonChange").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
 			Action DelegBtnTuning = delegate
 			{
-				Action DelegConfTuning = delegate
+				if (ModMain.ModelFile.ModelList.Count > this.selectIndex)
 				{
-					if (ModMain.ModelFile.ModelList.Count > this.selectIndex)
+					UIModDress uIModDress = g.ui.OpenUI<UIModDress>(UIType.ModDress);
+					if (ModMain.ModelFile.ModelList[this.selectIndex].portraitModel.sex == 1)
 					{
-						UIModDress uIModDress = g.ui.OpenUI<UIModDress>(UIType.ModDress);
-						if (ModMain.ModelFile.ModelList[this.selectIndex].portraitModel.sex == 1)
+						uIModDress.InitData(ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel), (UnitSexType)1);
+					}
+					else if (ModMain.ModelFile.ModelList[this.selectIndex].portraitModel.sex == 2)
+					{
+						uIModDress.InitData(ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel), (UnitSexType)2);
+					}
+					uIModDress.btnOK.onClick.RemoveAllListeners();
+					Action DelegBtnOK = delegate
+					{
+						g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", string.Format(confirmEditCompletePortraitLabel, selectIndex + 1), 2, (Action)delegate
 						{
-							uIModDress.InitData(ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel), (UnitSexType)1);
-						}
-						else if (ModMain.ModelFile.ModelList[this.selectIndex].portraitModel.sex == 2)
-						{
-							uIModDress.InitData(ModMain.GetModDataValueString(ModMain.ModelFile.ModelList[this.selectIndex].portraitModel), (UnitSexType)2);
-						}
-
-						Action DelegBtnOK = delegate
-						{
+							g.ui.CloseUI(UIType.ModDress);
 							ModMain.ModelFile.ModelList[this.selectIndex].portraitModel = ModMain.GetPortraitModelData(uIModDress.valueString, ModMain.ModelFile.ModelList[this.selectIndex].portraitModel);
 							ModMain.ModelFile.SaveConf();
 							this.UpData();
-						};
-						uIModDress.btnOK.onClick.AddListener(DelegBtnOK);
-					}
-				};
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", confirmEditPortraitLabel, 2, DelegConfTuning, null);
+						});
+					};
+					uIModDress.btnOK.onClick.AddListener(DelegBtnOK);
+				}
 			};
 			base.transform.Find("Root/ButtonChange").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnTuning);
 			base.transform.Find("Root/ButtonRemove").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
