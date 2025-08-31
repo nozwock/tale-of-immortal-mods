@@ -136,10 +136,7 @@ namespace MOD_cK2zMO
 				componentInChildren3.text = btnOpenFavoriteUILabel;
 				componentInChildren4.onClick.AddListener((System.Action)delegate
 				{
-					ClassInjector.RegisterTypeInIl2Cpp<UIModelPro>();
-					UIModelPro uIModelPro = g.ui.OpenUI(new UIType.UITypeBase("UIModelPro", UILayer.UI)).gameObject.AddComponent<UIModelPro>();
-					uIModelPro.mode = 1;
-					uIModelPro.InitData();
+					UIModelPro.OpenUI(1);
 				});
 			}
 		}
@@ -188,10 +185,7 @@ namespace MOD_cK2zMO
 			componentInChildren2.onClick.RemoveAllListeners();
 			componentInChildren2.onClick.AddListener((System.Action)delegate
 			{
-				ClassInjector.RegisterTypeInIl2Cpp<UIModelPro>();
-				UIModelPro uIModelPro = g.ui.OpenUI(new UIType.UITypeBase("UIModelPro", UILayer.UI)).gameObject.AddComponent<UIModelPro>();
-				uIModelPro.mode = 2;
-				uIModelPro.InitData();
+				UIModelPro.OpenUI(2);
 			});
 			MelonLogger.Msg("NPC interface portrait data button added");
 		}
@@ -247,10 +241,7 @@ namespace MOD_cK2zMO
 				button2.transform.localPosition = new Vector3(-25f, -325f);
 				button2.onClick.AddListener((System.Action)delegate
 				{
-					ClassInjector.RegisterTypeInIl2Cpp<UIModelPro>();
-					UIModelPro uIModelPro = g.ui.OpenUI(new UIType.UITypeBase("UIModelPro", UILayer.UI)).gameObject.AddComponent<UIModelPro>();
-					uIModelPro.mode = 0;
-					uIModelPro.InitData();
+					UIModelPro.OpenUI(0);
 				});
 			}
 		}

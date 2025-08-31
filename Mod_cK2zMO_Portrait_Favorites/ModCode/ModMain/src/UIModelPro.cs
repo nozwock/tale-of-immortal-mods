@@ -32,6 +32,19 @@ namespace MOD_cK2zMO
 			: base(ptr)
 		{
 		}
+
+		public static void OpenUI(int mode)
+		{
+			if (g.ui.GetUI(new UIType.UITypeBase("UIModelPro", UILayer.UI)) != null)
+			{
+				g.ui.CloseUI(new UIType.UITypeBase("UIModelPro", UILayer.UI));
+			}
+			ClassInjector.RegisterTypeInIl2Cpp<UIModelPro>();
+			var uIModelPro = g.ui.OpenUI(new UIType.UITypeBase("UIModelPro", UILayer.UI)).gameObject.AddComponent<UIModelPro>();
+			uIModelPro.mode = mode;
+			uIModelPro.InitData();
+		}
+
 		public new void Init()
 		{
 			Shader shader = Shader.Find("Custom/BackBlur");
@@ -45,6 +58,11 @@ namespace MOD_cK2zMO
 
 		internal void InitData()
 		{
+			// NOTE: Since OpenUI for UIModelPro just brings it into focus and doesn't reset it or something, the InitData after that will
+			// keep applying over the previous state, and that means the offsetting of textTitle and some other components will
+			// compound over each other.
+			// So, for this reason, wherever there's a button that spawns this UI, always close the UI if it's open and
+			// only then reopen it again to make sure the state is reset.
 			{
 				// Set english text
 				base.transform.Find("Root/TextPage/InputField/Placeholder").GetComponent<Text>().text = "Page No.";
@@ -112,7 +130,6 @@ namespace MOD_cK2zMO
 				var placeholder = input.placeholder as Text;
 				if (placeholder != null)
 					placeholder.alignment = TextAnchor.MiddleCenter;
-
 			}
 
 			base.transform.gameObject.AddComponent<UIFastClose>();
@@ -386,9 +403,6 @@ namespace MOD_cK2zMO
 					// TODO: Add tooltips to buttons
 					// FIXME: Jump input field seems to keep getting reset to current page
 
-					// NOTE: If UIModelPro is being opened with OpenUI when there's already one instance opened, it will
-					// be simply be brought into focus, so there's no need to close first and then reopen.
-
 					// Instead of closing and reopening ModDress if already opened, just update the model data and bring
 					// the UI into focus. Note that in case of UIModDress OpenUI calls create new instances of the UI
 					// instead of reusing existing ones. I'm not sure why different UI classes show different behaviour.
@@ -468,10 +482,7 @@ namespace MOD_cK2zMO
 							btn.onClick.RemoveAllListeners();
 							btn.onClick.AddListener((System.Action)delegate
 							{
-								ClassInjector.RegisterTypeInIl2Cpp<UIModelPro>();
-								UIModelPro uIModelPro = g.ui.OpenUI(new UIType.UITypeBase("UIModelPro", UILayer.UI)).gameObject.AddComponent<UIModelPro>();
-								uIModelPro.mode = 3;
-								uIModelPro.InitData();
+								UIModelPro.OpenUI(3);
 							});
 						}
 						string btnCloseName = "btnClose";
