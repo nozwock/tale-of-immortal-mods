@@ -14,7 +14,6 @@ namespace MOD_cK2zMO
 		public int indexPage = 1;
 		public int indexGrade;
 		public int indexPageCount = 1;
-		public int manxCount = 4;
 		public int maxShowCount = 3;
 		public Sprite heroBlockSprite;
 		public Sprite NormalColorSprite;
@@ -148,7 +147,6 @@ namespace MOD_cK2zMO
 			{
 				this.indexPageCount = ModMain.ModelFile.ModelList.Count / this.maxShowCount + 1;
 			}
-			this.manxCount = ((this.indexPage > ModMain.ModelFile.ModelList.Count / this.maxShowCount) ? (ModMain.ModelFile.ModelList.Count % this.maxShowCount) : this.maxShowCount);
 			Action DelegBtnJmp = delegate
 			{
 				if (base.transform.Find("Root/TextPage/InputField/Text").GetComponent<Text>().text.Length > 0)
@@ -284,12 +282,16 @@ namespace MOD_cK2zMO
 			{
 				this.indexPageCount = ModMain.ModelFile.ModelList.Count / this.maxShowCount + 1;
 			}
-			this.manxCount = ((this.indexPage > ModMain.ModelFile.ModelList.Count / this.maxShowCount) ? (ModMain.ModelFile.ModelList.Count % this.maxShowCount) : this.maxShowCount);
+			// They're named "index" but they're just counts
+			if (indexPage > indexPageCount)
+			{
+				indexPage = indexPageCount;
+			}
 			for (int i = 0; i < this.maxShowCount; i++)
 			{
 				int secondIndex = i + this.maxShowCount * (this.indexPage - 1);
 				string text = "Root/Scroll View/Viewport/Content/ModelItemPro" + (i + 1).ToString();
-				if (i < this.manxCount)
+				if (ModMain.ModelFile.ModelList.Count > secondIndex) // if index is valid
 				{
 					PortraitModelData portraitModelDatas = ModMain.ModelFile.ModelList[secondIndex].portraitModel;
 					if (portraitModelDatas != null)
