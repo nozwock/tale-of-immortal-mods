@@ -25,8 +25,9 @@ namespace MOD_cK2zMO
 
 		private static string charmPrefixLabel = "Charm: ";
 		private static string confirmRemovePortraitLabel = "Are you sure you want to delete this portrait?";
-		private static string confirmApplyPortraitLabel = "Are you sure you want to use this as your character's portrait?";
-		private static string confirmEditCompletePortraitLabel = "Are you sure you want to overwrite portrait #{0} with the currently set one?";
+		private static string confirmApplyPortraitLabel1 = "Are you sure you want to use this as your character's portrait?";
+		private static string confirmApplyPortraitLabel2 = "Are you sure you want to use this as the NPC's portrait?";
+		private static string confirmEditCompletePortraitLabel = "Are you sure you want to overwrite portrait #{0} with this?";
 
 		public UIModelPro(IntPtr ptr)
 			: base(ptr)
@@ -399,10 +400,6 @@ namespace MOD_cK2zMO
 			{
 				if (ModMain.ModelFile.ModelList.Count > this.selectIndex)
 				{
-					// TODO: Change the confirmation dialog text for "Apply" based on the context, it has to be
-					// different for when applying to player, npc or in the character creator... or make the
-					// confirmation message generic so it works for all
-					//
 					// TODO: restrict gender when applying portrait if that isn't the case already, with a preference
 					// that can switch off this guard if the user wants
 					//
@@ -556,7 +553,7 @@ namespace MOD_cK2zMO
 						this.SelectModel(this.selectIndex);
 					}
 				};
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", confirmApplyPortraitLabel, 2, DelegSelConf, null);
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", mode == 2 ? confirmApplyPortraitLabel2 : confirmApplyPortraitLabel1, 2, DelegSelConf, null);
 			};
 			base.transform.Find("Root/ButtonSelect").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnConf);
 			base.transform.Find("Root/ButtonSave").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
