@@ -619,7 +619,9 @@ namespace MOD_cK2zMO
 						ModMain.ModelFile.SaveConf();
 
 						ModMain.State.editIndex = null;
-						this.UpData();
+
+						// For when there's a new instance of UIModelPro since having created this callback
+						g.ui.GetUI(UIModelPro.uiTypeBase)?.gameObject.GetComponent<UIModelPro>()?.UpData();
 					});
 				});
 			}
