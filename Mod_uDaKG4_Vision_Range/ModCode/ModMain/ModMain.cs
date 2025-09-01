@@ -1,18 +1,37 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
+using HarmonyLib;
+using UnhollowerBaseLib;
+using UnityEngine;
 using MelonLoader;
+using Newtonsoft.Json;
+using MelonLoader.Preferences;
 
 namespace MOD_uDaKG4
 {
+    [HarmonyPatch(typeof(WorldMgr), "Init")]
+    public class Patch_WorldMgrInit
+    {
+        // Game start
+        private static void Postfix(WorldMgr __instance)
+        {
+            // Have to switch back to this since the registered callback to
+            // event EGameType.IntoWorld doesn't seem to get called reliably
+            if (ModMain.harmony != null)
+                ModMain.OnGameStart();
+        }
+    }
+
     public class ModMain
     {
-        private TimerCoroutine corUpdate;
-        private static HarmonyLib.Harmony harmony;
-        public static string soleId = "uDaKG4";
-        public static string modNamespace = $"MOD_{soleId}";
+        // private TimerCoroutine corUpdate;
+        internal static HarmonyLib.Harmony harmony;
+        internal static readonly string soleId = "uDaKG4";
+        internal static readonly string modNamespace = $"MOD_{soleId}";
 
-        private MelonPreferences_Category category;
-        private MelonPreferences_Entry<int> playerViewRange;
+        private static MelonPreferences_Category category;
+        private static MelonPreferences_Entry<int> playerViewRange;
 
         public void Init()
         {
@@ -30,20 +49,18 @@ namespace MOD_uDaKG4
             category = MelonPreferences.CreateCategory(modNamespace);
             playerViewRange = category.CreateEntry("playerViewRange", 5);
 
-            g.events.On(EGameType.IntoWorld, (Il2CppSystem.Action<ETypeData>)OnGameStart);
-            corUpdate = g.timer.Frame(new Action(OnUpdate), 1, true);
+            // corUpdate = g.timer.Frame(new Action(OnUpdate), 1, true);
         }
 
         public void Destroy()
         {
-            g.timer.Stop(corUpdate);
-            g.events.Off(EGameType.IntoWorld, (Il2CppSystem.Action<ETypeData>)OnGameStart);
+            // g.timer.Stop(corUpdate);
 
             harmony.UnpatchSelf();
             harmony = null;
         }
 
-        public void OnGameStart(ETypeData e)
+        public static void OnGameStart()
         {
             var playerView = g.world.playerUnit.data.dynUnitData.playerView;
             if (playerView != null)
