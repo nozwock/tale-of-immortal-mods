@@ -426,53 +426,42 @@ namespace MOD_cK2zMO
 				if (ModMain.ModelFile.ModelList.Count > secondIndex) // if index is valid
 				{
 					PortraitModelData portraitModelDatas = ModMain.ModelFile.ModelList[secondIndex].portraitModel;
-					if (portraitModelDatas != null)
+					base.transform.Find(text + "/Text1").GetComponent<Text>().text = ModMain.State.editIndex == secondIndex ? string.Format(portraitImageInEditIndexTextLabel, secondIndex + 1) : $"#{secondIndex + 1}";
+					base.transform.Find(text + "/Text2").GetComponent<Text>().text = charmPrefixLabel + g.conf.roleDress.GetBeautyValue(portraitModelDatas).ToString();
+					base.transform.Find(text + "/Image").GetComponent<Image>().sprite = this.NormalColorSprite;
+					base.transform.Find(text).GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
+					Action DelegBtnView = delegate
 					{
-						base.transform.Find(text + "/Text1").GetComponent<Text>().text = ModMain.State.editIndex == secondIndex ? string.Format(portraitImageInEditIndexTextLabel, secondIndex + 1) : $"#{secondIndex + 1}";
-						base.transform.Find(text + "/Text2").GetComponent<Text>().text = charmPrefixLabel + g.conf.roleDress.GetBeautyValue(portraitModelDatas).ToString();
-						base.transform.Find(text + "/Image").GetComponent<Image>().sprite = this.NormalColorSprite;
-						base.transform.Find(text).GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
-						Action DelegBtnView = delegate
+						if (ModMain.ModelFile.ModelList.Count > secondIndex)
 						{
-							if (ModMain.ModelFile.ModelList.Count > secondIndex)
+							int num = secondIndex % this.maxShowCount;
+							RawImage component3 = this.transform.Find("Root/RawImageModel").GetComponent<RawImage>();
+							PortraitModel.CreateTextureInModelData(portraitModelDatas, component3, new Vector2(0f, -5.2f), 1f, false, true, null);
+							this.selectIndex = secondIndex;
+							for (int j = 0; j < this.maxShowCount; j++)
 							{
-								int num = secondIndex % this.maxShowCount;
-								RawImage component3 = this.transform.Find("Root/RawImageModel").GetComponent<RawImage>();
-								PortraitModel.CreateTextureInModelData(portraitModelDatas, component3, new Vector2(0f, -5.2f), 1f, false, true, null);
-								this.selectIndex = secondIndex;
-								for (int j = 0; j < this.maxShowCount; j++)
-								{
-									string text2 = "Root/Scroll View/Viewport/Content/ModelItemPro" + (j + 1).ToString() + "/ImageBG";
-									this.transform.Find(text2).GetComponent<Image>().sprite = this.SpeicalPngSprite;
-								}
-								if (this.heroBlockSprite != null)
-								{
-									string text3 = "Root/Scroll View/Viewport/Content/ModelItemPro" + (num + 1).ToString() + "/ImageBG";
-									this.transform.Find(text3).GetComponent<Image>().sprite = this.heroBlockSprite;
-								}
-								else
-								{
-									MelonLogger.Msg("The border image is empty");
-								}
-								this.transform.Find("Root/TextShowIndex").GetComponent<Text>().text = "#" + (secondIndex + 1).ToString() + $"\n{charmPrefixLabel}" + g.conf.roleDress.GetBeautyValue(portraitModelDatas).ToString();
-
-								// Update "Apply" state based on portrait's gender on select
-								UpdateBtnApplyInteractibility(selectIndex);
-								UpdateBtnRemoveInteractibility(selectIndex);
+								string text2 = "Root/Scroll View/Viewport/Content/ModelItemPro" + (j + 1).ToString() + "/ImageBG";
+								this.transform.Find(text2).GetComponent<Image>().sprite = this.SpeicalPngSprite;
 							}
-						};
-						base.transform.Find(text).GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnView);
-						RawImage component = base.transform.Find(text + "/Image/RawImage").GetComponent<RawImage>();
-						PortraitModel.CreateTextureInModelData(portraitModelDatas, component, new Vector2(0f, -24.5f), 3.3f, false, true, null);
-					}
-					else
-					{
-						base.transform.Find(text + "/Text1").GetComponent<Text>().text = "";
-						base.transform.Find(text + "/Text2").GetComponent<Text>().text = "";
-						base.transform.Find(text + "/Image").GetComponent<Image>().sprite = this.SpeicalPngSprite;
-						base.transform.Find(text + "/Image/RawImage").GetComponent<RawImage>().texture = this.SpeicalPngSprite.texture;
-						base.transform.Find(text).GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
-					}
+							if (this.heroBlockSprite != null)
+							{
+								string text3 = "Root/Scroll View/Viewport/Content/ModelItemPro" + (num + 1).ToString() + "/ImageBG";
+								this.transform.Find(text3).GetComponent<Image>().sprite = this.heroBlockSprite;
+							}
+							else
+							{
+								MelonLogger.Msg("The border image is empty");
+							}
+							this.transform.Find("Root/TextShowIndex").GetComponent<Text>().text = "#" + (secondIndex + 1).ToString() + $"\n{charmPrefixLabel}" + g.conf.roleDress.GetBeautyValue(portraitModelDatas).ToString();
+
+							// Update "Apply" state based on portrait's gender on select
+							UpdateBtnApplyInteractibility(selectIndex);
+							UpdateBtnRemoveInteractibility(selectIndex);
+						}
+					};
+					base.transform.Find(text).GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnView);
+					RawImage component = base.transform.Find(text + "/Image/RawImage").GetComponent<RawImage>();
+					PortraitModel.CreateTextureInModelData(portraitModelDatas, component, new Vector2(0f, -24.5f), 3.3f, false, true, null);
 				}
 				else
 				{
