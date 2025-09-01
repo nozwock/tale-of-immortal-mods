@@ -622,45 +622,45 @@ namespace MOD_cK2zMO
 				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", mode == 2 ? confirmApplyPortraitLabel2 : confirmApplyPortraitLabel1, 2, DelegSelConf, null);
 			};
 			base.transform.Find("Root/ButtonSelect").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnConf);
-			base.transform.Find("Root/ButtonSave").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
-			Action DelegBtnSav = delegate
-			{
-				// Action DelegConfSav = delegate
-				// {
-				// 	if (ModMain.ModelFile.ModelList.Count > this.selectIndex)
-				// 	{
-				// 		RawImage component4 = base.transform.Find("Root/RawImageModel").GetComponent<RawImage>();
-				// 		if (component4 != null)
-				// 		{
-				// 			Texture mainTexture = component4.mainTexture;
-				// 			Texture2D texture2D = new Texture2D(mainTexture.width, mainTexture.height, TextureFormat.ARGB32, false);
-				// 			RenderTexture active = RenderTexture.active;
-				// 			RenderTexture temporary = RenderTexture.GetTemporary(mainTexture.width, mainTexture.height, 32);
-				// 			Graphics.Blit(mainTexture, temporary);
-				// 			RenderTexture.active = temporary;
-				// 			texture2D.ReadPixels(new Rect(0f, 0f, (float)temporary.width, (float)temporary.height), 0, 0);
-				// 			texture2D.Apply();
-				// 			RenderTexture.active = active;
-				// 			RenderTexture.ReleaseTemporary(temporary);
-				// 			byte[] bytes = ImageConversion.EncodeToPNG(texture2D);
-				// 			SaveFileDialog saveFileDialog = new SaveFileDialog();
-				// 			saveFileDialog.Filter = "Image Files (*.png)|*.png";
-				// 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
-				// 			{
-				// 				MelonLogger.Msg(saveFileDialog.FileName);
-				// 				Action delegWrFile = delegate
-				// 												{
-				// 													FileTool.WriteByteAsync(saveFileDialog.FileName, bytes, null);
-				// 												};
-				// 				g.timer.Thread(delegWrFile, null);
-				// 			}
-				// 		}
-				// 	}
-				// };
-				g.ui.OpenUI<UITextInfo>(UIType.TextInfo).InitData("Notice", "This option is currently disabled");
-				// g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", "Are you sure to save the corresponding 3D image?", 2, DelegConfSav, null);
-			};
-			base.transform.Find("Root/ButtonSave").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnSav);
+			// base.transform.Find("Root/ButtonSave").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
+			// Action DelegBtnSav = delegate
+			// {
+			// 	Action DelegConfSav = delegate
+			// 	{
+			// 		if (ModMain.ModelFile.ModelList.Count > this.selectIndex)
+			// 		{
+			// 			RawImage component4 = base.transform.Find("Root/RawImageModel").GetComponent<RawImage>();
+			// 			if (component4 != null)
+			// 			{
+			// 				Texture mainTexture = component4.mainTexture;
+			// 				Texture2D texture2D = new Texture2D(mainTexture.width, mainTexture.height, TextureFormat.ARGB32, false);
+			// 				RenderTexture active = RenderTexture.active;
+			// 				RenderTexture temporary = RenderTexture.GetTemporary(mainTexture.width, mainTexture.height, 32);
+			// 				Graphics.Blit(mainTexture, temporary);
+			// 				RenderTexture.active = temporary;
+			// 				texture2D.ReadPixels(new Rect(0f, 0f, (float)temporary.width, (float)temporary.height), 0, 0);
+			// 				texture2D.Apply();
+			// 				RenderTexture.active = active;
+			// 				RenderTexture.ReleaseTemporary(temporary);
+			// 				byte[] bytes = ImageConversion.EncodeToPNG(texture2D);
+			// 				SaveFileDialog saveFileDialog = new SaveFileDialog();
+			// 				saveFileDialog.Filter = "Image Files (*.png)|*.png";
+			// 				if (saveFileDialog.ShowDialog() == DialogResult.OK)
+			// 				{
+			// 					MelonLogger.Msg(saveFileDialog.FileName);
+			// 					Action delegWrFile = delegate
+			// 					{
+			// 						FileTool.WriteByteAsync(saveFileDialog.FileName, bytes, null);
+			// 					};
+			// 					g.timer.Thread(delegWrFile, null);
+			// 				}
+			// 			}
+			// 		}
+			// 	};
+			// 	g.ui.OpenUI<UITextInfo>(UIType.TextInfo).InitData("Notice", "This option is currently disabled");
+			// 	g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", "Are you sure to save the corresponding 3D image?", 2, DelegConfSav, null);
+			// };
+			// base.transform.Find("Root/ButtonSave").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnSav);
 			base.transform.Find("Root/TextPage").GetComponent<Text>().text = string.Concat(new string[]
 			{
 				$"Page {indexPage}/{indexPageCount}"
