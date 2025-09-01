@@ -228,7 +228,7 @@ namespace MOD_cK2zMO
 			{
 				sex2 = g.ui.GetUI<UINPCInfo>(UIType.NPCInfo)?.unit.data.dynUnitData.sex.baseValue;
 			}
-			else // 0 || 3
+			else
 			{
 				return true; // skip
 			}
@@ -347,13 +347,12 @@ namespace MOD_cK2zMO
 			}
 		}
 
-		// For ModDress, "Edit" is for editing the selected portrait while "Apply" is just to use the selected portrait
-		// in the ModDress while editing the previously selected one, useful if you want to edit a portrait to be
-		// similar to one of the other portraits but with slight changes, etc
+		// Disable "Apply" when the UI is opened from ModDress, as it only adds to the confusion with both
+		// "Edit" and "Apply" doing the same thing in this context
 		private void UpdateBtnApplyInteractibility(int selectIndex)
 		{
 			var btnApply = this.transform.Find("Root/ButtonSelect");
-			if (IsGenderCompatible(selectIndex)) // allows mode 3 and 0 unconditionally
+			if (IsGenderCompatible(selectIndex) && mode != 3)
 			{
 				btnApply.GetComponent<Button>().interactable = true;
 				btnApply.GetComponentInChildren<Text>().color = BLACK;
@@ -614,26 +613,19 @@ namespace MOD_cK2zMO
 			};
 			base.transform.Find("Root/ButtonRemove").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnRem);
 			base.transform.Find("Root/ButtonSelect").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
-			base.transform.Find("Root/ButtonSelect").GetComponent<UnityEngine.UI.Button>().onClick.AddListener((Action)delegate
+			Action DelegBtnConf = delegate
 			{
-				Action applySelectedModelCb = delegate
+				Action DelegSelConf = delegate
 				{
-
 					if (ModMain.ModelFile.ModelList.Count > this.selectIndex)
 					{
 						MelonLogger.Msg("Number：" + this.selectIndex.ToString());
 						this.SelectModel(this.selectIndex);
 					}
 				};
-				if (mode == 0 || mode == 3)
-				{
-					applySelectedModelCb();
-				}
-				else
-				{
-					g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, mode == 2 ? confirmApplyPortraitLabel2 : confirmApplyPortraitLabel1, 2, applySelectedModelCb);
-				}
-			});
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, mode == 2 ? confirmApplyPortraitLabel2 : confirmApplyPortraitLabel1, 2, DelegSelConf, null);
+			};
+			base.transform.Find("Root/ButtonSelect").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnConf);
 			// base.transform.Find("Root/ButtonSave").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
 			// Action DelegBtnSav = delegate
 			// {
