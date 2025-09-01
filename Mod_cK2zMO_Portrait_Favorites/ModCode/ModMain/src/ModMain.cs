@@ -14,11 +14,18 @@ using MelonLoader;
 /// </summary>
 namespace MOD_cK2zMO
 {
+	public class State
+	{
+		public int? editIndex;
+	}
+
 	/// <summary>
 	/// This class is the main class of the module
 	/// </summary>
 	public class ModMain
 	{
+		internal static State State { get; set; } = new();
+
 		private TimerCoroutine corUpdate;
 		private static HarmonyLib.Harmony harmony;
 		private Il2CppSystem.Action<ETypeData> openUIEndCall;
@@ -71,6 +78,7 @@ namespace MOD_cK2zMO
 		{
 
 		}
+
 		public void OnOpenUIEnd(ETypeData e)
 		{
 			OpenUIEnd openUIEnd = e.Cast<OpenUIEnd>();

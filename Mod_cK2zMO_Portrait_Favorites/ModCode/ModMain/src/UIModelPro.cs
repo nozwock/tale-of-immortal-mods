@@ -24,6 +24,8 @@ namespace MOD_cK2zMO
 		public int mode;
 		public static List<string> fileName;
 
+		public static UIType.UITypeBase uiTypeBase = new("UIModelPro", UILayer.UI);
+
 		private static string charmPrefixLabel = "Charm: ";
 		private static string confirmRemovePortraitLabel = "Are you sure you want to delete this portrait?";
 		private static string confirmApplyPortraitLabel1 = "Are you sure you want to use this as your character's portrait?";
@@ -376,6 +378,21 @@ namespace MOD_cK2zMO
 			}
 		}
 
+		private void UpdateBtnRemoveInteractibility(int selectIndex)
+		{
+			var btnRemove = this.transform.Find("Root/ButtonRemove");
+			if (selectIndex != ModMain.State.editIndex)
+			{
+				btnRemove.GetComponent<Button>().interactable = true;
+				btnRemove.GetComponentInChildren<Text>().color = BLACK;
+			}
+			else
+			{
+				btnRemove.GetComponent<Button>().interactable = false;
+				btnRemove.GetComponentInChildren<Text>().color = GRAY;
+			}
+		}
+
 		public void UpData()
 		{
 			if (ModMain.ModelFile == null || ModMain.ModelFile.ModelList == null)
@@ -440,6 +457,7 @@ namespace MOD_cK2zMO
 
 								// Update "Apply" state based on portrait's gender on select
 								UpdateBtnApplyInteractibility(selectIndex);
+								UpdateBtnRemoveInteractibility(selectIndex);
 							}
 						};
 						base.transform.Find(text).GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnView);
@@ -481,6 +499,8 @@ namespace MOD_cK2zMO
 					// character editor breaks for them 
 					// TODO: Add tooltips to buttons
 
+					ModMain.State.editIndex = selectIndex;
+
 					// Just close and re-open if already opened
 					var ui = g.ui.GetUI<UIModDress>(UIType.ModDress);
 					if (ui != null)
@@ -496,10 +516,16 @@ namespace MOD_cK2zMO
 			base.transform.Find("Root/ButtonRemove").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
 			Action DelegBtnRem = delegate
 			{
-				Action DelegRemConf = delegate
+
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, confirmRemovePortraitLabel, 2, (Action)delegate
 				{
 					if (ModMain.ModelFile.ModelList.Count > this.selectIndex)
 					{
+						Debug.Assert(this.selectIndex != ModMain.State.editIndex); // Button for delete should be disabled
+
+						var offset = ModMain.State.editIndex > this.selectIndex ? -1 : 0;
+						ModMain.State.editIndex += offset;
+
 						ModMain.ModelFile.ModelList.RemoveAt(this.selectIndex);
 						if (ModMain.ModelFile.ModelList.Count <= selectIndex)
 						{
@@ -508,8 +534,7 @@ namespace MOD_cK2zMO
 						ModMain.ModelFile.SaveConf();
 						this.UpData();
 					}
-				};
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, confirmRemovePortraitLabel, 2, DelegRemConf, null);
+				});
 			};
 			base.transform.Find("Root/ButtonRemove").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnRem);
 			base.transform.Find("Root/ButtonSelect").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
@@ -571,25 +596,29 @@ namespace MOD_cK2zMO
 			});
 
 			UpdateBtnApplyInteractibility(selectIndex);
+			UpdateBtnRemoveInteractibility(selectIndex);
 		}
 
 		public void OpenCustomModDressUI(int? selectIndex = null)
 		{
-			selectIndex ??= this.selectIndex;
+			ModMain.State.editIndex = selectIndex ?? ModMain.State.editIndex;
 
 			void setEditCompleteHandler(UIModDress ui)
 			{
 				ui.btnOK.onClick.RemoveAllListeners();
 				ui.btnOK.onClick.AddListener((Action)delegate
 				{
-					g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, string.Format(confirmEditCompletePortraitLabel, this.selectIndex + 1), 2, (Action)delegate
+					g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, string.Format(confirmEditCompletePortraitLabel, ModMain.State.editIndex + 1), 2, (Action)delegate
 					{
+						// Needs to be here, ui.valueString has old value otherwise I think. Keep it here until a way
+						// to get the updated valueString without having to close the ui is known 
 						g.ui.CloseUI(UIType.ModDress);
-						// FIXME: index can be invalid since the user is able to delete the portrait they're editing and
-						// any after that
-						var portraitModel = ModMain.ModelFile.ModelList[this.selectIndex].portraitModel;
-						portraitModel = ModMain.GetPortraitModelData(ui.valueString, portraitModel);
+
+						int editIndex = (int)ModMain.State.editIndex!;
+						ModMain.ModelFile.ModelList[editIndex].portraitModel = ModMain.GetPortraitModelData(ui.valueString, ModMain.ModelFile.ModelList[editIndex].portraitModel);
 						ModMain.ModelFile.SaveConf();
+
+						ModMain.State.editIndex = null;
 						this.UpData();
 					});
 				});
@@ -605,7 +634,7 @@ namespace MOD_cK2zMO
 			ModifyModDressUI(ui);
 
 			// Set portrait model state and init UI
-			var portraitModel = ModMain.ModelFile.ModelList[(int)selectIndex].portraitModel;
+			var portraitModel = ModMain.ModelFile.ModelList[(int)ModMain.State.editIndex!].portraitModel;
 			if (portraitModel.sex == 1)
 			{
 				ui.InitData(ModMain.GetModDataValueString(portraitModel), (UnitSexType)1);
@@ -679,16 +708,9 @@ namespace MOD_cK2zMO
 					btn.targetGraphic = img;
 					btn.onClick.AddListener((System.Action)delegate
 					{
-						UIBase ui = g.ui.GetUI(new UIType.UITypeBase("UIModelPro", UILayer.UI));
-						if (ui != null)
-						{
-							UIModelPro component = ui.gameObject.GetComponent<UIModelPro>();
-							if (component != null)
-							{
-								component.UpData();
-								MelonLogger.Msg("Exit editing - start refreshing.");
-							}
-						}
+						ModMain.State.editIndex = null;
+						g.ui.GetUI(UIModelPro.uiTypeBase)?.gameObject.GetComponent<UIModelPro>()?.UpData();
+						MelonLogger.Msg("Exit editing - start refreshing.");
 						g.ui.CloseUI(UIType.ModDress);
 					});
 				}
