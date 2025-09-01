@@ -226,7 +226,7 @@ namespace MOD_cK2zMO
 				button.transform.localPosition = new Vector3(-185f, -325f);
 				button.onClick.AddListener((System.Action)delegate
 				{
-					g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, "Are you sure to collect the corresponding portrait data?", 2, (System.Action)delegate
+					g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, confirmAddToFavoriteLabel, 2, (System.Action)delegate
 					{
 						ModelList modelList = new ModelList();
 						if (__instance.portraitModel.data.sex == 1)
