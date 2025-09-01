@@ -29,6 +29,9 @@ namespace MOD_cK2zMO
 		private static string confirmApplyPortraitLabel1 = "Are you sure you want to use this as your character's portrait?";
 		private static string confirmApplyPortraitLabel2 = "Are you sure you want to use this as the NPC's portrait?";
 		private static string confirmEditCompletePortraitLabel = "Are you sure you want to overwrite portrait #{0} with this?";
+		private static string tipIncompatibleGenderLabel = "Please set the appropriate gender first.";
+		private static string tipNoPortraitsToShowLabel = "There are no favorited portraits to show.";
+
 		private static readonly Color GRAY = new(0.5f, 0.5f, 0.5f, 1f);
 		private static readonly Color BLACK = new(0f, 0f, 0f, 1f);
 
@@ -282,7 +285,7 @@ namespace MOD_cK2zMO
 						}
 						else
 						{
-							g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", "Please set the appropriate gender first.", 1);
+							g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, tipIncompatibleGenderLabel, 1);
 							return;
 						}
 
@@ -376,7 +379,7 @@ namespace MOD_cK2zMO
 			}
 			if (ModMain.ModelFile.ModelList.Count == 0)
 			{
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", "There are no favorited portraits to show.", 1);
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, tipNoPortraitsToShowLabel, 1);
 				g.ui.CloseUI(new UIType.UITypeBase("UIModelPro", 0), false);
 				return;
 			}
@@ -502,7 +505,7 @@ namespace MOD_cK2zMO
 					ui.btnOK.onClick.RemoveAllListeners();
 					ui.btnOK.onClick.AddListener((Action)delegate
 					{
-						g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", string.Format(confirmEditCompletePortraitLabel, selectIndex + 1), 2, (Action)delegate
+						g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, string.Format(confirmEditCompletePortraitLabel, selectIndex + 1), 2, (Action)delegate
 						{
 							g.ui.CloseUI(UIType.ModDress);
 							ModMain.ModelFile.ModelList[this.selectIndex].portraitModel = ModMain.GetPortraitModelData(ui.valueString, ModMain.ModelFile.ModelList[this.selectIndex].portraitModel);
@@ -523,7 +526,7 @@ namespace MOD_cK2zMO
 							btn.onClick.RemoveAllListeners();
 							btn.onClick.AddListener((System.Action)delegate
 							{
-								g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", ModMain.confirmAddToFavoriteLabel, 2, (System.Action)delegate
+								g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, ModMain.confirmAddToFavoriteLabel, 2, (System.Action)delegate
 								{
 									string modelID = ui.GetModelID();
 									var modDataValueString = new ModDataValueString();
@@ -605,7 +608,7 @@ namespace MOD_cK2zMO
 						this.UpData();
 					}
 				};
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", confirmRemovePortraitLabel, 2, DelegRemConf, null);
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, confirmRemovePortraitLabel, 2, DelegRemConf, null);
 			};
 			base.transform.Find("Root/ButtonRemove").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnRem);
 			base.transform.Find("Root/ButtonSelect").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
@@ -619,7 +622,7 @@ namespace MOD_cK2zMO
 						this.SelectModel(this.selectIndex);
 					}
 				};
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", mode == 2 ? confirmApplyPortraitLabel2 : confirmApplyPortraitLabel1, 2, DelegSelConf, null);
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, mode == 2 ? confirmApplyPortraitLabel2 : confirmApplyPortraitLabel1, 2, DelegSelConf, null);
 			};
 			base.transform.Find("Root/ButtonSelect").GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnConf);
 			// base.transform.Find("Root/ButtonSave").GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();

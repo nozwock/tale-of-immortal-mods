@@ -26,6 +26,7 @@ namespace MOD_cK2zMO
 
 		internal static ModelFile ModelFile { get => modelFile; set => modelFile = value; }
 
+		public static string popupTitleNoticeLabel = "Notice";
 		public static string btnSavePortraitName = "btnSavePortrait";
 		public static string btnViewFavoritesName = "btnViewFavorites";
 		public static string confirmAddToFavoriteLabel = "Are you sure you want to add it to favorites?";
@@ -110,7 +111,7 @@ namespace MOD_cK2zMO
 			componentInChildren.text = btnAddToFavoriteLabel;
 			componentInChildren2.onClick.AddListener((System.Action)delegate
 			{
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", confirmAddToFavoriteLabel, 2, (System.Action)delegate
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, confirmAddToFavoriteLabel, 2, (System.Action)delegate
 				{
 					ModelList modelList = new ModelList
 					{
@@ -159,7 +160,7 @@ namespace MOD_cK2zMO
 			componentInChildren.onClick.RemoveAllListeners();
 			componentInChildren.onClick.AddListener((System.Action)delegate
 			{
-				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", confirmAddToFavoriteLabel, 2, (System.Action)delegate
+				g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, confirmAddToFavoriteLabel, 2, (System.Action)delegate
 				{
 					ModelList modelList = new ModelList
 					{
@@ -217,7 +218,7 @@ namespace MOD_cK2zMO
 				button.transform.localPosition = new Vector3(-185f, -325f);
 				button.onClick.AddListener((System.Action)delegate
 				{
-					g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData("Notice", "Are you sure to collect the corresponding portrait data?", 2, (System.Action)delegate
+					g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, "Are you sure to collect the corresponding portrait data?", 2, (System.Action)delegate
 					{
 						ModelList modelList = new ModelList();
 						if (__instance.portraitModel.data.sex == 1)
