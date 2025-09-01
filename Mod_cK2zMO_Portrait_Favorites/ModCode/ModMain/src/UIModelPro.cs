@@ -33,6 +33,7 @@ namespace MOD_cK2zMO
 		private static string confirmEditCompletePortraitLabel = "Are you sure you want to overwrite portrait #{0} with this?";
 		private static string tipIncompatibleGenderLabel = "Please set the appropriate gender first.";
 		private static string tipNoPortraitsToShowLabel = "There are no favorited portraits to show.";
+		private static string portraitImageInEditIndexTextLabel = "#{0} (In Edit)";
 
 		private static readonly Color GRAY = new(0.5f, 0.5f, 0.5f, 1f);
 		private static readonly Color BLACK = new(0f, 0f, 0f, 1f);
@@ -427,7 +428,7 @@ namespace MOD_cK2zMO
 					PortraitModelData portraitModelDatas = ModMain.ModelFile.ModelList[secondIndex].portraitModel;
 					if (portraitModelDatas != null)
 					{
-						base.transform.Find(text + "/Text1").GetComponent<Text>().text = "#" + Convert.ToString(secondIndex + 1);
+						base.transform.Find(text + "/Text1").GetComponent<Text>().text = ModMain.State.editIndex == secondIndex ? string.Format(portraitImageInEditIndexTextLabel, secondIndex + 1) : $"#{secondIndex + 1}";
 						base.transform.Find(text + "/Text2").GetComponent<Text>().text = charmPrefixLabel + g.conf.roleDress.GetBeautyValue(portraitModelDatas).ToString();
 						base.transform.Find(text + "/Image").GetComponent<Image>().sprite = this.NormalColorSprite;
 						base.transform.Find(text).GetComponent<UnityEngine.UI.Button>().onClick.RemoveAllListeners();
