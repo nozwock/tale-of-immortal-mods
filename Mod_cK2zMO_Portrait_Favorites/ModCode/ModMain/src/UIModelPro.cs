@@ -134,15 +134,6 @@ namespace MOD_cK2zMO
 				var placeholder = input.placeholder as Text;
 				if (placeholder != null)
 					placeholder.alignment = TextAnchor.MiddleCenter;
-
-				// Disable "Apply" when the UI is opened from ModDress, as it only adds to the confusion with both
-				// "Edit" and "Apply" doing the same thing in this context
-				if (mode == 3)
-				{
-					var btnApply = base.transform.Find("Root/ButtonSelect");
-					btnApply.GetComponent<Button>().interactable = false;
-					btnApply.GetComponentInChildren<Text>().color = GRAY;
-				}
 			}
 
 			base.transform.gameObject.AddComponent<UIFastClose>();
@@ -356,10 +347,12 @@ namespace MOD_cK2zMO
 			}
 		}
 
-		private void UpdateBtnApply(int selectIndex)
+		// Disable "Apply" when the UI is opened from ModDress, as it only adds to the confusion with both
+		// "Edit" and "Apply" doing the same thing in this context
+		private void UpdateBtnApplyInteractibility(int selectIndex)
 		{
 			var btnApply = this.transform.Find("Root/ButtonSelect");
-			if (IsGenderCompatible(selectIndex))
+			if (IsGenderCompatible(selectIndex) && mode != 3)
 			{
 				btnApply.GetComponent<Button>().interactable = true;
 				btnApply.GetComponentInChildren<Text>().color = BLACK;
@@ -434,7 +427,7 @@ namespace MOD_cK2zMO
 								this.transform.Find("Root/TextShowIndex").GetComponent<Text>().text = "#" + (secondIndex + 1).ToString() + $"\n{charmPrefixLabel}" + g.conf.roleDress.GetBeautyValue(portraitModelDatas).ToString();
 
 								// Update "Apply" state based on portrait's gender on select
-								UpdateBtnApply(selectIndex);
+								UpdateBtnApplyInteractibility(selectIndex);
 							}
 						};
 						base.transform.Find(text).GetComponent<UnityEngine.UI.Button>().onClick.AddListener(DelegBtnView);
@@ -669,7 +662,7 @@ namespace MOD_cK2zMO
 				$"Page {indexPage}/{indexPageCount}"
 			});
 
-			UpdateBtnApply(selectIndex);
+			UpdateBtnApplyInteractibility(selectIndex);
 		}
 	}
 }
