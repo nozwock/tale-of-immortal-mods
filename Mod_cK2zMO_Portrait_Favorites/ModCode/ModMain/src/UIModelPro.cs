@@ -468,6 +468,21 @@ namespace MOD_cK2zMO
 					// character editor breaks for them 
 					// TODO: Add tooltips to buttons
 
+					void setEditCompleteHandler(UIModDress ui)
+					{
+						ui.btnOK.onClick.RemoveAllListeners();
+						ui.btnOK.onClick.AddListener((Action)delegate
+						{
+							g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, string.Format(confirmEditCompletePortraitLabel, this.selectIndex + 1), 2, (Action)delegate
+							{
+								g.ui.CloseUI(UIType.ModDress);
+								ModMain.ModelFile.ModelList[this.selectIndex].portraitModel = ModMain.GetPortraitModelData(ui.valueString, ModMain.ModelFile.ModelList[this.selectIndex].portraitModel);
+								ModMain.ModelFile.SaveConf();
+								this.UpData();
+							});
+						});
+					}
+
 					// Instead of closing and reopening ModDress if already opened, just update the model data and bring
 					// the UI into focus. Note that in case of UIModDress OpenUI calls create new instances of the UI
 					// instead of reusing existing ones. I'm not sure why different UI classes show different behaviour.
@@ -477,6 +492,9 @@ namespace MOD_cK2zMO
 						SelectModel(selectIndex, 3);
 						ui.transform.SetAsLastSibling();
 						ui.GetComponentInParent<Canvas>().sortingOrder = 200;
+
+						// Overwrite "Edit Complete" callback
+						setEditCompleteHandler(ui);
 						return;
 					}
 
@@ -495,17 +513,7 @@ namespace MOD_cK2zMO
 					}
 
 					// Overwrite "Edit Complete" callback
-					ui.btnOK.onClick.RemoveAllListeners();
-					ui.btnOK.onClick.AddListener((Action)delegate
-					{
-						g.ui.OpenUI<UICheckPopup>(UIType.CheckPopup).InitData(ModMain.popupTitleNoticeLabel, string.Format(confirmEditCompletePortraitLabel, selectIndex + 1), 2, (Action)delegate
-						{
-							g.ui.CloseUI(UIType.ModDress);
-							ModMain.ModelFile.ModelList[this.selectIndex].portraitModel = ModMain.GetPortraitModelData(ui.valueString, ModMain.ModelFile.ModelList[this.selectIndex].portraitModel);
-							ModMain.ModelFile.SaveConf();
-							this.UpData();
-						});
-					});
+					setEditCompleteHandler(ui);
 
 					static void ModifyModDressUI(UIModDress ui)
 					{
