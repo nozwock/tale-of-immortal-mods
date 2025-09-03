@@ -1,0 +1,19 @@
+{
+  "soleID": "4ZvKd3",
+  "createTicks": 638925027057649985,
+  "name": "Better Worshiping",
+  "author": "gse orca",
+  "desc": "Lets you keep worshiping until you've filled up the bar once that month.",
+  "ver": "v 1.0.0",
+  "autoSave": true,
+  "isCreateNPC": true,
+  "exportVer": 0,
+  "accountID": 0,
+  "publishedFileID": 0,
+  "visibleState": 0,
+  "openCode": 0,
+  "curUpdateDesc": null,
+  "tags": [],
+  "addPreviewPaths": [],
+  "excelEncrypt": false
+}
