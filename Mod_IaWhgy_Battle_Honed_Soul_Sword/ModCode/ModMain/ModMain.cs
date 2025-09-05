@@ -18,6 +18,8 @@ namespace MOD_IaWhgy
         private int dungeonGrade;
         private int? soulDevourSwordAtkLimit;
         private int bossKillCount;
+        private int atkUp;
+        private int expUp;
 
         private int newMonth;
 
@@ -113,9 +115,43 @@ namespace MOD_IaWhgy
         private void OnUnitDie(ETypeData e)
         {
             var edata = e.Cast<UnitDie>();
-            if (EffectTool.IsUnitMonstType(edata.unit, (int)MonstType.BOSS))
+            if (
+                // FIXME:
+                // Is true for NPC enemies in sect wars for some reason. Checking against edata.unit.data.unitType for
+                // UnitType.Monst doesn't work either.
+                EffectTool.IsUnitMonstType(edata.unit, (int)MonstType.BOSS)
+            )
             {
                 bossKillCount += 1;
+
+                var swordMgr = g.world.soulDevourSword;
+
+                var playerUnitId = g.world.playerUnit.data.unitData.unitID;
+                if (swordMgr.data.unitId != playerUnitId)
+                {
+                    return;
+                }
+
+                Log($"OnBattleEnd: Resolving Soul Reaver's stats: {nameof(atkUp)}={atkUp}, {nameof(expUp)}={expUp}, {nameof(dungeonLevel)}={dungeonLevel}, {nameof(soulDevourSwordAtkLimit)}={soulDevourSwordAtkLimit}");
+                AddSoulSwordAtk(atkUp);
+
+                var expInitial = swordMgr.data.exp;
+                swordMgr.AddExp(expUp);
+                var expAdded = swordMgr.data.exp - expInitial;
+
+                if (showNotification.Value && (atkUp > 0 || (expAdded > 0)))
+                {
+                    var tip = new StringBuilder("Soul Reaver");
+                    if (atkUp > 0)
+                    {
+                        tip.AppendFormat(" {0} Atk+", atkUp);
+                    }
+                    if (expAdded > 0)
+                    {
+                        tip.AppendFormat(" {0} Exp+", expUp);
+                    }
+                    UITipItem.AddTip(tip.ToString(), 2f);
+                }
             }
         }
 
@@ -132,27 +168,6 @@ namespace MOD_IaWhgy
             {
                 soulDevourSwordAtkLimit = null;
             }
-        }
-
-        private void OnBattleEnd(ETypeData e)
-        {
-            var swordMgr = g.world.soulDevourSword;
-
-            var playerUnitId = g.world.playerUnit.data.unitData.unitID;
-            if (swordMgr.data.unitId != playerUnitId)
-            {
-                return;
-            }
-
-            if (bossKillCount < 1)
-            {
-                return;
-            }
-
-            if (CurrentDevourDeadlineMode == DevourDeadlineMode.ResetOnBeastDevour)
-            {
-                SetSoulSwordDevourMonth(CurrentMonth);
-            }
 
             var confList_ = g.conf.soulDevourSwordDevour._allConfList;
             var confList = new List<ConfSoulDevourSwordDevourItem>();
@@ -160,28 +175,23 @@ namespace MOD_IaWhgy
             {
                 confList.Add(confList_[i]);
             }
+            atkUp = BuildCurve(confList.Select(v => v.atkUp), mythicalBeastDevourFraction.Value)[dungeonGrade - 1];
+            expUp = BuildCurve(confList.Select(v => v.increaseExp), mythicalBeastDevourFraction.Value)[dungeonGrade - 1];
+        }
 
-            var addAtk = BuildCurve(confList.Select(v => v.atkUp), mythicalBeastDevourFraction.Value)[dungeonGrade - 1] * bossKillCount;
-            var addExp = BuildCurve(confList.Select(v => v.increaseExp), mythicalBeastDevourFraction.Value)[dungeonGrade - 1] * bossKillCount;
-            Log($"OnBattleEnd: Resolving Soul Reaver's atk: {nameof(addAtk)}={addAtk}, {nameof(addExp)}={addExp}, {nameof(dungeonLevel)}={dungeonLevel}, {nameof(bossKillCount)}={bossKillCount}, {nameof(soulDevourSwordAtkLimit)}={soulDevourSwordAtkLimit}");
-            AddSoulSwordAtk(addAtk);
+        private void OnBattleEnd(ETypeData e)
+        {
+            var swordMgr = g.world.soulDevourSword;
 
-            var expInitial = swordMgr.data.exp;
-            swordMgr.AddExp(addExp);
-            var expAdded = swordMgr.data.exp - expInitial;
-
-            if (showNotification.Value && (addAtk > 0 || (expAdded > 0)))
+            var playerUnitId = g.world.playerUnit.data.unitData.unitID;
+            if (swordMgr.data.unitId != playerUnitId || bossKillCount < 1)
             {
-                var tip = new StringBuilder("Soul Reaver");
-                if (addAtk > 0)
-                {
-                    tip.AppendFormat(" {0} Atk+", addAtk);
-                }
-                if (expAdded > 0)
-                {
-                    tip.AppendFormat(" {0} Exp+", addExp);
-                }
-                UITipItem.AddTip(tip.ToString(), 2f);
+                return;
+            }
+
+            if (CurrentDevourDeadlineMode == DevourDeadlineMode.ResetOnBeastDevour)
+            {
+                SetSoulSwordDevourMonth(CurrentMonth);
             }
         }
 
