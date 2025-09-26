@@ -14,6 +14,8 @@ internal class UIEffectDisplay : UIBase
 
     private Toggle item3;
 
+    static int effectUpdateFrameCount = -1;
+
     public UIEffectDisplay(IntPtr ptr)
         : base(ptr)
     {
@@ -53,21 +55,27 @@ internal class UIEffectDisplay : UIBase
         }
     }
 
-    internal static void DelayHandler()
+    internal static void UpdateFateEffectState()
     {
-        g.timer.Time((Action)delegate
+        // Prevent further calls within the same frame
+        // Works out since nothing seems to be resetting the effect to active within the same frame
+        if (effectUpdateFrameCount == Time.frameCount)
         {
-            try
-            {
-                DisplayEffect("ui_yinyangyan");
-                DisplayEffect("Jueseqiyun");
-                DisplayEffect("shihunjian_jianzhen");
-            }
-            catch (Exception ex)
-            {
-                Tool.Error(ex);
-            }
-        }, 0.5f);
+            return;
+        }
+
+        try
+        {
+            DisplayEffect("ui_yinyangyan");
+            DisplayEffect("Jueseqiyun");
+            DisplayEffect("shihunjian_jianzhen");
+
+            effectUpdateFrameCount = Time.frameCount;
+        }
+        catch (Exception ex)
+        {
+            Tool.Error(ex);
+        }
     }
 
     private static void DisplayEffect(string effectName)

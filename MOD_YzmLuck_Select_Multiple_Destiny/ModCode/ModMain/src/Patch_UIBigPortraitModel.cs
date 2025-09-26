@@ -14,7 +14,7 @@ internal class Patch_UIBigPortraitModel
         {
             if (unit != null && unit.data?.unitData?.unitID == g.world.playerUnit.data.unitData.unitID)
             {
-                UIEffectDisplay.DelayHandler();
+                UIEffectDisplay.UpdateFateEffectState();
             }
         }
         catch (Exception ex)

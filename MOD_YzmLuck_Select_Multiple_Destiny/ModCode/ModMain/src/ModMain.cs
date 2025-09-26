@@ -143,7 +143,7 @@ public class ModMain
         {
             return;
         }
-        UIEffectDisplay.DelayHandler();
+        UIEffectDisplay.UpdateFateEffectState();
         string text = "YzmLuck_EffectDisplay";
         Transform parent = uI.uiProperty.btnBigPortrait.transform.parent;
         GameObject goEffectDisplay = parent.Find(text)?.gameObject;
@@ -164,21 +164,21 @@ public class ModMain
         {
             if (isOn)
             {
-                UIEffectDisplay.DelayHandler();
+                UIEffectDisplay.UpdateFateEffectState();
             }
         });
         uI.tglArt.onValueChanged.AddListener((System.Action<bool>)delegate (bool isOn)
         {
             if (isOn)
             {
-                UIEffectDisplay.DelayHandler();
+                UIEffectDisplay.UpdateFateEffectState();
             }
         });
         uI.tglPrpperty.onValueChanged.AddListener((System.Action<bool>)delegate (bool isOn)
         {
             if (isOn)
             {
-                UIEffectDisplay.DelayHandler();
+                UIEffectDisplay.UpdateFateEffectState();
             }
         });
     }
