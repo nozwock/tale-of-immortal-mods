@@ -6,11 +6,11 @@
 ```sh
 MOD_PATH='/path/to/ModExportData'
 ```
-- Create a `ModMain.csproj.user` file adjacent to `ModMain.csproj` with the `GamePath` property defined:
+- Create a `Local.props` file in the repo's root:
 ```xml
 <Project>
   <PropertyGroup>
-    <GamePath>...</GamePath>
+    <GameDir>...</GameDir>
   </PropertyGroup>
 </Project>
 ```
