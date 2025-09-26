@@ -1,0 +1,44 @@
+<Project>
+  <!-- Define GameDir property in Local.props -->
+  <Import Project="Local.props" Condition="Exists('Local.props')" />
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <RestoreAdditionalProjectSources>
+        https://api.nuget.org/v3/index.json;
+        https://nuget.bepinex.dev/v3/index.json;
+        https://nuget.samboy.dev/v3/index.json
+    </RestoreAdditionalProjectSources>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <!-- <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences> -->
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="$(GameDir)/MelonLoader/Managed/Assembly-CSharp*.dll">
+        <Private>False</Private>
+    </Reference>
+    <Reference Include="$(GameDir)/MelonLoader/*.dll">
+        <Private>False</Private>
+    </Reference>
+    <Reference Include="$(GameDir)/MelonLoader/Managed/Unity*.dll">
+        <Private>False</Private>
+    </Reference>
+    <Reference Include="$(GameDir)/MelonLoader/Managed/Il2Cpp*.dll">
+        <Private>False</Private>
+    </Reference>
+    <Reference Include="$(GameDir)/MelonLoader/Managed/Newtonsoft*.dll">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="$(GameDir)/MelonLoader/Managed/Unhollower*.dll">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="$(GameDir)/MelonLoader/Managed/System.Web*.dll">
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="$(GameDir)/MelonLoader/Managed/Microsoft*.dll">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+</Project>
