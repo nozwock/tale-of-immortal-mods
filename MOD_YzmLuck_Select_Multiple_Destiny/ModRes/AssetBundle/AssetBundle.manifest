@@ -1,0 +1,98 @@
+ManifestFileVersion: 0
+CRC: 2206792600
+AssetBundleManifest:
+  AssetBundleInfos:
+    Info_0:
+      Name: ab/ui/yzmluck/bornlucklist.ab
+      Dependencies:
+        Dependency_0: assets/texture/tkfhkr/ladongtiao.png.ab
+        Dependency_1: assets/texture/tkfhkr/mingzibgda.png.ab
+        Dependency_2: assets/texture/tkfhkr/lianyaohu_biaoqian_2.png.ab
+        Dependency_3: assets/texture/tkfhkr/diaoduquanxiangou.png.ab
+        Dependency_4: assets/texture/tkfhkr/ladongtiaodi.png.ab
+        Dependency_5: assets/texture/tkfhkr/luckconfigbg.png.ab
+        Dependency_6: assets/texture/tkfhkr/tabfengexian.png.ab
+        Dependency_7: assets/texture/tkfhkr/tuichu.png.ab
+    Info_1:
+      Name: assets/texture/tkfhkr/ladongtiao.png.ab
+      Dependencies: {}
+    Info_2:
+      Name: assets/texture/tkfhkr/mingzibgda.png.ab
+      Dependencies: {}
+    Info_3:
+      Name: assets/texture/tkfhkr/lianyaohu_biaoqian_2.png.ab
+      Dependencies: {}
+    Info_4:
+      Name: assets/texture/tkfhkr/diaoduquanxiangou.png.ab
+      Dependencies: {}
+    Info_5:
+      Name: assets/texture/tkfhkr/ladongtiaodi.png.ab
+      Dependencies: {}
+    Info_6:
+      Name: assets/texture/tkfhkr/luckconfigbg.png.ab
+      Dependencies: {}
+    Info_7:
+      Name: assets/texture/tkfhkr/tabfengexian.png.ab
+      Dependencies: {}
+    Info_8:
+      Name: assets/texture/tkfhkr/tuichu.png.ab
+      Dependencies: {}
+    Info_9:
+      Name: ab/ui/yzmluck/effectdisplay.ab
+      Dependencies:
+        Dependency_0: assets/texture/tkfhkr/luckconfigbg.png.ab
+        Dependency_1: assets/texture/tkfhkr/gou.png.ab
+        Dependency_2: assets/texture/tkfhkr/kuang.png.ab
+    Info_10:
+      Name: assets/texture/tkfhkr/gou.png.ab
+      Dependencies: {}
+    Info_11:
+      Name: assets/texture/tkfhkr/kuang.png.ab
+      Dependencies: {}
+    Info_12:
+      Name: ab/ui/yzmluck/fatefeaturechange.ab
+      Dependencies:
+        Dependency_0: assets/texture/tkfhkr/ladongtiao.png.ab
+        Dependency_1: assets/texture/tkfhkr/mingzibgda.png.ab
+        Dependency_2: assets/texture/tkfhkr/lianyaohu_biaoqian_2.png.ab
+        Dependency_3: assets/texture/tkfhkr/diaoduquanxiangou.png.ab
+        Dependency_4: assets/texture/tkfhkr/ladongtiaodi.png.ab
+        Dependency_5: assets/texture/tkfhkr/luckconfigbg.png.ab
+        Dependency_6: assets/texture/tkfhkr/tabfengexian.png.ab
+        Dependency_7: assets/texture/tkfhkr/tuichu.png.ab
+        Dependency_8: assets/texture/tkfhkr/shangshengjiantou.png.ab
+    Info_13:
+      Name: assets/texture/tkfhkr/shangshengjiantou.png.ab
+      Dependencies: {}
+    Info_14:
+      Name: ab/ui/yzmluck/luckfilter.ab
+      Dependencies:
+        Dependency_0: assets/texture/tkfhkr/luckconfigbg.png.ab
+        Dependency_1: assets/texture/tkfhkr/tabfengexian.png.ab
+        Dependency_2: assets/texture/tkfhkr/gou.png.ab
+        Dependency_3: assets/texture/tkfhkr/kuang.png.ab
+        Dependency_4: assets/texture/tkfhkr/xianfajinengkuang.png.ab
+        Dependency_5: assets/texture/tkfhkr/shubiao_8.png.ab
+        Dependency_6: assets/texture/tkfhkr/miji.png.ab
+        Dependency_7: assets/resources/ui/yzmluck/image.controller.ab
+    Info_15:
+      Name: assets/texture/tkfhkr/xianfajinengkuang.png.ab
+      Dependencies: {}
+    Info_16:
+      Name: assets/texture/tkfhkr/shubiao_8.png.ab
+      Dependencies: {}
+    Info_17:
+      Name: assets/texture/tkfhkr/miji.png.ab
+      Dependencies: {}
+    Info_18:
+      Name: assets/resources/ui/yzmluck/image.controller.ab
+      Dependencies:
+        Dependency_0: ab/ui/yzmluck/scale.ab
+    Info_19:
+      Name: ab/ui/yzmluck/scale.ab
+      Dependencies: {}
+    Info_20:
+      Name: ab/ui/yzmluck/scrollview.ab
+      Dependencies:
+        Dependency_0: assets/texture/tkfhkr/ladongtiao.png.ab
+        Dependency_1: assets/texture/tkfhkr/ladongtiaodi.png.ab

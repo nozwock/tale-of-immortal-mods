@@ -1,0 +1,296 @@
+[
+  {
+    "id": "-295574932",
+    "key": "tkFhkr_uiluckfilter_1",
+    "ch": "随机气运品质锁定",
+    "tc": "隨機氣運品質鎖定",
+    "en": "Destiny Rarity Locked"
+  },
+  {
+    "id": "-295574931",
+    "key": "tkFhkr_uiluckfilter_2",
+    "ch": "<r>红色</r>",
+    "tc": "<r>紅色</r>",
+    "en": "<r>Level.6</r>"
+  },
+  {
+    "id": "-295574930",
+    "key": "tkFhkr_uiluckfilter_3",
+    "ch": "<o>橙色</o>",
+    "tc": "<o>橙色</o>",
+    "en": "<o>Level.5</o>"
+  },
+  {
+    "id": "-295574929",
+    "key": "tkFhkr_uiluckfilter_4",
+    "ch": "<p>紫色</p>",
+    "tc": "<p>紫色</p>",
+    "en": "<p>Level.4</p>"
+  },
+  {
+    "id": "-295574928",
+    "key": "tkFhkr_uiluckfilter_5",
+    "ch": "<b>蓝色</b>",
+    "tc": "<b>藍色</b>",
+    "en": "<b>Level.3</b>"
+  },
+  {
+    "id": "-295574927",
+    "key": "tkFhkr_uiluckfilter_6",
+    "ch": "<g>绿色</g>",
+    "tc": "<g>綠色</g>",
+    "en": "<g>Level.2</g>"
+  },
+  {
+    "id": "-295574926",
+    "key": "tkFhkr_uiluckfilter_7",
+    "ch": "白色",
+    "tc": "白色",
+    "en": "Level.1"
+  },
+  {
+    "id": "-295574925",
+    "key": "tkFhkr_uiluckfilter_8",
+    "ch": "<y>三大天命</y>",
+    "tc": "<y>三大天命</y>",
+    "en": "<y>Three Fate</y>"
+  },
+  {
+    "id": "-295574924",
+    "key": "tkFhkr_uiluckfilter_9",
+    "ch": "天翎剑意",
+    "tc": "天翎劍意",
+    "en": "Empyrean Edge"
+  },
+  {
+    "id": "-295574923",
+    "key": "tkFhkr_uiluckfilter_10",
+    "ch": "分元地火",
+    "tc": "分元地火",
+    "en": "Scorching Eruption"
+  },
+  {
+    "id": "-295574922",
+    "key": "tkFhkr_uiluckfilter_11",
+    "ch": "幽盈碧羽",
+    "tc": "幽盈碧羽",
+    "en": "Verdant Quills"
+  },
+  {
+    "id": "-295574921",
+    "key": "tkFhkr_uiluckfilter_12",
+    "ch": "镇域流沙",
+    "tc": "鎮域流沙",
+    "en": "Devouring Sand"
+  },
+  {
+    "id": "-295574920",
+    "key": "tkFhkr_uiluckfilter_13",
+    "ch": "醉饮狂刀",
+    "tc": "醉飲狂刀",
+    "en": "Drunken Blade"
+  },
+  {
+    "id": "-295574919",
+    "key": "tkFhkr_uiluckfilter_14",
+    "ch": "<r>只出现</r>已勾选品质的气运，若全部未勾选则不限制！{#tkFhkr_common1}",
+    "tc": "<r>只出現</r>已勾選品質的氣運，若全部未勾選則不限制！{#tkFhkr_common1}",
+    "en": "<r> Only select the quality of</r>fate, if all are not selected, there is no restriction! {#tkFhkr_common1}"
+  },
+  {
+    "id": "-295574918",
+    "key": "tkFhkr_uiluckfilter_15",
+    "ch": "游戏<r>通关奖励</r>的特殊气运，勾选后，会在<r>首次进入游戏时</r>给玩家添加指定的先天气运。{#tkFhkr_common1}",
+    "tc": "遊戲<r>通關獎勵</r>的特殊氣運，勾選後，會在<r>首次進入遊戲時</r>給玩家添加指定的先天氣運。{#tkFhkr_common1}",
+    "en": "The special fate of the game <r>Clearance Rewards</r>, when selected, will grant the player a designated innate fate upon <r>first entering the game</r>.{#tkFhkr_common1}"
+  },
+  {
+    "id": "-295574917",
+    "key": "tkFhkr_uiluckfilter_16",
+    "ch": "随机气运必出<y>三大天命</y>！{#tkFhkr_common1}",
+    "tc": "隨機氣運必出<y>三大天命</y>！{#tkFhkr_common1}",
+    "en": "The random fate will definitely result in <y>The Three Fate</y>! {#tkFhkr_common1}"
+  },
+  {
+    "id": "-295574916",
+    "key": "tkFhkr_uiluckfilter_17",
+    "ch": "* MOD气运",
+    "tc": "* MOD氣運",
+    "en": "* MOD FATE"
+  },
+  {
+    "id": "-295574915",
+    "key": "tkFhkr_uiluckfilter_18",
+    "ch": "有些MOD带有<r>高权重</r>的先天气运（必选气运），勾选此选项后，这些气运会优先刷新。\n\n勾选此选项后，会自动将品质选项取消勾选！",
+    "tc": "有些MOD帶有<r>高權重</r>的先天氣運（必選氣運），勾選此選項後，這些氣運會優先刷新。\n\n勾選此選項後，會自動將品質選項取消勾選！",
+    "en": "Some mods come with <r>high-weight</r> innate fate (mandatory fate). After selecting this option, these fates will be prioritized for refresh.\n\nSelecting this option will automatically uncheck the quality option!"
+  },
+  {
+    "id": "-295574914",
+    "key": "tkFhkr_uiluckfilter_19",
+    "ch": "点击查看所有可选的先天气运",
+    "tc": "點擊查看所有可選的先天氣運",
+    "en": "Click to view all available born fates."
+  },
+  {
+    "id": "-295574913",
+    "key": "tkFhkr_uieffectdisplay_1",
+    "ch": "阴阳眼",
+    "tc": "陰陽眼",
+    "en": "Spirit Sight"
+  },
+  {
+    "id": "-295574912",
+    "key": "tkFhkr_uieffectdisplay_2",
+    "ch": "莲花剑",
+    "tc": "蓮花劍",
+    "en": "Lotus Sword's Will"
+  },
+  {
+    "id": "-295574911",
+    "key": "tkFhkr_uieffectdisplay_3",
+    "ch": "噬魂剑",
+    "tc": "噬魂劍",
+    "en": "Soul Reaver"
+  },
+  {
+    "id": "-295574910",
+    "key": "tkFhkr_uieffectdisplay_4",
+    "ch": "天命特效开关（需要自身有对应天命的先天气运才会生效。）",
+    "tc": "天命特效開關（需要自身有對應天命的先天氣運才會生效。）",
+    "en": "“The Three Fate” Effect Switch.(Needs to have the corresponding fate to take effect.)"
+  },
+  {
+    "id": "-295574909",
+    "key": "tkFhkr_patchuicreateplayer",
+    "ch": "请选择最少三个先天气运！",
+    "tc": "請選擇最少三個先天氣運！",
+    "en": "Please select at least three fates!"
+  },
+  {
+    "id": "-295574908",
+    "key": "tkFhkr_patchuicreateplayerProperty",
+    "ch": "最多只能锁定9个气运！",
+    "tc": "最多只能鎖定9個氣運！",
+    "en": "You can lock a maximum of 9 fates!"
+  },
+  {
+    "id": "-295574907",
+    "key": "tkFhkr_common1",
+    "ch": "\n\n\n点击“开始游戏”按钮时，<r>请勿关闭此面板</r>，否则所选选项将<r>不会生效</r>！\n但若想<y>恢复游戏原版的刷新方式</y>，则<y>关闭</y>此面板即可。",
+    "tc": "\n\n\n點擊“開始遊戲”按鈕時，<r>請勿關閉此面板</r>，否則所選選項將<r>不會生效</r>！\n但若想<y>恢復遊戲原版的刷新方式</y>，則<y>關閉</y>此面板即可。",
+    "en": "\n\n\nWhen clicking the \"Start Game\" button, <r>please do not close this panel</r>, otherwise, the selected options will <r>not take effect</r>!\nHowever, if you want to <y>restore the original game refresh method</y>, simply <y>close</y> this panel."
+  },
+  {
+    "id": "-295574906",
+    "key": "tkFhkr_modmain_1",
+    "ch": "先天气运筛选、多选，锁定多个气运",
+    "tc": "先天氣運篩選、多選，鎖定多個氣運",
+    "en": "Fate Filter, Multi-selection, Lock Multiple Fates"
+  },
+  {
+    "id": "-295574905",
+    "key": "tkFhkr_modmain_2",
+    "ch": "《天命气运多选》模组，新增了可以随时<r>更换逆天改命</r>的功能，在境界突破界面，<r>点击</r>自己已经拥有的<r>逆天改命</r>，就会弹出更换界面。",
+    "tc": "《天命氣運多選》模組，新增了可以隨時更換逆天改命的功能，在境界突破介面，點擊自己已經擁有的逆天改命，就會彈出更換介面。",
+    "en": "MOD <Fate Multi Selection>,a new feature has been added that allows you to <r>change Rewrite Destiny</r> at any time. In the realm breakthrough interface, <r>click</r> on the <r>Rewrite Destiny</r> you already possess, and a replacement interface will pop up."
+  },
+  {
+    "id": "-295574904",
+    "key": "tkFhkr_uibornlucklist_1",
+    "ch": "清空",
+    "tc": "清空",
+    "en": "Clear"
+  },
+  {
+    "id": "-295574903",
+    "key": "tkFhkr_uibornlucklist_2",
+    "ch": "提交",
+    "tc": "提交",
+    "en": "Submit"
+  },
+  {
+    "id": "-295574902",
+    "key": "tkFhkr_uibornlucklist_3",
+    "ch": "点击此按钮后，会在下次刷新出选中的气运，最多可选9个。\n\n（气运池中出现你所需的气运后，可以对其锁定，再进行下一次刷新！）",
+    "tc": "點擊此按鈕後，會在下次刷新出選中的氣運，最多可選9個。\n\n（氣運池中出現你所需的氣運後，請進行鎖定，再進行下一次刷新！）",
+    "en": "After clicking this button, the selected fates will appear upon the next refresh. You can select up to 9 fates.\n\n(Once the desired fates appear in the fate pool, you can lock them before proceeding to the next refresh!)"
+  },
+  {
+    "id": "-295574901",
+    "key": "tkFhkr_uibornlucklist_4",
+    "ch": "气运名",
+    "tc": "氣運名",
+    "en": "Fate Name"
+  },
+  {
+    "id": "-295574900",
+    "key": "tkFhkr_uibornlucklist_5",
+    "ch": "最多选择9个气运！",
+    "tc": "最多选择9个气运！",
+    "en": "You can choose up to 9 fates!"
+  },
+  {
+    "id": "-295574899",
+    "key": "tkFhkr_uifatefeaturechange_1",
+    "ch": "确定",
+    "tc": "確定",
+    "en": "OK"
+  },
+  {
+    "id": "-295574898",
+    "key": "tkFhkr_uifatefeaturechange_2",
+    "ch": "气运名",
+    "tc": "氣運名",
+    "en": "Fate Name"
+  },
+  {
+    "id": "-295574897",
+    "key": "tkFhkr_uifatefeaturechange_3",
+    "ch": "替换逆天改命",
+    "tc": "替換逆天改命",
+    "en": "Reset Rewrite Destiny"
+  },
+  {
+    "id": "-295574896",
+    "key": "tkFhkr_uifatefeaturechange_4",
+    "ch": "使用须知",
+    "tc": "使用須知",
+    "en": "Note"
+  },
+  {
+    "id": "-295574895",
+    "key": "tkFhkr_uifatefeaturechange_5",
+    "ch": "未选择逆天改命！",
+    "tc": "未選擇逆天改命！",
+    "en": "Fate not selected!"
+  },
+  {
+    "id": "-295574894",
+    "key": "tkFhkr_uifatefeaturechange_6",
+    "ch": "逆天改命替换完成！",
+    "tc": "逆天改命替換完成！",
+    "en": "Replacement completed!"
+  },
+  {
+    "id": "-295574893",
+    "key": "tkFhkr_uifatefeaturechange_7",
+    "ch": "1、气运池会包含其它模组所带的逆天改命。\n\n2、自身已经拥有的逆天改命不会出现在气运池里。\n\n3、跟屁虫系列的气运修改后是否会影响龙女化形我不清楚，请自行测试。",
+    "tc": "1、氣運池會包含其他模組所帶的逆天改命。\n\n2、自身已經擁有的逆天改命不會出現在氣運池裏。\n\n3、跟屁蟲系列的氣運修改後是否會影響龍女化形我不清楚，請自行測試。",
+    "en": "1、The fate pool will include the Rewrite Destiny effects brought by other modules.\n\n2、The Rewrite Destiny effects that you already possess will not appear in the fate pool.\n\n3、\"Following Bug Series\" fate modification may or may not affect the Dragon Lady transformation. I'm not sure, so please test it yourself."
+  },
+  {
+    "id": "-295574892",
+    "key": "tkFhkr_uifatefeaturechange_8",
+    "ch": "模组\n《天命气运多选》",
+    "tc": "模組\n《天命氣運多選》",
+    "en": "MOD\n<Fate Multi Selection>"
+  },
+  {
+    "id": "-295574891",
+    "key": "tkFhkr_uifatefeaturechange_9",
+    "ch": "{0}境已获得比这个更高级的逆天！",
+    "tc": "{0}境已獲得比這個更高級的逆天！",
+    "en": "The fate in {0} has already reached a level higher than this!"
+  }
+]
