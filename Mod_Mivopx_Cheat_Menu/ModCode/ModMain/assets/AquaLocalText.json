@@ -4492,11 +4492,11 @@
   {
     "id": "",
     "key": "other_msgs_cheat_menu_toggled",
-    "ch": "作弊菜单已切换。默认键：F3，备用键：反斜杠（'\\'）或Tab。",
-    "tc": "作弊選單已切換。預設鍵：F3，備用鍵：反斜杠（'\\'）或Tab。",
-    "en": "Cheat Menu has been toggled. Default key: F3, Alternative key: Backslash ('\\') or Tab.",
-    "kr": "치트 메뉴가 토글되었습니다. 기본 키: F3, 대체 키: 백슬래시('\\') 또는 Tab.",
-    "ja": "チートメニューが切り替えられました。デフォルトキー：F3、代替キー：バックスラッシュ（'\\'）またはTab。"
+    "ch": "作弊菜单已切换。默认键：{0}。",
+    "tc": "作弊選單已切換。預設鍵：{0}。",
+    "en": "Cheat Menu has been toggled. Default key: {0}.",
+    "kr": "치트 메뉴가 토글되었습니다. 기본 키: {0}.",
+    "ja": "チートメニューが切り替えられました。デフォルトキー：{0}。"
   },
   {
     "id": "",

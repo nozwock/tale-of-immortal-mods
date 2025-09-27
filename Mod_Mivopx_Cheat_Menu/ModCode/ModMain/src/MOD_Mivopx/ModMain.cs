@@ -21,12 +21,14 @@ public class Config
 	static MelonPreferences_Category category;
 	internal static MelonPreferences_Entry<bool> debugMode;
 	internal static MelonPreferences_Entry<bool> hideOnStartup;
+	internal static MelonPreferences_Entry<KeyCode> uiToggleKey;
 
 	internal static void Init()
 	{
 		category = MelonPreferences.CreateCategory(ModMain.GUID.Replace(".", "_"));
 		debugMode = category.CreateEntry("Debug Mode", false);
 		hideOnStartup = category.CreateEntry("Hide On Startup", false);
+		uiToggleKey = category.CreateEntry("UI Toggle", KeyCode.F3);
 	}
 }
 
@@ -389,10 +391,10 @@ public class ModMain : MelonMod
 
 	private void HandleToggleKeys()
 	{
-		if (InputManager.GetKeyDown(KeyCode.F3) || InputManager.GetKeyDown(KeyCode.Backslash) || InputManager.GetKeyDown(KeyCode.Tab))
+		if (InputManager.GetKeyDown(Config.uiToggleKey.Value))
 		{
 			UIManager.IsRootVisible = !UIManager.IsRootVisible;
-			LogTip(LocalizationHelper.T("other_msgs_cheat_menu_toggled"), null, 1f);
+			LogTip(String.Format(LocalizationHelper.T("other_msgs_cheat_menu_toggled"), Config.uiToggleKey.Value), null, 1f);
 		}
 	}
 

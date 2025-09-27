@@ -108,7 +108,7 @@ public class MainPanel : Panel
 		GameObject gameObject2 = UIHelper.CreateTitleBar(contentHolder, delegate
 		{
 			UIManager.IsRootVisible = false;
-		}, GetTitleBarText(), "F3");
+		}, GetTitleBarText());
 		titleBarText = gameObject2.GetComponentInChildren<Text>();
 		ButtonGroup = UIFactory.CreateHorizontalGroup(contentHolder, "CheatMainMenu-buttons-holder", forceExpandWidth: true, forceExpandHeight: true, childControlWidth: true, childControlHeight: true, 5);
 		ButtonGroup.SetActive(value: false);
