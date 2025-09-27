@@ -20,7 +20,7 @@ public class ModMain : MelonMod
 {
 	public const string GUID = "com.kewlpenpen.cheatmod";
 
-	public static string Version = typeof(ModMain).Assembly.GetCustomAttribute<MelonInfoAttribute>().Version;
+	public const string Version = "1.2.0";
 
 	public const string AuthorModifier = "Updated by Aqua-sama";
 
