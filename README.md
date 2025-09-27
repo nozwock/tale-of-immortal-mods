@@ -14,7 +14,7 @@ MOD_PATH='/path/to/ModExportData'
   </PropertyGroup>
 </Project>
 ```
-- Run `just` from a mod's directory or subdirectory to build and export the mod to `$MOD_PATH`.
+- Run `just` from a mod's directory or subdirectory to build the mod, and `just pack` to build and export to `$MOD_PATH`.
 
 
 [TOITool]: https://github.com/nozwock/tale-of-immortal-tool/
