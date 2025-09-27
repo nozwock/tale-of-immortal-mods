@@ -217,29 +217,24 @@ public class SearchItemPanel : Panel
 				if (Game.ConfMgr.localText.allText.ContainsKey(current.name))
 				{
 					ConfLocalTextItem confLocalTextItem = Game.ConfMgr.localText.allText[current.name];
-					if (confLocalTextItem.ch == "衣服")
+					var textCh = confLocalTextItem.ch;
+					var textEn = confLocalTextItem.en;
+					if (textCh == "衣服")
 					{
-						confLocalTextItem.ch = "衣服 " + current.id;
+						textCh = "衣服 " + current.id;
 					}
-					if (confLocalTextItem.tc == "衣服")
+					if (textEn == "Outfit")
 					{
-						confLocalTextItem.tc = "衣服 " + current.id;
+						textEn = "Outfit " + current.id;
 					}
-					if (confLocalTextItem.en == "Outfit")
+					// kr "의복"
+					if (textEn.IsEmpty())
 					{
-						confLocalTextItem.en = "Outfit " + current.id;
+						textEn = textCh;
 					}
-					if (confLocalTextItem.kr == "의복")
+					if (value.Equals("Show All", StringComparison.OrdinalIgnoreCase) || Regex.IsMatch(textEn, value, RegexOptions.IgnoreCase) || Regex.IsMatch(textCh, value, RegexOptions.IgnoreCase))
 					{
-						confLocalTextItem.kr = "의복 " + current.id;
-					}
-					if (confLocalTextItem.en == "" || confLocalTextItem.en.IsEmpty())
-					{
-						confLocalTextItem.en = confLocalTextItem.ch;
-					}
-					if (value.Equals("Show All", StringComparison.OrdinalIgnoreCase) || Regex.IsMatch(confLocalTextItem.en, value, RegexOptions.IgnoreCase) || Regex.IsMatch(confLocalTextItem.ch, value, RegexOptions.IgnoreCase))
-					{
-						CreateItemButton(current.name, current.id, IsCHActive ? (confLocalTextItem.en + " (" + confLocalTextItem.ch + ")") : confLocalTextItem.en);
+						CreateItemButton(current.name, current.id, IsCHActive ? (textEn + " (" + textCh + ")") : textEn);
 					}
 				}
 			}
