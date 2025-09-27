@@ -18,6 +18,7 @@ namespace MOD_Mivopx;
 
 public class Config
 {
+	static bool _isInit = false;
 	static MelonPreferences_Category category;
 	internal static MelonPreferences_Entry<bool> debugMode;
 	internal static MelonPreferences_Entry<bool> hideOnStartup;
@@ -25,10 +26,13 @@ public class Config
 
 	internal static void Init()
 	{
+		if (_isInit)
+			return;
 		category = MelonPreferences.CreateCategory(ModMain.GUID.Replace(".", "_"));
 		debugMode = category.CreateEntry("Debug Mode", false);
 		hideOnStartup = category.CreateEntry("Hide On Startup", false);
 		uiToggleKey = category.CreateEntry("UI Toggle", KeyCode.F3);
+		_isInit = true;
 	}
 }
 
@@ -119,11 +123,12 @@ public class ModMain : MelonMod
 		Instance = this;
 		hasInited = true;
 
-		Config.Init();
-
-		Log("Initializing...");
 		try
 		{
+			Config.Init();
+
+			Log("Initializing...");
+
 			if (harmony != null)
 			{
 				harmony.UnpatchSelf();
