@@ -16,6 +16,18 @@ using UniverseLib.Input;
 
 namespace MOD_Mivopx;
 
+public class Config
+{
+	static MelonPreferences_Category category;
+	internal static MelonPreferences_Entry<bool> debugMode;
+
+	internal static void Init()
+	{
+		category = MelonPreferences.CreateCategory(ModMain.GUID.Replace(".", "_"));
+		debugMode = category.CreateEntry("Debug Mode", false);
+	}
+}
+
 public class ModMain : MelonMod
 {
 	public const string GUID = "com.kewlpenpen.cheatmod";
@@ -58,10 +70,6 @@ public class ModMain : MelonMod
 
 	public bool DeveloperMode;
 
-	public static bool StaticDeveloperMode = true;
-
-	public static bool StaticMainLog = true;
-
 	private static readonly float AddTipDuration = 2f;
 
 	private int frameCount;
@@ -103,8 +111,12 @@ public class ModMain : MelonMod
 		{
 			return;
 		}
+
 		Instance = this;
 		hasInited = true;
+
+		Config.Init();
+
 		Log("Initializing...");
 		try
 		{
@@ -284,9 +296,9 @@ public class ModMain : MelonMod
 
 	public static void Log(string message)
 	{
-		if (StaticDeveloperMode)
+		if (Config.debugMode.Value)
 		{
-			if (StaticMainLog)
+			if (Config.debugMode.Value)
 			{
 				Log(message, LogType.Log);
 				MelonLogger.Msg(message);
@@ -300,7 +312,7 @@ public class ModMain : MelonMod
 
 	public static void LogWarning(string message)
 	{
-		if (StaticMainLog)
+		if (Config.debugMode.Value)
 		{
 			Log(message, LogType.Warning);
 			MelonLogger.Warning(message);
@@ -313,7 +325,7 @@ public class ModMain : MelonMod
 
 	public static void LogError(string message)
 	{
-		if (StaticMainLog)
+		if (Config.debugMode.Value)
 		{
 			Log(message, LogType.Error);
 			MelonLogger.Error(message);
@@ -356,7 +368,7 @@ public class ModMain : MelonMod
 		float durTime = Duration ?? AddTipDuration;
 		string text = ((LogType == "WARNING") ? "<color=yellow>[ ! ]</color> " : ((!(LogType == "ERROR")) ? "<color=green>[✓]</color> " : "<color=red>[X]</color> "));
 		UITipItem.AddTip(text + Msg, durTime);
-		if (StaticDeveloperMode)
+		if (Config.debugMode.Value)
 		{
 			switch (LogType)
 			{
