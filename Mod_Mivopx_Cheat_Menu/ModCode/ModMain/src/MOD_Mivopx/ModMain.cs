@@ -20,11 +20,13 @@ public class Config
 {
 	static MelonPreferences_Category category;
 	internal static MelonPreferences_Entry<bool> debugMode;
+	internal static MelonPreferences_Entry<bool> hideOnStartup;
 
 	internal static void Init()
 	{
 		category = MelonPreferences.CreateCategory(ModMain.GUID.Replace(".", "_"));
 		debugMode = category.CreateEntry("Debug Mode", false);
+		hideOnStartup = category.CreateEntry("Hide On Startup", false);
 	}
 }
 

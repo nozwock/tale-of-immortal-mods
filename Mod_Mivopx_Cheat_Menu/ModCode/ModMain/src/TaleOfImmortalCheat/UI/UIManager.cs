@@ -132,6 +132,10 @@ public class UIManager
 			ModMain.LogError("Error creating main ui: " + ex.Message + "; " + ex.StackTrace);
 			throw;
 		}
+		if (Config.hideOnStartup.Value)
+		{
+			IsRootVisible = false;
+		}
 	}
 
 	public static void Init()
@@ -180,12 +184,8 @@ public class UIManager
 		{
 			value.OnGameWorldUpdate();
 		}
-		if (!InitIsRootVisibleOnce)
-		{
-			IsRootVisible = false;
-			IsRootVisible = true;
-			InitIsRootVisibleOnce = true;
-		}
+		// Not setting IsRootVisible here, toggling visible state on entering game world or mod manager's fake world is
+		// disruptive
 	}
 
 	internal static void OnLoad()
