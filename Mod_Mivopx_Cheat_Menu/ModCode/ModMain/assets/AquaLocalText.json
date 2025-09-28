@@ -1442,7 +1442,7 @@
     "key": "panel_exploitmore_show_increase_button",
     "ch": "为选中物品显示'增加'按钮",
     "tc": "為選中物品顯示'增加'按鈕",
-    "en": "Show 'Increase' Button for Selected Item",
+    "en": "Show 'Duplicate' Button for Selected Item",
     "kr": "선택한 아이템에 '증가' 버튼 표시",
     "ja": "選択したアイテムに'増加'ボタンを表示"
   },
@@ -1613,7 +1613,7 @@
     "key": "panel_exploitmore_status_increase_item_activated",
     "ch": "增加物品已激活。",
     "tc": "增加物品已激活。",
-    "en": "Increase Item Activated.",
+    "en": "Duplicate Item Activated.",
     "kr": "아이템 증가가 활성화되었습니다.",
     "ja": "アイテム増加が有効になりました。"
   },
@@ -1622,7 +1622,7 @@
     "key": "panel_exploitmore_status_increase_text_visible",
     "ch": "'增加'文本可见。",
     "tc": "'增加'文本可見。",
-    "en": "'Increase' Text Visible.",
+    "en": "'Duplicate' Text Visible.",
     "kr": "'증가' 텍스트가 표시됩니다.",
     "ja": "'増加'テキストが表示されます。"
   },
@@ -1631,7 +1631,7 @@
     "key": "panel_exploitmore_status_increase_item_deactivated",
     "ch": "增加物品已停用。",
     "tc": "增加物品已停用。",
-    "en": "Increase Item Deactivated.",
+    "en": "Duplicate Item Deactivated.",
     "kr": "아이템 증가가 비활성화되었습니다.",
     "ja": "アイテム増加が無効になりました。"
   },
@@ -1640,7 +1640,7 @@
     "key": "panel_exploitmore_status_increase_text_hidden",
     "ch": "'增加'文本隐藏。",
     "tc": "'增加'文本隱藏。",
-    "en": "'Increase' Text Hidden.",
+    "en": "'Duplicate' Text Hidden.",
     "kr": "'증가' 텍스트가 숨겨집니다.",
     "ja": "'増加'テキストが非表示になります。"
   },
@@ -1946,7 +1946,7 @@
     "key": "panel_exploitmore_button_increase",
     "ch": "增加",
     "tc": "增加",
-    "en": "Increase",
+    "en": "Duplicate",
     "kr": "증가",
     "ja": "増加"
   },
@@ -2072,7 +2072,7 @@
     "key": "tooltip_exploitmore_multi_item",
     "ch": "在物品库存界面为选定物品显示'增加'按钮。点击此按钮可立即向库存添加+1或多个物品。对于多个物品，会显示选择界面来选择添加数量。如果在神话葫芦库存中悬停在选定物品上，则会立即添加。",
     "tc": "在物品庫存界面為選定物品顯示'增加'按鈕。點擊此按鈕可立即向庫存添加+1或多個物品。對於多個物品，會顯示選擇界面來選擇添加數量。如果在神話葫蘆庫存中懸停在選定物品上，則會立即添加。",
-    "en": "Shows a button labeled 'Increase' for the selected item in the Item Inventory UI. Clicking this button lets the user instantly add +1 or multiple items to their inventory. For multiple items, a selection UI is displayed to choose the quantity to add. If in the Mythical Gourd Inventory and hovering over the selected item, the addition occurs instantly.",
+    "en": "Shows a button labeled 'Duplicate' for the selected item in the Item Inventory UI. Clicking this button lets the user instantly add +1 or multiple items to their inventory. For multiple items, a selection UI is displayed to choose the quantity to add. If in the Mythical Gourd Inventory and hovering over the selected item, the addition occurs instantly.",
     "kr": "아이템 인벤토리 UI에서 선택된 아이템에 대해 '증가' 버튼을 표시합니다. 이 버튼을 클릭하면 인벤토리에 +1 또는 여러 아이템을 즉시 추가할 수 있습니다. 여러 아이템의 경우 추가할 수량을 선택하는 UI가 표시됩니다. 신화의 박 인벤토리에서 선택된 아이템 위에 마우스를 올리면 즉시 추가됩니다.",
     "ja": "アイテムインベントリUIで選択されたアイテムに「増加」ボタンを表示します。このボタンをクリックすると、インベントリに+1または複数のアイテムを即座に追加できます。複数アイテムの場合、追加する数量を選択するUIが表示されます。神話のひょうたんインベントリで選択されたアイテムにマウスを合わせると、即座に追加されます。"
   },
