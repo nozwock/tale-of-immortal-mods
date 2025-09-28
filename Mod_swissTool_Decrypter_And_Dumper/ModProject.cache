@@ -1,0 +1,28 @@
+{
+  "soleID": "swissTool",
+  "createTicks": 638469315928572343,
+  "name": "<color=#702963>【Mod decryption tool】</color>",
+  "author": "Cyfire",
+  "desc": "DO NOT KEEP THIS MOD CHECKED IN YOUR MODLIST!!!\r\nIT'S ONLY MEANT DO SOMETHING IN DEBUG MODE!\r\n\r\nHow to install from Steam Workshop:\r\n1. Subscribe to the mod, THEN DISABLE it in your mod list!!\r\n2. Copy-paste the Mod Source folder (ModProject) into your Mod creator's Work Root Directory. By default located in: \"\\Steam\\steamapps\\workshop\\content\\1468810\\3225372871\\\"\r\n3. Go into ModAssets and copy the files \"dumpClassList.txt\" and \"dumpClassListDLC.txt\" into the game's main installation folder, e.g. \"\\Steam\\steamapps\\common\\鬼谷八荒\\\" or something else\r\n\r\nHow to Decrypt Json files from other mods:\r\n1. Press 'Edit' to open it up, then press 'Go to game debugging'\r\n2. Press the button \"Decrypt Mod\" that's been added at the right-hand side.\r\n3. Select a (preferably) empty output folder to save the decrypted files.\r\n4. If it's successful, the output folder will be opened.\r\n\r\nHow to re-Encrypt:\r\n1. Same step as \"How to Decrypt\"\r\n2. Press the button \"Encrypt Mod\" that's been added at the right-hand side.\r\nThe rest is identical to the decryption steps also...\r\n\r\nDumping the live-Vanilla game's Json files:\r\n1. Same step as \"How to Decrypt\"\r\n2. Press the button \"Dump Json-data\" that's been added at the right-hand side.\r\n3. Wait for some time as the game will appear to be frozen, due to the sheer quantity of Json files.\r\nThe files will be located in the installation folder under \"DataDump\", e.g. something like \"\\Steam\\steamapps\\common\\鬼谷八荒\\DataDump\"\r\nThe DLC Json-file dump will be stored at \"\\Steam\\steamapps\\common\\鬼谷八荒\\DataDumpDLC\"\r\n\r\nThe tool's behaviors:\r\n- Non-encrypted Json/Cache/PNG files shouldn't be processed, e.g. won't be reverse-encrypted.\r\n- The extension checker isn't case-sensitive, e.g. '.Json' and '.json' will both be read.\r\n",
+  "ver": "v 1.0.6f",
+  "autoSave": false,
+  "isCreateNPC": true,
+  "exportVer": 226,
+  "accountID": 202480695,
+  "publishedFileID": 3225372871,
+  "visibleState": 0,
+  "openCode": 1,
+  "curUpdateDesc": "Changed soleID to swissTool and namespace to MOD_swissTool\n\nImproved // fixed:\n- The txt files that contain theConfMgr Class names no longer have to be copy/pasted into Program Files\n- The game save folder directory is now obtained via the game API instead of being a static string.",
+  "tags": [
+    "English",
+    "Function"
+  ],
+  "addPreviewPaths": [
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "excelEncrypt": false
+}
