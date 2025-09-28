@@ -1,0 +1,19 @@
+{
+  "soleID": "VOYaCr",
+  "createTicks": 638946774420582066,
+  "name": "Rest Replenishes Tao",
+  "author": "gse orca",
+  "desc": "Resting at an Inn or Hospital now fully replenishes Tao Power as well.",
+  "ver": "1.0.0",
+  "autoSave": true,
+  "isCreateNPC": true,
+  "exportVer": 0,
+  "accountID": 0,
+  "publishedFileID": 0,
+  "visibleState": 0,
+  "openCode": 0,
+  "curUpdateDesc": null,
+  "tags": [],
+  "addPreviewPaths": [],
+  "excelEncrypt": false
+}
