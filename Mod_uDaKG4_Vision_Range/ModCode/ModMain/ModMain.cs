@@ -23,15 +23,31 @@ namespace MOD_uDaKG4
         }
     }
 
+    internal class Config
+    {
+        static bool _isInit = false;
+
+        static MelonPreferences_Category category;
+        internal static MelonPreferences_Entry<int> playerViewRange;
+
+        internal static void Init()
+        {
+            if (_isInit)
+                return;
+
+            category = MelonPreferences.CreateCategory(ModMain.modNamespace);
+            playerViewRange = category.CreateEntry("playerViewRange", 5);
+
+            _isInit = true;
+        }
+    }
+
     public class ModMain
     {
         // private TimerCoroutine corUpdate;
         internal static HarmonyLib.Harmony harmony;
         internal static readonly string soleId = "uDaKG4";
         internal static readonly string modNamespace = $"MOD_{soleId}";
-
-        private static MelonPreferences_Category category;
-        private static MelonPreferences_Entry<int> playerViewRange;
 
         public void Init()
         {
@@ -46,9 +62,7 @@ namespace MOD_uDaKG4
             }
             harmony.PatchAll(Assembly.GetExecutingAssembly());
 
-            category = MelonPreferences.CreateCategory(modNamespace);
-            playerViewRange = category.CreateEntry("playerViewRange", 5);
-
+            Config.Init();
             // corUpdate = g.timer.Frame(new Action(OnUpdate), 1, true);
         }
 
@@ -65,8 +79,8 @@ namespace MOD_uDaKG4
             var playerView = g.world.playerUnit.data.dynUnitData.playerView;
             if (playerView != null)
             {
-                Log($"Setting playerViewRange={playerViewRange.Value}");
-                playerView.baseValue = playerViewRange.Value;
+                Log($"Setting playerViewRange={Config.playerViewRange.Value}");
+                playerView.baseValue = Config.playerViewRange.Value;
             }
             else
             {

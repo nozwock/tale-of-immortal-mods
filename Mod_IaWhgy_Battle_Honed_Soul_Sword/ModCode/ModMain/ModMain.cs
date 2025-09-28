@@ -10,6 +10,54 @@ using EGameTypeData;
 
 namespace MOD_IaWhgy
 {
+    internal class Config
+    {
+        static bool _isInit = false;
+
+        static MelonPreferences_Category category;
+        internal static MelonPreferences_Entry<double> mythicalBeastDevourFraction;
+        internal static MelonPreferences_Entry<bool> showNotification;
+        internal static MelonPreferences_Entry<string> devourDeadlineMode;
+
+        internal static DevourDeadlineMode CurrentDevourDeadlineMode =>
+            Enum.TryParse<DevourDeadlineMode>(devourDeadlineMode.Value, out var parsed) ? parsed : DevourDeadlineMode.ResetOnBeastDevour;
+
+        internal enum DevourDeadlineMode
+        {
+            [Description("Disable deadline system completely")]
+            Disabled,
+            [Description("Reset deadline when devouring beasts")]
+            ResetOnBeastDevour,
+            [Description("Leave deadline system unchanged")]
+            Unchanged
+        }
+
+        internal static void Init()
+        {
+            if (_isInit)
+                return;
+
+            category = MelonPreferences.CreateCategory(ModMain.modNamespace);
+            mythicalBeastDevourFraction = category.CreateEntry(
+                "Mythical Beast Devour Reward Fraction",
+                0.1,
+                description: "How much stats to give for \"consuming\" a Mythical Beast relative to a NPC"
+            );
+            showNotification = category.CreateEntry(
+                "Show Notification",
+                true,
+                description: "Should notification for added Soul Reaver stats be shown at the end of the battle?"
+            );
+            devourDeadlineMode = category.CreateEntry(
+                "Devour Deadline Mode",
+                DevourDeadlineMode.ResetOnBeastDevour.ToString(),
+                description: ModMain.GetEnumDescription<DevourDeadlineMode>()
+            );
+
+            _isInit = true;
+        }
+    }
+
     public class ModMain
     {
         internal static readonly string modNamespace = typeof(ModMain).Namespace!;
@@ -28,14 +76,6 @@ namespace MOD_IaWhgy
 
         private int newMonth;
 
-        private MelonPreferences_Category category;
-        private MelonPreferences_Entry<double> mythicalBeastDevourFraction;
-        private MelonPreferences_Entry<bool> showNotification;
-        private static MelonPreferences_Entry<string> devourDeadlineMode;
-
-        private DevourDeadlineMode CurrentDevourDeadlineMode =>
-            Enum.TryParse<DevourDeadlineMode>(devourDeadlineMode.Value, out var parsed) ? parsed : DevourDeadlineMode.ResetOnBeastDevour;
-
         private int CurrentMonth
         {
             get
@@ -45,34 +85,9 @@ namespace MOD_IaWhgy
             }
         }
 
-        private enum DevourDeadlineMode
-        {
-            [Description("Disable deadline system completely")]
-            Disabled,
-            [Description("Reset deadline when devouring beasts")]
-            ResetOnBeastDevour,
-            [Description("Leave deadline system unchanged")]
-            Unchanged
-        }
-
         public void Init()
         {
-            category = MelonPreferences.CreateCategory(modNamespace);
-            mythicalBeastDevourFraction = category.CreateEntry(
-                "Mythical Beast Devour Reward Fraction",
-                0.1,
-                description: "How much stats to give for \"consuming\" a Mythical Beast relative to a NPC"
-            );
-            showNotification = category.CreateEntry(
-                "Show Notification",
-                true,
-                description: "Should notification for added Soul Reaver stats be shown at the end of the battle?"
-            );
-            devourDeadlineMode = category.CreateEntry(
-                "Devour Deadline Mode",
-                DevourDeadlineMode.ResetOnBeastDevour.ToString(),
-                description: GetEnumDescription<DevourDeadlineMode>()
-            );
+            Config.Init();
 
             callBattleStart = (Il2CppSystem.Action<ETypeData>)OnBattleStart;
             callBattleEnd = (Il2CppSystem.Action<ETypeData>)OnBattleEnd;
@@ -108,7 +123,7 @@ namespace MOD_IaWhgy
 
         private void OnSkipMonth()
         {
-            if (CurrentDevourDeadlineMode == DevourDeadlineMode.Disabled)
+            if (Config.CurrentDevourDeadlineMode == Config.DevourDeadlineMode.Disabled)
             {
                 var swordMgr = g.world.soulDevourSword;
 
@@ -149,7 +164,7 @@ namespace MOD_IaWhgy
                 swordMgr.AddExp(expUp);
                 var expAdded = swordMgr.data.exp - expInitial;
 
-                if (showNotification.Value && (atkUp > 0 || (expAdded > 0)))
+                if (Config.showNotification.Value && (atkUp > 0 || (expAdded > 0)))
                 {
                     var tip = new StringBuilder("Soul Reaver");
                     if (atkUp > 0)
@@ -185,8 +200,8 @@ namespace MOD_IaWhgy
             {
                 confList.Add(confList_[i]);
             }
-            atkUp = BuildCurve(confList.Select(v => v.atkUp), mythicalBeastDevourFraction.Value)[dungeonGrade - 1];
-            expUp = BuildCurve(confList.Select(v => v.increaseExp), mythicalBeastDevourFraction.Value)[dungeonGrade - 1];
+            atkUp = BuildCurve(confList.Select(v => v.atkUp), Config.mythicalBeastDevourFraction.Value)[dungeonGrade - 1];
+            expUp = BuildCurve(confList.Select(v => v.increaseExp), Config.mythicalBeastDevourFraction.Value)[dungeonGrade - 1];
         }
 
         private void OnBattleEnd(ETypeData e)
@@ -199,7 +214,7 @@ namespace MOD_IaWhgy
                 return;
             }
 
-            if (CurrentDevourDeadlineMode == DevourDeadlineMode.ResetOnBeastDevour)
+            if (Config.CurrentDevourDeadlineMode == Config.DevourDeadlineMode.ResetOnBeastDevour)
             {
                 SetSoulSwordDevourMonth(CurrentMonth);
             }
@@ -253,7 +268,7 @@ namespace MOD_IaWhgy
             }
         }
 
-        private static string GetEnumDescription<T>(string sep = "\n") where T : Enum
+        public static string GetEnumDescription<T>(string sep = "\n") where T : Enum
         {
             return string.Join(sep,
                 Enum.GetValues(typeof(T))
