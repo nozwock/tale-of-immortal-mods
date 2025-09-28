@@ -3,132 +3,65 @@ using System.IO;
 using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using MelonLoader;
 
 namespace MOD_swissTool
 {
     public class DumpFile
     {
-        public static void dumpData(bool dlc)
+        public static void DumpData(bool dlc)
         {
-            string DumpFileName;
-            string contents;
-            string[] ClassNames;
-            string classListDir = g.mod.GetModPathRoot("swissTool") + "\\ModAssets"; // Obtain the directory of the mod folder
-            string currentDirectory = Directory.GetCurrentDirectory();
-            // Variable names depending on Main or DLC
-            string ClassListFileName;
-            string DumpFolderName;
-            // Determine Class list file name and output folder
-            if (!dlc)
+            static void DumpConfs(object obj, string outdir)
             {
-                ClassListFileName = "\\dumpClassList.txt";
-                DumpFolderName = "\\DataDump";
-            }
-            else
-            {
-                ClassListFileName = "\\dumpClassListDLC.txt";
-                DumpFolderName = "\\DataDumpDLC";
-            }
-            // Check if the list-file with Class names exists
-            if (!File.Exists(classListDir + ClassListFileName))
-            {
-                Console.WriteLine($"Doesn't exist: {classListDir + ClassListFileName}");
-                return; // I can't believe I hadn't thought of adding a return earlier
-            }
-            else
-            {
-                Console.WriteLine($"Found in: {classListDir + ClassListFileName}");
-                ClassNames = File.ReadAllLines(classListDir + ClassListFileName);
-            }
+                Directory.CreateDirectory(outdir);
 
-            // Create directory for those files
-            currentDirectory += DumpFolderName;
-            Directory.CreateDirectory(currentDirectory);
+                var flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
+                var fields = obj.GetType().GetProperties(flags); // Property instead of field due to il2cpp
+                MelonLogger.Msg($"Total Fields in {obj.GetType().FullName}: {fields.Length}");
 
-            // Loop through all names
-            foreach (string className in ClassNames)
-            {
-                DumpFileName = char.ToUpper(className[0]) + className.Substring(1);
-                JToken jt = JToken.Parse(getClass(className, dlc));
-                contents = jt.ToString(Formatting.Indented); // Turn the data into Json string
-
-                // Save the data...
-                File.WriteAllText(DumpFileName + ".json", contents);
-                string sourceFileName = Directory.GetCurrentDirectory() + "\\" + DumpFileName + ".json";
-                string text = currentDirectory + "\\" + DumpFileName + ".json";
-                if (File.Exists(text))
+                foreach (var field in fields)
                 {
-                    File.Delete(text);
-                }
-                File.Move(sourceFileName, text);
-            }
-        }
+                    MelonLogger.Msg($"Processing {field.PropertyType.Name} {field.Name}");
+                    var conf = field.GetValue(obj);
+                    if (conf == null)
+                    {
+                        MelonLogger.Msg($"Null value for {field.Name}");
+                        continue;
+                    }
 
-        public static string getClass(string className, bool dlc)
-        {
-            BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-            PropertyInfo info;
-            Object gotClass;
+                    // Look for _allConfList or allConfList
+                    var confItems = conf.GetType().GetProperty("_allConfList", flags)?.GetValue(conf)
+                        ?? conf.GetType().GetProperty("allConfList", flags)?.GetValue(conf);
+                    if (confItems == null)
+                    {
+                        MelonLogger.Msg($"Couldn't find allConfList on {field.Name} or it's null");
+                        continue;
+                    }
 
-            if (!dlc) info = g.conf.GetType().GetProperty(className, flags);
-            else info = g.dlc.dlcConf.GetType().GetProperty(className, flags);
-            if (info == null)
-            {
-                Console.WriteLine("The Class doesn't exist");
-                return "";
-            }
-            Console.WriteLine($"Found the Class: {className}");
+                    var filename = CapitalizeFirst(field.Name) + ".json";
+                    var json = JToken.Parse(CommonTool.ObjectToJson((Il2CppSystem.Object)confItems)).ToString(Formatting.Indented);
 
-            if (!dlc) gotClass = info.GetValue(g.conf);
-            else gotClass = info.GetValue(g.dlc.dlcConf);
-            PropertyInfo info2 = gotClass.GetType().GetProperty("_allConfList", flags);
-            if (info2 == null)
-            { // If _allConfList doesn't exist, try to get the allConfList field
-                Console.WriteLine("_allConfList got nothing");
-                info2 = gotClass.GetType().GetProperty("allConfList", flags);
-                if (info2 == null) 
-                {
-                    Console.WriteLine("allConfList got nothing either");
-                    return ""; 
+                    File.WriteAllText(Path.Combine(outdir, filename), json);
                 }
             }
-            // Convert to Json and return the string
-            return CommonTool.ObjectToJson((Il2CppSystem.Object)info2.GetValue(gotClass));
-        }
 
-        public static string getClass2(string className)
-        {
-            BindingFlags flags = BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic;
-            PropertyInfo info = g.data.GetType().GetProperty(className, flags);
-            if (info == null)
+            static string CapitalizeFirst(string s)
             {
-                Console.WriteLine("The Class doesn't exist");
-                return "";
+                if (string.IsNullOrEmpty(s))
+                    return s;
+                if (s.Length == 1)
+                    return s.ToUpper();
+                return char.ToUpper(s[0]) + s.Substring(1);
             }
-            Console.WriteLine($"Found the Class: {className}");
-            Object gotClass = info.GetValue(g.data);
 
-            // Convert to Json and return the string
-            return CommonTool.ObjectToJson((Il2CppSystem.Object)info.GetValue(g.data));
-        }
-
-        // Used to check the list first
-        public static void ReadFile()
-        {
-            string currentDirectory = Directory.GetCurrentDirectory();
-            if (File.Exists(currentDirectory + "\\dumpClassList.txt"))
+            try
             {
-                string[] lines = File.ReadAllLines(currentDirectory + "\\dumpClassList.txt");
-                foreach (string line in lines)
-                {
-                    Console.WriteLine(line);
-                }
-                return;
+                var outdir = Path.Combine(Directory.GetCurrentDirectory(), dlc ? "DataDumpDLC" : "DataDump");
+                DumpConfs(dlc ? g.dlc.dlcConf.data : g.conf.data, outdir);
             }
-            else
+            catch (Exception e)
             {
-                Console.WriteLine("Nothing");
-                return;
+                MelonLogger.Error($"{e}");
             }
         }
     }

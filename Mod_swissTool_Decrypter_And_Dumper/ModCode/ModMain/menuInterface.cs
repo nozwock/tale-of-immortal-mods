@@ -28,13 +28,13 @@ namespace MOD_swissTool
             // Create data-dump button
             mkBtn(ui, "btnDumpData", "Dump Json-data", new Vector2(-320f, -510f), (Action)delegate {
                 Console.WriteLine("Start dumping");
-                DumpFile.dumpData(dlc: false); // Init
+                DumpFile.DumpData(dlc: false); // Init
                 Console.WriteLine("Finished dumping");
             });
             // Create data-dump button
             mkBtn(ui, "btnDumpDataDLC", "Dump DLC-data", new Vector2(-320f, -565f), (Action)delegate {
                 Console.WriteLine("Start dumping");
-                DumpFile.dumpData(dlc: true); // Init
+                DumpFile.DumpData(dlc: true); // Init
                 Console.WriteLine("Finished dumping");
             });
             // Create decrypt save data button
