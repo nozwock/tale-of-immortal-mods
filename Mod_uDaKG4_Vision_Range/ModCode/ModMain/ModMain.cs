@@ -10,19 +10,6 @@ using MelonLoader.Preferences;
 
 namespace MOD_uDaKG4
 {
-    [HarmonyPatch(typeof(WorldMgr), "Init")]
-    public class Patch_WorldMgrInit
-    {
-        // Game start
-        private static void Postfix(WorldMgr __instance)
-        {
-            // Have to switch back to this since the registered callback to
-            // event EGameType.IntoWorld doesn't seem to get called reliably
-            if (ModMain.harmony != null)
-                ModMain.OnGameStart();
-        }
-    }
-
     internal class Config
     {
         static bool _isInit = false;
@@ -44,37 +31,25 @@ namespace MOD_uDaKG4
 
     public class ModMain
     {
-        // private TimerCoroutine corUpdate;
-        internal static HarmonyLib.Harmony harmony;
         internal static readonly string soleId = "uDaKG4";
         internal static readonly string modNamespace = $"MOD_{soleId}";
 
+        Il2CppSystem.Action<ETypeData> callIntoWorld;
+
         public void Init()
         {
-            if (harmony != null)
-            {
-                harmony.UnpatchSelf();
-                harmony = null;
-            }
-            if (harmony == null)
-            {
-                harmony = new HarmonyLib.Harmony(modNamespace);
-            }
-            harmony.PatchAll(Assembly.GetExecutingAssembly());
-
             Config.Init();
-            // corUpdate = g.timer.Frame(new Action(OnUpdate), 1, true);
+
+            callIntoWorld = (Il2CppSystem.Action<ETypeData>)OnGameStart;
+            g.events.On(EGameType.IntoWorld, callIntoWorld);
         }
 
         public void Destroy()
         {
-            // g.timer.Stop(corUpdate);
-
-            harmony.UnpatchSelf();
-            harmony = null;
+            g.events.Off(EGameType.IntoWorld, callIntoWorld);
         }
 
-        public static void OnGameStart()
+        public static void OnGameStart(ETypeData e)
         {
             var playerView = g.world.playerUnit.data.dynUnitData.playerView;
             if (playerView != null)
@@ -86,10 +61,6 @@ namespace MOD_uDaKG4
             {
                 Log("Cannot modify view range since playerView is null");
             }
-        }
-
-        public void OnUpdate()
-        {
         }
 
         public static void Log(string s)
