@@ -27,21 +27,21 @@ internal class Rewards
 					Id = 5081035,
 					Quantity = 1
 				},
-				new Item
-				{
-					Id = 5081045,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081055,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081065,
-					Quantity = 1
-				},
+				// new Item
+				// {
+				// 	Id = 5081045,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081055,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081065,
+				// 	Quantity = 1
+				// },
 				new Item
 				{
 					Id = 5031726,
@@ -98,51 +98,51 @@ internal class Rewards
 					Id = 5081105,
 					Quantity = 1
 				},
-				new Item
-				{
-					Id = 5081115,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081125,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081135,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081145,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 1011471,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 1011472,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 1011473,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 1011474,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 1011475,
-					Quantity = 1
-				},
+				// new Item
+				// {
+				// 	Id = 5081115,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081125,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081135,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081145,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 1011471,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 1011472,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 1011473,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 1011474,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 1011475,
+				// 	Quantity = 1
+				// },
 				new Item
 				{
 					Id = 1011476,
@@ -179,31 +179,31 @@ internal class Rewards
 					Id = 5081195,
 					Quantity = 1
 				},
-				new Item
-				{
-					Id = 5081205,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081215,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081225,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081235,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081245,
-					Quantity = 1
-				},
+				// new Item
+				// {
+				// 	Id = 5081205,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081215,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081225,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081235,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081245,
+				// 	Quantity = 1
+				// },
 				new Item
 				{
 					Id = 5031786,
@@ -260,51 +260,51 @@ internal class Rewards
 					Id = 5081285,
 					Quantity = 1
 				},
-				new Item
-				{
-					Id = 5081295,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081305,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081315,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081325,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 1011551,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 1011552,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 1011553,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 1011554,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 1011555,
-					Quantity = 1
-				},
+				// new Item
+				// {
+				// 	Id = 5081295,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081305,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081315,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081325,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 1011551,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 1011552,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 1011553,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 1011554,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 1011555,
+				// 	Quantity = 1
+				// },
 				new Item
 				{
 					Id = 1011556,
@@ -346,36 +346,36 @@ internal class Rewards
 					Id = 5081385,
 					Quantity = 1
 				},
-				new Item
-				{
-					Id = 5081395,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081405,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081415,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081425,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081435,
-					Quantity = 1
-				},
-				new Item
-				{
-					Id = 5081445,
-					Quantity = 1
-				},
+				// new Item
+				// {
+				// 	Id = 5081395,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081405,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081415,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081425,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081435,
+				// 	Quantity = 1
+				// },
+				// new Item
+				// {
+				// 	Id = 5081445,
+				// 	Quantity = 1
+				// },
 				new Item
 				{
 					Id = 5031966,
