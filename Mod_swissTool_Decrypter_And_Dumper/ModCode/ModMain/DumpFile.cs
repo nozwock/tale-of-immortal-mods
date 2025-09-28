@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -39,9 +40,30 @@ namespace MOD_swissTool
                     }
 
                     var filename = CapitalizeFirst(field.Name) + ".json";
-                    var json = JToken.Parse(CommonTool.ObjectToJson((Il2CppSystem.Object)confItems)).ToString(Formatting.Indented);
+                    var json = JToken.Parse(CommonTool.ObjectToJson((Il2CppSystem.Object)confItems));
+                    RemoveTopFields(json, [nameof(ConfBaseItem.isVariant), nameof(ConfBaseItem.isModExtend)]);
 
-                    File.WriteAllText(Path.Combine(outdir, filename), json);
+                    File.WriteAllText(Path.Combine(outdir, filename), json.ToString(Formatting.Indented));
+                }
+            }
+
+            static void RemoveTopFields(JToken t, string[] excludes)
+            {
+                if (t.Type == JTokenType.Object)
+                {
+                    var obj = (JObject)t;
+                    foreach (var exclude in excludes)
+                    {
+                        obj.Remove(exclude);
+                    }
+
+                    // foreach (var child in obj.Properties().Select(p => p.Value))
+                    //     RemoveFields(child, excludes);
+                }
+                else if (t.Type == JTokenType.Array)
+                {
+                    foreach (var child in t.Children())
+                        RemoveTopFields(child, excludes);
                 }
             }
 
