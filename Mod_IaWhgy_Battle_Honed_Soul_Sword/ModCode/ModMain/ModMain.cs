@@ -14,6 +14,11 @@ namespace MOD_IaWhgy
     {
         internal static readonly string modNamespace = typeof(ModMain).Namespace!;
 
+        Il2CppSystem.Action<ETypeData> callBattleStart;
+        Il2CppSystem.Action<ETypeData> callBattleEnd;
+        Il2CppSystem.Action<ETypeData> callUnitDie;
+        Il2CppSystem.Action<ETypeData> callOpenUIEnd;
+
         private int dungeonLevel;
         private int dungeonGrade;
         private int? soulDevourSwordAtkLimit;
@@ -69,18 +74,23 @@ namespace MOD_IaWhgy
                 description: GetEnumDescription<DevourDeadlineMode>()
             );
 
-            g.events.On(EBattleType.BattleStart, (Il2CppSystem.Action<ETypeData>)OnBattleStart);
-            g.events.On(EBattleType.BattleEnd, (Il2CppSystem.Action<ETypeData>)OnBattleEnd);
-            g.events.On(EBattleType.UnitDie, (Il2CppSystem.Action<ETypeData>)OnUnitDie);
-            g.events.On(EGameType.OpenUIEnd, (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd);
+            callBattleStart = (Il2CppSystem.Action<ETypeData>)OnBattleStart;
+            callBattleEnd = (Il2CppSystem.Action<ETypeData>)OnBattleEnd;
+            callUnitDie = (Il2CppSystem.Action<ETypeData>)OnUnitDie;
+            callOpenUIEnd = (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd;
+
+            g.events.On(EBattleType.BattleStart, callBattleStart);
+            g.events.On(EBattleType.BattleEnd, callBattleEnd);
+            g.events.On(EBattleType.UnitDie, callUnitDie);
+            g.events.On(EGameType.OpenUIEnd, callOpenUIEnd);
         }
 
         public void Destroy()
         {
-            g.events.Off(EBattleType.BattleStart, (Il2CppSystem.Action<ETypeData>)OnBattleStart);
-            g.events.Off(EBattleType.BattleEnd, (Il2CppSystem.Action<ETypeData>)OnBattleEnd);
-            g.events.Off(EBattleType.UnitDie, (Il2CppSystem.Action<ETypeData>)OnUnitDie);
-            g.events.Off(EGameType.OpenUIEnd, (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd);
+            g.events.Off(EBattleType.BattleStart, callBattleStart);
+            g.events.Off(EBattleType.BattleEnd, callBattleEnd);
+            g.events.Off(EBattleType.UnitDie, callUnitDie);
+            g.events.Off(EGameType.OpenUIEnd, callOpenUIEnd);
         }
 
         private void OnOpenUIEnd(ETypeData e)

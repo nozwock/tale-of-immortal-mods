@@ -97,6 +97,8 @@ namespace MOD_7Wqrm3
         public static readonly string soleId = "7Wqrm3";
         public static readonly string modNamespace = $"MOD_{soleId}";
 
+        Il2CppSystem.Action<ETypeData> callBattleExit;
+
         public void Init()
         {
             if (harmony != null)
@@ -110,15 +112,17 @@ namespace MOD_7Wqrm3
             }
             harmony.PatchAll(Assembly.GetExecutingAssembly());
 
+            callBattleExit = (Il2CppSystem.Action<ETypeData>)OnBattleExit;
+
             corUpdate = g.timer.Frame(new Action(OnUpdate), 1, true);
-            g.events.On(EBattleType.BattleExit, (Il2CppSystem.Action<ETypeData>)OnBattleExit);
+            g.events.On(EBattleType.BattleExit, callBattleExit);
         }
 
 
         public void Destroy()
         {
             g.timer.Stop(corUpdate);
-            g.events.Off(EBattleType.BattleExit, (Il2CppSystem.Action<ETypeData>)OnBattleExit);
+            g.events.Off(EBattleType.BattleExit, callBattleExit);
 
             harmony.UnpatchSelf();
             harmony = null;

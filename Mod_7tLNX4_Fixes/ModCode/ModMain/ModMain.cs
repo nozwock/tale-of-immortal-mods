@@ -8,14 +8,18 @@ namespace MOD_7tLNX4
     {
         internal static readonly string modNamespace = typeof(ModMain).Namespace!;
 
+        Il2CppSystem.Action<ETypeData> callOpenUIEnd;
+
         public void Init()
         {
-            g.events.On(EGameType.OpenUIEnd, (System.Action<ETypeData>)OnOpenUIEnd);
+            callOpenUIEnd = (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd;
+
+            g.events.On(EGameType.OpenUIEnd, callOpenUIEnd);
         }
 
         public void Destroy()
         {
-            g.events.Off(EGameType.OpenUIEnd, (System.Action<ETypeData>)OnOpenUIEnd);
+            g.events.Off(EGameType.OpenUIEnd, callOpenUIEnd);
         }
 
         private void FixSoulReaverEngDescription(UIBase ui)

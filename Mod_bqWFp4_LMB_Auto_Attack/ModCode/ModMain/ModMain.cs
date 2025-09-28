@@ -15,6 +15,9 @@ namespace MOD_bqWFp4
         public static readonly string soleId = "bqWFp4";
         public static readonly string modNamespace = $"MOD_{soleId}";
 
+        Il2CppSystem.Action<ETypeData> callBattleStart;
+        Il2CppSystem.Action<ETypeData> callBattleEnd;
+
         public void Init()
         {
             if (harmony != null)
@@ -28,15 +31,18 @@ namespace MOD_bqWFp4
             }
             harmony.PatchAll(Assembly.GetExecutingAssembly());
 
-            g.events.On(EBattleType.BattleStart, (Il2CppSystem.Action<ETypeData>)OnBattleStart);
-            g.events.On(EBattleType.BattleEnd, (Il2CppSystem.Action<ETypeData>)OnBattleEnd);
+            callBattleStart = (Il2CppSystem.Action<ETypeData>)OnBattleStart;
+            callBattleEnd = (Il2CppSystem.Action<ETypeData>)OnBattleEnd;
+
+            g.events.On(EBattleType.BattleStart, callBattleStart);
+            g.events.On(EBattleType.BattleEnd, callBattleEnd);
         }
 
         public void Destroy()
         {
             g.timer.Stop(corInBattle);
-            g.events.Off(EBattleType.BattleStart, (Il2CppSystem.Action<ETypeData>)OnBattleStart);
-            g.events.Off(EBattleType.BattleEnd, (Il2CppSystem.Action<ETypeData>)OnBattleEnd);
+            g.events.Off(EBattleType.BattleStart, callBattleStart);
+            g.events.Off(EBattleType.BattleEnd, callBattleEnd);
 
             harmony.UnpatchSelf();
             harmony = null;

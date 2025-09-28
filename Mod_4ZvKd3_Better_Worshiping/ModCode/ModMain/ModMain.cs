@@ -6,14 +6,17 @@ namespace MOD_4ZvKd3
 {
     public class ModMain
     {
+        Il2CppSystem.Action<ETypeData> callOpenUIEnd;
+
         public void Init()
         {
-            g.events.On(EGameType.OpenUIEnd, (System.Action<ETypeData>)OnOpenUIEnd);
+            callOpenUIEnd = (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd;
+            g.events.On(EGameType.OpenUIEnd, callOpenUIEnd);
         }
 
         public void Destroy()
         {
-            g.events.Off(EGameType.OpenUIEnd, (System.Action<ETypeData>)OnOpenUIEnd);
+            g.events.Off(EGameType.OpenUIEnd, callOpenUIEnd);
         }
 
         private void OnOpenUIEnd(ETypeData e)

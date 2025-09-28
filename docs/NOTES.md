@@ -27,6 +27,10 @@ private int CurrentMonth
 public void Init()
 {
     g.events.On(EGameType.OpenUIEnd, (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd);
+    // NOTE: Don't do this to unregister, this won't unregister the callback:
+    // g.events.Off(EGameType.OpenUIEnd, (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd);
+    // You need to instead assign the instance method or static method to a
+    // common field first, and then only pass that on in arguments
 }
 
 private void OnOpenUIEnd(ETypeData e)
