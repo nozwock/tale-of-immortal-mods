@@ -1,0 +1,19 @@
+{
+  "soleID": "CDK50m",
+  "createTicks": 638947452798178974,
+  "name": "Infinite Artifact Durability",
+  "author": "gse orca",
+  "desc": "Artifact items' durability will not decrease with use in battles, and on separating them from their bound spirits.",
+  "ver": "1.0.0",
+  "autoSave": true,
+  "isCreateNPC": true,
+  "exportVer": 0,
+  "accountID": 0,
+  "publishedFileID": 0,
+  "visibleState": 0,
+  "openCode": 0,
+  "curUpdateDesc": null,
+  "tags": [],
+  "addPreviewPaths": [],
+  "excelEncrypt": false
+}
