@@ -1,5 +1,19 @@
 Nested functions not preceded by a period `.` are static.
 
+# Modding
+Your mod's entry point is the `ModMain.Init()` method under the namespace
+specified in `.modNamespace` of `ModData.cache`, and the destructor method is
+`ModMain.Destroy()`. Both of them alonside the class must be `public`.
+
+`ModMain.Init()` function gets called in by the game on game start and
+load/reload alongside with `ModMain.Destroy()` for the latter.
+
+If you're initializing melon preferences in `Init()`, make sure it's run only
+once using some checks as `CreateEntry()` and others are not supposed to be
+called more than once. MelonLoader recommends doing initializing in
+`OnInitializeMelon()` but it's not possible as it's not available due to the
+game using an older version.
+
 # World Map
 - Hooking to a "month change" event.
 Unfortunately there isn't really any such event exposed by the game, there's
@@ -52,6 +66,13 @@ private void OnSkipMonth() { }
 There were some methods I had tried hooking into with Harmony as well but no
 luck, they didn't seem to get called as you'd expect:
 `UIMapMainPlayerInfo.UpdateSkipMonth` and `UIMapMainPlayerInfo.OnSkipMonth`.
+
+```
+g.data
+    buildSchool
+        dragonDoor
+            intimacy // Following Bug's affinity
+```
 
 # World Unit/NPC/Player
 ```
