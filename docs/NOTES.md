@@ -48,6 +48,10 @@ UIArtifact
             talentPosDic
         ArtifactSpriteModel spriteModel
             int id // Sprite Id - not reliable however as spriteModel can lag behind selected sprite and desync
+
+DataMgr g.data
+    DataObjectData obj
+        .SetString([group], key, value) // Set persistent data to game save file
 ```
 
 This is how you can spawn your own spinner while doing some heavy work in an another thread:
