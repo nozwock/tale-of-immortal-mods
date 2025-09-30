@@ -158,22 +158,22 @@ namespace MOD_IaWhgy
                 }
 
                 Log($"OnBattleEnd: Resolving Soul Reaver's stats: {nameof(atkUp)}={atkUp}, {nameof(expUp)}={expUp}, {nameof(dungeonLevel)}={dungeonLevel}, {nameof(soulDevourSwordAtkLimit)}={soulDevourSwordAtkLimit}");
-                AddSoulSwordAtk(atkUp);
+                var atkAdded = AddSoulSwordAtk(atkUp);
 
                 var expInitial = swordMgr.data.exp;
                 swordMgr.AddExp(expUp);
                 var expAdded = swordMgr.data.exp - expInitial;
 
-                if (Config.showNotification.Value && (atkUp > 0 || (expAdded > 0)))
+                if (Config.showNotification.Value && (atkAdded > 0 || (expAdded > 0)))
                 {
                     var tip = new StringBuilder("Soul Reaver");
-                    if (atkUp > 0)
+                    if (atkAdded > 0)
                     {
-                        tip.AppendFormat(" {0} Atk+", atkUp);
+                        tip.AppendFormat(" {0} Atk+", atkAdded);
                     }
                     if (expAdded > 0)
                     {
-                        tip.AppendFormat(" {0} Exp+", expUp);
+                        tip.AppendFormat(" {0} Exp+", expAdded);
                     }
                     UITipItem.AddTip(tip.ToString(), 2f);
                 }
@@ -232,7 +232,7 @@ namespace MOD_IaWhgy
             swordMgr.data.lastDevourMonth = month - 1;
         }
 
-        private void AddSoulSwordAtk(int addAtk)
+        private int AddSoulSwordAtk(int addAtk)
         {
             var swordMgr = g.world.soulDevourSword;
             var newAtk = Math.Max(swordMgr.data.atk + addAtk, 0);
@@ -244,7 +244,10 @@ namespace MOD_IaWhgy
             {
                 Log($"Modifying Soul Reaver's atk stat while soulDevourSwordAtkLimit is null: {nameof(addAtk)}={addAtk}");
             }
+
+            var initial = swordMgr.data.atk;
             swordMgr.data.atk = newAtk;
+            return newAtk - initial;
         }
 
         public static List<int> BuildCurve(
