@@ -55,7 +55,7 @@ UnityEngine.Object.Destroy(ui.gameObject);
 
 ## Events
 There are three event groups available: `EGameType`, `EMapType`, and `EBattleType`.
-```csharp
+```cs
 static Il2CppSystem.Action<ETypeData> callOpenUIEnd = (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd;
 Il2CppSystem.Action<ETypeData> callCloseUIEnd;
 
@@ -106,13 +106,13 @@ Unfortunately there isn't really any such event exposed by the game, there's
 CheckPopup's `onYesCall` (which spawns after `ClickSkipMonth`) that actually skips
 the month.
 
-Now, we could get out target `CheckPopup` using `EGameType.OnOpenUIEnd` and a
+Now, we could get our target `CheckPopup` using `EGameType.OnOpenUIEnd` and a
 bool flag on `ClickSkipMonth` but even that isn't enough as there's another
 popup that spawns the first time player runs out of days in a month, that isn't
 covered by `ClickSkipMonth` which makes the whole thing useless.
 
 What can be done however is hooking into `UILoadingBar`.
-```csharp
+```cs
 Il2CppSystem.Action<ETypeData> callOpenUIEnd;
 
 int newMonth;
@@ -230,7 +230,8 @@ ConfMgr g.conf
     ConfArtifactShape artifactShape // Artifact items' details
     // You can filter out allProps for artifacts using the id field from here
 ```
-```csharp
+```cs
+// Or, (unit.data.unitData.propertyData.gradeID / 5) + 1
 static int? GetUnitGrade(WorldUnitBase unit)
 {
     for (int i = 0; i < 99; i++)
