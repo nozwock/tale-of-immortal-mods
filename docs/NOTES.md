@@ -14,6 +14,26 @@ called more than once. MelonLoader recommends doing initializing in
 `OnInitializeMelon()` but it's not possible as it's not available due to the
 game using an older version.
 
+```
+UIMgr g.ui
+    T .GetUI<T>(UIType.UITypeBase uiType)
+
+ConfMgr g.conf
+    ConfLocalText localText
+        Dictionary<string, ConfLocalTextItem> allText // Game text
+    ConfRoleLogLocal roleLogLocal
+        Dictionary<string, List<ConfRoleLogLocalItem>> allItemInKey // Other game text, mostly dialuoges
+
+EGameType
+    IntoWorld // On game load/reload
+    (Open|Close)UIEnd // On late opening and closing of UIs
+    // You'd use the ETypeData e like so:
+    //  var edata = e.Cast<EGameTypeData.(Open|Close)UIEnd>();
+    //  edata
+    //      UIBase ui // Can use GetComponent etc here to get the UI object instead of using GetUI
+    //          name // Use this against UIType.*.uiName to check which UI opened/closed
+```
+
 # World Map
 - Hooking to a "month change" event.
 Unfortunately there isn't really any such event exposed by the game, there's
@@ -89,8 +109,16 @@ GameTool
 
 WorldUnitBase g.world.playerUnit
     WorldUnitData data
+        .RewardItem(id) // Add items with an optional popup window showing the items added
+        .RewardPropItem(propData)
+        // For creating copies of existing prop item
+        // Don't use the count variant as it doesn't seem to create proper copies
+        // Just run a for loop if you don't have showUI turned on
+        .CostPropItem(...) // For removing items while showing notifications
         DataUnit.UnitInfoData unitData
             string unitID
+            DataUnit.UnitDataProps : DataProps propData
+                List<DataProps.PropsData> allProps // Inventory items, can contain null PropsData
             PropertyData propertyData
                 gradeID // Not sure how this maps to cultivation realm. Have to rely on Condition() I suppose.
                 age
@@ -99,6 +127,12 @@ WorldUnitBase g.world.playerUnit
                 outTrait1
                 outTrait2
                 ...
+            ArtifactSpriteData artifactSpriteData // Artifact spirits
+                List<Sprite> sprites
+                    spriteID
+                    List<Talent> talents // Unlocked talents
+                    intimacy
+                    stamina
         WorldUnitDynData dynUnitData // Would recommend reading/writing from here instead of PropertyData
             DynInt age
                 int baseValue
@@ -107,6 +141,30 @@ WorldUnitBase g.world.playerUnit
             outTrait1
             ...
 
+DataProps
+    List<PropsData> allProps
+DataProps.PropsData
+    string soleID
+    int[] values // Item's quantity [2] and other attributes, for e.g. for artifacts [4] is durability
+    ConfItemPropsItem propsItem
+        int type // Compare with PropsType
+        sale // Whether it can be sold
+        isMultiDrop
+        // Whether multiple of this can be dropped as loot? Because it sure it doesn't indicate items that can stack,
+        // because I've seen items with it set to 0 that are still stackable
+
+enum PropsType // Only contains 7 types (0-6)
+// In ItemProps.json, there's actually 9 (0-8) types
+// 7 is mood items, 8 is imp items
+
+ConfMgr g.conf
+    ConfArtifactSpriteTalent artifactSpriteTalent // Artifact spirits' talents and their requirements
+    // activeCost is an array of [itemId, count], these are the items required to unlock the talent.
+    // Unlock2Type 0 means no special unlock requirement but activeCost should be present, while 17 is truly the "No
+    // Cost" ones.
+    // Item ids of the kind 5311[0-9]201 are spirit dews.
+    ConfArtifactShape artifactShape // Artifact items' details
+    // You can filter out allProps for artifacts using the id field from here
 ```
 ```csharp
 static int? GetUnitGrade(WorldUnitBase unit)
