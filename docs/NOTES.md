@@ -39,6 +39,15 @@ GameTool
 
 UIType
     Loading // UILoading - the loading spinner during "Saving..." (game_baocunzhong)
+
+UIArtifact
+    UIArtifactSprite uiSprite
+        int selSpriteSoleId
+        List<DataUnit.ArtifactSpriteData.Sprite> spriteList
+        UIArtifactSpriteTalentTree talentTree
+            talentPosDic
+        ArtifactSpriteModel spriteModel
+            int id // Sprite Id - not reliable however as spriteModel can lag behind selected sprite and desync
 ```
 
 This is how you can spawn your own spinner while doing some heavy work in an another thread:
@@ -193,7 +202,8 @@ WorldUnitBase g.world.playerUnit
                 ...
             ArtifactSpriteData artifactSpriteData // Artifact spirits
                 List<Sprite> sprites
-                    spriteID
+                    int soleID
+                    int spriteID
                     List<Talent> talents // Unlocked talents
                     intimacy
                     stamina
