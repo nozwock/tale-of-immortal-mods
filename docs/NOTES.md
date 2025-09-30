@@ -34,6 +34,52 @@ EGameType
     //          name // Use this against UIType.*.uiName to check which UI opened/closed
 ```
 
+## Events
+There are three event groups available: `EGameType`, `EMapType`, and `EBattleType`.
+```csharp
+static Il2CppSystem.Action<ETypeData> callOpenUIEnd = (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd;
+Il2CppSystem.Action<ETypeData> callCloseUIEnd;
+
+public void Init()
+{
+    callCloseUIEnd = (Il2CppSystem.Action<ETypeData>)OnCloseUIEnd;
+
+    g.events.On(EGameType.OpenUIEnd, callOpenUIEnd);
+    g.events.On(EGameType.CloseUIEnd, callCloseUIEnd);
+
+    // NOTE: Don't do this to register/unregister, this won't unregister the callback:
+    // g.events.On(EGameType.OpenUIEnd, (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd);
+    // g.events.Off(EGameType.OpenUIEnd, (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd);
+    // You need to instead assign the instance method or static method to a common field first, and only then pass that
+    // on to the event callback registerer
+}
+
+public void Destroy()
+{
+    g.events.Off(EGameType.OpenUIEnd, callOpenUIEnd);
+    g.events.Off(EGameType.CloseUIEnd, callCloseUIEnd);
+}
+
+static void OnOpenUIEnd(ETypeData e)
+{
+    var edata = e.Cast<EGameTypeData.OpenUIEnd>();
+    if (edata.ui.name == UIType.Login.uiName) // Main menu
+    {
+        var ui = edata.ui.GetComponent<UILogin>();
+        // ...
+    }
+}
+
+void OnCloseUIEnd(ETypeData e)
+{
+    var edata = e.Cast<EGameTypeData.CloseUIEnd>();
+    if (edata.uiType.uiName == UIType.Login.uiName) // Main menu
+    {
+        // ...
+    }
+}
+```
+
 # World Map
 - Hooking to a "month change" event.
 Unfortunately there isn't really any such event exposed by the game, there's
@@ -48,8 +94,10 @@ covered by `ClickSkipMonth` which makes the whole thing useless.
 
 What can be done however is hooking into `UILoadingBar`.
 ```csharp
-private int newMonth;
-private int CurrentMonth
+Il2CppSystem.Action<ETypeData> callOpenUIEnd;
+
+int newMonth;
+int CurrentMonth
 {
     get
     {
@@ -60,14 +108,11 @@ private int CurrentMonth
 
 public void Init()
 {
-    g.events.On(EGameType.OpenUIEnd, (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd);
-    // NOTE: Don't do this to unregister, this won't unregister the callback:
-    // g.events.Off(EGameType.OpenUIEnd, (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd);
-    // You need to instead assign the instance method or static method to a
-    // common field first, and then only pass that on in arguments
+    callOpenUIEnd = (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd;
+    g.events.On(EGameType.OpenUIEnd, callOpenUIEnd);
 }
 
-private void OnOpenUIEnd(ETypeData e)
+void OnOpenUIEnd(ETypeData e)
 {
     var edata = e.Cast<OpenUIEnd>();
     if (edata.uiType.uiName == UIType.LoadingBar.uiName) // The circular loading UI on month skip
@@ -80,7 +125,7 @@ private void OnOpenUIEnd(ETypeData e)
     }
 }
 
-private void OnSkipMonth() { }
+void OnSkipMonth() { }
 ```
 
 There were some methods I had tried hooking into with Harmony as well but no
