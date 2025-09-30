@@ -245,7 +245,7 @@ ConfMgr g.conf
     // You can filter out allProps for artifacts using the id field from here
 ```
 ```cs
-// Or, (unit.data.unitData.propertyData.gradeID / 5) + 1
+// Or, ((unit.data.unitData.propertyData.gradeID - 1) / 5) + 1
 static int? GetUnitGrade(WorldUnitBase unit)
 {
     for (int i = 0; i < 99; i++)
