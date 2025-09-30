@@ -1,0 +1,19 @@
+{
+  "soleID": "DrOYuL",
+  "createTicks": 638947822448614754,
+  "name": "No Spirit Talent Requirement",
+  "author": "gse orca",
+  "desc": "Special talent requirements are removed.",
+  "ver": "1.0.0",
+  "autoSave": true,
+  "isCreateNPC": true,
+  "exportVer": 0,
+  "accountID": 0,
+  "publishedFileID": 0,
+  "visibleState": 0,
+  "openCode": 0,
+  "curUpdateDesc": null,
+  "tags": [],
+  "addPreviewPaths": [],
+  "excelEncrypt": false
+}
