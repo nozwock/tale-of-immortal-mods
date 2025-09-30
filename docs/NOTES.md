@@ -32,6 +32,25 @@ EGameType
     //  edata
     //      UIBase ui // Can use GetComponent etc here to get the UI object instead of using GetUI
     //          name // Use this against UIType.*.uiName to check which UI opened/closed
+    SaveData
+
+GameTool
+    LS(string key) // Localization
+
+UIType
+    Loading // UILoading - the loading spinner during "Saving..." (game_baocunzhong)
+```
+
+This is how you can spawn your own spinner while doing some heavy work in an another thread:
+```cs
+var ui = g.ui.OpenUI<UILoading>(UIType.Loading);
+ui.InitData("Doing some work...");
+ui.gameObject.SetActive(false);
+
+// If creating a new UI object instead of using an existing one:
+var ui = g.ui.CreateUI<UILoading>(UIType.Loading);
+ui.InitData("Doing some work...");
+UnityEngine.Object.Destroy(ui.gameObject);
 ```
 
 ## Events
@@ -161,7 +180,7 @@ WorldUnitBase g.world.playerUnit
         // Just run a for loop if you don't have showUI turned on
         .CostPropItem(...) // For removing items while showing notifications
         DataUnit.UnitInfoData unitData
-            string unitID
+            string unitID // Sole ID
             DataUnit.UnitDataProps : DataProps propData
                 List<DataProps.PropsData> allProps // Inventory items, can contain null PropsData
             PropertyData propertyData
