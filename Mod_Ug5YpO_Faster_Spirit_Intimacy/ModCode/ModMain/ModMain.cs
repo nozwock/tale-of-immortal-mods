@@ -44,7 +44,6 @@ public class ModMain
 	internal static readonly string modNamespace = typeof(ModMain).Namespace!;
 
 	Il2CppSystem.Action<ETypeData> callOpenUIEnd;
-	Il2CppSystem.Action<ETypeData> callIntoWorld;
 
 	class State
 	{
@@ -66,9 +65,7 @@ public class ModMain
 		Config.Init();
 
 		callOpenUIEnd = (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd;
-		callIntoWorld = (Il2CppSystem.Action<ETypeData>)OnIntoWorld;
 		g.events.On(EGameType.OpenUIEnd, callOpenUIEnd);
-		g.events.On(EGameType.IntoWorld, callIntoWorld);
 
 		ClassInjector.RegisterTypeInIl2Cpp<ActiveStateWatcher>();
 	}
@@ -76,12 +73,6 @@ public class ModMain
 	public void Destroy()
 	{
 		g.events.Off(EGameType.OpenUIEnd, callOpenUIEnd);
-		g.events.Off(EGameType.IntoWorld, callIntoWorld);
-	}
-
-	void OnIntoWorld(ETypeData _)
-	{
-		g.conf.artifactSpriteClose._giftInterval.value = 999; // Gift count before cooldown
 	}
 
 	void OnOpenUIEnd(ETypeData e)
