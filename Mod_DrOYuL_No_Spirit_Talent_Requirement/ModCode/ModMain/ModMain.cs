@@ -41,6 +41,15 @@ public class ModMain
 		// 	}
 		// }
 
+		Dictionary<(int, int), DataUnit.ArtifactSpriteData.Talent> talents = [];
+		foreach (var sprite in g.world.playerUnit.data.unitData.artifactSpriteData.sprites)
+		{
+			foreach (var talent in sprite.talents)
+			{
+				talents[(sprite.spriteID, talent.number)] = talent;
+			}
+		}
+
 		foreach (var conf in g.conf.artifactSpriteTalent._allConfList)
 		{
 			if (conf.unlock2Type != 0 && conf.unlock2Type != 17 /* No Cost */)
@@ -53,6 +62,11 @@ public class ModMain
 				conf.unlock3Count = 0;
 				conf.unlockDesc = "0";
 				conf.unlockDesc = "spriteTalent_unlockDesc100522"; // No Cost
+
+				// Necessary, otherwise the discrepancy will result in a "No Cost" popup by game on trying to unlock
+				var talent = talents[(conf.spriteID, conf.number)];
+				talent.unlock2Count = 1;
+				talent.unlock3Count = 0;
 
 				// var outer = new Il2CppReferenceArray<Il2CppStructArray<int>>(1);
 				// var inner = new Il2CppStructArray<int>(2);
