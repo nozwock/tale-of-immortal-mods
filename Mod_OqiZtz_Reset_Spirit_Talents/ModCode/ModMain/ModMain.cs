@@ -18,6 +18,7 @@ public class ModMain
 	Il2CppSystem.Action<ETypeData> callIntoWorld;
 	Il2CppSystem.Action<ETypeData> callOpenUIEnd;
 
+	static Dictionary<(int, int), DataUnit.ArtifactSpriteData.Talent> dataSpiritTalents = [];
 	public static Dictionary<int, HashSet<int>> unlockedSpiritTalents = [];
 
 	public enum SaveObjKey
@@ -56,6 +57,15 @@ public class ModMain
 				unlockedSpiritTalents.Clear();
 			}
 
+			dataSpiritTalents.Clear();
+			foreach (var sprite in g.world.playerUnit.data.unitData.artifactSpriteData.sprites)
+			{
+				foreach (var talent in sprite.talents)
+				{
+					dataSpiritTalents[(sprite.spriteID, talent.number)] = talent;
+				}
+			}
+
 			SetNoCostTalentForUnlocked();
 		}
 		catch (Exception ex)
@@ -79,12 +89,11 @@ public class ModMain
 
 	static void SetNoCostTalentForUnlocked(int spriteId = -1)
 	{
-		HashSet<int> unlockedTalents;
 		foreach (var conf in g.conf.artifactSpriteTalent._allConfList)
 		{
 			if (spriteId != -1 && spriteId != conf.spriteID) // Only modify talent for this spirit
 				continue;
-			if (unlockedSpiritTalents.TryGetValue(conf.spriteID, out unlockedTalents) && unlockedTalents.Contains(conf.number) && conf.unlock2Type != 17 /*No Cost*/)
+			if (unlockedSpiritTalents.TryGetValue(conf.spriteID, out var unlockedTalents) && unlockedTalents.Contains(conf.number) && conf.unlock2Type != 17 /*No Cost*/)
 			{
 				conf.unlock2Type = 17;
 				conf.unlock2Value = conf.axisX.ToString();
@@ -95,21 +104,11 @@ public class ModMain
 				conf.unlockDesc = "0";
 				conf.unlockDesc = "spriteTalent_unlockDesc100522"; // No Cost
 				conf.activeCost = new Il2CppReferenceArray<Il2CppStructArray<int>>(0);
-			}
-		}
 
-		foreach (var sprite in g.world.playerUnit.data.unitData.artifactSpriteData.sprites)
-		{
-			if (spriteId != -1 && spriteId != sprite.spriteID)
-				continue;
-			foreach (var talent in sprite.talents)
-			{
-				if (unlockedSpiritTalents.TryGetValue(sprite.spriteID, out unlockedTalents) && unlockedTalents.Contains(talent.number))
-				{
-					// Necessary, otherwise the discrepancy will result in a "No Cost" popup by game on trying to unlock
-					talent.unlock2Count = 1;
-					talent.unlock3Count = 0;
-				}
+				// Necessary, otherwise the discrepancy will result in a "No Cost" popup by game on trying to unlock
+				var talent = dataSpiritTalents[(conf.spriteID, conf.number)];
+				talent.unlock2Count = 1;
+				talent.unlock3Count = 0;
 			}
 		}
 	}
