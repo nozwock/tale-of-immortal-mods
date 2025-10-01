@@ -63,10 +63,12 @@ public class ModMain
 				conf.unlockDesc = "0";
 				conf.unlockDesc = "spriteTalent_unlockDesc100522"; // No Cost
 
-				// Necessary, otherwise the discrepancy will result in a "No Cost" popup by game on trying to unlock
-				var talent = talents[(conf.spriteID, conf.number)];
-				talent.unlock2Count = 1;
-				talent.unlock3Count = 0;
+				if (talents.TryGetValue((conf.spriteID, conf.number), out var talent)) // Artifact Spirit may not be unlocked yet
+				{
+					// Necessary, otherwise the discrepancy will result in a "No Cost" popup by game on trying to unlock
+					talent.unlock2Count = 1;
+					talent.unlock3Count = 0;
+				}
 
 				// var outer = new Il2CppReferenceArray<Il2CppStructArray<int>>(1);
 				// var inner = new Il2CppStructArray<int>(2);

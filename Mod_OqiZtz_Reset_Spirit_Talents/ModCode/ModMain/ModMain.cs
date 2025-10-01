@@ -109,10 +109,15 @@ public class ModMain
 				conf.unlockDesc = "spriteTalent_unlockDesc100522"; // No Cost
 				conf.activeCost = new Il2CppReferenceArray<Il2CppStructArray<int>>(0);
 
-				// Necessary, otherwise the discrepancy will result in a "No Cost" popup by game on trying to unlock
-				var talent = dataSpiritTalents[(conf.spriteID, conf.number)];
-				talent.unlock2Count = 1;
-				talent.unlock3Count = 0;
+				// Not necessarily needed here since if the talent was unlocked once, then Artifact Spirit should also
+				// be unlocked at the moment unless it is modified externally.
+				// In any case, it doesn't hurt to do it like this.
+				if (dataSpiritTalents.TryGetValue((conf.spriteID, conf.number), out var talent))
+				{
+					// Necessary, otherwise the discrepancy will result in a "No Cost" popup by game on trying to unlock
+					talent.unlock2Count = 1;
+					talent.unlock3Count = 0;
+				}
 			}
 		}
 	}
