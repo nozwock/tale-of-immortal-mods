@@ -33,6 +33,10 @@ EGameType
     //      UIBase ui // Can use GetComponent etc here to get the UI object instead of using GetUI
     //          name // Use this against UIType.*.uiName to check which UI opened/closed
     SaveData
+    /* Just before a game save is made, you can set your DataObjectData data here if you'd like. I'm not sure if this
+    event is always emitted before the game spins up the thread that starts saving game data, if it does, you can save
+    your data reliably in a blocking manner assuming the mod is on the same thread as the subroutine that issued that
+    event, otherwise it'd be race condition and you can't realiably use this event to save your state. */
 
 GameTool
     LS(string key) // Localization
