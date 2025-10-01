@@ -93,7 +93,11 @@ public class ModMain
 		{
 			if (spriteId != -1 && spriteId != conf.spriteID) // Only modify talent for this spirit
 				continue;
-			if (unlockedSpiritTalents.TryGetValue(conf.spriteID, out var unlockedTalents) && unlockedTalents.Contains(conf.number) && conf.unlock2Type != 17 /*No Cost*/)
+			if (
+				conf.unlock2Type != 17 /*No Cost*/
+				&& unlockedSpiritTalents.TryGetValue(conf.spriteID, out var unlockedTalents)
+				&& unlockedTalents.Contains(conf.number)
+			)
 			{
 				conf.unlock2Type = 17;
 				conf.unlock2Value = conf.axisX.ToString();
