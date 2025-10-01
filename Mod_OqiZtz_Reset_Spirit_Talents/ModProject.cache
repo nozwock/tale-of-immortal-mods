@@ -3,7 +3,7 @@
   "createTicks": 638948592193176100,
   "name": "Reset Spirit Talents",
   "author": "gse orca",
-  "desc": "",
+  "desc": "Lets you reset all unlocked talents of an Artifact Spirit while preserving progress, so previously unlocked talents can be regained at no cost.",
   "ver": "1.0.0",
   "autoSave": true,
   "isCreateNPC": true,
