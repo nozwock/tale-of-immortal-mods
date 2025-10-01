@@ -74,7 +74,7 @@ namespace MOD_IaWhgy
         private int atkUp;
         private int expUp;
 
-        private int newMonth;
+        private int newMonth = -1;
 
         private int CurrentMonth
         {
@@ -88,6 +88,8 @@ namespace MOD_IaWhgy
         public void Init()
         {
             Config.Init();
+
+            newMonth = -1;
 
             callBattleStart = (Il2CppSystem.Action<ETypeData>)OnBattleStart;
             callBattleEnd = (Il2CppSystem.Action<ETypeData>)OnBattleEnd;
