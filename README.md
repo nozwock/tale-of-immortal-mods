@@ -16,6 +16,11 @@ MOD_PATH='/path/to/ModExportData'
 ```
 - Run `just` from a mod's directory or subdirectory to build the mod, and `just pack` to build and export to `$MOD_PATH`.
 
+## Other
+Some other repositories for TOI mods:
+- https://github.com/creater0822/TOI_Mods
+- https://github.com/LynBean/Tale-of-Immortal
+
 
 [TOITool]: https://github.com/nozwock/tale-of-immortal-tool/
 [just]: https://github.com/casey/just/
