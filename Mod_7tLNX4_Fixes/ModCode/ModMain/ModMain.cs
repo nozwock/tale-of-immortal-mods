@@ -29,8 +29,6 @@ namespace MOD_7tLNX4
 			for (int i = 0; i < ui.goRoot.transform.childCount; i++)
 			{
 				var tItem = ui.goRoot.transform.GetChild(i);
-				if (!tItem.Find("bg").gameObject.active)
-					continue;
 				var skillName = tItem.Find("Name").GetComponent<Text>();
 				skillName.horizontalOverflow = HorizontalWrapMode.Overflow;
 			}
