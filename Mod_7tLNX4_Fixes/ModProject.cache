@@ -4,7 +4,7 @@
   "name": "Mod 7tLNX4 Fixes",
   "author": "gse orca",
   "desc": "Current fixes:\n- Fix missing Soul Reaver deadline description when English is set.\n- Fix clipped skill names in Greenscale Spring UI when English is set.",
-  "ver": "v 1.0.0",
+  "ver": "1.1.0",
   "autoSave": true,
   "isCreateNPC": true,
   "exportVer": 0,
