@@ -1,4 +1,5 @@
-Nested functions not preceded by a period `.` are static.
+- Code blocks containing stuff in a hierarchy are class/field/function that were interesting enough for me to note here.
+- Nested functions not preceded by a period `.` are static.
 
 # Modding
 ## Tooling
@@ -13,6 +14,9 @@ Nested functions not preceded by a period `.` are static.
     Originally made by sinai-dev but the repo seems to be down so the above is a backup.
 
 ## General
+There's an `Example.cs` at `<Game Folder>/Mod/modFQA/代码编写教程/ModMain/Example/` that goes over some of the game's
+API.
+
 Your mod's entry point is the `ModMain.Init()` method under the namespace
 specified in `.modNamespace` of `ModData.cache`, and the destructor method is
 `ModMain.Destroy()`. Both of them alonside the class must be `public`.
