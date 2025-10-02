@@ -200,6 +200,14 @@ g.data
     buildSchool
         dragonDoor
             intimacy // Following Bug's affinity
+
+UIType
+    DragonDoorUpgrade // Greenscale Spring UI
+    /* The delegate UIDragonDoorUpgrade.<>c__DisplayClass5_1$$<UpgradeEffect>b__2 builds up the DragonDoorSelectEffect
+    UI on clicking on "Upgrade", using names & desc via ConfSchoolDragonDoorBuff.GetEffect()->ConfBattleEffect.GetItem()
+    + BattleSkillValueData.GetDescRichText(desc, valueData, 2)
+    Buff ids for a level can be retrieved from ConfSchoolDragonDoor. */
+    DragonDoorSelectEffect // UI for selecting Greenscale upgrades
 ```
 
 # World Unit/NPC/Player
