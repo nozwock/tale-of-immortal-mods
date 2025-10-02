@@ -52,7 +52,7 @@ public class ModMain
 			// btnRect.anchorMax = refRect.anchorMax;
 			// btnRect.pivot = refRect.pivot;
 			var spacing = 5f;
-			btnRect.anchoredPosition = new Vector2(-btnRect.rect.width / 2 + spacing, 0);
+			btnRect.anchoredPosition = new Vector2(-(btnRect.rect.width / 2 + spacing), 0);
 			refRect.anchoredPosition = new Vector2(+refRect.rect.width / 2 + spacing, 0);
 
 			btnRespecUpgrades.onClick.AddListener((UnityAction)delegate
