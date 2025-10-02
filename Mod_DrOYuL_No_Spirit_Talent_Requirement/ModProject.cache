@@ -4,7 +4,7 @@
   "name": "No Spirit Talent Requirement",
   "author": "gse orca",
   "desc": "Special talent requirements are removed.",
-  "ver": "1.0.0",
+  "ver": "1.0.1",
   "autoSave": true,
   "isCreateNPC": true,
   "exportVer": 0,
