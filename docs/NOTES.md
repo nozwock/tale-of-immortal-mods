@@ -78,11 +78,13 @@ This is how you can spawn your own spinner while doing some heavy work in an ano
 ```cs
 var ui = g.ui.OpenUI<UILoading>(UIType.Loading);
 ui.InitData("Doing some work...");
-ui.gameObject.SetActive(false);
+g.ui.CloseUI(ui);
 
 // If creating a new UI object instead of using an existing one:
 var ui = g.ui.CreateUI<UILoading>(UIType.Loading);
 ui.InitData("Doing some work...");
+g.ui.CloseUI(ui);
+// Or
 UnityEngine.Object.Destroy(ui.gameObject);
 ```
 
