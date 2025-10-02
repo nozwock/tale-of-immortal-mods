@@ -1,6 +1,18 @@
 Nested functions not preceded by a period `.` are static.
 
 # Modding
+## Tooling
+- [Unity Explorer](https://github.com/sinai-dev/UnityExplorer)
+- [Il2Cpp Dumper](https://github.com/Perfare/Il2CppDumper) \
+    Used for building dummy mono dlls from the Il2Cpp one, and symbol metadata for Ghidra and other decompilers.
+
+    The dummy dll can be disassembled using [ILSpy] to get what is essentially game headers (as `.cs` files).
+
+    Use the [remove_delegate_classes.py] script to clean up compiler-generated delegate classes from the `.cs` files.
+- [Melonloader Preferences Manager](https://github.com/nozwock/MelonPreferencesManager) \
+    Originally made by sinai-dev but the repo seems to be down so the above is a backup.
+
+## General
 Your mod's entry point is the `ModMain.Init()` method under the namespace
 specified in `.modNamespace` of `ModData.cache`, and the destructor method is
 `ModMain.Destroy()`. Both of them alonside the class must be `public`.
@@ -367,3 +379,7 @@ UIImmortalAncestralHall : UIImmortalAncestralHallBase
                 lastGiveMonth // Can't worship if != 0
             MapBuild10008Data build10008Data
 ```
+
+
+[ILSpy]: https://github.com/icsharpcode/ILSpy
+[remove_delegate_classes.py]: ../scripts/remove_delegate_classes.py
