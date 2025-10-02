@@ -162,18 +162,20 @@ int CurrentMonth
 
 public void Init()
 {
+    newMonth = -1; // Reset state on game load/reload
+
     callOpenUIEnd = (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd;
     g.events.On(EGameType.OpenUIEnd, callOpenUIEnd);
 }
 
 void OnOpenUIEnd(ETypeData e)
 {
-    var edata = e.Cast<OpenUIEnd>();
+    var edata = e.Cast<EGameTypeData.OpenUIEnd>();
     if (edata.uiType.uiName == UIType.LoadingBar.uiName) // The circular loading UI on month skip
     {
         if (newMonth != CurrentMonth)
         {
-            OnSkipMonth();
+            OnSkipMonth(); // Called once
             newMonth = CurrentMonth;
         }
     }
