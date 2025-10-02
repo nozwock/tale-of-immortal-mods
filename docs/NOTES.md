@@ -56,6 +56,13 @@ EGameType
 
 GameTool
     LS(string key) // Localization
+    /* This calls to ConfLocalTextEx.text(this ConfLocalText) which further calls GameTool.LSTextEx(), which finally
+    seems responsible for giving out the text based on the selected language, which is done based on
+    SceneLogin.languageType */
+ConfLocalText
+    GetText(key) // Similar to GameTool.LS()
+SceneLogin
+    LanguageType languageType
 
 UIType
     Loading // UILoading - the loading spinner during "Saving..." (game_baocunzhong)
