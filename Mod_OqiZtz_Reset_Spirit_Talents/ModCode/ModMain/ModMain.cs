@@ -57,16 +57,7 @@ public class ModMain
 				unlockedSpiritTalents.Clear();
 			}
 
-			dataSpiritTalents.Clear();
-			foreach (var sprite in g.world.playerUnit.data.unitData.artifactSpriteData.sprites)
-			{
-				foreach (var talent in sprite.talents)
-				{
-					dataSpiritTalents[(sprite.spriteID, talent.number)] = talent;
-				}
-			}
-
-			SetNoCostTalentForUnlocked();
+			SetNoCostTalentForUnlocked(reset: true);
 		}
 		catch (Exception ex)
 		{
@@ -87,8 +78,22 @@ public class ModMain
 		}
 	}
 
-	static void SetNoCostTalentForUnlocked(int spriteId = -1)
+	static void SetNoCostTalentForUnlocked(int spriteId = -1, bool reset = false)
 	{
+		if (reset)
+			dataSpiritTalents.Clear();
+
+		foreach (var sprite in g.world.playerUnit.data.unitData.artifactSpriteData.sprites)
+		{
+			foreach (var talent in sprite.talents)
+			{
+				// Have to do it everytime here as there may be a newly acquired Spirit since the last time.
+				// Or hook into the UI that pops up when you unlock a spirit and see if it's a new one (too much work
+				// for little gain).
+				dataSpiritTalents[(sprite.spriteID, talent.number)] = talent;
+			}
+		}
+
 		foreach (var conf in g.conf.artifactSpriteTalent._allConfList)
 		{
 			if (spriteId != -1 && spriteId != conf.spriteID) // Only modify talent for this spirit
@@ -109,14 +114,18 @@ public class ModMain
 				conf.unlockDesc = "spriteTalent_unlockDesc100522"; // No Cost
 				conf.activeCost = new Il2CppReferenceArray<Il2CppStructArray<int>>(0);
 
-				// Not necessarily needed here since if the talent was unlocked once, then Artifact Spirit should also
-				// be unlocked at the moment unless it is modified externally.
-				// In any case, it doesn't hurt to do it like this.
+				// TryGetValue is not necessarily needed here since if the talent was unlocked once, then Artifact
+				// Spirit should also be unlocked at the moment unless it is modified externally.  In any case, it
+				// doesn't hurt to do it like this.
 				if (dataSpiritTalents.TryGetValue((conf.spriteID, conf.number), out var talent))
 				{
 					// Necessary, otherwise the discrepancy will result in a "No Cost" popup by game on trying to unlock
 					talent.unlock2Count = 1;
 					talent.unlock3Count = 0;
+				}
+				else
+				{
+					Log($"This shouldn't happen: missing Spirit Talent item: ({conf.spriteID}, {conf.number})");
 				}
 			}
 		}

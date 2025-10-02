@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
+using EGameTypeData;
 using MelonLoader;
 using UnhollowerBaseLib;
 
@@ -10,19 +11,26 @@ public class ModMain
 {
 	internal static readonly string modNamespace = typeof(ModMain).Namespace!;
 
+	static HashSet<(int, int)> modifiedSpiritTalents = [];
+	static Dictionary<(int, int), DataUnit.ArtifactSpriteData.Talent> dataSpiritTalents = [];
+
 	Il2CppSystem.Action<ETypeData> callIntoWorld;
+	Il2CppSystem.Action<ETypeData> callOpenUIEnd;
 
 	// static readonly Regex DewIdPat = new(@"^5311\d201$", RegexOptions.Compiled);
 
 	public void Init()
 	{
 		callIntoWorld = (Il2CppSystem.Action<ETypeData>)OnIntoWorld;
+		callOpenUIEnd = (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd;
 		g.events.On(EGameType.IntoWorld, callIntoWorld);
+		g.events.On(EGameType.OpenUIEnd, callOpenUIEnd);
 	}
 
 	public void Destroy()
 	{
 		g.events.Off(EGameType.IntoWorld, callIntoWorld);
+		g.events.Off(EGameType.OpenUIEnd, callOpenUIEnd);
 	}
 
 	void OnIntoWorld(ETypeData e)
@@ -41,14 +49,8 @@ public class ModMain
 		// 	}
 		// }
 
-		Dictionary<(int, int), DataUnit.ArtifactSpriteData.Talent> talents = [];
-		foreach (var sprite in g.world.playerUnit.data.unitData.artifactSpriteData.sprites)
-		{
-			foreach (var talent in sprite.talents)
-			{
-				talents[(sprite.spriteID, talent.number)] = talent;
-			}
-		}
+		modifiedSpiritTalents.Clear();
+		BuildSpiritTalentsDict(reset: true);
 
 		foreach (var conf in g.conf.artifactSpriteTalent._allConfList)
 		{
@@ -63,7 +65,9 @@ public class ModMain
 				conf.unlockDesc = "0";
 				conf.unlockDesc = "spriteTalent_unlockDesc100522"; // No Cost
 
-				if (talents.TryGetValue((conf.spriteID, conf.number), out var talent)) // Artifact Spirit may not be unlocked yet
+				modifiedSpiritTalents.Add((conf.spriteID, conf.number));
+
+				if (dataSpiritTalents.TryGetValue((conf.spriteID, conf.number), out var talent)) // Artifact Spirit may not be unlocked yet
 				{
 					// Necessary, otherwise the discrepancy will result in a "No Cost" popup by game on trying to unlock
 					talent.unlock2Count = 1;
@@ -76,6 +80,38 @@ public class ModMain
 				// inner[1] = conf.addSoul;
 				// outer[0] = inner;
 				// conf.activeCost = outer;
+			}
+		}
+	}
+
+	void OnOpenUIEnd(ETypeData e)
+	{
+		var edata = e.Cast<OpenUIEnd>();
+		if (edata.uiType.uiName == UIType.Artifact.uiName)
+		{
+			BuildSpiritTalentsDict();
+
+			foreach (var talentTuple in modifiedSpiritTalents)
+			{
+				if (dataSpiritTalents.TryGetValue(talentTuple, out var talent))
+				{
+					talent.unlock2Count = 1;
+					talent.unlock3Count = 0;
+				}
+			}
+		}
+	}
+
+	static void BuildSpiritTalentsDict(bool reset = false)
+	{
+		if (reset)
+			dataSpiritTalents.Clear();
+
+		foreach (var sprite in g.world.playerUnit.data.unitData.artifactSpriteData.sprites)
+		{
+			foreach (var talent in sprite.talents)
+			{
+				dataSpiritTalents[(sprite.spriteID, talent.number)] = talent;
 			}
 		}
 	}
