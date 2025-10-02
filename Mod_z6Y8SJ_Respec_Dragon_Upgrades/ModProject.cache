@@ -1,0 +1,19 @@
+{
+  "soleID": "z6Y8SJ",
+  "createTicks": 638950257507874792,
+  "name": "Respec Dragon Upgrades",
+  "author": "gse orca",
+  "desc": "Allows for respecing Greenscale Spring upgrades.",
+  "ver": "1.0.0",
+  "autoSave": true,
+  "isCreateNPC": true,
+  "exportVer": 0,
+  "accountID": 0,
+  "publishedFileID": 0,
+  "visibleState": 0,
+  "openCode": 0,
+  "curUpdateDesc": null,
+  "tags": [],
+  "addPreviewPaths": [],
+  "excelEncrypt": false
+}
