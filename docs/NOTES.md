@@ -33,17 +33,17 @@ specified in `.modNamespace` of `ModData.cache`, and the destructor method is
 `ModMain.Init()` function gets called in by the game on game start and
 load/reload alongside with `ModMain.Destroy()` for the latter.
 
-If you're initializing melon preferences in `Init()`, make sure it's run only
-once using some checks as `CreateEntry()` and others are not supposed to be
-called more than once. MelonLoader recommends doing initializing in
-`OnInitializeMelon()` but it's not possible as it's not available due to the
-game using an older version.
+If you're initializing melon preferences in `Init()`, make sure it's run only once using some checks as `CreateEntry()`
+and others are not supposed to be called more than once. MelonLoader recommends doing initializing in
+`OnInitializeMelon()` but it's not possible as it's not available due to the game using an older version and also that
+the mod is not loaded by the MelonLoader itself but by the game instead, that means those methods like
+`MelonMod.OnApplicateLateStart` will not work whatsoever while the mod is being loaded by the game.
 
 ```
 UIMgr g.ui
     T .GetUI<T>(UIType.UITypeBase uiType) // Reuse existing alive UI object
-    CreateUI(...)
-    CloseUI(...)
+    .CreateUI(...)
+    .CloseUI(...)
 
 ConfMgr g.conf
     ConfLocalText localText
