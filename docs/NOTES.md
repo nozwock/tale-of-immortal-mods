@@ -12,6 +12,15 @@
     Use the [remove_delegate_classes.py] script to clean up compiler-generated delegate classes from the `.cs` files.
 - [Melonloader Preferences Manager](https://github.com/nozwock/MelonPreferencesManager) \
     Originally made by sinai-dev but the repo seems to be down so the above is a backup.
+- Other's of note, haven't explored these yet:
+    - [Il2CppInterop](https://github.com/BepInEx/Il2CppInterop)
+    - [Cpp2IL](https://github.com/SamboyCoding/Cpp2IL)
+
+## IL2Cpp Caveats
+- Game's `private` fields can be accessed normally without needing to reach out for Harmony `AccessTools`, etc. This is
+  due to `Unhollower*` I believe, although I've not really looked into it.
+- On how to inject your classes into the game (Il2Cpp's domain): [Class Injection]
+- You obviously can't make Harmony Transpiler patches since there's no IL to patch, Pre/Postfix patches are fine though.
 
 ## General
 There's an `Example.cs` in `<Game Folder>/Mod/modFQA/代码编写教程/ModMain/Example/` that goes over some of the game's
@@ -417,4 +426,5 @@ UIImmortalAncestralHall : UIImmortalAncestralHallBase
 
 
 [ILSpy]: https://github.com/icsharpcode/ILSpy
+[Class Injection]: https://github.com/BepInEx/Il2CppInterop/blob/master/Documentation/Class-Injection.md
 [remove_delegate_classes.py]: ../scripts/remove_delegate_classes.py
