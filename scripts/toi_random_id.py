@@ -41,7 +41,7 @@ def main():
             obj = json_loads(f.read())
 
         for it in obj:
-            if (id_ := it.get("id")) is None or id_ == 0:
+            if (id_ := it.get("id")) is None or str(id_) == "0":
                 it["id"] = random_id()
 
         with open(filepath, "w") as f:
