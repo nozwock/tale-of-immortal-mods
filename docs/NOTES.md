@@ -14,7 +14,7 @@
     Originally made by sinai-dev but the repo seems to be down so the above is a backup.
 
 ## General
-There's an `Example.cs` at `<Game Folder>/Mod/modFQA/代码编写教程/ModMain/Example/` that goes over some of the game's
+There's an `Example.cs` in `<Game Folder>/Mod/modFQA/代码编写教程/ModMain/Example/` that goes over some of the game's
 API.
 
 Your mod's entry point is the `ModMain.Init()` method under the namespace
@@ -32,7 +32,9 @@ game using an older version.
 
 ```
 UIMgr g.ui
-    T .GetUI<T>(UIType.UITypeBase uiType)
+    T .GetUI<T>(UIType.UITypeBase uiType) // Reuse existing alive UI object
+    CreateUI(...)
+    CloseUI(...)
 
 ConfMgr g.conf
     ConfLocalText localText
@@ -41,8 +43,10 @@ ConfMgr g.conf
         Dictionary<string, List<ConfRoleLogLocalItem>> allItemInKey // Other game text, mostly dialuoges
 
 EGameType
-    IntoWorld // On game load/reload
-    (Open|Close)UIEnd // On late opening and closing of UIs
+    IntoWorld
+    /* On game load/reload but after your ModMain.Init(), when most of the loading is done and the player is about to
+    enter the game. */
+    OpenUIEnd|CloseUIEnd // On late opening and closing of UIs
     // You'd use the ETypeData e like so:
     //  var edata = e.Cast<EGameTypeData.(Open|Close)UIEnd>();
     //  edata
@@ -66,6 +70,12 @@ SceneLogin
 
 UIType
     Loading // UILoading - the loading spinner during "Saving..." (game_baocunzhong)
+    LoadingBar // The circular pie-chart like progress bar on month skips
+    CheckPopup // Yes/No (type=2) & Ok (type=1) prompts
+
+// Popup notifications
+UITipItem
+    AddTip(string, float duration)
 
 UIArtifact
     UIArtifactSprite uiSprite
@@ -79,6 +89,8 @@ UIArtifact
 DataMgr g.data
     DataObjectData obj
         .SetString([group], key, value) // Set persistent data to game save file
+        .ContainsKey(...)
+        .GetString(...)
 ```
 
 This is how you can spawn your own spinner while doing some heavy work in an another thread:
