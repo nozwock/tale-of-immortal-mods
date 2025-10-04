@@ -4,7 +4,7 @@
   "name": "Better Worshiping",
   "author": "gse orca",
   "desc": "Lets you keep worshiping until you've filled up the bar once that month. And, also shows a text for how much worship amount is required for blessing.",
-  "ver": "v 1.0.0",
+  "ver": "1.1.0",
   "autoSave": true,
   "isCreateNPC": true,
   "exportVer": 0,
