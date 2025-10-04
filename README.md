@@ -1,11 +1,8 @@
 # Tale of Immortal Modding
+There are [notes](./docs/NOTES.md) in `docs/`.
 
 ## Build
-- Get [TOITool] - used for packaging mods, and [just] for the build scripts.
-- Create an `.env` file in the repo's root with `$MOD_PATH` defined:
-```sh
-MOD_PATH='/path/to/ModExportData'
-```
+- Get [just] for the build scripts, and [TOITool] (and it to the `PATH` as `toi`) for packaging mods.
 - Create a `Local.props` file in the repo's root:
 ```xml
 <Project>
@@ -13,6 +10,10 @@ MOD_PATH='/path/to/ModExportData'
     <GameDir>...</GameDir>
   </PropertyGroup>
 </Project>
+```
+- Create an `.env` file in the repo's root with `$MOD_PATH` defined:
+```sh
+MOD_PATH='/path/to/ModExportData'
 ```
 - Run `just` from a mod's directory or subdirectory to build the mod, and `just pack` to build and export to `$MOD_PATH`.
 
