@@ -1,0 +1,19 @@
+{
+  "soleID": "2UTwDC",
+  "createTicks": 638952751852884507,
+  "name": "Sort Map Marked Unit",
+  "author": "nozwock",
+  "desc": "Adds a Sort button to Marked Units tab to sort them based on affinity.",
+  "ver": "1.0.0",
+  "autoSave": true,
+  "isCreateNPC": true,
+  "exportVer": 0,
+  "accountID": 0,
+  "publishedFileID": 0,
+  "visibleState": 0,
+  "openCode": 0,
+  "curUpdateDesc": null,
+  "tags": [],
+  "addPreviewPaths": [],
+  "excelEncrypt": false
+}
