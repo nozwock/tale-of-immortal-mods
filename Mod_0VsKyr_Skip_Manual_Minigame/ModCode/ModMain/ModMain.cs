@@ -54,6 +54,13 @@ public class ModMain
                 return;
 
             var ui = edata.ui.GetComponent<UIMartialPropInfo>();
+
+            var btnGray = ui.btnStudy.GetComponent<UIButtonGray>();
+            if (btnGray != null && btnGray.group.alpha == btnGray.grayAlpha)
+            {
+                btnGray.ActiveGray(true); // Why does the game even calls it with isClick true??
+            }
+
             // There's a OnStudyClick() too
             ui.btnStudy.onClick = new Button.ButtonClickedEvent();
             ui.btnStudy.onClick.AddListener((UnityAction)delegate
