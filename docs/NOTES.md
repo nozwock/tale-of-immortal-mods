@@ -86,6 +86,10 @@ UIType
 UITipItem
     AddTip(string, float duration)
 
+UICostItemTool
+    AddTipText() // Bottom left item cost notifications
+    ...
+
 UIArtifact
     UIArtifactSprite uiSprite
         int selSpriteSoleId
@@ -100,6 +104,9 @@ DataMgr g.data
         .SetString([group], key, value) // Set persistent data to game save file
         .ContainsKey(...)
         .GetString(...)
+
+DataMgr
+    .SaveData(Action<bool>) // Save game function
 ```
 
 This is how you can spawn your own spinner while doing some heavy work in an another thread:
@@ -121,6 +128,8 @@ There are three event groups available: `EGameType`, `EMapType`, and `EBattleTyp
 ```cs
 static Il2CppSystem.Action<ETypeData> callOpenUIEnd = (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd;
 Il2CppSystem.Action<ETypeData> callCloseUIEnd;
+// NOTE: Don't try to use System.Action instead, even though it compiles, in my testing personally, Off() didn't
+// unregister the callback
 
 public void Init()
 {
