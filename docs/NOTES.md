@@ -312,6 +312,81 @@ WorldUnitBase.CreateAction(action)
 
 Related: `DramaPackageUnitAction`, `WorldUnitEffectSpecialBannedFunc` (coupled with `WorldUnitBase.GetEffects()`)
 
+Looking into a concrete `UnitActionRoleToUnitBase` based action.
+```
+UnitActionRoleTrains // "Dual Cultivation"
+    NPCToNPCAction()
+        if this.isForceTrains
+            this.isTrainsComplete = true
+            this.OnEnd()
+            return
+        feedback1031 = UnitActionFeedback1037(unit /* Unit passed in Init() */) /* Even though the delegate class
+        (<>c__DisplayClass15_0) stores the type as UnitActionFeedback1031. The constructor called is of
+        1037. */
+        onEndCall = UnitActionRoleTrains.<>c__DisplayClass15_0$$<NPCToNPCAction>b__0(
+            [Captured]
+            UnitActionRoleTrains this,
+            UnitActionFeedback1031 feedback1031,
+        ); /* Approval or rejection is determined in this delegate based on .state */
+        ((UnitActionRoleBase)feedback1031).AddEndCall(onEndCall)
+        this.toUnit.CreateAction(feedback1031)
+
+        When onEndCall <NPCToNPCAction>b__0() is invoked:
+            if ((UnitActionRoleBase)feedback1031).state == 1
+                this.isTrainsComplete = true
+            this.OnEnd() /* If you want to prevent this action for some NPC-NPC, it's better to do that in IsCreate(),
+            or you can do it here by setting isTrainsComplete to false, but it's risky as it only works because bulk of
+            the action is offloaded to OnEnd() for NPC-NPC currently but this may change with updates. The thing with
+            preventing it at IsCreate() is that there won't be any logs for the rejection in the Backstory. */
+
+    PlayerToNPCAction()
+        if this.isForceTrains
+            this.isTrainsComplete = true
+            this.OnEnd()
+            return
+        drama = UICustomDramaDyn(dramaID: 22701)
+        drama.dramaData.unit = toUnit
+        drama.dramaData.onDramaEndCall = UnitActionRoleTrains.<PlayerToNPCAction>b__13_0()
+        drama.OpenUI()
+
+        onDramaEndCall
+            // Similar to NPCToNPCAction
+            feedback1031 = ...
+            onEndCall = UnitActionRoleTrains.<>c__DisplayClass13_0.<PlayerToNPCAction>b__1
+            feedback1031.AddEndCall(onEndCall)
+            this.toUnit.CreateAction(feedback1031)
+
+            When onEndCall is invoked:
+                if feedback1031.state == 1
+                    this.isTrainsComplete = true
+                    Spawn success UICustomDramaDyn with successDramaId
+                    And with this.OnEnd() combined with onDramaEndCall
+                else if feedback1031.state == 1
+                    Spawn failure UICustomDramaDyn with failDramaId
+                    And with this.OnEnd() combined with onDramaEndCall
+
+    Init() /* You can force dual cultivation in postfix here by setting isForceTrains to true, isCostDay is for whether
+    to spend time, and customAddIntim is just extra/less intimacy to have while considering approval/rejection. But,
+    this will skip the dialogues and jump straight to the short "Dual Cultivation" animation when the player is
+    involved.
+
+    // In postfix only. toUnit, npcUnit, playerUnit aren't set before Init()
+    if toUnit != npcUnit && toUnit != playerUnit
+        NPC-NPC
+    else
+        Player-NPC or NPC-Player */
+
+UnitActionFeedback1037
+    OnCreate() // This is where checks for whether this should succeed or not are done, and also the step logs
+        if unit.*.relationData.GetIntim(discoveryUnit) < closeRequire
+            state = 2
+        else
+            More checks
+        ...
+
+        Show step logs for checks if the player is involved
+```
+
 ## General
 ```
 DataMgr g.data
