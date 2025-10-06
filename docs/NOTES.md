@@ -267,6 +267,36 @@ UIType
 ```
 
 # World Unit/NPC/Player
+### Unit Actions
+Unit actions are classes that subclasses `UnitActionBase` like so `UnitAction* : UnitActionBase` either themselves or
+via one of their superclass.
+
+How to use unit actions usually:
+```cs
+var action = UnitActionMoveNPC(new(10, 10));
+action.Init(g.world.playerUnit); /* Init the action state (optional). Sometimes can make sense to Init() yourself when
+you want to set some fields that gets modified during Init() which you can do after Init() reliably */
+g.world.playerUnit.CreateAction(action); /* Create action. This first calls action.Init() if it hasn't init already, and
+then calls action.IsCreate() to check whether to create the action or not, != 0 means to not create the action. If == 0,
+call ((UnitActionBase)action).Create() => action.OnCreate() */
+```
+
+For subclasses of `UnitActionRoleToUnitBase`, here's the call sequence:
+```
+CreateAction(action)
+    action.Init() // If not already
+    if (action.IsCreate() != 0)
+        ((UnitActionRoleToUnitBase)action).OnEndCall()
+    else
+        ((UnitActionBase)action).Create()
+            ((UnitActionRoleToUnitBase)action).OnCreate()
+                PlayerToNPCAction() | NPCToPlayerAction() | NPCToNPCAction() // Accordingly
+                OnEndCall()
+```
+
+Related: `DramaPackageUnitAction`, `WorldUnitEffectSpecialBannedFunc` (coupled with `WorldUnitBase.GetEffects()`)
+
+## General
 ```
 DataMgr g.data
     DataWorld dataWorld
