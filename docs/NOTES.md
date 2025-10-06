@@ -65,7 +65,9 @@ EGameType
     /* Just before a game save is made, you can set your DataObjectData data here if you'd like. I'm not sure if this
     event is always emitted before the game spins up the thread that starts saving game data, if it does, you can save
     your data reliably in a blocking manner assuming the mod is on the same thread as the subroutine that issued that
-    event, otherwise it'd be race condition and you can't realiably use this event to save your state. */
+    event, otherwise it'd be race condition and you can't reliably use this event to save your state. */
+    WorldRunStart // Triggers when month skip events during LoadingBar are starting
+    WorldRunEnd // When they're done and just before "Saving..."
 
 GameTool
     LS(string key) // Localization
@@ -196,11 +198,10 @@ not present or is `0`, it's done using game's own logic in `ModTool.RandomID()`.
 however and will be removed.
 
 # World Map
-- Hooking to a "month change" event.
-Unfortunately there isn't really any such event exposed by the game, there's
-`EMapType.ClickSkipMonth` but that by itself isn't really useful as it's the
-CheckPopup's `onYesCall` (which spawns after `ClickSkipMonth`) that actually skips
-the month.
+### Month Change Event
+~~Unfortunately there isn't really any such event exposed by the game,~~ (found an event for this: `WorldRunStart |
+WorldRunEnd`) there's `EMapType.ClickSkipMonth` but that by itself isn't really useful as it's the CheckPopup's
+`onYesCall` (which spawns after `ClickSkipMonth`) that actually skips the month.
 
 Now, we could get our target `CheckPopup` using `EGameType.OnOpenUIEnd` and a
 bool flag on `ClickSkipMonth` but even that isn't enough as there's another
@@ -249,6 +250,7 @@ There were some methods I had tried hooking into with Harmony as well but no
 luck, they didn't seem to get called as you'd expect:
 `UIMapMainPlayerInfo.UpdateSkipMonth` and `UIMapMainPlayerInfo.OnSkipMonth`.
 
+## General
 ```
 g.data
     buildSchool
