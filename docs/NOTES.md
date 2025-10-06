@@ -277,20 +277,36 @@ var action = UnitActionMoveNPC(new(10, 10));
 action.Init(g.world.playerUnit); /* Init the action state (optional). Sometimes can make sense to Init() yourself when
 you want to set some fields that gets modified during Init() which you can do after Init() reliably */
 g.world.playerUnit.CreateAction(action); /* Create action. This first calls action.Init() if it hasn't init already, and
-then calls action.IsCreate() to check whether to create the action or not, != 0 means to not create the action. If == 0,
-call ((UnitActionBase)action).Create() => action.OnCreate() */
+then calls action.IsCreate() to preliminary check whether to create the action or not, != 0 means to not create the
+action. If == 0, call ((UnitActionBase)action).Create() => action.OnCreate() */
 ```
 
 For subclasses of `UnitActionRoleToUnitBase`, here's the call sequence:
 ```
-CreateAction(action)
-    action.Init() // If not already
-    if (action.IsCreate() != 0)
+WorldUnitBase.CreateAction(action)
+    action.Init() // If not called before already
+    if (action.IsCreate() != 0) // If not called before already
         ((UnitActionRoleToUnitBase)action).OnEndCall()
     else
         ((UnitActionBase)action).Create()
-            ((UnitActionRoleToUnitBase)action).OnCreate()
-                PlayerToNPCAction() | NPCToPlayerAction() | NPCToNPCAction() // Accordingly
+            ((UnitActionRoleToUnitBase)action).OnCreate() /* This actually always gets called when the action involves
+            the player, as this is where the UI about "Target is evaluating your power." and other steps is created:
+            UIActionCourseInfo.InitData(
+                string effectName,
+                DataUnitLog.LogData.LogItemData logData,
+                Action onCall,
+                bool isAutoClose = false,
+                [Optional] Action<ConfRoleLogLocalItem> onAddLogDataFrontCall
+            )
+            The actual regejection/approval (As shown in UIActionCourseInfo) of action seems to be done in the Actions
+            below. */
+                // One of the 3 accordingly
+                PlayerToNPCAction()
+                // Or,
+                NPCToPlayerAction()
+                // Or,
+                NPCToNPCAction()
+                // And then,
                 OnEndCall()
 ```
 
