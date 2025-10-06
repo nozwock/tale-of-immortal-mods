@@ -10,6 +10,18 @@
     The dummy dll can be disassembled using [ILSpy] to get what is essentially game headers (as `.cs` files).
 
     Use the [remove_delegate_classes.py] script to clean up compiler-generated delegate classes from the `.cs` files.
+
+    On how to setup Ghidra:
+    - Open `GameAssembly.dll` in a new Ghidra project.
+    - Run Il2CppDumper once on the assembly.
+    - Run `il2cpp_header_to_ghidra.py` from Ghidra (Script Manager). Might need to manually edit path to `il2cpp.h` in
+      script.
+    - In File > Parse C Source, empty out **all** path selectors and input fields, and then select `il2cpp.h` in "Select
+      files to parse" and hit "Parse to Program".
+    - Run `ghidra_with_struct.py` from Ghidra, wait for "Script finished!" and then cancel "Auto Analyze" that may occur
+      after that since it goes on about decompiling every function which can take too long, and we don't need to
+      decompile every one of them beforehand anyways.
+    - Done.
 - [Melonloader Preferences Manager](https://github.com/nozwock/MelonPreferencesManager) \
     Originally made by sinai-dev but the repo seems to be down so the above is a backup.
 - Other's of note, haven't explored these yet:
