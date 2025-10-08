@@ -137,6 +137,27 @@ g.ui.CloseUI(ui);
 UnityEngine.Object.Destroy(ui.gameObject);
 ```
 
+The function to show bottom-left item cost notification `UICostItemTool.AddTipProp()` always shows the count as negative
+with `-` concatenated to absolute `propsCount`. Here's the snippet that does what `AddTipProp` does but without the
+hardcoded `-`, in case you want to show added item like this. Taken from `UICostItemTool$$AddTipProp`.
+```cs
+using UnityEngine;
+using UnityEngine.UI;
+
+var prop = DataProps.PropsData.NewProps(10001, 5);
+var propInfo = prop.propsInfoBase;
+
+var go = UICostItemTool.CreateGo("CostItem");
+
+var txt = go.transform.Find("Root/Text").GetComponent<Text>();
+txt.text = $"{propInfo.name} {(prop.propsCount < 0 ? "-" : "+")}{Math.Abs(prop.propsCount)}";
+
+var tIcon = go.transform.Find("Root/Icon");
+var icon = UIIconTool.CreatePropsIcon(g.world.playerUnit, prop, tIcon, 0.5f);
+icon.ActiveBG(false);
+UICostItemTool.TipAnim(go, 3, 45f);
+```
+
 ## Events
 There are three event groups available: `EGameType`, `EMapType`, and `EBattleType`.
 ```cs
