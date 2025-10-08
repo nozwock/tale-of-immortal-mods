@@ -140,15 +140,22 @@ UnityEngine.Object.Destroy(ui.gameObject);
 ## Events
 There are three event groups available: `EGameType`, `EMapType`, and `EBattleType`.
 ```cs
+Il2CppSystem.Action<ETypeData> callLoadScene;
 static Il2CppSystem.Action<ETypeData> callOpenUIEnd = (Il2CppSystem.Action<ETypeData>)OnOpenUIEnd;
 Il2CppSystem.Action<ETypeData> callCloseUIEnd;
 // NOTE: Don't try to use System.Action instead, even though it compiles, in my testing personally, Off() didn't
 // unregister the callback
 
+static bool _loadMapOnce = false;
+
 public void Init()
 {
+    _loadMapOnce = false;
+
+    callLoadScene = (Il2CppSystem.Action<ETypeData>)OnLoadScene;
     callCloseUIEnd = (Il2CppSystem.Action<ETypeData>)OnCloseUIEnd;
 
+    g.events.On(EGameType.LoadScene, callLoadScene);
     g.events.On(EGameType.OpenUIEnd, callOpenUIEnd);
     g.events.On(EGameType.CloseUIEnd, callCloseUIEnd);
 
@@ -161,8 +168,28 @@ public void Init()
 
 public void Destroy()
 {
+    g.events.Off(EGameType.LoadScene, callLoadScene);
     g.events.Off(EGameType.OpenUIEnd, callOpenUIEnd);
     g.events.Off(EGameType.CloseUIEnd, callCloseUIEnd);
+}
+
+void OnGameLoad() { }
+
+void OnLoadScene(ETypeData e)
+{
+    var edata = e.Cast<LoadScene>();
+    var sceneName = edata.sceneType.sceneName;
+
+    if (sceneName == SceneType.Map.sceneName) // Map is the overworld map scene
+    {
+        if (!_loadMapOnce)
+        {
+            _loadMapOnce = true;
+            OnGameLoad(); /* You can also use IntoWorld for this, but IntoWorld also triggers on opening the mod UI with
+            a dummy world and Empty scene. */
+        }
+        // ...
+    }
 }
 
 static void OnOpenUIEnd(ETypeData e)
