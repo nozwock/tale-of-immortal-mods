@@ -2,7 +2,7 @@
 There are [notes](./docs/NOTES.md) in `docs/`.
 
 ## Build
-- Get [just] for the build scripts, and [TOITool] (and it to the `PATH` as `toi`) for packaging mods.
+- Get [just] for the build scripts, and [TOITool] (add it to the `PATH` as `toi`) for packaging mods.
 - Create a `Local.props` file in the repo's root:
 ```xml
 <Project>
