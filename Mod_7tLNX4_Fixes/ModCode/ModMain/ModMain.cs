@@ -132,11 +132,14 @@ namespace MOD_7tLNX4
 
 			g.timer.Frame((Action)delegate
 			{
-				unitRoot.Find("Foot2").gameObject.SetActive(true);
-				unitRoot.Find("Body/Foot").gameObject.SetActive(false);
-				unitRoot.gameObject.SetActive(false);
+				var mountedLegs = unitRoot.Find("Foot2");
+				mountedLegs.gameObject.SetActive(true);
+				var unmountedLegs = unitRoot.Find("Body/Foot");
+				unmountedLegs.gameObject.SetActive(false);
+
+				unitRoot.gameObject.SetActive(false); // Reset model, retrigger position ctrl components
 				unitRoot.gameObject.SetActive(true);
-			}, 1);
+			}, 1); // Delaying by 1 frame here too because otherwise "reset model" doesn't seem to work sometimes
 		}
 
 		void OnOpenUIEnd(ETypeData e)
