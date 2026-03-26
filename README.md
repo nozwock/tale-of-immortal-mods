@@ -3,7 +3,7 @@ There are [notes](./docs/NOTES.md) in `docs/`.
 
 ## Build
 - Get [just] for the build scripts, and [TOITool] (add it to the `PATH` as `toi`) for packaging mods.
-- Create a `Local.props` file in the repo's root:
+- Create a `Local.props` file under src/ next to `Directory.Build.props` with the Game's root path:
 ```xml
 <Project>
   <PropertyGroup>
