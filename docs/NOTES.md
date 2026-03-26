@@ -4,7 +4,9 @@
 # Modding
 ## Tooling
 - [Unity Explorer](https://github.com/sinai-dev/UnityExplorer)
-- [Il2Cpp Dumper](https://github.com/Perfare/Il2CppDumper) \
+- [Il2CppInspectorRedux](https://github.com/LukeFZ/Il2CppInspectorRedux) \
+    I recommend this over the `Il2Cpp Dumper` for getting dummy dlls and metadata for disassemblers.
+- ~~[Il2Cpp Dumper](https://github.com/Perfare/Il2CppDumper)~~ \
     Used for building dummy mono dlls from the Il2Cpp one, and symbol metadata for Ghidra and other decompilers.
 
     The dummy dll can be disassembled using [ILSpy] to get what is essentially game headers (as `.cs` files).
