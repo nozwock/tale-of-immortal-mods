@@ -6,4 +6,4 @@ build:
     dotnet build 'ModCode/ModMain/ModMain.csproj' '/property:Configuration=Release'
 
 pack: build
-    toi pack . -o "$MOD_PATH/{{file_name(justfile_directory())}}"
+    toi mod pack . -o "$MOD_PATH/{{file_name(justfile_directory())}}"
