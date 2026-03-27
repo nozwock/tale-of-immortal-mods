@@ -1,5 +1,8 @@
 # Tale of Immortal Modding
-There are [notes](./docs/NOTES.md) in `docs/`.
+Mods for [鬼谷八荒 Tale of Immortal][steam-toi].
+
+> [!TIP]
+> There are modding related [notes](./docs/NOTES.md) in `docs/`.
 
 ## Build
 - Get [just] for the build scripts, and [TOITool] (add it to the `PATH` as `toi`) for packaging mods.
@@ -23,5 +26,7 @@ Some other repositories for TOI mods:
 - https://github.com/LynBean/Tale-of-Immortal
 
 
-[TOITool]: https://github.com/nozwock/tale-of-immortal-tool/
 [just]: https://github.com/casey/just/
+[TOITool]: https://github.com/nozwock/tale-of-immortal-tool/
+[steam-toi]: https://store.steampowered.com/app/1468810/_Tale_of_Immortal/
+
