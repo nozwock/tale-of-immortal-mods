@@ -1,5 +1,5 @@
 *.csproj.user
-\.env
+.env
 .vscode/
 Local.props
 
