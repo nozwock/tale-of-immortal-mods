@@ -82,6 +82,7 @@ public class ModMain
         }
     }
 
+    // FIXME: doesn't handle Ink Bloom's events I think
     static void LearnSkill(DataProps.MartialData martialData, bool spendTime = true)
     {
         // Learned from
