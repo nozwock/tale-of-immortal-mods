@@ -5,7 +5,7 @@ Mods for [鬼谷八荒 Tale of Immortal][steam-toi].
 > There are modding related [notes](./docs/NOTES.md) in `docs/`.
 
 ## Build
-- Get [just] for the build scripts, and [TOITool] (add it to the `PATH` as `toi`) for packaging mods.
+- Get [just] for the build scripts, and [TaleOfImmortalTool] 0.4.0+ (add it to the `PATH` as `toi`) for packaging mods.
 - Create a `Local.props` file under src/ next to `Directory.Build.props` with the Game's root path:
 ```xml
 <Project>
@@ -27,6 +27,6 @@ Some other repositories for TOI mods:
 
 
 [just]: https://github.com/casey/just/
-[TOITool]: https://github.com/nozwock/tale-of-immortal-tool/
+[TaleOfImmortalTool]: https://github.com/nozwock/tale-of-immortal-tool/
 [steam-toi]: https://store.steampowered.com/app/1468810/_Tale_of_Immortal/
 
