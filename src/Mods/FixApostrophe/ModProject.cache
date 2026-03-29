@@ -3,7 +3,7 @@
   "createTicks": 638919175705971446,
   "name": "Fix Apostrophe",
   "author": "gse orca",
-  "desc": "Replaces curly apostrophes (’) with straight apostrophes (') as the game seems to render (’) weirdly with a gap.",
+  "desc": "",
   "ver": "v 1.0.0",
   "autoSave": true,
   "isCreateNPC": true,

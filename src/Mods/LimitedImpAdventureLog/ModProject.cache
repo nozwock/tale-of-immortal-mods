@@ -3,7 +3,7 @@
   "createTicks": 638949468005311193,
   "name": "Limited Imp Adventure Log",
   "author": "gse orca",
-  "desc": "Limits Imp Adventure Log to six entries by default. Helps preventing the game from coming to a crawl when the log ends up having too many entries as you continue to play the game.",
+  "desc": "",
   "ver": "1.0.0",
   "autoSave": true,
   "isCreateNPC": true,

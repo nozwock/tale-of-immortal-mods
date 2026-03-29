@@ -3,7 +3,7 @@
   "createTicks": 638952151284691351,
   "name": "Skip Manual Minigame",
   "author": "nozwock",
-  "desc": "Completely skips the minigame for learning martial skills.",
+  "desc": "",
   "ver": "1.0.0",
   "autoSave": true,
   "isCreateNPC": true,

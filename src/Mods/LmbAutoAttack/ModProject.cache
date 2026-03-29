@@ -3,7 +3,7 @@
   "createTicks": 638913072354681721,
   "name": "LMB Auto Attack",
   "author": "gse orca",
-  "desc": "Automatically fires LMB basic skill as long as at least one enemy is present.\nDoesn't work for charged attacks, no charging will be done before firing off the skill.",
+  "desc": "",
   "ver": "1.0.0",
   "autoSave": false,
   "isCreateNPC": true,

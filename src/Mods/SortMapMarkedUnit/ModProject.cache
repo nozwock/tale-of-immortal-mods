@@ -3,7 +3,7 @@
   "createTicks": 638952751852884507,
   "name": "Sort Map Marked Unit",
   "author": "nozwock",
-  "desc": "Adds a Sort button to Marked Units tab to sort them based on affinity.",
+  "desc": "",
   "ver": "1.0.0",
   "autoSave": true,
   "isCreateNPC": true,

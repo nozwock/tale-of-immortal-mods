@@ -3,7 +3,7 @@
   "createTicks": 638925118011727407,
   "name": "Battle-Honed Soul Sword",
   "author": "gse orca",
-  "desc": "Improves Soul Reaver on defeating Mythical Beasts, the degree of improvement is based on the dungeon level. By default, the stats provided are x10 as less than consuming an NPC of equivalent realm as that of the Beast.",
+  "desc": "",
   "ver": "v 1.0.0",
   "autoSave": true,
   "isCreateNPC": true,
