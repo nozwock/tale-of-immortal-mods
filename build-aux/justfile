@@ -3,7 +3,9 @@ set dotenv-required
 default: build
 
 build:
-    dotnet build -c Release 'ModCode/ModMain/ModMain.csproj'
+    if [ -f 'ModCode/ModMain/ModMain.csproj' ]; then \
+        dotnet build -c Release 'ModCode/ModMain/ModMain.csproj'; \
+    fi
 
 pack: build
     toi mod pack . \
