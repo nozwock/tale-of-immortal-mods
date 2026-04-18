@@ -15,7 +15,15 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!-- Intended for CI environment -->
+  <ItemGroup Condition="'$(GameDir)' == ''">
+    <!-- https://nuget.pkg.github.com/nozwock/index.json -->
+    <!-- See on how to include the feed: https://github.com/nozwock/NineSols.GameLibs -->
+    <PackageReference Include="TaleOfImmortal.GameLibs" Version="*-*" />
+    <PackageReference Include="UnityEngine.Modules" Version="2020.3.9" IncludeAssets="compile" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(GameDir)' != ''">
     <Reference Include="$(GameDir)/MelonLoader/Managed/Assembly-CSharp*.dll">
         <Private>False</Private>
     </Reference>
