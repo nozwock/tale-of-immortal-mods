@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # Can alias this to something like `toi-randid` and make it available in your global PATH.
+# Use `toi localize` from https://github.com/nozwock/tale-of-immortal-tool instead
 
 import random
 from argparse import ArgumentParser

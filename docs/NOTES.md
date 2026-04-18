@@ -238,7 +238,7 @@ void OnCloseUIEnd(ETypeData e)
 ## Localizing Mod
 This is about localization using game's own mechanism and tooling (`GameTool.LS`).
 
-Create a `LocalText.json` file under `ModExcel/`. There you can specify keyed-texts. One annyoing thing is that not only
+Create a `LocalText.json` file under `ModExcel/`. There you can specify keyed-texts. One annoying thing is that not only
 the `key` needs to be unique, but the conf item `id` too.
 ```json
 [
@@ -255,9 +255,9 @@ the `key` needs to be unique, but the conf item `id` too.
 Once that's done however, in your code, you can just call `GameTool.LS("my_unique_key")` to get the text based on the
 language set.
 
-There's a script [toi_random_id.py] that can be used to generate random ids for conf items/entries' `id` field if it's
-not present or is `0`, it's done using game's own logic in `ModTool.RandomID()`. JSONC style comments won't be preserved
-however and will be removed.
+There's the command [`toi localize`][TaleOfImmortalTool] that can be used to prepend `{SoleID}.` to `key` for uniqueness
+and generate random ids for conf items/entries' `id` field if it's not present or is `0`, it's done using game's own
+logic in `ModTool.RandomID()`. JSONC style comments won't be preserved however and will be removed.
 
 # World Map
 ### Month Change Event
@@ -646,4 +646,4 @@ UIImmortalAncestralHall : UIImmortalAncestralHallBase
 [ILSpy]: https://github.com/icsharpcode/ILSpy
 [Class Injection]: https://github.com/BepInEx/Il2CppInterop/blob/master/Documentation/Class-Injection.md
 [remove_delegate_classes.py]: ../scripts/remove_delegate_classes.py
-[toi_random_id.py]: ../scripts/toi_random_id.py
+[TaleOfImmortalTool]: https://github.com/nozwock/tale-of-immortal-tool
