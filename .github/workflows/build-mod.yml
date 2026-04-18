@@ -1,0 +1,129 @@
+name: Build Mod
+
+on:
+  workflow_call:
+    inputs:
+      mod-name:
+        description: "The mod to build. Required if ref is not tag type."
+        default: "NONE"
+        type: string
+    outputs:
+      mod-name:
+        value: ${{ jobs.build-mod.outputs.mod-name }}
+      mod-path:
+        value: ${{ jobs.build-mod.outputs.mod-path }}
+      version:
+        value: ${{ jobs.build-mod.outputs.version }}
+      tag:
+        value: ${{ jobs.build-mod.outputs.tag }}
+
+jobs:
+  build-mod:
+    runs-on: ubuntu-latest
+
+    outputs:
+      mod-name: ${{ steps.meta.outputs.mod-name }}
+      mod-path: ${{ steps.meta.outputs.mod-path }}
+      version: ${{ steps.meta.outputs.version }}
+      tag: ${{ steps.meta.outputs.tag }}
+
+    defaults:
+      run:
+        shell: pwsh
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Prepare mod-path and version
+        id: meta
+        run: |
+          $PSNativeCommandUseErrorActionPreference = $true
+
+          $mod_name = "${{ github.event.inputs.mod-name }}"
+
+          function Find-ModPath($name) {
+              # A way to prioritize looking in ExternalMods could be via having the tags/names require a prefix like
+              # "external-"
+              $searchPaths = @("src/$name", "src/Mods/$name", "src/ExternalMods/$name")
+              foreach ($p in $searchPaths) {
+                  if (Test-Path $p) {
+                    return $p
+                  }
+              }
+              return $null
+          }
+
+          if ("${{ github.ref_type }}" -ne "tag") {
+            $mod_path = Find-ModPath $mod_name
+            if (-not $mod_path) {
+              throw "Directory $mod_name not found"
+            }
+
+            Push-Location $mod_path
+
+            $projectData = Get-Content "ModProject.cache" | ConvertFrom-Json
+            $version = $projectData.ver
+
+            $tag = "$mod_name/$version"
+          } else {
+            $tag = "${{ github.ref_name }}"
+
+            if ($tag -notmatch "^([^/]+)/(.+)$") {
+                throw "Tag must be <mod>/<version>"
+            }
+
+            $mod_name = $Matches[1]
+            $version = $Matches[2]
+
+            $mod_path = Find-ModPath $mod_name
+            if (-not $mod_path) {
+                throw "Directory $mod_name not found"
+            }
+          }
+
+          "mod-name=$mod_name" >> $env:GITHUB_OUTPUT
+          "mod-path=$mod_path" >> $env:GITHUB_OUTPUT
+          "version=$version" >> $env:GITHUB_OUTPUT
+          "tag=$tag" >> $env:GITHUB_OUTPUT
+
+      - uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: "10"
+
+      - name: Install TaleOfImmortalTool
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $PSNativeCommandUseErrorActionPreference = $true
+
+          gh release download -R nozwock/tale-of-immortal-tool 0.6.1 -p "*.nupkg" -D _downloads/
+          dotnet tool install --global --add-source _downloads/ toi
+
+      - name: Add GitHub NuGet feed
+        run: |
+          dotnet nuget add source `
+            --name github https://nuget.pkg.github.com/nozwock/index.json `
+            --username ${{ github.repository_owner }} `
+            --password ${{ secrets.GITHUB_TOKEN }} `
+            --store-password-in-clear-text
+
+      - name: Build mod
+        run: |
+          $PSNativeCommandUseErrorActionPreference = $true
+
+          $mod_name = "${{ steps.meta.outputs.mod-name }}"
+          $mod_path = "${{ steps.meta.outputs.mod-path }}"
+
+          Push-Location $mod_path
+
+          $projPath = 'ModCode/ModMain/ModMain.csproj'
+          if (Test-Path $projPath) {
+            dotnet build -c Release $projPath
+          }
+
+          toi mod pack . --clean -o "_build/$mod_name" -g justfile
+
+      - uses: actions/upload-artifact@v6
+        with:
+          name: ${{ steps.meta.outputs.mod-name }}
+          path: "${{ steps.meta.outputs.mod-path }}/_build/**"
