@@ -50,8 +50,22 @@ jobs:
 
           "package=$package" >> $env:GITHUB_OUTPUT
 
+      - name: Prepare release description
+        id: meta
+        run: |
+          $modPath = "${{ needs.build-mod.outputs.mod-path }}"
+
+          $readmePath = "$modPath/README.md"
+          $description = ""
+          if (Test-Path $readmePath) {
+            $description = "[Mod Description](./$readmePath)"
+          }
+
+          "description=$description" >> $env:GITHUB_OUTPUT
+
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           files: ${{ steps.package.outputs.package }}
           tag_name: ${{ needs.build-mod.outputs.tag }}
+          body: ${{ steps.meta.outputs.description }}
