@@ -4,6 +4,12 @@ Mods for [鬼谷八荒 Tale of Immortal][steam-toi].
 > [!TIP]
 > There are modding related [notes](./docs/NOTES.md) in `docs/`.
 
+## Installation
+
+Extract the contents of the mod archives into `<Game Folder>/ModExportData/`.
+
+The mods should then be visible in the mod browser.
+
 ## Build
 - Get [just] for the build scripts, and [TaleOfImmortalTool] 0.4.0+ (add it to the `PATH` as `toi`) for packaging mods.
 - Create a `Local.props` file under src/ next to `Directory.Build.props` with the Game's root path:
