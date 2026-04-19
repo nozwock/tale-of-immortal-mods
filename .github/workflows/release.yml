@@ -56,7 +56,8 @@ jobs:
           $modPath = "${{ needs.build-mod.outputs.mod-path }}"
 
           $readmePath = "$modPath/README.md"
-          $description = ""
+
+          $description = "No description"
           if (Test-Path $readmePath) {
             $description = "[Mod Description](./$readmePath)"
           }

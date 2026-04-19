@@ -18,9 +18,11 @@ foreach ($tag in $tags) {
         if (-not $modPath) { continue }
 
         $readmePath = "$modPath/README.md"
-        if (-not (Test-Path $readmePath)) { continue }
 
-        $desc = "[Mod Description](./$readmePath)"
+        $desc = "No description"
+        if (Test-Path $readmePath) {
+            $desc = "[Mod Description](./$readmePath)"
+        }
 
         gh release edit $tag --notes "$desc"
     }
