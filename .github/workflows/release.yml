@@ -41,10 +41,10 @@ jobs:
         run: |
           $PSNativeCommandUseErrorActionPreference = $true
 
-          $mod_name = "${{ needs.build-mod.outputs.mod-name }}"
+          $modName = "${{ needs.build-mod.outputs.mod-name }}"
           $version = "${{ needs.build-mod.outputs.version }}"
 
-          $package = "$mod_name-$version.zip"
+          $package = "$modName-$version.zip"
 
           Compress-Archive "_publish/*" "$package"
 

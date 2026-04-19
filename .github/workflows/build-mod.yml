@@ -54,17 +54,17 @@ jobs:
           }
 
           if ("${{ github.ref_type }}" -ne "tag") {
-            $mod_path = Find-ModPath $mod_name
-            if (-not $mod_path) {
-              throw "Directory $mod_name not found"
+            $modPath = Find-ModPath $modName
+            if (-not $modPath) {
+              throw "Directory $modName not found"
             }
 
-            Push-Location $mod_path
+            Push-Location $modPath
 
             $projectData = Get-Content "ModProject.cache" | ConvertFrom-Json
             $version = $projectData.ver
 
-            $tag = "$mod_name/$version"
+            $tag = "$modName/$version"
           } else {
             $tag = "${{ github.ref_name }}"
 
@@ -72,17 +72,17 @@ jobs:
                 throw "Tag must be <mod>/<version>"
             }
 
-            $mod_name = $Matches[1]
+            $modName = $Matches[1]
             $version = $Matches[2]
 
-            $mod_path = Find-ModPath $mod_name
-            if (-not $mod_path) {
-                throw "Directory $mod_name not found"
+            $modPath = Find-ModPath $modName
+            if (-not $modPath) {
+                throw "Directory $modName not found"
             }
           }
 
-          "mod-name=$mod_name" >> $env:GITHUB_OUTPUT
-          "mod-path=$mod_path" >> $env:GITHUB_OUTPUT
+          "mod-name=$modName" >> $env:GITHUB_OUTPUT
+          "mod-path=$modPath" >> $env:GITHUB_OUTPUT
           "version=$version" >> $env:GITHUB_OUTPUT
           "tag=$tag" >> $env:GITHUB_OUTPUT
 
@@ -111,17 +111,17 @@ jobs:
         run: |
           $PSNativeCommandUseErrorActionPreference = $true
 
-          $mod_name = "${{ steps.meta.outputs.mod-name }}"
-          $mod_path = "${{ steps.meta.outputs.mod-path }}"
+          $modName = "${{ steps.meta.outputs.mod-name }}"
+          $modPath = "${{ steps.meta.outputs.mod-path }}"
 
-          Push-Location $mod_path
+          Push-Location $modPath
 
           $projPath = 'ModCode/ModMain/ModMain.csproj'
           if (Test-Path $projPath) {
             dotnet build -c Release $projPath
           }
 
-          toi mod pack . --clean -o "_build/$mod_name" -g justfile
+          toi mod pack . --clean -o "_build/$modName" -g justfile
 
       - uses: actions/upload-artifact@v6
         with:
